@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Star } from "lucide-react";
+import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Star, ChevronDown } from "lucide-react";
 import { openDemoModal } from "@/app/Root";
-import { Seo, organizationSchema, softwareAppSchema } from "@/app/components/Seo";
+import { Seo, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
 import imgHeroBg from "@/imports/EaisyBooks/hero-background.webp";
 import imgProblemBg from "@/imports/EaisyBooks/problem-bg.webp";
 import imgFunkcioKarta from "@/imports/EaisyBooks/funkcio-karta.webp";
@@ -99,14 +99,14 @@ const PROBLEMS = [
   },
 ];
 
-// ── shared section eyebrow: teal bar + uppercase label ──────────────────────
-function SectionEyebrow({ children }: { children: React.ReactNode }) {
+// ── shared section eyebrow: bar + uppercase label (teal default, orange on dark) ──
+function SectionEyebrow({ children, color = C.p400 }: { children: React.ReactNode; color?: string }) {
   return (
     <div className="flex items-center gap-2.5">
-      <span className="w-[3px] h-4 rounded-full" style={{ backgroundColor: C.p400 }} />
+      <span className="w-[3px] h-4 rounded-full" style={{ backgroundColor: color }} />
       <p
         className={`${FONT_CARD} font-semibold text-[13px] uppercase tracking-[0.2em]`}
-        style={{ color: C.p400 }}
+        style={{ color }}
       >
         {children}
       </p>
@@ -227,6 +227,93 @@ const AUDIENCES: {
     ],
   },
 ];
+
+// ── who-for section: 5 office types, 3+2 grid ───────────────────────────────
+const WHO_FOR = [
+  {
+    num: "01",
+    title: "Növekvő könyvelőirodáknak",
+    desc: "Ahol az ügyfélszám elérte azt a szintet, ahol a manuális követés már nem működik. Ha az iroda 20, 50 vagy 100+ ügyfelet kezel, a portfólió-áttekintés és az automatizált munkafolyamatok már nem kényelmi funkciók — hanem versenyképességi feltételek.",
+  },
+  {
+    num: "02",
+    title: "Teljes körű szolgáltatást nyújtó irodáknak",
+    desc: "Ahol a könyvelés mellett bérszámfejtés, EV ügyintézés, TAO tervezés és bevallás-kezelés is zajlik. Az eaisyBooks minden ügyféltípust és adózási formát egyetlen platformon kezel — nincs szükség több külön szoftverre.",
+  },
+  {
+    num: "03",
+    title: "Skálázási problémával küzdő irodáknak",
+    desc: "Ahol minden új ügyfél új kolléga felvételét jelentené — de erre nincs kapacitás vagy keret. Az automatizálás lehetővé teszi, hogy a meglévő csapat sokkal több ügyfelet szolgáljon ki.",
+  },
+  {
+    num: "04",
+    title: "Digitalizációra nyitott irodáknak",
+    desc: "Ahol az irodavezető vagy a senior kollégák látják, hogy a papír-Excel-email háromszög nem tartható fenn hosszú távon. Az eaisyBooks a digitális transzformáció teljes eszköztárát adja — a NAV-szinkrontól az e-bérjegyzékig.",
+  },
+  {
+    num: "05",
+    title: "Minőségi ügyfélkiszolgálást célzó irodáknak",
+    desc: "Ahol nemcsak a kötelező bevallásokat akarják határidőre beadni, hanem valódi tanácsadói kapcsolatot építeni az ügyfelekkel. Az eaisyBooks felszabadítja a kapacitást a magasabb értékű munkára — adótanácsadásra, üzleti tervezésre, személyes konzultációra.",
+  },
+];
+
+// ── faq section ──────────────────────────────────────────────────────────────
+const FAQS = [
+  {
+    q: "Kiknek készült az eaisyBooks?",
+    a: "Az eaisyBooks könyvelőirodák napi működését támogatja. Egyetlen rendszerben teszi átláthatóvá az ügyfelek, feladatok, dokumentumok, határidők, bevallások és bérszámfejtési folyamatok kezelését – kisebb és nagyobb ügyfélportfólió esetén is.",
+  },
+  {
+    q: "Milyen ügyféltípusok kezelhetők a rendszerben?",
+    a: "Az eaisyBooks egyéni vállalkozók, társas vállalkozások, civil szervezetek, alapítványok és társasházak kezelésére is felkészült. A funkciók és munkafolyamatok igazodnak az egyes szervezeti formák eltérő könyvelési, adózási és adminisztrációs sajátosságaihoz.",
+  },
+  {
+    q: "Kiváltja az eaisyBooks a jelenlegi könyvelőprogramunkat?",
+    a: "Igen. Az eaisyBooks teljes értékű könyvelőirodai rendszerként mindazokat az alapvető funkciókat biztosítja, amelyek a hazai könyvelőprogramokban elérhetők, miközben az iroda teljes működését is egy közös felületen fogja össze. A váltás és az adatátadás pontos folyamatát minden esetben az iroda jelenlegi rendszereihez igazítjuk.",
+  },
+  {
+    q: "Összekapcsolható a meglévő rendszereinkkel?",
+    a: "Igen, az eaisyBooks külső rendszerekkel és adatforrásokkal is összekapcsolható. A pontos integrációs lehetőségeket a használt szoftverek, az elérhető kapcsolódási pontok és az iroda egyedi folyamatai alapján határozzuk meg.",
+  },
+  {
+    q: "Mennyi idő alatt vezethető be?",
+    a: "A bevezetés ideje az iroda méretétől, az ügyfélállománytól, a választott funkcióktól és az integrációs igényektől függ. Az indulás előtt felmérjük a jelenlegi működést, majd ennek alapján alakítjuk ki a bevezetés és az adatátadás lépéseit.",
+  },
+  {
+    q: "Biztonságban vannak az ügyfél- és pénzügyi adatok?",
+    a: "Az adatbiztonság az eaisyBooks működésének alapja. A szerepkör-alapú hozzáférések, a szabályozható jogosultságok és a naplózott műveletek biztosítják, hogy minden felhasználó csak a munkájához szükséges adatokhoz és funkciókhoz férjen hozzá.",
+  },
+  {
+    q: "Mennyibe kerül az eaisyBooks?",
+    a: "Az eaisyBooks modulárisan igazítható az iroda méretéhez, ügyfélszámához és működéséhez, így csak azokért a funkciókért kell fizetni, amelyekre valóban szükség van. Az árat a választott modulok, a felhasználói és adatmennyiség, valamint az integrációs igények alapján, egyedi ajánlatban határozzuk meg.",
+  },
+];
+
+// ── shared in-view hook for scroll-triggered entrance animations ────────────
+function useInView<T extends HTMLElement>(threshold = 0.15) {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, inView };
+}
 
 function Hero() {
   return (
@@ -411,6 +498,7 @@ function Hero() {
 }
 
 function ProblemsSection() {
+  const { ref: gridRef, inView } = useInView<HTMLDivElement>(0.15);
   return (
     <section id="problemak" className="relative w-full overflow-hidden bg-white py-20 lg:py-24">
       {/* orange radial glow behind the cards */}
@@ -429,13 +517,32 @@ function ProblemsSection() {
           subtitle="A legtöbb időt nem maga a könyvelés viszi el, hanem minden, ami körülötte történik. Mindennapos problémák, amelyek észrevétlenül fogják vissza az iroda működését."
         />
 
-        <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full">
-          {PROBLEMS.map(({ num, title, desc }) => (
-            <div
-              key={num}
-              className={`${CARD_BASE} bg-white p-7 flex flex-col gap-4`}
-              style={{ border: "1px solid rgba(137,196,209,0.6)" }}
-            >
+        <div
+          ref={gridRef}
+          className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full"
+        >
+          {PROBLEMS.map(({ num, title, desc }, i) => {
+            // entrance: per row, side cards fly in from both sides, middle from below
+            const row = Math.floor(i / 3);
+            const col = i % 3;
+            const delay = row * 140 + col * 70;
+            const hidden =
+              col === 0
+                ? "translateX(-48px)"
+                : col === 2
+                  ? "translateX(48px)"
+                  : "translateY(32px)";
+            return (
+              <div
+                key={num}
+                className={`${CARD_BASE} bg-white p-7 flex flex-col gap-4`}
+                style={{
+                  border: "1px solid rgba(137,196,209,0.6)",
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "none" : hidden,
+                  transition: `opacity 0.5s ease ${delay}ms, transform 0.5s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+                }}
+              >
               <p className={`${FONT_MAIN} font-bold text-xl leading-none`} style={{ color: C.a500 }}>
                 {num}
               </p>
@@ -446,7 +553,8 @@ function ProblemsSection() {
                 {desc}
               </p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -702,7 +810,7 @@ function FeaturesSection() {
 
 function DemoCtaStrip() {
   return (
-    <section id="demo" className="w-full bg-white pb-20 lg:pb-24">
+    <section className="w-full bg-white pb-20 lg:pb-24">
       <div className={INNER}>
         <div
           className="relative overflow-hidden rounded-[32px] px-8 py-14 lg:px-16 lg:py-18"
@@ -717,11 +825,11 @@ function DemoCtaStrip() {
             }}
           />
 
-          <div className="relative flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-16">
-            <div className="flex flex-col items-start gap-6 max-w-[660px]">
+          <div className="relative flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16">
+            <div className="flex flex-col items-start gap-6 max-w-[660px] lg:w-1/2">
               <SectionEyebrow>Nézd meg működés közben</SectionEyebrow>
               <p
-                className={`${FONT_MAIN} font-light text-xl lg:text-2xl leading-relaxed`}
+                className={`${FONT_MAIN} font-light text-base lg:text-lg leading-relaxed`}
                 style={{ color: C.dark }}
               >
                 Minden vállalkozás más. Mondd el, nálad milyen helyzetek okoznak problémát, és
@@ -729,13 +837,16 @@ function DemoCtaStrip() {
                 példáddal.
               </p>
             </div>
-            <button
-              onClick={openDemoModal}
-              className={`${FONT_MAIN} shrink-0 inline-flex items-center justify-center px-10 h-[60px] lg:px-12 lg:h-[68px] rounded-full font-semibold text-sm lg:text-base tracking-[0.15em] uppercase text-white transition-opacity hover:opacity-90`}
-              style={{ backgroundColor: C.a500 }}
-            >
-              Kérj demot
-            </button>
+            {/* CTA centered within the right half of the strip */}
+            <div className="flex-1 flex justify-center">
+              <button
+                onClick={openDemoModal}
+                className={`${FONT_MAIN} shrink-0 inline-flex items-center justify-center px-10 h-[60px] lg:px-12 lg:h-[68px] rounded-full font-semibold text-sm lg:text-base tracking-[0.15em] uppercase text-white transition-opacity hover:opacity-90`}
+                style={{ backgroundColor: C.a500 }}
+              >
+                Kérj demot
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -744,6 +855,7 @@ function DemoCtaStrip() {
 }
 
 function BenefitsSection() {
+  const { ref: gridRef, inView } = useInView<HTMLDivElement>(0.1);
   return (
     <section id="elonyok" className="w-full bg-white pb-20 lg:pb-24">
       <div className={`${INNER} flex flex-col`}>
@@ -753,50 +865,298 @@ function BenefitsSection() {
           subtitle="Nem egyforma a munka, ha vezetsz, ha könyvelsz, vagy ha a saját vállalkozásod pénzügyeit kell látnod. Az eaisyBooks mindhárom szereplőnek a saját feladatához igazított előnyöket ad."
         />
 
-        <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-full">
-          {AUDIENCES.map(({ prefix, label, headerBg, accent, benefits }) => (
-            <div key={label} className="flex flex-col gap-4 lg:gap-5">
-              {/* audience header bar */}
-              <div
-                className="rounded-[20px] px-6 py-6 lg:py-7 flex flex-col items-center gap-1.5 text-center"
-                style={{ backgroundColor: headerBg }}
-              >
-                <p className={`${FONT_MAIN} font-light text-xs lg:text-sm tracking-[0.25em] uppercase text-white/75`}>
-                  {prefix}
-                </p>
-                <p className={`${FONT_MAIN} font-medium text-xl lg:text-2xl tracking-wide uppercase text-white`}>
-                  {label}
-                </p>
-              </div>
-
-              {/* benefit cards — equal height across the whole grid */}
-              {benefits.map(({ title, desc }) => (
+        <div ref={gridRef} className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-full">
+          {AUDIENCES.map(({ prefix, label, headerBg, accent, benefits }, colIdx) => {
+            // entrance: per column, boxes slide in from the top row by row
+            const enter = (rowIdx: number): React.CSSProperties => {
+              const delay = colIdx * 90 + rowIdx * 130;
+              return {
+                opacity: inView ? 1 : 0,
+                transform: inView ? "none" : "translateY(-32px)",
+                transition: `opacity 0.5s ease ${delay}ms, transform 0.5s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+              };
+            };
+            return (
+              <div key={label} className="flex flex-col gap-4 lg:gap-5">
+                {/* audience header bar */}
                 <div
-                  key={title}
-                  className={`${CARD_BASE} bg-white p-6 flex-1 flex flex-col gap-3`}
-                  style={{ border: "1px solid rgba(137,196,209,0.6)" }}
+                  className="rounded-[20px] px-6 py-6 lg:py-7 flex flex-col items-center gap-1.5 text-center"
+                  style={{ backgroundColor: headerBg, ...enter(0) }}
                 >
-                  <div className="flex items-start gap-2.5">
-                    <Star
-                      className="w-4 h-4 mt-1 shrink-0"
-                      fill="currentColor"
-                      strokeWidth={0}
-                      style={{ color: accent }}
-                    />
-                    <h3
-                      className={`${FONT_MAIN} font-medium text-base lg:text-lg leading-snug`}
-                      style={{ color: accent }}
-                    >
-                      {title}
-                    </h3>
-                  </div>
-                  <p className={`${FONT_MAIN} font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
-                    {desc}
+                  <p className={`${FONT_MAIN} font-light text-xs lg:text-sm tracking-[0.25em] uppercase text-white/75`}>
+                    {prefix}
+                  </p>
+                  <p className={`${FONT_MAIN} font-medium text-xl lg:text-2xl tracking-wide uppercase text-white`}>
+                    {label}
                   </p>
                 </div>
-              ))}
+
+                {/* benefit cards — equal height across the whole grid */}
+                {benefits.map(({ title, desc }, rowIdx) => (
+                  <div
+                    key={title}
+                    className={`${CARD_BASE} bg-white p-6 flex-1 flex flex-col gap-3`}
+                    style={{ border: "1px solid rgba(137,196,209,0.6)", ...enter(rowIdx + 1) }}
+                  >
+                    <div className="flex items-start gap-2.5">
+                      <Star
+                        className="w-4 h-4 mt-1 shrink-0"
+                        fill="currentColor"
+                        strokeWidth={0}
+                        style={{ color: accent }}
+                      />
+                      <h3
+                        className={`${FONT_MAIN} font-medium text-base lg:text-lg leading-snug`}
+                        style={{ color: accent }}
+                      >
+                        {title}
+                      </h3>
+                    </div>
+                    <p className={`${FONT_MAIN} font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
+                      {desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhoForSection() {
+  const spotRef = useRef<HTMLDivElement>(null);
+
+  // cursor-following radial gradient spot (soft teal glow)
+  function onMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const el = spotRef.current;
+    if (!el) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    el.style.opacity = "1";
+    el.style.background = `radial-gradient(300px circle at ${e.clientX - rect.left}px ${e.clientY - rect.top}px, rgba(63,151,170,0.16), transparent 70%)`;
+  }
+  function onMouseLeave() {
+    if (spotRef.current) spotRef.current.style.opacity = "0";
+  }
+
+  return (
+    <section
+      id="kinek-valo"
+      className="relative w-full overflow-hidden bg-white py-20 lg:py-24"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      {/* centered 1615px frame — hero background mirrored horizontally */}
+      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-b-[40px]">
+        <img
+          src={imgHeroBg}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-center -scale-x-100"
+        />
+        {/* top fade: the gradient dissolves into white */}
+        <div className="absolute inset-x-0 top-0 h-[28%] bg-gradient-to-b from-white via-white/65 to-transparent pointer-events-none" />
+        {/* cursor-following faint radial spot */}
+        <div
+          ref={spotRef}
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+          style={{ opacity: 0 }}
+        />
+      </div>
+
+      <div className={`relative ${INNER} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Kinek való"
+          title="Kinek való az eaisyBooks?"
+          subtitle="Öt irodatípus, ahol az eaisyBooks nem extra, hanem azonnali segítség — a növekvő portfóliótól a digitális átállásig."
+        />
+
+        {/* 3+2 grid: 6-col track, cards span 2, second row offset by one column */}
+        <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 lg:gap-6 w-full">
+          {WHO_FOR.map(({ num, title, desc }, i) => (
+            <div
+              key={num}
+              className={`${CARD_BASE} bg-white/75 backdrop-blur-sm p-7 flex flex-col lg:col-span-2 ${
+                i === 3 ? "lg:col-start-2" : ""
+              }`}
+              style={{ border: "1px solid rgba(137,196,209,0.6)" }}
+            >
+              <p className={`${FONT_MAIN} font-bold text-xl leading-none`} style={{ color: C.a500 }}>
+                {num}
+              </p>
+              <h3
+                className={`${FONT_MAIN} mt-10 font-medium text-lg leading-snug`}
+                style={{ color: C.dark }}
+              >
+                {title}
+              </h3>
+              <p className={`${FONT_MAIN} mt-4 font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
+                {desc}
+              </p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
+  return (
+    <div
+      className="bg-white rounded-2xl px-6 mb-4 break-inside-avoid cursor-pointer transition-all duration-300 hover:shadow-sm hover:bg-[#DAF4F9]/40"
+      style={{ border: open ? "1px solid rgba(63,151,170,0.6)" : "1px solid rgba(137,196,209,0.6)" }}
+      onClick={onToggle}
+    >
+      <div className="flex items-center justify-between gap-4 py-5">
+        <p className={`${FONT_MAIN} font-medium text-base leading-snug`} style={{ color: C.dark }}>
+          {q}
+        </p>
+        <div
+          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300"
+          style={{ backgroundColor: open ? C.p400 : C.p50 }}
+        >
+          <ChevronDown
+            className="w-4 h-4 transition-transform duration-300"
+            style={{ color: open ? "white" : C.p400, transform: open ? "rotate(180deg)" : "none" }}
+          />
+        </div>
+      </div>
+      {/* smooth height animation via grid-rows */}
+      <div
+        className="grid transition-all duration-300 ease-in-out"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
+      >
+        <div className="overflow-hidden">
+          <p className={`${FONT_MAIN} pb-5 font-light text-[13px] leading-relaxed`} style={{ color: C.dark }}>
+            {a}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  return (
+    <section id="gyik" className="w-full bg-white py-20 lg:py-24">
+      <div className={`${INNER} flex flex-col`}>
+        <SectionHeader eyebrow="GYIK" title="Kérdések, amiket fel szoktak tenni" />
+        <div className="mt-12 lg:mt-16 w-full max-w-[1200px] mx-auto columns-1 lg:columns-2 gap-4">
+          {FAQS.map((f, i) => (
+            <FaqItem
+              key={f.q}
+              q={f.q}
+              a={f.a}
+              open={openIndex === i}
+              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── closing contact section: dark panel with demo offer ──────────────────────
+const DEMO_STEPS = [
+  "Bemutatjuk az eaisyBooks portfólió-kezelését és dashboardját",
+  "Végigvezetünk a bérszámfejtési varázslón és a bevallás-automatizáláson",
+  "Az EV és TAO modulok működését valós példákon mutatjuk be",
+  "Felteheted a kérdéseidet",
+  "Megbeszéljük a bevezetés menetét és a személyre szabott árazást",
+];
+
+const DEMO_REASONS = [
+  "Ha cégvezetőként tisztán szeretnéd látni az irodád működését",
+  "Ha növekedni szeretnél",
+  "Ha több időt szeretnél fordítani a szakmai munkára",
+  "Ha fontos számodra az ügyfélélmény",
+];
+
+function ContactSection() {
+  return (
+    <section id="demo" className="w-full bg-white pb-20 lg:pb-24">
+      <div className={INNER}>
+        <div
+          className="relative overflow-hidden rounded-[32px] px-8 py-14 lg:px-16 lg:py-16"
+          style={{ background: `linear-gradient(135deg, #07323E 0%, #0A4553 45%, ${C.p400} 110%)` }}
+        >
+          {/* dot grid overlay — white dots on dark */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255,255,255,0.09) 1.5px, transparent 1.5px)",
+              backgroundSize: "22px 22px",
+            }}
+          />
+
+          <div className="relative flex flex-col lg:flex-row gap-12 lg:gap-16">
+            {/* left: demo offer */}
+            <div className="flex flex-col items-start gap-6 lg:w-[55%]">
+              <SectionEyebrow color={C.a500}>Következő lépés</SectionEyebrow>
+              <h2
+                className={`${FONT_MAIN} font-medium text-4xl lg:text-[44px] leading-[1.15] tracking-tight`}
+                style={{ color: C.a500 }}
+              >
+                Nézd meg
+                <br />
+                működés közben!
+              </h2>
+              <p className={`${FONT_MAIN} font-light text-[15px] leading-relaxed text-white/80`}>
+                Megmutatjuk, hogyan működik az eaisyBooks a te irodádban — a saját ügyfeleiden, a
+                saját folyamataidban.
+              </p>
+              <p className={`${FONT_MAIN} font-medium text-sm text-white/90 mt-2`}>
+                Mi történik a demó során?
+              </p>
+              <ul className="flex flex-col gap-2.5">
+                {DEMO_STEPS.map((step) => (
+                  <li key={step} className="flex items-start gap-3">
+                    <span className="w-[5px] h-[5px] rounded-full mt-[7px] shrink-0" style={{ backgroundColor: C.p200 }} />
+                    <span className={`${FONT_MAIN} font-light text-sm leading-relaxed text-white/75`}>
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className={`${FONT_MAIN} font-medium text-sm leading-relaxed text-white mt-2`}>
+                A demó ingyenes és nem általános termékbemutató — a te irodád kihívásaira
+                fókuszálunk.
+              </p>
+            </div>
+
+            {/* right: when to ask + CTA */}
+            <div className="flex flex-col items-start gap-7 lg:flex-1 lg:pt-14">
+              <h3 className={`${FONT_MAIN} font-medium text-2xl lg:text-[28px] leading-snug text-white`}>
+                Mikor érdemes
+                <br />
+                demót kérni?
+              </h3>
+              <div className="flex flex-col items-start gap-3">
+                {DEMO_REASONS.map((reason) => (
+                  <span
+                    key={reason}
+                    className={`${FONT_MAIN} inline-flex items-center px-5 py-2.5 rounded-full font-light text-[13px] text-white/90`}
+                    style={{ border: "1px solid rgba(137,196,209,0.45)" }}
+                  >
+                    {reason}
+                  </span>
+                ))}
+              </div>
+              <button
+                onClick={openDemoModal}
+                className={`${FONT_MAIN} mt-2 inline-flex items-center justify-center px-9 h-[54px] rounded-full font-semibold text-sm tracking-wider text-white transition-opacity hover:opacity-90`}
+                style={{ backgroundColor: C.a500 }}
+              >
+                Szeretném megnézni
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -818,6 +1178,7 @@ export default function EaisyBooks() {
               "AI-támogatott platform könyvelőirodáknak: portfóliókezelés, bérszámfejtés, TAO/KIVA kalkuláció, AI asszisztens és compliance egy helyen.",
             path: "/eaisy-books",
           }),
+          faqSchema(FAQS),
         ]}
       />
       <Hero />
@@ -826,6 +1187,9 @@ export default function EaisyBooks() {
       <FeaturesSection />
       <DemoCtaStrip />
       <BenefitsSection />
+      <WhoForSection />
+      <FaqSection />
+      <ContactSection />
     </div>
   );
 }

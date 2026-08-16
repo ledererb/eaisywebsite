@@ -323,18 +323,29 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
-  const navLinkCls = (href: string) =>
-    `inline-flex items-center justify-center h-[45px] px-4 rounded-full border font-['Inter',sans-serif] text-sm whitespace-nowrap transition-all duration-200 ${
-      activeHref === href
-        ? "border-[#1CEEE0] bg-[#1CEEE0]/20 text-black font-semibold"
-        : "border-transparent text-black/55 font-medium hover:text-black hover:border-[#1CEEE0] hover:bg-[#1CEEE0]/20"
-    }`;
-
   // navbar accents: cyan selection everywhere (bill home icon → coral, desk → magenta, boost → yellow, books → orange)
+  const isBillPage = location.pathname === "/eaisy-bill";
   const isDeskPage = location.pathname === "/eaisy-desk";
   const isBoostPage = location.pathname === "/eaisy-boost";
   const isBooksPage = location.pathname === "/eaisy-books";
+  // per-product selection color for nav pills (umbrella stays cyan)
+  const navAccent = isBoostPage
+    ? "#FACC15"
+    : isDeskPage
+      ? "#C43284"
+      : isBooksPage
+        ? "#3F97AA"
+        : isBillPage
+          ? "#F26B77"
+          : "#1CEEE0";
   const accentHover = "hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black";
+
+  const navLinkCls = (href: string) =>
+    `inline-flex items-center justify-center h-9 px-4 rounded-full border font-['Montserrat',sans-serif] text-sm whitespace-nowrap transition-all duration-200 ${
+      activeHref === href
+        ? "border-(--nav-accent) bg-(--nav-accent)/20 text-[#264350] font-medium"
+        : "border-transparent text-[#264350]/70 font-medium hover:text-[#264350] hover:border-(--nav-accent) hover:bg-(--nav-accent)/20"
+    }`;
   const homeIconCls = isBoostPage
     ? "border-black/25 text-black/45 hover:bg-[#FACC15] hover:text-[#3B0764] hover:border-[#3B0764]"
     : `${
@@ -357,7 +368,8 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
 
         {/* Single navbar pill: logo at left edge, nav items clustered, plus icon at right edge */}
         <div
-          className="flex items-center justify-between gap-6 rounded-[40px] border border-[#DDDDDD] bg-white shadow-[0_16px_32px_-4px_rgba(12,12,13,0.10)] max-w-[860px] mx-auto pl-6 pr-2 py-2"
+          className="flex items-center justify-between gap-6 rounded-[40px] border border-black/10 bg-white/70 backdrop-blur-md max-w-[860px] mx-auto pl-6 pr-2 py-2"
+          style={{ "--nav-accent": navAccent } as React.CSSProperties}
         >
 
           {/* Logo */}
@@ -406,7 +418,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
           <div className="relative" ref={menuRef}>
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className={`w-[45px] h-[45px] rounded-full bg-black flex items-center justify-center text-white border border-transparent transition-all hover:scale-105 active:scale-95 ${accentHover}`}
+            className={`w-10 h-10 rounded-full bg-black flex items-center justify-center text-white border border-transparent transition-all hover:scale-105 active:scale-95 ${accentHover}`}
             aria-label="Termékek megnyitása"
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
@@ -488,23 +500,23 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
 
 function SiteFooter() {
   return (
-    <footer className="bg-[#082432] text-white" id="kapcsolat">
+    <footer className="bg-[#031A1E] text-white" id="kapcsolat">
       <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 py-16 flex flex-col gap-14">
 
         {/* ── highlighted contact block, centered ── */}
         <div className="flex flex-col items-center text-center gap-5 rounded-[30px] border border-[#1CEEE0]/40 bg-white/5 px-8 py-10 lg:py-12">
-          <p className="text-xs font-['Inter',sans-serif] font-medium text-[#1CEEE0] uppercase tracking-widest">
+          <p className="text-xs font-['Montserrat',sans-serif] font-medium text-[#1CEEE0] uppercase tracking-widest">
             Kapcsolat
           </p>
-          <p className="font-['Inter',sans-serif] font-bold text-2xl lg:text-3xl tracking-tight">
+          <p className="font-['Montserrat',sans-serif] font-medium text-2xl lg:text-3xl tracking-tight">
             Írj nekünk!
           </p>
-          <p className="text-sm lg:text-base font-['Inter',sans-serif] text-white/60 max-w-md leading-relaxed">
+          <p className="text-sm lg:text-base font-['Montserrat',sans-serif] font-light text-white/60 max-w-md leading-relaxed">
             Kérdésed van az eaisy moduljairól, vagy demót kérnél? Válaszolunk egy munkanapon belül.
           </p>
           <a
             href="mailto:hello@thinkai.hu"
-            className="inline-flex items-center justify-center px-12 py-3.5 bg-white border border-white text-black rounded-full font-['Inter',sans-serif] font-light text-sm tracking-wide whitespace-nowrap hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black hover:font-bold transition-colors"
+            className="inline-flex items-center justify-center px-12 py-3.5 bg-white border border-white text-black rounded-full font-['Montserrat',sans-serif] font-light text-sm tracking-wide whitespace-nowrap hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black hover:font-bold transition-colors"
           >
             hello@thinkai.hu
           </a>
@@ -516,28 +528,28 @@ function SiteFooter() {
             <div className="h-9">
               <EaisyLogo dark />
             </div>
-            <p className="text-base lg:text-lg font-['Inter',sans-serif] text-white/60 max-w-xs leading-relaxed">
+            <p className="text-base lg:text-lg font-['Montserrat',sans-serif] font-light text-white/60 max-w-xs leading-relaxed">
               The future was yesterday. We are tomorrow.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-12">
             <nav className="flex flex-col gap-3">
-              <p className="text-xs font-['Inter',sans-serif] font-medium text-white/40 uppercase tracking-widest">
+              <p className="text-xs font-['Montserrat',sans-serif] font-medium text-white/40 uppercase tracking-widest">
                 Navigáció
               </p>
               {["eaisy", "Termékek", "Rólunk"].map((item) => (
-                <a key={item} href="#" className="text-sm font-['Inter',sans-serif] text-white/77 hover:text-white transition-colors">
+                <a key={item} href="#" className="text-sm font-['Montserrat',sans-serif] font-light text-white/77 hover:text-white transition-colors">
                   {item}
                 </a>
               ))}
             </nav>
             <nav className="flex flex-col gap-3">
-              <p className="text-xs font-['Inter',sans-serif] font-medium text-white/40 uppercase tracking-widest">
+              <p className="text-xs font-['Montserrat',sans-serif] font-medium text-white/40 uppercase tracking-widest">
                 Termékek
               </p>
               {products.map((p) => (
-                <Link key={p.name} to={p.path} className="text-sm font-['Inter',sans-serif] text-white/77 hover:text-white transition-colors">
+                <Link key={p.name} to={p.path} className="text-sm font-['Montserrat',sans-serif] font-light text-white/77 hover:text-white transition-colors">
                   {p.name}
                 </Link>
               ))}
@@ -546,17 +558,17 @@ function SiteFooter() {
         </div>
 
         <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-          <p className="text-xs font-['Inter',sans-serif] text-white/30">
+          <p className="text-xs font-['Montserrat',sans-serif] font-light text-white/30">
             © 2024 THINK AI Kft. Minden jog fenntartva.
           </p>
           <div className="flex items-center gap-4">
             <a
               href="/privacy"
-              className="text-xs font-['Inter',sans-serif] text-white/30 hover:text-white transition-colors underline-offset-2 hover:underline"
+              className="text-xs font-['Montserrat',sans-serif] font-light text-white/30 hover:text-white transition-colors underline-offset-2 hover:underline"
             >
               Adatvédelem / Privacy Policy
             </a>
-            <p className="text-xs font-['Inter',sans-serif] text-white/30">
+            <p className="text-xs font-['Montserrat',sans-serif] font-light text-white/30">
               100% GDPR kompatibilis
             </p>
           </div>
