@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Star, ChevronDown } from "lucide-react";
 import { openDemoModal } from "@/app/Root";
-import { Seo, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
+import { Seo, SITE_URL, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
 import imgHeroBg from "@/imports/EaisyBooks/hero-background.webp";
 import imgProblemBg from "@/imports/EaisyBooks/problem-bg.webp";
 import imgFunkcioKarta from "@/imports/EaisyBooks/funkcio-karta.webp";
@@ -1170,6 +1170,7 @@ export default function EaisyBooks() {
         title="eaisyBooks – AI platform könyvelőirodáknak | eaisy"
         description="Az eaisyBooks AI-támogatott platform könyvelőirodáknak: portfóliókezelés, bérszámfejtés, TAO/KIVA kalkuláció, AI asszisztens és AI-támogatott compliance – sokszorozd meg irodád kapacitását."
         path="/eaisy-books"
+        ogImage={`${SITE_URL}/og-image-eaisybooks.jpg`}
         jsonLd={[
           organizationSchema(),
           softwareAppSchema({
