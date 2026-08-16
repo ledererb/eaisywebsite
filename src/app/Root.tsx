@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router";
-import { Plus, X, Check, Home, FileText, Headphones, Megaphone, FolderOpen, ArrowUpRight, Users, Briefcase, LayoutGrid } from "lucide-react";
+import { Plus, X, Check, Home, FileText, Headphones, Megaphone, FolderOpen, ArrowUpRight, Users, Briefcase, LayoutGrid, BookOpen } from "lucide-react";
 import svgPaths from "@/imports/Mobile/svg-5uu58tfhk2";
 
 export function EaisyLogo({ dark = false }: { dark?: boolean }) {
@@ -32,9 +32,10 @@ const products = [
   { name: "eaisyBill", path: "/eaisy-bill", color: "#05512a", icon: FileText, desc: "AI-támogatott pénzügyi és kontrolling platform" },
   { name: "eaisyDesk", path: "/eaisy-desk", color: "#186d98", icon: Headphones, desc: "Omnichannel AI ügyfélkommunikáció" },
   { name: "eaisyBoost", path: "/eaisy-boost", color: "#701ab7", icon: Megaphone, desc: "Social media és hirdetéskezelés AI-val" },
+  { name: "eaisyBooks", path: "/eaisy-books", color: "#085D6F", icon: BookOpen, desc: "AI platform könyvelőirodáknak" },
 ];
 
-const DEMO_PRODUCTS = ["Mind", "eaisyBill", "eaisyDesk", "eaisyBoost", "eaisyDocs", "eaisyCRM", "eaisyHR"];
+const DEMO_PRODUCTS = ["Mind", "eaisyBill", "eaisyDesk", "eaisyBoost", "eaisyBooks", "eaisyDocs", "eaisyCRM", "eaisyHR"];
 
 // demo modal product metadata — icon + short description, like the nav dropdown
 const DEMO_PRODUCT_META: Record<string, { icon: typeof FileText; color: string; desc: string }> = {
@@ -42,6 +43,7 @@ const DEMO_PRODUCT_META: Record<string, { icon: typeof FileText; color: string; 
   eaisyBill: { icon: FileText, color: "#05512a", desc: "AI-támogatott pénzügyi és kontrolling platform" },
   eaisyDesk: { icon: Headphones, color: "#186d98", desc: "Omnichannel AI ügyfélkommunikáció" },
   eaisyBoost: { icon: Megaphone, color: "#701ab7", desc: "Social media és hirdetéskezelés AI-val" },
+  eaisyBooks: { icon: BookOpen, color: "#085D6F", desc: "AI platform könyvelőirodáknak" },
   eaisyDocs: { icon: FolderOpen, color: "#150f87", desc: "Automatikus iktatás és dokumentumkezelés" },
   eaisyCRM: { icon: Users, color: "#b70071", desc: "Ügyfél- és értékesítéskezelés egy helyen" },
   eaisyHR: { icon: Briefcase, color: "#c74c71", desc: "AI-támogatott HR-adminisztráció" },
@@ -276,6 +278,13 @@ const PRODUCT_NAV_ITEMS: Record<string, { label: string; href: string }[]> = {
     { label: "Előnyök", href: "#elonyok" },
     { label: "GYIK", href: "#gyik" },
   ],
+  "/eaisy-books": [
+    { label: "A probléma", href: "#problemak" },
+    { label: "A megoldás", href: "#megoldas" },
+    { label: "Funkciók", href: "#funkciok" },
+    { label: "Előnyök", href: "#elonyok" },
+    { label: "GYIK", href: "#gyik" },
+  ],
 };
 
 const UMBRELLA_NAV_ITEMS = [
@@ -321,14 +330,15 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
         : "border-transparent text-black/55 font-medium hover:text-black hover:border-[#1CEEE0] hover:bg-[#1CEEE0]/20"
     }`;
 
-  // navbar accents: cyan selection everywhere (bill home icon → coral, desk → magenta, boost → yellow)
+  // navbar accents: cyan selection everywhere (bill home icon → coral, desk → magenta, boost → yellow, books → orange)
   const isDeskPage = location.pathname === "/eaisy-desk";
   const isBoostPage = location.pathname === "/eaisy-boost";
+  const isBooksPage = location.pathname === "/eaisy-books";
   const accentHover = "hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black";
   const homeIconCls = isBoostPage
     ? "border-black/25 text-black/45 hover:bg-[#FACC15] hover:text-[#3B0764] hover:border-[#3B0764]"
     : `${
-        isDeskPage ? "hover:bg-[#C43284]" : "hover:bg-[#F26B77]"
+        isBooksPage ? "hover:bg-[#E58F0E]" : isDeskPage ? "hover:bg-[#C43284]" : "hover:bg-[#F26B77]"
       } border-black/25 text-black/45 hover:text-white hover:border-white`;
 
   useEffect(() => {
