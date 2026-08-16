@@ -12,6 +12,7 @@ import imgCRM from "@/imports/Mobile/0ed95b9c10d6f138aa05178ee56582c704d965a2.we
 import imgBoost from "@/imports/Mobile/8e5eb0f957911a1b8a542f8c02ebfbed02d9f155.webp";
 import imgDocs from "@/imports/Mobile/84645b8a5ef11283d6e6443763bb76a2b8eab618.webp";
 import imgHR from "@/imports/Mobile/bfdac52013fd058c16676a0d83a329a0a460bdb9.webp";
+import imgBooks from "@/imports/EaisyBooks/ai-tax.webp";
 
 function Hero() {
   return (
@@ -134,7 +135,8 @@ function WhatIsEaisy() {
 // ── filter key → product id mapping ─────────────────────────────────────────
 const FILTER_TABS = [
   { label: "Minden terület", id: "all" },
-  { label: "Pénzügy, könyvelés", id: "bill" },
+  { label: "Pénzügy, kontrolling", id: "bill" },
+  { label: "Könyvelés", id: "books" },
   { label: "Ügyfélkommunikáció", id: "desk" },
   { label: "Értékesítés", id: "crm" },
   { label: "Marketing", id: "boost" },
@@ -166,6 +168,17 @@ const PRODUCTS: {
     imageRight: false,
     link: "/eaisy-bill",
     hoverColor: "#F26B77",
+  },
+  {
+    id: "books",
+    name: "eaisyBooks",
+    color: "#085D6F",
+    tagline: "Sokszorozd meg könyvelőirodád kapacitását AI-val.",
+    description: "Az eaisyBooks AI-támogatott platform könyvelőirodáknak: portfóliókezelés, bérszámfejtés, TAO/KIVA kalkuláció, AI asszisztens és compliance egy helyen. 18+ funkció fedi le az iroda teljes működését – a demóban a saját példáddal mutatjuk meg.",
+    image: imgBooks,
+    imageRight: true,
+    link: "/eaisy-books",
+    hoverColor: "#E58F0E",
   },
   {
     id: "desk",
