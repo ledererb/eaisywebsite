@@ -1,51 +1,83 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
 import { Link } from "react-router";
-import { ChevronDown, FileText, Calendar, Zap, Database, Clock, TrendingUp, Mail, BarChart3, Briefcase, Calculator, ArrowUpRight, ArrowDownRight, CheckCircle2, AlertCircle, EyeOff, RefreshCw, Users, Landmark } from "lucide-react";
-import imgHero from "@/imports/EaisyBillNyito0/808a7ecc27a2d6165cfc3842e1f3fe6578bebc62.webp";
+import { ChevronDown, ChevronLeft, ChevronRight, FileText, Calendar, Zap, Database, Clock, TrendingUp, Mail, BarChart3, Briefcase, Calculator, ArrowUpRight, ArrowDownRight, CheckCircle2, AlertCircle, EyeOff, RefreshCw, Users, Landmark, ChartColumn, Scale, Link2, Upload, Sparkles, SlidersHorizontal, MoveHorizontal } from "lucide-react";
+import imgHeroBg from "@/imports/EaisyBill/hero-background.webp"; // light mint gradient frame bg (transparent rounded corners baked in)
+import imgFunctionCardBg from "@/imports/EaisyBill/function-card-bg.webp";
+import imgGraphs from "@/imports/EaisyBill/graphs.png";
+import imgMegoldasCard from "@/imports/EaisyBill/megoldas-card.webp";
 import imgFeaturesBg from "@/imports/EaisyBillFunkciok/bg-dashboard.webp";
 import { openDemoModal } from "@/app/Root";
 import { Seo, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
+import { SectionHeader, SectionEyebrow } from "@/app/components/Section";
+import { useInView } from "@/app/components/useInView";
 import EaisybillLogo from "@/imports/EaisybillLogoBrightBackground/index";
-import imgBillLogo from "@/imports/EaisyBill2Megoldas/eaisybill.png";
 
 const C = {
   dark: "#032D32",     // Teal 900
   teal: "#005757",     // Teal 800
-  main: "#0D9488",     // Teal 600
+  main: "#0D9488",     // Teal 600 (Main)
   accent: "#6ACCC3",   // Teal 400
-  coral: "#F26B77",    // Rose 600
+  coral: "#EA8767",    // Rose 600 (Accent — warmer palette)
   lightBg: "#E2FBF4",  // Teal 50
   bodyText: "rgba(0,0,0,0.55)",
+  // new design-system tokens
+  ink: "#264350",      // site-wide dark text
+  rose50: "#FBE9E3",   // Rose 50
 };
 
+// new design-system shared bits (mirrors the eaisyBooks hero conventions)
+const FONT_MAIN = "font-['Montserrat',sans-serif]";
+const FONT_CARD = "font-['Inter',sans-serif]";
+const INNER = "w-full max-w-[1530px] mx-auto px-6 lg:px-10"; // → 1450px content
+// matches the hero teaser cards' width (1450 - 2×48px panel padding)
+const INNER_CARDS = "w-full max-w-[1434px] mx-auto px-6 lg:px-10"; // → 1354px content
+const TEASER_CARD =
+  "rounded-2xl ring-1 ring-inset ring-[rgba(13,148,136,0.3)] transition-all duration-300 hover:-translate-y-1";
+
+const HERO_BOTTOM_CARDS = [
+  { icon: ChartColumn, title: "Kontrolling és vezetői riportok", desc: "Profitcenterek, projektek, munkaidő, bérköltség, eszközök és vezetői dashboardok." },
+  { icon: Scale, title: "Könyvelés előkészítés", desc: "Kontírozás, főkönyvi besorolás, ÁFA-analitika, mérleg, eredménykimutatás és beszámoló-előkészítés." },
+  { icon: Link2, title: "Automatikus párosítás", desc: "Számlák, banki tranzakciók, NAV-adatok, számlaképek és elszámolások összekapcsolása." },
+];
+
+// crisp HTML overlay for the graph card (replaces the blurry baked tooltip)
+const GRAPH_REPORT = [
+  { label: "Bevétel", value: "12 019 000 Ft", color: "#34A853" },
+  { label: "Kintlévőségek", value: "24 920 000 Ft", color: "#0D9488" },
+  { label: "Kiadás", value: "434 000 Ft", color: "#E0654A" },
+  { label: "Követelések", value: "14 778 000 Ft", color: "#D9A441" },
+  { label: "Bérek", value: "0 Ft", color: "#8B5CF6" },
+  { label: "Cashflow", value: "32 781 000 Ft", color: "#6366F1" },
+];
+
 const PROBLEMS = [
-  { icon: FileText, title: "Hiányzó számlák", desc: "Papíron, e-mailben, egyéb elektronikus csatornákon érkeznek: sokszor követhetetlen, hogy mi hol van, mi lett iktatva, mi vár még feldolgozásra." },
-  { icon: Calendar, title: "Várakozás a könyvelésre", desc: 'A valós pénzügyi helyzet gyakran csak hónapzárás után derül ki, amikor a számlák és banki adatok végre összeérnek - addig a cég "vakon repül".' },
-  { icon: Zap, title: "Stresszes ÁFA-bevallás", desc: "Hónapról hónapra kézzel kell összegyűjteni a hiányzó számlákat és banki adatokat, miközben a legfontosabb kérdés sokszor az utolsó pillanatig nyitott: mennyi ÁFA-t kell fizetni?" },
-  { icon: Database, title: "Manuális kintlévőségkezelés", desc: "Nem mindig látszik pontosan, ki mennyivel és mióta tartozik. A sablonos felszólítások sokszor hatástalanok, miközben a késedelmes befizetések rontják a likviditást." },
-  { icon: Clock, title: "Időrabló rutinfeladatok", desc: "A számlák másolgatása, iktatása, a banki tranzakciók tételes egyeztetése, a manuális adatbevitel sok időt igényelnek — ahelyett, hogy a vállalkozás növekedésével tudnánk foglalkozni." },
-  { icon: TrendingUp, title: "Az átfogó kép hiánya", desc: "A pénzügyi adatok több rendszerben, Excel-táblában és e-mailben szóródnak szét. Nincs egyetlen közös felület, ahol minden fontos információ összefutna. A döntésekhez gyakran hiányzik az átfogó rálátás." },
+  { num: "01", title: "Hiányzó számlák", desc: "Papíron, e-mailben, egyéb elektronikus csatornákon érkeznek: sokszor követhetetlen, hogy mi hol van, mi lett iktatva, mi vár még feldolgozásra." },
+  { num: "02", title: "Stresszes ÁFA-bevallás", desc: "Hónapról hónapra kézzel kell összegyűjteni a hiányzó számlákat és banki adatokat, miközben a legfontosabb kérdés sokszor az utolsó pillanatig nyitott: mennyi ÁFA-t kell fizetni?" },
+  { num: "03", title: "Időrabló rutinfeladatok", desc: "A számlák másolgatása, iktatása, a banki tranzakciók tételes egyeztetése, a manuális adatbevitel sok időt igényelnek — ahelyett, hogy a vállalkozás növekedésével tudnánk foglalkozni." },
+  { num: "04", title: "Várakozás a könyvelésre", desc: 'A valós pénzügyi helyzet gyakran csak hónapzárás után derül ki, amikor a számlák és banki adatok végre összeérnek - addig a cég "vakon repül".' },
+  { num: "05", title: "Manuális kintlévőségkezelés", desc: "Nem mindig látszik pontosan, ki mennyivel és mióta tartozik. A sablonos felszólítások sokszor hatástalanok, miközben a késedelmes befizetések rontják a likviditást." },
+  { num: "06", title: "Az átfogó kép hiánya", desc: "A pénzügyi adatok több rendszerben, Excel-táblában és e-mailben szóródnak szét. Nincs egyetlen közös felület, ahol minden fontos információ összefutna. A döntésekhez gyakran hiányzik az átfogó rálátás." },
 ];
 
 const FEATURES = [
-  { num: 1, title: "NAV Online Számla szinkron", desc: "A bejövő és kimenő számlák automatikusan, valós időben beérkeznek a NAV Online Számla rendszeréből. Nem kell kézzel feltölteni — minden számla azonnal a rendszerben van." },
-  { num: 2, title: "Idegen nyelvű és devizás számlák feldolgozása", desc: "MNB árfolyamon, automatikus árfolyamkülönbség-vezetéssel. A külföldi szállítóktól érkező számlák sem jelentenek problémát." },
-  { num: 3, title: "AI dokumentumkivonat", desc: "E-mailben küldött vagy feltöltött számlákból a mesterséges intelligencia strukturált adatot készít — kinyeri a számlafejet csakúgy, mint az összes számlán szereplő tételt, az összegeket, az ÁFÁ-t. Működik magyar és idegen nyelvű, forintos és devizás számlákkal egyaránt, sőt kézzel írt számlák esetében is." },
-  { num: 4, title: "Hiányzó számlaképbegyűjtés", desc: "Automatikusan azonosítja, ha egy NAV-ból betöltött számlához nem érkezett meg a számlakép (PDF), és e-mailben automatikusan bekéri azt. A hiányzó számákat jelzi, és emailen, manuálisan, vagy akár fotózva (HEIC, HEIF formátumban is) is fel lehet tölteni a rendszerbe. A beérkezett képet a számlához rendeli és iktatja." },
-  { num: 5, title: "Bankintegráció", desc: "A banki tranzakciók háromféle módon érkezhetnek az eaisyBill-be: PSD2 banki aggregátoron keresztül automatikusan, e-mail alapú banki értesítőkből, vagy manuális feltöltéssel. Több bank, több számla kezelhető párhuzamosan." },
-  { num: 6, title: "Intelligens összekötés", desc: "Intelligensen és önállóan köti össze a NAV számlaadatokat a számlaképekkel, és a számlákat a banki tranzakciókkal. A korábbi kontírozási döntésekből tanul, és automatikusan örökíti a szabályokat — nincs hosszadalmas betanítás." },
-  { num: 7, title: "Automatikus kontírozás", desc: "Minden számlatétel automatikusan a megfelelő főkönyvi szám alá kerül. A kontírozási szabályok a cég saját számlatükre szerint működnek, több számlatükör-változat is kezelhető párhuzamosan." },
-  { num: 8, title: "Utalási listák", desc: "A beérkezett szállítói számlákból és a rögzített bérekből automatikusan utalási listákat generál. A listák tartalmazzák a kedvezményezetteket, összegeket, határidőket — másodpercek alatt, kézi összeállítás nélkül." },
-  { num: 9, title: "ÁFA analitika", desc: "Kezeli a különböző ÁFA kategóriákat, összesíti a fizetendő és levonható ÁFA összeget, így valós idejű ÁFA fizetési kötelezettséget láthatunk. A beérkezett szállítói számlákból és a rögzített bérekből automatikusan utalási listákat generál, amelyek tartalmazzák a kedvezményezetteket, összegeket, határidőket — másodpercek alatt, kézi összeállítás nélkül." },
-  { num: 10, title: "Kintlévőség-kezelés", desc: "Korfa kategóriák (30/60/90+ nap), csoportos felszólító e-mailek, partnerenként mentett e-mail címekkel. Az eaisyBill figyelmeztet, mielőtt a pénz bent ragadna — a felszólítások naplózottak, visszakövethetők." },
-  { num: 11, title: "Költségkategória azonosítás", desc: "Az eaisyBill automatikusan kategorizálja a költségeket - például anyagköltség, bérleti díj, marketing, IT- vagy bankköltség szerint. Valós idejű áttekintést ad a költségszerkezetről — így könnyen követhető, mire megy el a pénz, kategóriánként." },
-  { num: 12, title: "Profitcenter azonosítás", desc: "Automatikusan projektekhez, üzletágakhoz vagy partnerekhez rendeli a bevételeket és költségeket. A profitcenter kimutatás megmutatja, melyik projekt vagy üzletág mennyire nyereséges — nem kell külön Excelben számolgatni." },
-  { num: 13, title: "Tárgyi eszköz nyilvántartó", desc: "A tárgyi eszközök nyilvántartása egy kattintással a kapcsolódó számlatételekből indítható. Automatikus értékcsökkenés-számítás a számviteli törvény szerint, eszközkartonok és leltárív generálása — nincs szükség külön nyilvántartó rendszerre." },
-  { num: 14, title: "AI béradó-asszisztens", desc: "Az eaisyBill a 2026-os magyar szabályozás szerint támogatja a bérkalkulációt, beleértve a minimálbérre, garantált bérminimumra, SZJA-ra, TB-re és SZOCHO-ra vonatkozó számításokat. A működés GDPR-megfelelő: személyes adatok nem hagyják el a rendszert." },
-  { num: 15, title: "SZÉP kártya feldolgozás", desc: "Az eaisyBill dedikált felületen kezeli a SZÉP Kártyás tranzakciókat: automatikusan összepárosítja a tételeket a kapcsolódó elszámolásokkal, majd a beállított pénzügyi logika szerint kontírozza őket. Így nincs szükség a banki kivonatokkal történő ismétlődő, kézi egyeztetésre." },
-  { num: 16, title: "Futárszolgálati elszámolások", desc: "Az eaisyBill automatikusan feldolgozza a GLS, MPL, Mixpack, Fáma, Foxpost és DPD riportokat, majd összeveti a csomagszámokat és az összegeket a kapcsolódó számlákkal. Így könnyebben ellenőrizhető, hogy a teljesítések és elszámolások rendben vannak-e, és eltérés esetén a reklamációhoz szükséges adatok is gyorsan visszakereshetők." },
-  { num: 17, title: "Munkaidő-nyilvántartó", desc: "A Mt. 152. § szerinti jelenléti ív, naprakész munkaidő-kimutatás, azonnali visszajelzés a rögzítésről. Nincs több papíralapú jelenléti ív. Hangvezérlésű munkaidő nyilvántartás." },
-  { num: 18, title: "AI eszkalációs rendszer", desc: "Automatikusan priorizálja a figyelmet igénylő elemeket, és csak azokat a kérdéses tételeket emeli ki, amelyek valóban humán döntést igényelnek. A rutinszerű egyeztetéseket automatikusan rendezi — neked csak a valódi kivételekkel kell foglalkozni." },
+  { num: 1, cat: "beerk", title: "NAV Online Számla szinkron", desc: "A bejövő és kimenő számlák automatikusan, valós időben beérkeznek a NAV Online Számla rendszeréből. Nem kell kézzel feltölteni — minden számla azonnal a rendszerben van." },
+  { num: 2, cat: "beerk", title: "Idegen nyelvű és devizás számlák feldolgozása", desc: "MNB árfolyamon, automatikus árfolyamkülönbség-vezetéssel. A külföldi szállítóktól érkező számlák sem jelentenek problémát." },
+  { num: 3, cat: "beerk", title: "AI dokumentumkivonat", desc: "E-mailben küldött vagy feltöltött számlákból a mesterséges intelligencia strukturált adatot készít — kinyeri a számlafejet csakúgy, mint az összes számlán szereplő tételt, az összegeket, az ÁFÁ-t. Működik magyar és idegen nyelvű, forintos és devizás számlákkal egyaránt, sőt kézzel írt számlák esetében is." },
+  { num: 4, cat: "beerk", title: "Hiányzó számlaképbegyűjtés", desc: "Automatikusan azonosítja, ha egy NAV-ból betöltött számlához nem érkezett meg a számlakép (PDF), és e-mailben automatikusan bekéri azt. A hiányzó számákat jelzi, és emailen, manuálisan, vagy akár fotózva (HEIC, HEIF formátumban is) is fel lehet tölteni a rendszerbe. A beérkezett képet a számlához rendeli és iktatja." },
+  { num: 5, cat: "beerk", title: "Bankintegráció", desc: "A banki tranzakciók háromféle módon érkezhetnek az eaisyBill-be: PSD2 banki aggregátoron keresztül automatikusan, e-mail alapú banki értesítőkből, vagy manuális feltöltéssel. Több bank, több számla kezelhető párhuzamosan." },
+  { num: 6, cat: "ai", title: "Intelligens összekötés", desc: "Intelligensen és önállóan köti össze a NAV számlaadatokat a számlaképekkel, és a számlákat a banki tranzakciókkal. A korábbi kontírozási döntésekből tanul, és automatikusan örökíti a szabályokat — nincs hosszadalmas betanítás." },
+  { num: 7, cat: "ai", title: "Automatikus kontírozás", desc: "Minden számlatétel automatikusan a megfelelő főkönyvi szám alá kerül. A kontírozási szabályok a cég saját számlatükre szerint működnek, több számlatükör-változat is kezelhető párhuzamosan." },
+  { num: 8, cat: "penzugy", title: "Utalási listák", desc: "A beérkezett szállítói számlákból és a rögzített bérekből automatikusan utalási listákat generál. A listák tartalmazzák a kedvezményezetteket, összegeket, határidőket — másodpercek alatt, kézi összeállítás nélkül." },
+  { num: 9, cat: "penzugy", title: "ÁFA analitika", desc: "Kezeli a különböző ÁFA kategóriákat, összesíti a fizetendő és levonható ÁFA összeget, így valós idejű ÁFA fizetési kötelezettséget láthatunk. A beérkezett szállítói számlákból és a rögzített bérekből automatikusan utalási listákat generál, amelyek tartalmazzák a kedvezményezetteket, összegeket, határidőket — másodpercek alatt, kézi összeállítás nélkül." },
+  { num: 10, cat: "penzugy", title: "Kintlévőség-kezelés", desc: "Korfa kategóriák (30/60/90+ nap), csoportos felszólító e-mailek, partnerenként mentett e-mail címekkel. Az eaisyBill figyelmeztet, mielőtt a pénz bent ragadna — a felszólítások naplózottak, visszakövethetők." },
+  { num: 11, cat: "penzugy", title: "Költségkategória azonosítás", desc: "Az eaisyBill automatikusan kategorizálja a költségeket - például anyagköltség, bérleti díj, marketing, IT- vagy bankköltség szerint. Valós idejű áttekintést ad a költségszerkezetről — így könnyen követhető, mire megy el a pénz, kategóriánként." },
+  { num: 12, cat: "kontrolling", title: "Profitcenter azonosítás", desc: "Automatikusan projektekhez, üzletágakhoz vagy partnerekhez rendeli a bevételeket és költségeket. A profitcenter kimutatás megmutatja, melyik projekt vagy üzletág mennyire nyereséges — nem kell külön Excelben számolgatni." },
+  { num: 13, cat: "kontrolling", title: "Tárgyi eszköz nyilvántartó", desc: "A tárgyi eszközök nyilvántartása egy kattintással a kapcsolódó számlatételekből indítható. Automatikus értékcsökkenés-számítás a számviteli törvény szerint, eszközkartonok és leltárív generálása — nincs szükség külön nyilvántartó rendszerre." },
+  { num: 14, cat: "kontrolling", title: "AI béradó-asszisztens", desc: "Az eaisyBill a 2026-os magyar szabályozás szerint támogatja a bérkalkulációt, beleértve a minimálbérre, garantált bérminimumra, SZJA-ra, TB-re és SZOCHO-ra vonatkozó számításokat. A működés GDPR-megfelelő: személyes adatok nem hagyják el a rendszert." },
+  { num: 15, cat: "ai", title: "SZÉP kártya feldolgozás", desc: "Az eaisyBill dedikált felületen kezeli a SZÉP Kártyás tranzakciókat: automatikusan összepárosítja a tételeket a kapcsolódó elszámolásokkal, majd a beállított pénzügyi logika szerint kontírozza őket. Így nincs szükség a banki kivonatokkal történő ismétlődő, kézi egyeztetésre." },
+  { num: 16, cat: "ai", title: "Futárszolgálati elszámolások", desc: "Az eaisyBill automatikusan feldolgozza a GLS, MPL, Mixpack, Fáma, Foxpost és DPD riportokat, majd összeveti a csomagszámokat és az összegeket a kapcsolódó számlákkal. Így könnyebben ellenőrizhető, hogy a teljesítések és elszámolások rendben vannak-e, és eltérés esetén a reklamációhoz szükséges adatok is gyorsan visszakereshetők." },
+  { num: 17, cat: "kontrolling", title: "Munkaidő-nyilvántartó", desc: "A Mt. 152. § szerinti jelenléti ív, naprakész munkaidő-kimutatás, azonnali visszajelzés a rögzítésről. Nincs több papíralapú jelenléti ív. Hangvezérlésű munkaidő nyilvántartás." },
+  { num: 18, cat: "ai", title: "AI eszkalációs rendszer", desc: "Automatikusan priorizálja a figyelmet igénylő elemeket, és csak azokat a kérdéses tételeket emeli ki, amelyek valóban humán döntést igényelnek. A rutinszerű egyeztetéseket automatikusan rendezi — neked csak a valódi kivételekkel kell foglalkozni." },
 ];
 
 const AUDIENCE_BENEFITS = [
@@ -94,14 +126,6 @@ const FAQS = [
   { q: "Mennyibe kerülnek az eaisy termékek?", a: "Az eaisy termékeket úgy alakítottuk ki, hogy a kisebb és nagyobb vállalkozások eltérő működéséhez, funkcionális igényeihez és adatmennyiségéhez is rugalmasan igazodjanak. Az egyes termékeken belül is csak azokat a modulokat és funkciókat szükséges igénybe venni, amelyekre valóban szükség van. Az árat a választott funkciók, a felhasználási volumen és az integrációs igények egyaránt befolyásolják, ezért minden ügyfelünk számára egyedi ajánlatot készítünk." },
 ];
 
-const BENEFITS = [
-  "Kapacitásnövelés",
-  "Felszabadult idő",
-  "Értékteremtés",
-  "Évi több milliós megtakarítás",
-  "80–90% kevesebb manuális feladat",
-];
-
 const WHO_SHOULD = [
   "Aki csökkenteni szeretné a kézi pénzügyi adminisztrációt",
   "Aki túl sok időt tölt számlák, banki tételek és kintlévőségek egyeztetésével",
@@ -138,60 +162,196 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
   );
 }
 
+// donut chart showing exactly 90% (not a full ring)
+function Donut90() {
+  const R = 50;
+  const CIRC = 2 * Math.PI * R;
+  return (
+    <div className="relative">
+      <svg viewBox="0 0 120 120" className="w-24 h-24 lg:w-[110px] lg:h-[110px]">
+        <circle cx="60" cy="60" r={R} fill="none" stroke="rgba(234,135,103,0.28)" strokeWidth="15" />
+        <circle
+          cx="60" cy="60" r={R} fill="none" stroke={C.teal} strokeWidth="15" strokeLinecap="round"
+          strokeDasharray={`${CIRC * 0.9} ${CIRC}`} transform="rotate(-108 60 60)"
+        />
+      </svg>
+      <p
+        className={`${FONT_CARD} absolute inset-0 flex items-center justify-center font-extrabold text-2xl`}
+        style={{ color: C.teal }}
+      >
+        90<span className="text-sm font-bold align-top">%</span>
+      </p>
+    </div>
+  );
+}
+
 function Hero() {
   return (
-    <section id="hero" className="relative w-full overflow-hidden pt-16" style={{ minHeight: 800 }}>
-      <style>{`
-        @keyframes hero-pill-in {
-          from { opacity: 0; transform: translateY(16px) scale(0.96); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .hero-pill { animation: none !important; }
-        }
-      `}</style>
-      {/* full-bleed background image */}
-      <img src={imgHero} alt="" decoding="async" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover object-center" />
+    <section id="hero" className="relative w-full overflow-hidden bg-white pt-36 pb-14 lg:pt-44 lg:pb-20">
+      {/* centered 1615px gradient frame (mirrored) — top edge runs below the navbar */}
+      <div className="absolute top-24 bottom-0 lg:top-[110px] left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-[40px]">
+        <img
+          src={imgHeroBg}
+          alt=""
+          decoding="async"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* soft top fade */}
+        <div className="absolute inset-x-0 top-0 h-[22%] bg-gradient-to-b from-white/80 via-white/40 to-transparent pointer-events-none" />
+      </div>
 
-      {/* white fade overlay — responsive to protect text readability */}
-      <div
-        className="absolute inset-0 bg-white/90 lg:bg-transparent lg:bg-[linear-gradient(to_left,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_42%,rgba(255,255,255,0)_58%,transparent_100%)]"
-      />
+      <div className={`relative ${INNER} flex flex-col items-center`}>
+        {/* brand title */}
+        <p className={`${FONT_CARD} font-extrabold text-5xl lg:text-[64px] leading-none`} style={{ color: C.teal }}>
+          eaisyBill
+        </p>
 
-      {/* content — aligned to the right on desktop, centered on mobile */}
-      <div className="relative w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 py-20 flex justify-center lg:justify-end">
-        <div className="flex flex-col gap-7 w-full max-w-[520px] pt-12 lg:pt-0">
+        {/* main title */}
+        <h1
+          className={`${FONT_MAIN} mt-6 font-medium text-4xl lg:text-[60px] leading-[1.1] tracking-tight text-center`}
+          style={{ color: C.ink }}
+        >
+          Tartsd kézben vállalkozásod
+          <br className="hidden lg:block" /> pénzügyeit
+        </h1>
 
-          <p className="font-['Inter',sans-serif] font-semibold text-xl lg:text-2xl leading-snug" style={{ color: C.main }}>
-            A pénzügyeid végre egy helyen.<br />Automatikusan. Valós időben.
-          </p>
+        {/* CTAs */}
+        <div className="mt-12 lg:mt-16 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="#problemak"
+            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full bg-white font-medium text-xl tracking-[0.2em] transition-opacity hover:opacity-80`}
+            style={{ border: `1px solid ${C.teal}`, color: C.teal }}
+          >
+            Fedezd fel
+          </a>
+          <button
+            onClick={openDemoModal}
+            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
+            style={{ backgroundColor: C.coral }}
+          >
+            Kérj demot
+          </button>
+        </div>
 
-          {/* logo — unified 100px height across product pages */}
-          <img src={imgBillLogo} alt="eaisyBill" className="h-[100px] w-auto max-w-full self-start my-6" />
+        {/* ── teaser grid: 5-col — tall 2×2 card, graph landscape, donut square, 3 squares ── */}
+        <div className="mt-14 lg:mt-20 w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-2.5">
+            {/* tall card: 18 funkció on dotty dark teal bg */}
+            <div className={`${TEASER_CARD} group relative overflow-hidden sm:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[320px] lg:min-h-0 flex flex-col`}>
+              <img
+                src={imgFunctionCardBg}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center scale-[1.04]"
+              />
+              {/* inset ring above the image so the hairline edge stays clean */}
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[rgba(13,148,136,0.3)] pointer-events-none" />
+              <div className="relative h-full flex flex-col px-5 py-5 lg:px-8 lg:py-8">
+                <a
+                  href="#funkciok"
+                  aria-label="Funkciók"
+                  className="ml-auto w-11 h-11 rounded-[10px] bg-white/10 flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                >
+                  <ArrowUpRight className="w-5 h-5" strokeWidth={2} style={{ color: "white" }} />
+                </a>
+                {/* title – desc – CTA: uniform gaps, vertically centered group */}
+                <div className="flex-1 flex flex-col items-start justify-center gap-10">
+                  <p className={`${FONT_CARD} text-white leading-none tracking-tight`}>
+                    <span className="font-semibold text-6xl lg:text-[96px]">18</span>
+                    <span className="ml-3 font-semibold text-4xl lg:text-[64px]">funkció</span>
+                  </p>
+                  <p className={`${FONT_CARD} font-semibold text-2xl lg:text-[32px] leading-snug text-white/90`}>
+                    ami lefedi a vállalkozásod teljes pénzügyi működését.
+                  </p>
+                  <a
+                    href="#funkciok"
+                    className={`${FONT_CARD} self-start inline-flex items-center justify-center px-8 h-[46px] rounded-full font-medium text-base tracking-wider text-white transition-opacity hover:opacity-90`}
+                    style={{ backgroundColor: C.coral }}
+                  >
+                    Megnézem
+                  </a>
+                </div>
+              </div>
+            </div>
 
-          <div className="flex flex-wrap gap-2.5">
-            {BENEFITS.map((b, i) => (
+            {/* graph card: software chart with real-looking data */}
+            <div className={`${TEASER_CARD} relative overflow-hidden bg-white sm:col-span-2 lg:col-span-2 min-h-[240px] lg:min-h-0`}>
+              <img
+                src={imgGraphs}
+                alt="Cash-flow grafikon augusztusi adatokkal"
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center scale-[1.04]"
+              />
+              {/* inset ring above the image so the card frame stays visible */}
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[rgba(13,148,136,0.3)] pointer-events-none" />
+              {/* crisp HTML report overlay covering the blurry baked tooltip */}
+              <div className="absolute right-[2px] top-[10%] rounded-xl border border-[#CFE7E2] bg-white px-3 py-2.5 shadow-[0_4px_14px_rgba(3,45,50,0.10)]">
+                <p className={`${FONT_CARD} font-semibold text-xs leading-tight`} style={{ color: C.ink }}>
+                  augusztus
+                </p>
+                <div className="mt-1.5 flex flex-col">
+                  {GRAPH_REPORT.map(({ label, value, color }) => (
+                    <p
+                      key={label}
+                      className={`${FONT_CARD} font-medium text-[11px] leading-[1.65] whitespace-nowrap`}
+                      style={{ color }}
+                    >
+                      {label}: {value}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="relative flex items-start gap-3 px-5 py-5">
+                <div
+                  className="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: C.rose50 }}
+                >
+                  <Database className="w-5 h-5" strokeWidth={1.5} style={{ color: C.coral }} />
+                </div>
+                <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug max-w-[250px]`} style={{ color: C.ink }}>
+                  A pénzügyeid végre egy helyen. Automatikusan. Valós időben.
+                </h3>
+              </div>
+            </div>
+
+            {/* donut card: 90% időfelszabadítás */}
+            <div
+              className={`${TEASER_CARD} sm:col-span-1 lg:aspect-square px-5 py-5 flex flex-col items-center justify-center gap-3`}
+              style={{ background: "linear-gradient(160deg, #FBE9E3 0%, #FDF3EC 100%)" }}
+            >
+              <p className={`${FONT_CARD} font-medium text-base`} style={{ color: C.ink }}>
+                Akár
+              </p>
+              <Donut90 />
+              <p className={`${FONT_CARD} font-medium text-base`} style={{ color: C.ink }}>
+                időfelszabadítás
+              </p>
+            </div>
+
+            {/* bottom row: 3 white square feature cards */}
+            {HERO_BOTTOM_CARDS.map(({ icon: Icon, title, desc }) => (
               <div
-                key={b}
-                className="hero-pill inline-flex items-center px-4 py-2 rounded-full w-fit"
-                style={{
-                  border: `1.5px solid ${C.main}`,
-                  color: C.main,
-                  animation: `hero-pill-in 0.55s cubic-bezier(0.22,1,0.36,1) ${350 + i * 110}ms both`,
-                }}
+                key={title}
+                className={`${TEASER_CARD} bg-white sm:col-span-1 lg:aspect-square px-5 py-5 flex flex-col items-center text-center gap-5`}
               >
-                <span className="font-['Inter',sans-serif] font-medium text-sm">{b}</span>
+                <div
+                  className="w-11 h-11 rounded-[10px] flex items-center justify-center"
+                  style={{ backgroundColor: C.rose50 }}
+                >
+                  <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: C.coral }} />
+                </div>
+                <h3 className={`${FONT_CARD} font-semibold text-base`} style={{ color: C.ink }}>
+                  {title}
+                </h3>
+                <p className={`${FONT_CARD} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
+                  {desc}
+                </p>
               </div>
             ))}
           </div>
-
-          <button
-            onClick={openDemoModal}
-            className="self-start mt-10 px-8 py-3.5 rounded-full font-['Inter',sans-serif] font-extrabold text-sm tracking-widest text-white hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: C.coral }}
-          >
-            KÉRJ DEMOT
-          </button>
         </div>
       </div>
     </section>
@@ -335,7 +495,7 @@ function TeaserCarousel() {
   ];
 
   return (
-    <div className="relative w-full max-w-[520px] h-[440px] lg:h-[520px] overflow-hidden">
+    <div className="relative w-full h-[440px] lg:h-[520px] overflow-hidden">
       <style>{`
         @keyframes teaser-scroll {
           from { transform: translateY(0); }
@@ -369,402 +529,418 @@ function TeaserCarousel() {
 function SolutionSection() {
   return (
     <section id="megoldas" className="w-full bg-white py-20 lg:py-24 relative overflow-hidden">
-
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-16 relative z-10">
-
-        {/* Top block: text on left, desktop mockup on right */}
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-          
-          {/* Left Column: Eyebrow, Logo, Paragraphs */}
-          <div className="flex-1 flex flex-col items-start gap-6 w-full lg:max-w-[620px]">
-            
-            {/* Eyebrow badge */}
-            <div className="inline-block rounded-full px-4 py-1.5 bg-[#FCD2CD]/40 text-[#95333C] text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]">
-              A mi megoldásunk
-            </div>
-
-            {/* Logo */}
-            <div style={{ width: 220, height: 53 }} className="max-w-full">
-              <EaisybillLogo />
-            </div>
-
-            {/* Paragraphs */}
-            <div className="flex flex-col gap-5 text-black/55">
-              <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed">
-                Az eaisyBill egy mesterséges intelligenciával támogatott pénzügyi és kontrolling platform, amely a vállalkozás szétszórt pénzügyi adataiból egységes, naprakész és ellenőrizhető működési képet épít.
-              </p>
-              <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed">
-                Segít automatizálni a pénzügyi háttérfolyamatokat, minimálizálja a manuális adminisztrációt, és olyan vezetői rálátást ad, amely alapján a cég nem utólag, hanem menet közben tud dönteni, beavatkozni és tervezni.
-              </p>
-              
-              {/* Third paragraph with left border */}
-              <div 
-                className="pl-5 py-0.5 border-l-4"
-                style={{ borderLeftColor: C.main }}
-              >
-                <p className="font-['Inter',sans-serif] font-semibold text-base leading-relaxed" style={{ color: C.main }}>
-                  Nem számlázóprogram. Nem csak iktatórendszer. Egy teljes körű pénzügyi automatizációs platform, amely a rutinmunkát kiváltja, a kontrollt pedig a cégvezető kezébe adja.
-                </p>
-              </div>
-            </div>
-
+      <div className={`${INNER_CARDS} flex flex-col lg:flex-row gap-10 lg:gap-14 items-stretch`}>
+        {/* left: dark brand card with dotty teal bg — square, vertically centered */}
+        <div
+          className="relative overflow-hidden rounded-[32px] lg:w-[46%] lg:aspect-square lg:self-center flex flex-col"
+          style={{ backgroundColor: "#046360" }}
+        >
+          <img
+            src={imgMegoldasCard}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          <div className="relative flex-1 flex flex-col items-start justify-center gap-7 px-8 py-12 lg:px-12 lg:py-14">
+            <SectionEyebrow color={C.coral}>A mi megoldásunk</SectionEyebrow>
+            <p
+              className={`${FONT_CARD} font-extrabold text-5xl lg:text-[64px] leading-none`}
+              style={{ color: C.accent }}
+            >
+              eaisyBill
+            </p>
+            <p className={`${FONT_MAIN} font-light text-base leading-relaxed text-white/90`}>
+              Az eaisyBill egy AI-támogatott pénzügyi és kontrolling platform, amely a vállalkozás
+              szétszórt pénzügyi adataiból egységes, naprakész és ellenőrizhető működési képet épít.
+            </p>
+            <p className={`${FONT_MAIN} font-light text-sm leading-relaxed`} style={{ color: C.accent }}>
+              Nem számlázóprogram. Nem csak iktatórendszer. Egy teljes körű pénzügyi automatizációs
+              platform, amely a rutinmunkát kiváltja, a kontrollt pedig a cégvezető kezébe adja.
+            </p>
           </div>
-
-          {/* Right column: autoplay teaser (vertical loop, white fades) */}
-          <div className="flex-1 w-full flex justify-center lg:justify-end">
-            <TeaserCarousel />
-          </div>
-
         </div>
 
-        {/* Bottom block: 3 colored cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          
-          {/* Card 1 */}
-          <div 
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#0D9488" }}
+        {/* right: title + moving teaser below it */}
+        <div className="flex-1 flex flex-col gap-8 lg:gap-10">
+          <h2
+            className={`${FONT_MAIN} font-medium text-4xl lg:text-[50px] leading-tight tracking-tight`}
+            style={{ color: C.ink }}
           >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#FFA8A8] group-hover:scale-110 transition-transform duration-300">
-              <Mail className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                Teljes körű számlakezelés
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                E-mailekből, NAV-ból és feltöltött mappákból gyűjti a számlákat, párosítja az utalásokkal, és jelzi a hiányzó bizonylatokat.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div 
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#005757" }}
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#FFA8A8] group-hover:scale-110 transition-transform duration-300">
-              <Clock className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                Valós idejű pénzügyi kontroll
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                Kintlévőségek, házipénztár, bérek, járulékok, projektek, költségkategóriák, munkaidő nyilvántartás — minden egy helyen, valós időben.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div 
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#032D32" }}
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#FFA8A8] group-hover:scale-110 transition-transform duration-300">
-              <BarChart3 className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                Átlátható cégadatok és analitika
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                ÁFA analitika, cash flow kimutatás, profitcenterek nyereségessége, költségek megoszlása — könnyebb pénzügyi döntések a cégvezető számára.
-              </p>
-            </div>
-          </div>
-
+            Nem több adat. Jobb <span style={{ color: C.coral }}>összkép.</span>
+          </h2>
+          <TeaserCarousel />
         </div>
-
       </div>
     </section>
   );
 }
 
 function ProblemsSection() {
-  useEffect(() => {
-    function adjustHeights() {
-      const cards = document.querySelectorAll(".problem-card-item");
-      if (cards.length === 0) return;
-      
-      // Reset heights first to measure natural height
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = "0px";
-      });
-      
-      let maxHeight = 0;
-      cards.forEach((c) => {
-        const h = c.clientHeight;
-        if (h > maxHeight) maxHeight = h;
-      });
-      
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = `${maxHeight}px`;
-      });
-    }
-    
-    // Run on mount with a minor timeout to ensure content has rendered, and on resize
-    const timer = setTimeout(adjustHeights, 100);
-    window.addEventListener("resize", adjustHeights);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", adjustHeights);
-    };
-  }, []);
+  const { ref: gridRef, inView } = useInView<HTMLDivElement>(0.15);
+  const tealSpotRef = useRef<HTMLDivElement>(null);
+  const roseSpotRef = useRef<HTMLDivElement>(null);
+
+  // only the teal spot follows the cursor (parallax); the rose one is a static decoration on the left
+  function onMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    if (tealSpotRef.current)
+      tealSpotRef.current.style.transform = `translate(calc(-50% + ${dx * 0.18}px), calc(-50% + ${dy * 0.18}px))`;
+  }
+  function onMouseLeave() {
+    if (tealSpotRef.current) tealSpotRef.current.style.transform = "translate(-50%, -50%)";
+  }
 
   return (
-    <section id="problemak" className="w-full py-20 lg:py-24" style={{ backgroundColor: "#F3F3F4" }}>
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-10">
+    <section
+      id="problemak"
+      className="relative w-full overflow-hidden bg-white py-20 lg:py-24"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      {/* decorative spots — rose fixed on the left, teal centered and drifting with the cursor */}
+      <div
+        ref={roseSpotRef}
+        className="absolute left-[22%] top-1/2 w-[560px] h-[560px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(234,135,103,0.2), transparent 70%)" }}
+      />
+      <div
+        ref={tealSpotRef}
+        className="absolute left-2/3 top-1/2 w-[520px] h-[520px] rounded-full pointer-events-none transition-transform duration-700 ease-out"
+        style={{ background: "radial-gradient(circle, rgba(13,148,136,0.14), transparent 70%)", transform: "translate(-50%, -50%)" }}
+      />
 
-        {/* eyebrow pill + title */}
-        <div className="flex flex-col gap-5 w-full">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 bg-[#FCD2CD]/40 text-[#95333C] text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]">
-            Amikor a pénzügyek kinövik az excelt
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl tracking-tight leading-tight text-black">
-            Ismerős helyzetek?
-          </h2>
-          <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed w-full text-black/55">
-            A cég növekedésével párhuzamosan a pénzügyek egyre több időt és figyelmet követelnek. Több számla, több bank, több partner — és egyre nehezebb átlátni, pontosan hol tart a vállalkozás. A manuális ismétlődő feladatok hibákat generálnak, és elveszik a kollégák idejét a valóban fontos, érdemi, kreatív munkától vagy azoktól a feladatoktól, melyek humán döntést igényelnek.
-          </p>
-        </div>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Amikor a pénzügyek kinövik az Excelt"
+          eyebrowColor={C.main}
+          title={
+            <>
+              6 ismerős <span style={{ color: C.coral }}>probléma</span>
+            </>
+          }
+          subtitle="Ahogy nő a cég, úgy bonyolódnak a pénzügyek: több számla, több bank, több partner — és egyre nehezebb átlátni, pontosan hol tart a vállalkozás."
+        />
 
-        {/* 6 problem cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {PROBLEMS.map((p) => {
-            const Icon = p.icon;
+        {/* 6 numbered cards — fly in per row from both sides on scroll */}
+        <div
+          ref={gridRef}
+          className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full"
+        >
+          {PROBLEMS.map(({ num, title, desc }, i) => {
+            const row = Math.floor(i / 3);
+            const col = i % 3;
+            const delay = row * 140 + col * 70;
+            const hidden =
+              col === 0 ? "translateX(-48px)" : col === 2 ? "translateX(48px)" : "translateY(32px)";
             return (
               <div
-                key={p.title}
-                className="problem-card-item bg-white rounded-2xl p-6 flex flex-row gap-5 shadow-sm border border-black/5 hover:-translate-y-1 hover:shadow-md hover:border-[#6ACCC3]/30 transition-all duration-300 group cursor-pointer h-full"
+                key={num}
+                className="rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-white p-7 flex flex-col gap-4"
+                style={{
+                  border: "1px solid rgba(13,148,136,0.2)",
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "none" : hidden,
+                  transition: `opacity 0.5s ease ${delay}ms, transform 0.5s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+                }}
               >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: C.dark }}
-                >
-                  <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: C.accent }} />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">
-                    {p.title}
-                  </h3>
-                  <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-black/55">
-                    {p.desc}
-                  </p>
-                </div>
+                <p className={`${FONT_MAIN} font-bold text-xl leading-none`} style={{ color: C.coral }}>
+                  {num}
+                </p>
+                <h3 className={`${FONT_MAIN} mt-6 font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                  {title}
+                </h3>
+                <p className={`${FONT_MAIN} font-light text-[13px] leading-[1.7]`} style={{ color: C.ink }}>
+                  {desc}
+                </p>
               </div>
             );
           })}
         </div>
-
-        {/* highlighted pullquote — pill shape, stronger coral border */}
-        <div
-          className="rounded-full px-10 py-6"
-          style={{ backgroundColor: "rgba(255,168,168,0.14)", border: "2px solid rgba(242,107,119,0.55)" }}
-        >
-          <p className="font-['Inter',sans-serif] font-light text-lg lg:text-xl text-center" style={{ color: C.dark }}>
-            A legtöbb cégnél a probléma nem az adathiány, hanem{" "}
-            <span className="font-semibold">az összkép hiánya.</span>
-          </p>
-        </div>
-
-
       </div>
     </section>
   );
 }
 
 function FeaturesSection() {
-  const N = FEATURES.length;
-  // Cards rendered 3x so the row loops seamlessly (18, 17... appear left of 1)
-  const LOOP = [...FEATURES, ...FEATURES, ...FEATURES];
-  const [pos, setPos] = useState(N);
-  const [instant, setInstant] = useState(false);
-  const [paused, setPaused] = useState(false);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const dragStartX = useRef<number | null>(null);
-  const swiped = useRef(false);
-  const [metrics, setMetrics] = useState({ step: 0, card: 0, view: 0 });
+  const [filter, setFilter] = useState<BillFeatureCat | "all">("all");
+  const [toastVisible, setToastVisible] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const drag = useRef({ active: false, startX: 0, scrollLeft: 0, lastX: 0, lastT: 0, v: 0, raf: 0 });
 
-  const active = ((pos % N) + N) % N;
+  const visible = filter === "all" ? FEATURES : FEATURES.filter((f) => f.cat === filter);
+  const countOf = (cat: BillFeatureCat) => FEATURES.filter((f) => f.cat === cat).length;
 
-  // Measure card width + gap + viewport width so the active card centers precisely
+  // swipe hint toast: show once when the section scrolls into view
   useEffect(() => {
-    const measure = () => {
-      const track = trackRef.current;
-      if (!track || track.children.length < 2) return;
-      const first = track.children[0] as HTMLElement;
-      const second = track.children[1] as HTMLElement;
-      setMetrics({
-        step: second.offsetLeft - first.offsetLeft,
-        card: first.offsetWidth,
-        view: track.parentElement?.offsetWidth ?? window.innerWidth,
-      });
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setToastVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
-  // Autoplay - pauses on hover / gesture
+  // auto-dismiss the toast after a few seconds
   useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => setPos((p) => p + 1), 5000);
-    return () => clearInterval(id);
-  }, [paused]);
+    if (!toastVisible) return;
+    const t = setTimeout(() => setToastVisible(false), 4500);
+    return () => clearTimeout(t);
+  }, [toastVisible]);
 
-  const go = (dir: number) => setPos((p) => p + dir);
-
-  // Jump to feature i using the copy nearest to the current position
-  const goTo = (i: number) => setPos((p) => Math.round((p - i) / N) * N + i);
-
-  // After animating into an outer copy, snap back to the middle copy invisibly
-  const handleTransitionEnd = (e: TransitionEvent) => {
-    if (e.target !== trackRef.current || e.propertyName !== "transform") return;
-    if (pos < N || pos >= 2 * N) {
-      setInstant(true);
-      setPos(N + active);
-    }
-  };
-
-  // Re-enable the transition right after the invisible snap
+  // back to the start whenever the filter changes
   useEffect(() => {
-    if (!instant) return;
-    const id = requestAnimationFrame(() => requestAnimationFrame(() => setInstant(false)));
-    return () => cancelAnimationFrame(id);
-  }, [instant]);
+    scrollRef.current?.scrollTo({ left: 0 });
+    updateArrows();
+  }, [filter]);
 
-  // Gesture swipe (touch / pen / mouse) - horizontal; vertical scroll stays free
-  const onPointerDown = (e: PointerEvent) => {
-    dragStartX.current = e.clientX;
-    swiped.current = false;
-    setPaused(true);
-  };
-  const endDrag = (x: number | null) => {
-    if (dragStartX.current == null) return;
-    if (x != null) {
-      const dx = x - dragStartX.current;
-      if (Math.abs(dx) > 24) {
-        swiped.current = true;
-        // longer swipes skip multiple cards — no big mandatory flick needed
-        const steps = Math.max(1, Math.round(Math.abs(dx) / (metrics.step || 240)));
-        go(dx < 0 ? steps : -steps);
-      }
+  // chevron paging state
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(true);
+  function updateArrows() {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanLeft(el.scrollLeft > 4);
+    setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }
+  useEffect(() => {
+    updateArrows();
+  }, []);
+  function page(dir: 1 | -1) {
+    const el = scrollRef.current;
+    if (!el) return;
+    stopMomentum();
+    el.scrollBy({ left: dir * el.clientWidth, behavior: "smooth" });
+  }
+
+  // mouse drag-to-scroll with pointer capture + momentum glide (touch uses native scrolling)
+  const DRAG_RATIO = 1.4;
+  function stopMomentum() {
+    cancelAnimationFrame(drag.current.raf);
+  }
+  function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== "mouse" || !scrollRef.current) return;
+    stopMomentum();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drag.current.active = true;
+    drag.current.startX = e.clientX;
+    drag.current.scrollLeft = scrollRef.current.scrollLeft;
+    drag.current.lastX = e.clientX;
+    drag.current.lastT = performance.now();
+    drag.current.v = 0;
+  }
+  function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (!drag.current.active || !scrollRef.current) return;
+    scrollRef.current.scrollLeft =
+      drag.current.scrollLeft - (e.clientX - drag.current.startX) * DRAG_RATIO;
+    const now = performance.now();
+    const dt = now - drag.current.lastT;
+    if (dt > 0) {
+      const inst = ((e.clientX - drag.current.lastX) / dt) * 16;
+      drag.current.v = drag.current.v * 0.6 + inst * 0.4;
+      drag.current.lastX = e.clientX;
+      drag.current.lastT = now;
     }
-    dragStartX.current = null;
-    setPaused(false);
-  };
+  }
+  function endDrag() {
+    if (!drag.current.active) return;
+    drag.current.active = false;
+    const el = scrollRef.current;
+    let v = -drag.current.v * DRAG_RATIO;
+    if (!el || Math.abs(v) < 0.5) return;
+    const step = () => {
+      el.scrollLeft += v;
+      v *= 0.93;
+      if (Math.abs(v) >= 0.5) drag.current.raf = requestAnimationFrame(step);
+    };
+    drag.current.raf = requestAnimationFrame(step);
+  }
+
+  const chipCls = (active: boolean) =>
+    `inline-flex items-center gap-2 h-[46px] px-5 rounded-full border ${FONT_MAIN} text-sm whitespace-nowrap transition-all duration-200 ${
+      active
+        ? "border-transparent text-white font-medium shadow-md"
+        : "bg-white border-black/10 font-medium hover:border-[#0D9488]/60 hover:shadow-sm"
+    }`;
 
   return (
-    <section
-      id="funkciok"
-      className="w-full py-20 lg:py-24 overflow-hidden relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {/* Background photo (uncompressed) + dark green overlay */}
-      <img
-        src={imgFeaturesBg}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+    <section id="funkciok" ref={sectionRef} className="relative w-full overflow-hidden bg-white pb-20 lg:pb-24">
+      <style>{`
+        @keyframes features-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes swipe-hint-wiggle { 0%, 100% { transform: translateX(-7px); } 50% { transform: translateX(7px); } }
+        @media (prefers-reduced-motion: reduce) { .swipe-hint-anim { animation: none !important; } }
+      `}</style>
+
+      {/* static teal + rose decorative spots */}
+      <div
+        className="absolute left-[28%] top-[38%] w-[560px] h-[560px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(234,135,103,0.16), transparent 70%)" }}
       />
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(160deg, rgba(3,45,50,0.93) 0%, rgba(4,58,65,0.86) 55%, rgba(0,87,87,0.90) 135%)" }}
+        className="absolute left-[75%] top-[55%] w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(13,148,136,0.13), transparent 70%)" }}
       />
 
-      <div className="relative z-10">
-      {/* Header */}
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col items-start gap-5 mb-12">
-        <div className="inline-block rounded-full px-4 py-1.5 bg-[#F26B77]/20 text-[#FFA8A8] text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]">
-          Egy szoftver. Számtalan lehetőség.
-        </div>
-        <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-white tracking-tight leading-tight max-w-[720px]">
-          18 funkció - a pénzügyi adminisztrációtól a vezetői döntésekig
-        </h2>
-      </div>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Funkciók - Teljes áttekintés"
+          eyebrowColor={C.main}
+          title={
+            <>
+              Kevesebb táblázat. Kevesebb <br className="hidden lg:block" />
+              egyeztetés. Több <span style={{ color: C.coral }}>kontroll.</span>
+            </>
+          }
+          subtitle="A számlák beérkezésétől a kontírozáson át a vezetői riportokig — 18 funkció egy összekapcsolt rendszerben, hogy a pénzügyek végre maguktól menjenek."
+        />
 
-      {/* Spotlight carousel: active card centered, neighbours dimmed and peeking */}
-      <div
-        className="relative"
-        style={{
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 7%, black 93%, transparent)",
-          maskImage: "linear-gradient(to right, transparent, black 7%, black 93%, transparent)",
-          touchAction: "pan-y",
-        }}
-        onPointerDown={onPointerDown}
-        onPointerUp={(e) => endDrag(e.clientX)}
-        onPointerCancel={() => endDrag(null)}
-        onPointerLeave={() => endDrag(null)}
-      >
-        <div
-          ref={trackRef}
-          onTransitionEnd={handleTransitionEnd}
-          className={`flex gap-3 w-max py-6 ${instant ? "" : "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"}`}
-          style={{ transform: `translateX(${metrics.view / 2 - (pos * metrics.step + metrics.card / 2)}px)` }}
-        >
-          {LOOP.map((f, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => {
-                if (swiped.current) {
-                  swiped.current = false;
-                  return;
-                }
-                goTo(f.num - 1);
-              }}
-              aria-current={idx === pos}
-              className={`w-[250px] sm:w-[280px] lg:w-[320px] aspect-[4/5] shrink-0 text-left rounded-3xl bg-white p-5 lg:p-6 flex flex-col gap-5 border-[3px] transition-all duration-500 ${
-                idx === pos
-                  ? "opacity-100 scale-105 shadow-2xl relative z-10 border-[#6ACCC3]"
-                  : "opacity-40 scale-95 shadow-md hover:opacity-70 cursor-pointer relative z-0 border-transparent"
-              }`}
-            >
-              <span
-                className="font-['Inter',sans-serif] font-extrabold text-6xl leading-none select-none"
-                style={{ color: "rgba(242,107,119,0.35)" }}
+        {/* filter chips — two rows (3 + 2) */}
+        <div className="mt-14 lg:mt-20 w-full max-w-[960px] mx-auto flex flex-wrap items-center justify-center gap-3">
+          <button
+            onClick={() => { setFilter("all"); setToastVisible(false); }}
+            className={chipCls(filter === "all")}
+            style={filter === "all" ? { backgroundColor: C.coral } : undefined}
+          >
+            Összes{" "}
+            <span className="font-semibold" style={{ color: filter === "all" ? "rgba(255,255,255,0.9)" : C.coral }}>
+              {FEATURES.length}
+            </span>
+          </button>
+          {FEATURE_CATEGORIES.map(({ id, label, icon: Icon }) => {
+            const active = filter === id;
+            return (
+              <button
+                key={id}
+                onClick={() => { setFilter(id); setToastVisible(false); }}
+                className={chipCls(active)}
+                style={active ? { backgroundColor: C.coral } : undefined}
               >
-                {f.num}
-              </span>
-              <p className="font-['Inter',sans-serif] font-bold text-base lg:text-lg leading-snug text-black">
-                {f.title}
-              </p>
-              <p className="font-['Inter',sans-serif] font-normal text-xs lg:text-sm leading-relaxed" style={{ color: C.bodyText }}>
-                {f.desc}
-              </p>
-            </button>
-          ))}
+                <Icon
+                  className="w-4 h-4"
+                  strokeWidth={1.5}
+                  style={{ color: active ? "rgba(255,255,255,0.9)" : C.main }}
+                />
+                <span className="font-light" style={{ color: active ? "white" : C.ink }}>{label}</span>
+                <span className="font-semibold" style={{ color: active ? "rgba(255,255,255,0.9)" : C.coral }}>
+                  {countOf(id)}
+                </span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Numbered navigation 1-18 (hidden on mobile — swipe gestures take over) */}
-      <div className="mt-8 px-6 hidden sm:block">
-        <div className="flex flex-wrap justify-center gap-2.5 max-w-[520px] mx-auto">
-          {FEATURES.map((f, i) => (
-            <button
-              key={f.num}
-              type="button"
-              onClick={() => goTo(i)}
-              aria-label={`Funkció ${f.num}: ${f.title}`}
-              className={`w-9 h-9 lg:w-10 lg:h-10 rounded-full font-['Inter',sans-serif] text-sm transition-all duration-300 ${
-                i === active ? "text-white font-semibold scale-125 mx-3" : "text-white/80 font-light ring-1 ring-white/40 hover:bg-white/25"
-              }`}
-              style={{
-                backgroundColor: i === active ? C.coral : "rgba(255,255,255,0.15)",
-              }}
-            >
-              {f.num}
-            </button>
-          ))}
+      {/* horizontally scrollable card carousel */}
+      <div className={`relative ${INNER_CARDS} mt-8 lg:mt-10`}>
+        <div
+          key={filter}
+          ref={scrollRef}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerLeave={endDrag}
+          onScroll={() => { setToastVisible(false); updateArrows(); }}
+          className={`flex gap-5 lg:gap-6 overflow-x-auto snap-x snap-proximity pb-2 select-none cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden ${
+            visible.length < 4 ? "lg:justify-center" : ""
+          }`}
+          style={{ scrollbarWidth: "none", animation: "features-fade-in 0.4s ease both" }}
+        >
+          {visible.map(({ num, cat, title, desc }) => {
+            const category = FEATURE_CATEGORIES.find((c) => c.id === cat)!;
+            const CatIcon = category.icon;
+            return (
+              <div
+                key={num}
+                className="snap-start shrink-0 grow-0 basis-[85%] sm:basis-[calc(50%_-_12px)] lg:basis-[calc((100%_-_72px)/_4)] lg:min-h-[458px] relative overflow-hidden bg-white rounded-[20px] shadow-sm hover:shadow-md transition-shadow duration-300 p-8 lg:p-10 flex flex-col items-center text-center gap-6"
+                style={{ border: "1px solid rgba(13,148,136,0.4)" }}
+              >
+                {/* category pill */}
+                <span
+                  className={`${FONT_MAIN} inline-flex items-center px-3.5 py-1.5 rounded-full font-medium text-[11px] leading-none whitespace-nowrap`}
+                  style={{ backgroundColor: category.soft, color: category.deep }}
+                >
+                  {category.label}
+                </span>
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: category.color }}
+                >
+                  <CatIcon className="w-6 h-6" strokeWidth={1.75} style={{ color: "white" }} />
+                </div>
+                <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                  {title}
+                </h3>
+                <p className={`${FONT_MAIN} font-light text-[11.5px] leading-[1.7]`} style={{ color: C.ink }}>
+                  {desc}
+                </p>
+                {/* fine bottom gradient in the category color */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-[38%] pointer-events-none"
+                  style={{ background: `linear-gradient(to top, ${category.soft}, transparent)` }}
+                />
+              </div>
+            );
+          })}
         </div>
-      </div>
+
+        {/* chevron paging */}
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <button
+            onClick={() => page(-1)}
+            disabled={!canLeft}
+            aria-label="Előző funkciók"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#0D9488]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(13,148,136,0.5)" }}
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
+          <button
+            onClick={() => page(1)}
+            disabled={!canRight}
+            aria-label="Következő funkciók"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#0D9488]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(13,148,136,0.5)" }}
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
+        </div>
+
+        {/* swipe hint toast — appears once, auto-dismisses */}
+        <div
+          aria-hidden
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none transition-all duration-500 ${
+            toastVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
+          }`}
+        >
+          <div className="w-16 h-16 rounded-full bg-white border border-black/5 shadow-[0_12px_32px_rgba(0,0,0,0.18)] flex items-center justify-center">
+            <div className="swipe-hint-anim" style={{ animation: "swipe-hint-wiggle 1.6s ease-in-out infinite" }}>
+              <MoveHorizontal className="w-7 h-7" strokeWidth={2} style={{ color: C.coral }} />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
+
+type BillFeatureCat = "beerk" | "ai" | "penzugy" | "kontrolling";
+
+const FEATURE_CATEGORIES: { id: BillFeatureCat; label: string; icon: typeof Upload; color: string; soft: string; deep: string }[] = [
+  { id: "beerk", label: "Adatok és dokumentumok beérkezése", icon: Upload, color: "#6ACCC3", soft: "rgba(106,204,195,0.22)", deep: "#005757" },
+  { id: "ai", label: "AI feldolgozás, kontírozás", icon: Sparkles, color: "#0D9488", soft: "rgba(13,148,136,0.15)", deep: "#005757" },
+  { id: "penzugy", label: "Pénzügyi működés", icon: Database, color: "#005757", soft: "rgba(0,87,87,0.12)", deep: "#032D32" },
+  { id: "kontrolling", label: "Kontrolling és erőforráskép", icon: SlidersHorizontal, color: "#EA8767", soft: "rgba(234,135,103,0.18)", deep: "#A64829" },
+];
 
 function BenefitsSection() {
   // equalize card heights across all columns: min-height = tallest card

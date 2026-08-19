@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Star, ChevronDown } from "lucide-react";
 import { openDemoModal } from "@/app/Root";
 import { Seo, SITE_URL, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
+import { SectionEyebrow, SectionHeader } from "@/app/components/Section";
+import { useInView } from "@/app/components/useInView";
 import imgHeroBg from "@/imports/EaisyBooks/hero-background.webp";
 import imgProblemBg from "@/imports/EaisyBooks/problem-bg.webp";
 import imgFunkcioKarta from "@/imports/EaisyBooks/funkcio-karta.webp";
@@ -65,6 +67,10 @@ const BOTTOM_CARDS = [
 const CARD_BASE =
   "rounded-2xl shadow-sm border border-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md";
 
+// hero teaser cards: no shadow, hairline teal inset ring (stays clean on image/gradient bgs)
+const TEASER_CARD =
+  "rounded-2xl ring-1 ring-inset ring-[rgba(8,93,111,0.2)] transition-all duration-300 hover:-translate-y-1";
+
 // ── problems section ─────────────────────────────────────────────────────────
 const PROBLEMS = [
   {
@@ -98,52 +104,6 @@ const PROBLEMS = [
     desc: "08E 15 napon belül, 58-as negyedévente, 65-ös havonta, 2608 havonta, KATA félévente. Minden ügyfélnél más-más határidők — és egyetlen elmulasztott határidő késedelmi pótlékot jelent.",
   },
 ];
-
-// ── shared section eyebrow: bar + uppercase label (teal default, orange on dark) ──
-function SectionEyebrow({ children, color = C.p400 }: { children: React.ReactNode; color?: string }) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <span className="w-[3px] h-4 rounded-full" style={{ backgroundColor: color }} />
-      <p
-        className={`${FONT_CARD} font-semibold text-[13px] uppercase tracking-[0.2em]`}
-        style={{ color }}
-      >
-        {children}
-      </p>
-    </div>
-  );
-}
-
-// ── shared section header: eyebrow + Montserrat title + subtitle ─────────────
-function SectionHeader({
-  eyebrow,
-  title,
-  subtitle,
-}: {
-  eyebrow: string;
-  title: string;
-  subtitle?: string;
-}) {
-  return (
-    <div className="flex flex-col items-center text-center">
-      <SectionEyebrow>{eyebrow}</SectionEyebrow>
-      <h2
-        className={`${FONT_MAIN} mt-5 font-medium text-4xl lg:text-[50px] leading-tight tracking-tight`}
-        style={{ color: C.dark }}
-      >
-        {title}
-      </h2>
-      {subtitle && (
-        <p
-          className={`${FONT_MAIN} mt-5 font-light text-base leading-relaxed max-w-[720px]`}
-          style={{ color: C.dark }}
-        >
-          {subtitle}
-        </p>
-      )}
-    </div>
-  );
-}
 
 // ── features section: categories + 18 feature cards ─────────────────────────
 type FeatureCategoryId = "iroda" | "ber" | "adozas" | "dok" | "ai";
@@ -289,37 +249,11 @@ const FAQS = [
   },
 ];
 
-// ── shared in-view hook for scroll-triggered entrance animations ────────────
-function useInView<T extends HTMLElement>(threshold = 0.15) {
-  const ref = useRef<T>(null);
-  const [inView, setInView] = useState(
-    () =>
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          obs.disconnect();
-        }
-      },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, inView };
-}
-
 function Hero() {
   return (
     <section id="hero" className="relative w-full overflow-hidden bg-white pt-32 pb-14 lg:pt-40 lg:pb-20">
-      {/* centered 1615px gradient frame with rounded bottom corners */}
-      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-b-[40px]">
+      {/* centered 1615px gradient frame — top edge runs below the navbar, not off-screen */}
+      <div className="absolute top-24 bottom-0 lg:top-[110px] left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-[40px]">
         <img
           src={imgHeroBg}
           alt=""
@@ -334,7 +268,7 @@ function Hero() {
       <div className={`relative ${INNER} flex flex-col items-center`}>
         {/* brand title */}
         <p
-          className={`${FONT_CARD} font-extrabold text-4xl lg:text-[48px] leading-none`}
+          className={`${FONT_CARD} font-extrabold text-4xl lg:text-[64px] leading-none`}
           style={{ color: C.a500 }}
         >
           eaisyBooks
@@ -342,7 +276,7 @@ function Hero() {
 
         {/* main title */}
         <h1
-          className={`${FONT_MAIN} mt-7 font-medium text-4xl lg:text-[56px] leading-[1.2] tracking-tight text-center`}
+          className={`${FONT_MAIN} mt-7 font-medium text-4xl lg:text-[60px] leading-[1.1] tracking-tight text-center`}
           style={{ color: C.dark }}
         >
           Sokszorozd meg könyvelőirodád
@@ -350,29 +284,31 @@ function Hero() {
         </h1>
 
         {/* CTAs */}
-        <div className="mt-10 lg:mt-12 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-12 lg:mt-16 flex flex-wrap items-center justify-center gap-4">
           <a
             href="#problemak"
-            className={`${FONT_MAIN} inline-flex items-center justify-center px-9 h-[46px] rounded-full bg-white font-semibold text-sm tracking-wider transition-opacity hover:opacity-80`}
+            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full bg-white font-medium text-xl tracking-[0.2em] transition-opacity hover:opacity-80`}
             style={{ border: `1px solid ${C.dark}`, color: C.dark }}
           >
             Fedezd fel
           </a>
           <button
             onClick={openDemoModal}
-            className={`${FONT_MAIN} inline-flex items-center justify-center px-9 h-[46px] rounded-full font-semibold text-sm tracking-wider text-white transition-opacity hover:opacity-90`}
+            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
             style={{ backgroundColor: C.a500 }}
           >
             Kérj demot
           </button>
         </div>
 
-        {/* ── teaser bento grid ── */}
-        <div className="mt-14 lg:mt-20 w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5">
-            {/* left stack: AI asszisztens + 360° */}
-            <div className="sm:col-span-1 lg:col-span-3 lg:row-span-2 flex flex-col gap-4 lg:gap-5">
-              <div className={`${CARD_BASE} bg-white p-6 flex-1 flex flex-col items-start gap-3`}>
+        {/* ── teaser bento grid — fixed geometry: 1:1 squares, 1 portrait, 2 landscape, 10px gaps ── */}
+        <div className="mt-14 lg:mt-20 w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-10 gap-4 lg:gap-2.5">
+            {/* left column: two squares as direct grid children — their aspect-square drives equal row heights */}
+            <div
+              className={`${TEASER_CARD} bg-white px-5 py-5 sm:col-span-1 lg:col-span-2 lg:row-start-1 lg:aspect-square flex flex-col items-start gap-5`}
+              
+            >
                 <div
                   className="w-11 h-11 rounded-[10px] flex items-center justify-center"
                   style={{ backgroundColor: C.violetBg }}
@@ -389,28 +325,31 @@ function Hero() {
               </div>
 
               <div
-                className={`${CARD_BASE} p-6 flex-1 flex flex-col items-start justify-center gap-1.5`}
+                className={`${TEASER_CARD} px-5 py-5 sm:col-span-1 lg:col-span-2 lg:row-start-2 lg:aspect-square flex flex-col`}
                 style={{ background: "linear-gradient(180deg, #FFF3DE 0%, #F7DCA8 100%)" }}
               >
+                {/* icon pinned to the top-left corner */}
                 <div
-                  className="w-11 h-11 rounded-[10px] flex items-center justify-center mb-2"
+                  className="w-11 h-11 rounded-[10px] flex items-center justify-center"
                   style={{ backgroundColor: "#FBE3BE" }}
                 >
                   <Eye className="w-5 h-5" strokeWidth={1.5} style={{ color: C.a700 }} />
                 </div>
-                <p className={`${FONT_CARD} font-bold text-3xl leading-none`} style={{ color: C.dark }}>
-                  360°
-                </p>
-                <p className={`${FONT_CARD} font-medium text-lg leading-snug`} style={{ color: C.dark }}>
-                  valós idejű áttekintés
-                </p>
+                {/* text unit: vertically centered, lines kept tight together */}
+                <div className="flex-1 flex flex-col items-start justify-center">
+                  <p className={`${FONT_CARD} font-bold text-3xl leading-none`} style={{ color: C.dark }}>
+                    360°
+                  </p>
+                  <p className={`${FONT_CARD} mt-1 font-medium text-lg leading-tight`} style={{ color: C.dark }}>
+                    valós idejű áttekintés
+                  </p>
+                </div>
               </div>
-            </div>
 
             {/* tall center card: 18+ funkció → feature list anchor */}
             <a
               href="#funkciok"
-              className={`${CARD_BASE} group relative overflow-hidden sm:col-span-1 lg:col-span-3 lg:row-span-2 min-h-[280px] lg:min-h-0 block`}
+              className={`${TEASER_CARD} group relative overflow-hidden sm:col-span-1 lg:col-span-2 lg:row-span-2 min-h-[280px] lg:min-h-0 block`}
             >
               <img
                 src={imgFunkcioKarta}
@@ -419,41 +358,52 @@ function Hero() {
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
-              <div className="relative h-full flex flex-col p-6">
-                <div className="ml-auto -mt-1 -mr-1 w-9 h-9 rounded-[10px] bg-white/90 flex items-center justify-center shadow-sm transition-transform duration-300 group-hover:scale-110">
-                  <ArrowUpRight className="w-4 h-4" strokeWidth={2} style={{ color: C.dark }} />
+              {/* inset ring above the image so the hairline edge stays clean */}
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[rgba(8,93,111,0.2)] pointer-events-none" />
+              <div className="relative h-full flex flex-col gap-5 px-5 py-5">
+                <div
+                  className="ml-auto w-11 h-11 rounded-[10px] flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: "rgba(137,196,209,0.5)" }}
+                >
+                  <ArrowUpRight className="w-5 h-5" strokeWidth={2} style={{ color: C.dark }} />
                 </div>
-                <div className="mt-2">
+                <div>
                   <p
-                    className={`${FONT_CARD} font-extrabold text-5xl leading-none tracking-tight`}
+                    className={`${FONT_CARD} font-extrabold text-6xl lg:text-[76px] leading-none tracking-tight`}
                     style={{ color: C.dark }}
                   >
-                    18+
+                    18
                   </p>
-                  <p className={`${FONT_CARD} mt-3 font-bold text-xl leading-snug`} style={{ color: C.dark }}>
-                    funkció,
-                  </p>
-                  <p className={`${FONT_CARD} font-medium text-xl leading-snug`} style={{ color: C.dark }}>
-                    ami lefedi az iroda teljes működését.
+                  <p
+                    className={`${FONT_CARD} font-bold text-4xl lg:text-5xl leading-none tracking-tight`}
+                    style={{ color: C.dark }}
+                  >
+                    funkció
                   </p>
                 </div>
+                <p className={`${FONT_CARD} font-medium text-[30px] leading-snug`} style={{ color: C.dark }}>
+                  ami lefedi az iroda teljes működését.
+                </p>
               </div>
             </a>
 
             {/* 90% időfelszabadítás */}
             <div
-              className={`${CARD_BASE} sm:col-span-1 lg:col-span-3 p-6 flex flex-col justify-center gap-1 border-0`}
+              className={`${TEASER_CARD} sm:col-span-1 lg:col-span-3 px-5 py-5 flex flex-col justify-center`}
               style={{ background: `linear-gradient(135deg, ${C.a300} 0%, ${C.p400} 100%)` }}
             >
-              <p className={`${FONT_CARD} font-medium text-base text-white/90`}>Akár</p>
-              <p className={`${FONT_CARD} font-extrabold text-5xl leading-none text-white tracking-tight`}>
+              <p className={`${FONT_CARD} font-medium text-lg text-white/90`}>Akár</p>
+              <p className={`${FONT_CARD} font-extrabold text-6xl lg:text-[72px] leading-none text-white tracking-tight`}>
                 90%
               </p>
-              <p className={`${FONT_CARD} font-medium text-base text-white/90`}>időfelszabadítás</p>
+              <p className={`${FONT_CARD} mt-1 font-medium text-xl text-white/90`}>időfelszabadítás</p>
             </div>
 
             {/* AI-támogatott compliance */}
-            <div className={`${CARD_BASE} bg-white sm:col-span-1 lg:col-span-3 p-6 flex flex-col items-start gap-3`}>
+            <div
+              className={`${TEASER_CARD} bg-white sm:col-span-1 lg:col-span-3 px-5 py-5 flex flex-col items-start gap-5`}
+              
+            >
               <div className="inline-flex items-center gap-2.5 rounded-full bg-black/[0.05] px-3.5 py-2">
                 <img src={imgBadgeShield} alt="Adatbiztonság" className="h-8 w-8" loading="lazy" decoding="async" />
                 <img src={imgBadgeNav} alt="NAV" className="h-8 w-8" loading="lazy" decoding="async" />
@@ -468,28 +418,27 @@ function Hero() {
               </p>
             </div>
 
-            {/* bottom row: 3 white feature cards — négyzetesebb arány, kisebb gap */}
-            <div className="sm:col-span-2 lg:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {BOTTOM_CARDS.map(({ icon: Icon, chipBg, chipColor, title, desc }) => (
+            {/* bottom row: 3 white square feature cards — direct children of the 10-col grid */}
+            {BOTTOM_CARDS.map(({ icon: Icon, chipBg, chipColor, title, desc }) => (
+              <div
+                key={title}
+                className={`${TEASER_CARD} bg-white sm:col-span-1 lg:col-span-2 lg:aspect-square px-5 py-5 flex flex-col items-center text-center gap-5`}
+                
+              >
                 <div
-                  key={title}
-                  className={`${CARD_BASE} bg-white p-5 flex flex-col items-center text-center gap-2`}
+                  className="w-11 h-11 rounded-[10px] flex items-center justify-center"
+                  style={{ backgroundColor: chipBg }}
                 >
-                  <div
-                    className="w-11 h-11 rounded-[10px] flex items-center justify-center mb-1"
-                    style={{ backgroundColor: chipBg }}
-                  >
-                    <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: chipColor }} />
-                  </div>
-                  <h3 className={`${FONT_CARD} font-medium text-base`} style={{ color: C.dark }}>
-                    {title}
-                  </h3>
-                  <p className={`${FONT_CARD} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
-                    {desc}
-                  </p>
+                  <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: chipColor }} />
                 </div>
-              ))}
-            </div>
+                <h3 className={`${FONT_CARD} font-medium text-base`} style={{ color: C.dark }}>
+                  {title}
+                </h3>
+                <p className={`${FONT_CARD} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
+                  {desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

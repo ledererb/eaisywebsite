@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build && node scripts/prerender.mjs",
-    "dev": "vite",
+    "dev": "vite --port 5175",
     "build:spa": "vite build"
   },
   "dependencies": {

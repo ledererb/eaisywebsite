@@ -336,7 +336,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
       : isBooksPage
         ? "#3F97AA"
         : isBillPage
-          ? "#F26B77"
+          ? "#EA8767"
           : "#1CEEE0";
   const accentHover = "hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black";
 
@@ -349,7 +349,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
   const homeIconCls = isBoostPage
     ? "border-black/25 text-black/45 hover:bg-[#FACC15] hover:text-[#3B0764] hover:border-[#3B0764]"
     : `${
-        isBooksPage ? "hover:bg-[#E58F0E]" : isDeskPage ? "hover:bg-[#C43284]" : "hover:bg-[#F26B77]"
+        isBooksPage ? "hover:bg-[#E58F0E]" : isDeskPage ? "hover:bg-[#C43284]" : "hover:bg-[#EA8767]"
       } border-black/25 text-black/45 hover:text-white hover:border-white`;
 
   useEffect(() => {
