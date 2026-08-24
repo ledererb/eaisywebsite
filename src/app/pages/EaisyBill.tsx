@@ -1099,12 +1099,25 @@ function WhoForSection() {
   }
 
   return (
-    <section id="kinek-valo" className="w-full bg-white pb-20 lg:pb-24">
+    <section id="kinek-valo" className="w-full bg-white py-12 lg:py-16">
       <style>{`
         @keyframes who-slide-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes who-slide-left { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: translateX(0); } }
       `}</style>
-      <div className={`${INNER_CARDS} flex flex-col`}>
+      <div className="w-full max-w-[1695px] mx-auto px-6 lg:px-10">
+        <div
+          className="relative overflow-hidden rounded-[40px] px-6 py-14 lg:px-12 lg:py-20"
+          style={{ background: "linear-gradient(105deg, #E8F5F0 0%, #FBFDFC 50%, #FBEEE6 100%)" }}
+        >
+          {/* faint dot pattern */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(13,148,136,0.09) 1.2px, transparent 1.2px)",
+              backgroundSize: "18px 18px",
+            }}
+          />
+          <div className={`relative ${INNER_CARDS} flex flex-col`}>
         <SectionHeader
           eyebrow="Kinek való?"
           eyebrowColor={C.main}
@@ -1154,6 +1167,8 @@ function WhoForSection() {
           >
             <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
           </button>
+        </div>
+          </div>
         </div>
       </div>
     </section>
