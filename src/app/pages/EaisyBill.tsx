@@ -1218,60 +1218,100 @@ function FaqSection() {
   );
 }
 
+// closing contact section — eaisyBooks-style dark panel with demo offer
+const BILL_DEMO_STEPS = [
+  "Bemutatjuk a NAV-szinkront, az AI dokumentumkivonatot és az automatikus kontírozást",
+  "Végigvisszük a bankintegrációt és a banki tranzakciók párosítását",
+  "Megmutatjuk a valós idejű ÁFA- és cash-flow kimutatásokat",
+  "Felteheted a kérdéseidet",
+  "Megbeszéljük a bevezetés menetét és a személyre szabott árazást",
+];
+
+const BILL_DEMO_REASONS = [
+  "Ha heti szinten kellene követned a számlákat",
+  "Ha a hónapzárás mindig kapkodással jár",
+  "Ha az ÁFA-bevallás előtt mindig kell vadászni a hiányzó számlákra",
+  "Ha fontos, hogy minden pénzügyi adat egy helyen legyen",
+];
+
 function CtaSection() {
   return (
-    <section id="demo" className="w-full py-28 lg:py-36 relative overflow-hidden">
-      {/* Background photo + dark green overlay — same as the Funkciók section */}
-      <img
-        src={imgFeaturesBg}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(160deg, rgba(3,45,50,0.93) 0%, rgba(4,58,65,0.86) 55%, rgba(0,87,87,0.90) 135%)" }}
-      />
+    <section id="demo" className="w-full bg-white pb-20 lg:pb-24">
+      <div className={INNER_CARDS}>
+        <div
+          className="relative overflow-hidden rounded-[32px] px-8 py-14 lg:px-16 lg:py-16"
+          style={{ background: "linear-gradient(135deg, #032D32 0%, #045653 45%, #0D9488 110%)" }}
+        >
+          {/* dense small dot pattern */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255,255,255,0.09) 1.2px, transparent 1.2px)",
+              backgroundSize: "16px 16px",
+            }}
+          />
 
-      <div className="relative z-10 w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 flex flex-col gap-6">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 bg-[#F26B77]/20 text-[#FFA8A8] text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]">
-            Következő lépés
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-white tracking-tight leading-tight">
-            Nézd meg működés közben!
-          </h2>
-          <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed text-white/65 max-w-md">
-            Kérj demót, és megmutatjuk, hogyan alakítja az eaisyBill a szétszórt pénzügyi adatokat átlátható, naprakész vezetői képpé — kevesebb kézi adminisztrációval, több kontrollal.
-          </p>
-          <button
-            onClick={openDemoModal}
-            className="self-start px-8 py-3.5 rounded-full font-['Inter',sans-serif] font-extrabold text-sm tracking-widest text-white hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: C.coral }}
-          >
-            KÉRJ DEMOT
-          </button>
-          <p className="font-['Inter',sans-serif] font-medium text-xs" style={{ color: C.accent }}>
-            eaisyBill — az AI-támogatott pénzügyi és kontrolling platform,<br />
-            ami átláthatóvá teszi a céged pénzügyeit.
-          </p>
-        </div>
-
-        <div className="flex-1 flex flex-col gap-5">
-          <p className="font-['Inter',sans-serif] font-bold text-2xl text-white">
-            Kinek érdemes demot kérni?
-          </p>
-          <div className="flex flex-col gap-2">
-            {WHO_SHOULD.map((w) => (
-              <div
-                key={w}
-                className="inline-flex items-center px-4 py-2 rounded-full w-fit"
-                style={{ border: `1.5px solid ${C.accent}` }}
+          <div className="relative flex flex-col lg:flex-row gap-12 lg:gap-16">
+            {/* left: demo offer */}
+            <div className="flex flex-col items-start gap-6 lg:w-[55%]">
+              <SectionEyebrow color={C.coral}>Következő lépés</SectionEyebrow>
+              <h2
+                className={`${FONT_MAIN} font-medium text-4xl lg:text-[44px] leading-[1.15] tracking-tight`}
+                style={{ color: C.coral }}
               >
-                <span className="font-['Inter',sans-serif] font-medium text-sm" style={{ color: C.accent }}>{w}</span>
+                Nézd meg
+                <br />
+                működés közben!
+              </h2>
+              <p className={`${FONT_MAIN} font-light text-[15px] leading-relaxed text-white/80`}>
+                Megmutatjuk, hogyan működik az eaisyBill a te cégednél — a saját számláidon, a saját
+                folyamataidban.
+              </p>
+              <p className={`${FONT_MAIN} font-medium text-sm text-white/90 mt-2`}>
+                Mi történik a demó során?
+              </p>
+              <ul className="flex flex-col gap-2.5">
+                {BILL_DEMO_STEPS.map((step) => (
+                  <li key={step} className="flex items-start gap-3">
+                    <span className="w-[5px] h-[5px] rounded-full mt-[7px] shrink-0" style={{ backgroundColor: C.accent }} />
+                    <span className={`${FONT_MAIN} font-light text-sm leading-relaxed text-white/75`}>
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className={`${FONT_MAIN} font-medium text-sm leading-relaxed text-white mt-2`}>
+                A demó ingyenes és nem általános termékbemutató — a te céged kihívásaira
+                fókuszálunk.
+              </p>
+            </div>
+
+            {/* right: when to ask + CTA */}
+            <div className="flex flex-col items-start gap-7 lg:flex-1 lg:pt-14">
+              <h3 className={`${FONT_MAIN} font-medium text-2xl lg:text-[28px] leading-snug text-white`}>
+                Mikor érdemes
+                <br />
+                demót kérni?
+              </h3>
+              <div className="flex flex-col items-start gap-3">
+                {BILL_DEMO_REASONS.map((reason) => (
+                  <span
+                    key={reason}
+                    className={`${FONT_MAIN} inline-flex items-center px-5 py-2.5 rounded-full font-light text-[13px] text-white/90`}
+                    style={{ border: "1px solid rgba(106,204,195,0.45)" }}
+                  >
+                    {reason}
+                  </span>
+                ))}
               </div>
-            ))}
+              <button
+                onClick={openDemoModal}
+                className={`${FONT_MAIN} mt-2 inline-flex items-center justify-center px-9 h-[54px] rounded-full font-medium text-sm tracking-wider text-white transition-opacity hover:opacity-90`}
+                style={{ backgroundColor: C.coral }}
+              >
+                Szeretném megnézni
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1279,7 +1319,6 @@ function CtaSection() {
   );
 }
 
-// ── Sticky Kérj demót CTA — visible between the hero and the contact section ──
 function StickyDemoCta() {
   const [heroInView, setHeroInView] = useState(true);
   const [demoInView, setDemoInView] = useState(false);
