@@ -825,9 +825,16 @@ function FeaturesSection() {
               return (
                 <div
                   key={title}
-                  className="snap-start shrink-0 grow-0 basis-[85%] sm:basis-[calc(50%_-_12px)] lg:basis-[calc((100%_-_72px)/_4)] lg:min-h-[426px] bg-white rounded-[20px] shadow-sm hover:shadow-md transition-shadow duration-300 p-8 lg:p-10 flex flex-col items-center text-center gap-7"
+                  className="snap-start shrink-0 grow-0 basis-[85%] sm:basis-[calc(50%_-_12px)] lg:basis-[calc((100%_-_72px)/_4)] lg:min-h-[426px] relative overflow-hidden bg-white rounded-[20px] shadow-sm hover:shadow-md transition-shadow duration-300 p-8 lg:p-10 flex flex-col items-center text-center gap-6"
                   style={{ border: "1px solid rgba(63,151,170,0.4)" }}
                 >
+                  {/* category pill */}
+                  <span
+                    className={`${FONT_MAIN} inline-flex items-center px-3.5 py-1.5 rounded-full font-medium text-[11px] leading-none whitespace-nowrap`}
+                    style={{ backgroundColor: category.soft, color: category.deep }}
+                  >
+                    {category.label}
+                  </span>
                   <div
                     className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
                     style={{ backgroundColor: category.color }}
