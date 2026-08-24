@@ -93,9 +93,9 @@ const ROLES: {
     id: "cegvezeto",
     label: "Cégvezető",
     color: "#EA8767",
-    deep: "#A64829",
-    soft: "#F8D7CC",
-    panelBg: "rgba(248,215,204,0.3)",
+    deep: "rgba(38,67,80,0.6)",
+    soft: "#FDF3F0",
+    panelBg: "#FDF3F0",
     benefits: [
       { title: "Minden egy helyen", desc: "Számlák, bank, kintlévőségek, kimutatások, bérszámfejtés, munkaidő - 360 fokos átláthatóság." },
       { title: "Valós idejű kontroll", desc: "Bármikor látszik a cég pénzügyi helyzete, nem csak hónap végén. A döntésekhez friss adatok állnak rendelkezésre." },
