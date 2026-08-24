@@ -1,11 +1,10 @@
 import { useState, useRef, useEffect } from "react";
-import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Plus, Minus, Clock, Video, Tag, User } from "lucide-react";
+import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Plus, Minus, Clock, Video, Tag, User, ChevronLeft, ChevronRight, TrendingUp, Layers, Rocket, Laptop, Award } from "lucide-react";
 import { openDemoModal } from "@/app/Root";
 import { Seo, SITE_URL, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
 import { SectionEyebrow, SectionHeader } from "@/app/components/Section";
 import { useInView } from "@/app/components/useInView";
 import imgHeroBg from "@/imports/EaisyBooks/hero-background.webp";
-import imgProblemBg from "@/imports/EaisyBooks/problem-bg.webp";
 import imgFunkcioKarta from "@/imports/EaisyBooks/funkcio-karta.webp";
 import imgBadgeShield from "@/imports/EaisyBooks/badge-shield.png";
 import imgBadgeNav from "@/imports/EaisyBooks/badge-nav.png";
@@ -75,26 +74,31 @@ const TEASER_CARD =
 // ── problems section ─────────────────────────────────────────────────────────
 const PROBLEMS = [
   {
+    icon: TrendingUp,
     num: "01",
     title: "Növekvő ügyfélkör, egyre több feladat",
     desc: "Több cég, több dolgozó, több bevallás, több határidő — és egyre nehezebb átlátni, hol tart pontosan a munka. A manuális folyamatok lassítanak, hibát termelnek, és elveszik az időt az érdemi könyvelői munkától.",
   },
   {
+    icon: Layers,
     num: "02",
     title: "Egy elütés. Rengeteg pluszmunka.",
     desc: "Számlaadatok, jelenléti-ívek, juttatások – minden kézi bevitel hibalehetőség, minden hiba NAV-ellenőrzési kockázat.",
   },
   {
+    icon: Rocket,
     num: "03",
     title: "A növekedéshez mindig új ember kell",
     desc: "Az ügyfélszám növekedése új kapacitást igényel, ami rövid távon skálázási problémához vezet.",
   },
   {
+    icon: Laptop,
     num: "04",
     title: "“Ezt még nem küldted el…”",
     desc: "Az ügyfél nem küldte el a számlát, nem töltötte ki a jelenléti ívet, hiányzik egy nyilatkozat. A könyvelő fut az ügyfél után — ahelyett, hogy a rendszer automatikusan bekérné, ami hiányzik.",
   },
   {
+    icon: Award,
     num: "05",
     title: "Adatok szétszórva Excelekben, e-mailekben",
     desc: "A bérszámfejtés az egyik szoftverben, a könyvelés a másikban, a bevallások a harmadikban, a dokumentumok a negyedikben. Nincs egy hely, ahol minden egyben látszik.",
@@ -109,12 +113,12 @@ const PROBLEMS = [
 // ── features section: categories + 18 feature cards ─────────────────────────
 type FeatureCategoryId = "iroda" | "ber" | "adozas" | "dok" | "ai";
 
-const FEATURE_CATEGORIES: { id: FeatureCategoryId; label: string; icon: typeof Briefcase; color: string }[] = [
-  { id: "iroda", label: "Iroda és ügyfelek", icon: Briefcase, color: "#89C4D1" },
-  { id: "ber", label: "Bérszámfejtés", icon: Database, color: "#3F97AA" },
-  { id: "adozas", label: "Adózás és bevallások", icon: Landmark, color: "#085D6F" },
-  { id: "dok", label: "Dokumentumok és riportok", icon: FileText, color: "#032A32" },
-  { id: "ai", label: "AI és automatizáció", icon: Sparkles, color: "#E58F0E" },
+const FEATURE_CATEGORIES: { id: FeatureCategoryId; label: string; icon: typeof Briefcase; color: string; soft: string; deep: string }[] = [
+  { id: "iroda", label: "Iroda és ügyfelek", icon: Briefcase, color: "#89C4D1", soft: "rgba(137,196,209,0.25)", deep: "#085D6F" },
+  { id: "ber", label: "Bérszámfejtés", icon: Database, color: "#3F97AA", soft: "rgba(63,151,170,0.16)", deep: "#085D6F" },
+  { id: "adozas", label: "Adózás és bevallások", icon: Landmark, color: "#085D6F", soft: "rgba(8,93,111,0.13)", deep: "#032A32" },
+  { id: "dok", label: "Dokumentumok és riportok", icon: FileText, color: "#032A32", soft: "rgba(3,42,50,0.09)", deep: "#032A32" },
+  { id: "ai", label: "AI és automatizáció", icon: Sparkles, color: "#E58F0E", soft: "rgba(229,143,14,0.16)", deep: "#8A5300" },
 ];
 
 const FEATURES: { cat: FeatureCategoryId; title: string; desc: string }[] = [
@@ -190,28 +194,33 @@ const AUDIENCES: {
 ];
 
 // ── who-for section: 5 office types, 3+2 grid ───────────────────────────────
-const WHO_FOR = [
+const WHO_FOR: { icon: typeof Briefcase; num: string; title: string; desc: string }[] = [
   {
+    icon: TrendingUp,
     num: "01",
     title: "Növekvő könyvelőirodáknak",
     desc: "Ahol az ügyfélszám elérte azt a szintet, ahol a manuális követés már nem működik. Ha az iroda 20, 50 vagy 100+ ügyfelet kezel, a portfólió-áttekintés és az automatizált munkafolyamatok már nem kényelmi funkciók — hanem versenyképességi feltételek.",
   },
   {
+    icon: Layers,
     num: "02",
     title: "Teljes körű szolgáltatást nyújtó irodáknak",
     desc: "Ahol a könyvelés mellett bérszámfejtés, EV ügyintézés, TAO tervezés és bevallás-kezelés is zajlik. Az eaisyBooks minden ügyféltípust és adózási formát egyetlen platformon kezel — nincs szükség több külön szoftverre.",
   },
   {
+    icon: Rocket,
     num: "03",
     title: "Skálázási problémával küzdő irodáknak",
     desc: "Ahol minden új ügyfél új kolléga felvételét jelentené — de erre nincs kapacitás vagy keret. Az automatizálás lehetővé teszi, hogy a meglévő csapat sokkal több ügyfelet szolgáljon ki.",
   },
   {
+    icon: Laptop,
     num: "04",
     title: "Digitalizációra nyitott irodáknak",
     desc: "Ahol az irodavezető vagy a senior kollégák látják, hogy a papír-Excel-email háromszög nem tartható fenn hosszú távon. Az eaisyBooks a digitális transzformáció teljes eszköztárát adja — a NAV-szinkrontól az e-bérjegyzékig.",
   },
   {
+    icon: Award,
     num: "05",
     title: "Minőségi ügyfélkiszolgálást célzó irodáknak",
     desc: "Ahol nemcsak a kötelező bevallásokat akarják határidőre beadni, hanem valódi tanácsadói kapcsolatot építeni az ügyfelekkel. Az eaisyBooks felszabadítja a kapacitást a magasabb értékű munkára — adótanácsadásra, üzleti tervezésre, személyes konzultációra.",
@@ -330,7 +339,7 @@ function Hero() {
 
         {/* main title */}
         <h1
-          className={`${FONT_MAIN} mt-7 font-medium text-4xl lg:text-[60px] leading-[1.1] tracking-tight text-center`}
+          className={`${FONT_MAIN} mt-6 font-medium text-4xl lg:text-[60px] leading-[1.1] tracking-tight text-center`}
           style={{ color: C.dark }}
         >
           Sokszorozd meg könyvelőirodád
@@ -502,15 +511,37 @@ function Hero() {
 
 function ProblemsSection() {
   const { ref: gridRef, inView } = useInView<HTMLDivElement>(0.15);
+  const spotRef = useRef<HTMLDivElement>(null);
+
+  // blue spot follows the cursor (parallax); orange one is a static decoration on the left
+  function onMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const el = spotRef.current;
+    if (!el) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    el.style.transform = `translate(calc(-50% + ${dx * 0.18}px), calc(-50% + ${dy * 0.18}px))`;
+  }
+  function onMouseLeave() {
+    if (spotRef.current) spotRef.current.style.transform = "translate(-50%, -50%)";
+  }
+
   return (
-    <section id="problemak" className="relative w-full overflow-hidden bg-white py-20 lg:py-24">
-      {/* orange radial glow behind the cards */}
-      <img
-        src={imgProblemBg}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+    <section
+      id="problemak"
+      className="relative w-full overflow-hidden bg-white py-20 lg:py-24"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      {/* decorative spots — orange fixed on the left, blue centered-right drifting with the cursor */}
+      <div
+        className="absolute left-[22%] top-1/2 w-[560px] h-[560px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(229,143,14,0.16), transparent 70%)" }}
+      />
+      <div
+        ref={spotRef}
+        className="absolute left-2/3 top-1/2 w-[520px] h-[520px] rounded-full pointer-events-none transition-transform duration-700 ease-out"
+        style={{ background: "radial-gradient(circle, rgba(63,151,170,0.14), transparent 70%)", transform: "translate(-50%, -50%)" }}
       />
 
       <div className={`relative ${INNER_CARDS} flex flex-col`}>
@@ -639,7 +670,27 @@ function FeaturesSection() {
   // back to the start whenever the filter changes
   useEffect(() => {
     scrollRef.current?.scrollTo({ left: 0 });
+    updateArrows();
   }, [filter]);
+
+  // chevron paging state
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(true);
+  function updateArrows() {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanLeft(el.scrollLeft > 4);
+    setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }
+  useEffect(() => {
+    updateArrows();
+  }, []);
+  function page(dir: 1 | -1) {
+    const el = scrollRef.current;
+    if (!el) return;
+    stopMomentum();
+    el.scrollBy({ left: dir * el.clientWidth, behavior: "smooth" });
+  }
 
   // mouse drag-to-scroll with pointer capture + momentum glide (touch uses native scrolling)
   const DRAG_RATIO = 1.4; // sensitivity multiplier
@@ -688,7 +739,7 @@ function FeaturesSection() {
   const chipCls = (active: boolean) =>
     `inline-flex items-center gap-2 h-[46px] px-5 rounded-full border ${FONT_MAIN} text-sm whitespace-nowrap transition-all duration-200 ${
       active
-        ? "border-transparent text-white font-semibold shadow-md"
+        ? "border-transparent text-white font-medium shadow-md"
         : "bg-white border-black/10 font-medium hover:border-[#3F97AA]/60 hover:shadow-sm"
     }`;
 
@@ -700,13 +751,14 @@ function FeaturesSection() {
         @media (prefers-reduced-motion: reduce) { .swipe-hint-anim { animation: none !important; } }
       `}</style>
 
-      {/* orange radial glow behind the content */}
-      <img
-        src={imgProblemBg}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+      {/* static teal + rose decorative spots */}
+      <div
+        className="absolute left-[28%] top-[38%] w-[560px] h-[560px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(229,143,14,0.14), transparent 70%)" }}
+      />
+      <div
+        className="absolute left-[75%] top-[55%] w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(63,151,170,0.12), transparent 70%)" }}
       />
 
       <div className={`relative ${INNER_CARDS} flex flex-col`}>
@@ -717,14 +769,14 @@ function FeaturesSection() {
         />
 
         {/* filter chips */}
-        <div className="mt-14 lg:mt-20 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-14 lg:mt-20 w-full max-w-[1100px] mx-auto flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={() => { setFilter("all"); setToastVisible(false); }}
             className={chipCls(filter === "all")}
             style={filter === "all" ? { backgroundColor: C.p400 } : undefined}
           >
             Összes{" "}
-            <span className="font-bold" style={{ color: filter === "all" ? "rgba(255,255,255,0.9)" : C.a500 }}>
+            <span className="font-semibold" style={{ color: filter === "all" ? "rgba(255,255,255,0.9)" : C.a500 }}>
               {FEATURES.length}
             </span>
           </button>
@@ -742,8 +794,8 @@ function FeaturesSection() {
                   strokeWidth={1.75}
                   style={{ color: active ? "rgba(255,255,255,0.9)" : C.p400 }}
                 />
-                <span style={{ color: active ? "white" : C.dark }}>{label}</span>
-                <span className="font-bold" style={{ color: active ? "rgba(255,255,255,0.9)" : C.a500 }}>
+                <span className="font-light" style={{ color: active ? "white" : C.dark }}>{label}</span>
+                <span className="font-semibold" style={{ color: active ? "rgba(255,255,255,0.9)" : C.a500 }}>
                   {countOf(id)}
                 </span>
               </button>
@@ -761,7 +813,7 @@ function FeaturesSection() {
             onPointerMove={onPointerMove}
             onPointerUp={endDrag}
             onPointerLeave={endDrag}
-            onScroll={() => setToastVisible(false)}
+            onScroll={() => { setToastVisible(false); updateArrows(); }}
             className={`flex gap-5 lg:gap-6 overflow-x-auto snap-x snap-proximity pb-2 select-none cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden ${
               visible.length < 4 ? "lg:justify-center" : ""
             }`}
@@ -788,12 +840,39 @@ function FeaturesSection() {
                   <p className={`${FONT_MAIN} font-light text-[11.5px] leading-[1.7]`} style={{ color: C.dark }}>
                     {desc}
                   </p>
+                  {/* fine bottom gradient in the category color */}
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-[38%] pointer-events-none"
+                    style={{ background: `linear-gradient(to top, ${category.soft}, transparent)` }}
+                  />
                 </div>
               );
             })}
           </div>
 
-          {/* swipe hint toast — appears once, auto-dismisses */}
+          {/* chevron paging */}
+        <div className="mt-8 flex items-center justify-center gap-4">
+          <button
+            onClick={() => page(-1)}
+            disabled={!canLeft}
+            aria-label="Előző funkciók"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#3F97AA]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(63,151,170,0.5)" }}
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.p400 }} />
+          </button>
+          <button
+            onClick={() => page(1)}
+            disabled={!canRight}
+            aria-label="Következő funkciók"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#3F97AA]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(63,151,170,0.5)" }}
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.p400 }} />
+          </button>
+        </div>
+
+        {/* swipe hint toast — appears once, auto-dismisses */}
           <div
             aria-hidden
             className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none transition-all duration-500 ${
@@ -961,78 +1040,118 @@ function BenefitsSection() {
 }
 
 function WhoForSection() {
-  const spotRef = useRef<HTMLDivElement>(null);
-
-  // cursor-following radial gradient spot (soft teal glow)
-  function onMouseMove(e: React.MouseEvent<HTMLElement>) {
-    const el = spotRef.current;
-    if (!el) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    el.style.opacity = "1";
-    el.style.background = `radial-gradient(300px circle at ${e.clientX - rect.left}px ${e.clientY - rect.top}px, rgba(63,151,170,0.16), transparent 70%)`;
+  const N = WHO_FOR.length;
+  const PER_VIEW = 3;
+  const [first, setFirst] = useState(0);
+  const [dir, setDir] = useState<1 | -1>(1);
+  const maxFirst = N - PER_VIEW;
+  function go(delta: 1 | -1) {
+    setDir(delta);
+    setFirst((v) => Math.max(0, Math.min(maxFirst, v + delta)));
   }
-  function onMouseLeave() {
-    if (spotRef.current) spotRef.current.style.opacity = "0";
+
+  function WhoCard({ item, dark }: { item: (typeof WHO_FOR)[number]; dark: boolean }) {
+    const Icon = item.icon;
+    return (
+      <div
+        className={`flex-1 lg:min-h-[328px] rounded-[24px] p-8 flex flex-col items-start gap-4 transition-colors duration-500 ${
+          dark ? "lg:-my-4 z-10 shadow-xl" : "bg-white"
+        }`}
+        style={
+          dark
+            ? { background: "linear-gradient(160deg, #031A1E 0%, #085D6F 55%, #3F97AA 100%)" }
+            : { border: "1px solid rgba(63,151,170,0.4)" }
+        }
+      >
+        <div
+          className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
+          style={dark ? { backgroundColor: "rgba(255,255,255,0.15)" } : { backgroundColor: "rgba(63,151,170,0.12)" }}
+        >
+          <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: dark ? "white" : C.p400 }} />
+        </div>
+        <h3
+          className={`${FONT_MAIN} font-medium text-lg leading-snug`}
+          style={{ color: dark ? "white" : C.dark }}
+        >
+          {item.title}
+        </h3>
+        <p
+          className={`${FONT_MAIN} font-light text-sm leading-relaxed`}
+          style={{ color: dark ? "rgba(255,255,255,0.85)" : C.dark }}
+        >
+          {item.desc}
+        </p>
+      </div>
+    );
   }
 
   return (
-    <section
-      id="kinek-valo"
-      className="relative w-full overflow-hidden bg-white py-20 lg:py-24"
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-    >
-      {/* centered 1615px frame — hero background mirrored horizontally */}
-      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-b-[40px]">
-        <img
-          src={imgHeroBg}
-          alt=""
-          loading="lazy"
-          decoding="async"
-          className="absolute inset-0 w-full h-full object-cover object-center -scale-x-100"
-        />
-        {/* top fade: the gradient dissolves into white */}
-        <div className="absolute inset-x-0 top-0 h-[28%] bg-gradient-to-b from-white via-white/65 to-transparent pointer-events-none" />
-        {/* cursor-following faint radial spot */}
+    <section id="kinek-valo" className="w-full bg-white py-12 lg:py-16">
+      <style>{`
+        @keyframes who-slide-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes who-slide-left { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: translateX(0); } }
+      `}</style>
+      <div className="w-full max-w-[1695px] mx-auto px-6 lg:px-10">
         <div
-          ref={spotRef}
-          className="absolute inset-0 pointer-events-none transition-opacity duration-500"
-          style={{ opacity: 0 }}
-        />
-      </div>
+          className="relative overflow-hidden rounded-[40px] px-6 py-14 lg:px-12 lg:py-20"
+          style={{ background: "linear-gradient(105deg, #EAF6FA 0%, #FBFDFE 50%, #FDF3E3 100%)" }}
+        >
+          {/* faint dot pattern */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(63,151,170,0.09) 1.2px, transparent 1.2px)",
+              backgroundSize: "18px 18px",
+            }}
+          />
+          <div className={`relative ${INNER_CARDS} flex flex-col`}>
+            <SectionHeader
+              eyebrow="Kinek való?"
+              eyebrowColor={C.p400}
+              title={<>Kinek lesz azonnali <span style={{ color: C.a500 }}>segítség?</span></>}
+              subtitle="Öt irodatípus, ahol az eaisyBooks nem extra, hanem azonnali segítség — a növekvő portfóliótól a digitális átállásig."
+            />
 
-      <div className={`relative ${INNER_CARDS} flex flex-col`}>
-        <SectionHeader
-          eyebrow="Kinek való?"
-          eyebrowColor={C.p400}
-          title={<>Kinek lesz azonnali <span style={{ color: C.a500 }}>segítség?</span></>}
-          subtitle="Öt irodatípus, ahol az eaisyBooks nem extra, hanem azonnali segítség — a növekvő portfóliótól a digitális átállásig."
-        />
-
-        {/* 3+2 grid: 6-col track, cards span 2, second row offset by one column */}
-        <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 lg:gap-6 w-full">
-          {WHO_FOR.map(({ num, title, desc }, i) => (
+            {/* desktop: 3-card carousel, dark highlighted middle card */}
             <div
-              key={num}
-              className={`${CARD_BASE} bg-white/75 backdrop-blur-sm p-7 flex flex-col lg:col-span-2 ${
-                i === 3 ? "lg:col-start-2" : ""
-              }`}
-              style={{ border: "1px solid rgba(137,196,209,0.6)" }}
+              key={first}
+              className="mt-12 lg:mt-16 hidden lg:flex items-center gap-6"
+              style={{ animation: `${dir === 1 ? "who-slide-right" : "who-slide-left"} 0.45s cubic-bezier(0.22,1,0.36,1) both` }}
             >
-              <p className={`${FONT_MAIN} font-bold text-xl leading-none`} style={{ color: C.a500 }}>
-                {num}
-              </p>
-              <h3
-                className={`${FONT_MAIN} mt-10 font-medium text-lg leading-snug`}
-                style={{ color: C.dark }}
-              >
-                {title}
-              </h3>
-              <p className={`${FONT_MAIN} mt-4 font-light text-[13px] leading-[1.7]`} style={{ color: C.dark }}>
-                {desc}
-              </p>
+              {WHO_FOR.slice(first, first + PER_VIEW).map((item, i) => (
+                <WhoCard key={item.num} item={item} dark={i === 1} />
+              ))}
             </div>
-          ))}
+
+            {/* mobile: stacked list (light cards) */}
+            <div className="mt-12 flex flex-col gap-5 lg:hidden">
+              {WHO_FOR.map((item) => (
+                <WhoCard key={item.num} item={item} dark={false} />
+              ))}
+            </div>
+
+            {/* chevron paging */}
+            <div className="mt-10 hidden lg:flex items-center justify-center gap-4">
+              <button
+                onClick={() => go(-1)}
+                disabled={first === 0}
+                aria-label="Előző irodatípusok"
+                className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#3F97AA]/10 disabled:opacity-30 disabled:pointer-events-none"
+                style={{ border: "1px solid rgba(63,151,170,0.5)" }}
+              >
+                <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.p400 }} />
+              </button>
+              <button
+                onClick={() => go(1)}
+                disabled={first === maxFirst}
+                aria-label="Következő irodatípusok"
+                className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#3F97AA]/10 disabled:opacity-30 disabled:pointer-events-none"
+                style={{ border: "1px solid rgba(63,151,170,0.5)" }}
+              >
+                <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.p400 }} />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1045,7 +1164,7 @@ function FaqSection() {
   const columns = [FAQS.slice(0, half), FAQS.slice(half)];
 
   return (
-    <section id="gyik" className="w-full bg-white pb-20 lg:pb-24">
+    <section id="gyik" className="w-full bg-white pt-16 lg:pt-20 pb-20 lg:pb-24">
       <div className={`${INNER_CARDS} flex flex-col`}>
         <SectionHeader
           eyebrow="GYIK"
