@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Star, ChevronDown } from "lucide-react";
+import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Plus, Minus, Clock, Video, Tag, User } from "lucide-react";
 import { openDemoModal } from "@/app/Root";
 import { Seo, SITE_URL, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
 import { SectionEyebrow, SectionHeader } from "@/app/components/Section";
@@ -36,8 +36,9 @@ const C = {
 const FONT_MAIN = "font-['Montserrat',sans-serif]";
 const FONT_CARD = "font-['Inter',sans-serif]";
 
-// containers — 1728px design: 1450px inner content (padding included); hero frame is 1615px
+// containers — Bill design system: 1450px content for headers, teaser-card width (1354px) for card grids
 const INNER = "w-full max-w-[1530px] mx-auto px-6 lg:px-10"; // → 1450px content
+const INNER_CARDS = "w-full max-w-[1434px] mx-auto px-6 lg:px-10"; // → 1354px content
 
 // ── hero teaser cards ────────────────────────────────────────────────────────
 const BOTTOM_CARDS = [
@@ -246,6 +247,59 @@ const FAQS = [
   {
     q: "Mennyibe kerül az eaisyBooks?",
     a: "Az eaisyBooks modulárisan igazítható az iroda méretéhez, ügyfélszámához és működéséhez, így csak azokért a funkciókért kell fizetni, amelyekre valóban szükség van. Az árat a választott modulok, a felhasználói és adatmennyiség, valamint az integrációs igények alapján, egyedi ajánlatban határozzuk meg.",
+  },
+];
+
+
+
+
+// ── benefits: role selector (Bill design system, Books brand colors) ────────
+const ROLES: {
+  id: string;
+  label: string;
+  color: string;
+  deep: string;
+  soft: string;
+  benefits: { title: string; desc: string }[];
+}[] = [
+  {
+    id: "irodavezeto",
+    label: "Irodavezető",
+    color: "#89C4D1",
+    deep: "#085D6F",
+    soft: "#DAF4F9",
+    benefits: [
+      { title: "Teljes portfólió-áttekintés", desc: "Minden ügyfél státusza, minden kolléga terhelése, minden határidő egyetlen dashboardon. Nincs több „hol tartunk?” körkérdés." },
+      { title: "Skálázható növekedés", desc: "Sokkal több ügyfél ugyanazzal a csapattal. A növekedés nem jár arányos létszámbővítéssel — a fix költségek nem növekednek, csak a bevétel." },
+      { title: "Kockázatcsökkentés", desc: "Automatikus határidő-követés, beépített jogszabályi validáció, audit napló. Kevesebb bírság, kisebb NAV-ellenőrzési kockázat." },
+      { title: "Ügyfélmegtartás", desc: "Valós idejű ügyfélportál, átlátható folyamatok, proaktív kommunikáció. Az ügyfél, aki látja a saját pénzügyeit, nem vált könyvelőt." },
+    ],
+  },
+  {
+    id: "senior",
+    label: "Senior könyvelő",
+    color: "#3F97AA",
+    deep: "#032A32",
+    soft: "#D9EDF2",
+    benefits: [
+      { title: "Jóváhagyás, nem adatrögzítés", desc: "A rendszer kontíroz, számol, könyvel. A senior könyvelő ellenőriz és jóváhagy — a szakértelmére koncentrál, nem az adatbevitelre." },
+      { title: "Villámgyors hónapzárás", desc: "A bérszámfejtési varázsló, az automatikus járulékszámítás és a bevallás-generálás a havi ciklust napokról órákra rövidíti." },
+      { title: "Teljes körű EV és TAO kezelés", desc: "Minden adózási forma egy felületen. Pénztárkönyv, kalkulátorok, értékhatár-figyelők — nincs több külön Excel a speciális ügyfeleknek." },
+      { title: "Nyomon követhető folyamatok", desc: "A jóváhagyási sor és az audit napló biztosítja, hogy minden lépés dokumentált és visszakövethető." },
+    ],
+  },
+  {
+    id: "ugyfel",
+    label: "Ügyfél (cégvezető)",
+    color: "#E58F0E",
+    deep: "#8A5300",
+    soft: "#FFF0D9",
+    benefits: [
+      { title: "Valós idejű rálátás", desc: "Az ügyfélportálon keresztül a cégvezető bármikor látja a számláit, a bérjegyzékeit, a bevallásai állapotát. Nem kell várni a havi zárásra." },
+      { title: "Kevesebb adminisztráció", desc: "Automatikus adatbekérők, dokumentum-feltöltési lehetőség, online nyilatkozattétel. Az ügyfélnek kevesebb időt kell töltenie az adminisztrációval." },
+      { title: "Nincs meglepetés", desc: "Határidő-emlékeztetők, értékhatár-figyelmeztetések, automatikus értesítések. Az ügyfél mindig tudja, mi történik a pénzügyeivel." },
+      { title: "Digitális, modern élmény", desc: "Az ügyfélportál mobilbarát, az e-bérjegyzék titkosított, a dokumentumok egy helyen elérhetők. XXI. századi elvárásoknak megfelelő kiszolgálás." },
+    ],
   },
 ];
 
@@ -459,10 +513,10 @@ function ProblemsSection() {
         className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
       />
 
-      <div className={`relative ${INNER} flex flex-col`}>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
         <SectionHeader
           eyebrow="A probléma"
-          title="6 ismerős probléma"
+          title={<>6 ismerős <span style={{ color: C.a500 }}>probléma</span></>}
           subtitle="A legtöbb időt nem maga a könyvelés viszi el, hanem minden, ami körülötte történik. Mindennapos problémák, amelyek észrevétlenül fogják vissza az iroda működését."
         />
 
@@ -498,7 +552,7 @@ function ProblemsSection() {
               <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.dark }}>
                 {title}
               </h3>
-              <p className={`${FONT_MAIN} font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
+              <p className={`${FONT_MAIN} font-light text-[13px] leading-[1.7]`} style={{ color: C.dark }}>
                 {desc}
               </p>
             </div>
@@ -655,10 +709,10 @@ function FeaturesSection() {
         className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
       />
 
-      <div className={`relative ${INNER} flex flex-col`}>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
         <SectionHeader
           eyebrow="Funkciók - Teljes áttekintés"
-          title="Hogyan segít az eaisyBooks?"
+          title={<>Hogyan <span style={{ color: C.a500 }}>segít</span> az eaisyBooks?</>}
           subtitle="Minden, ami egy könyvelőiroda működését könnyebbé teszi: az ügyfélkezeléstől a bérszámfejtésen át a bevallásokig – egy összekapcsolt rendszerben."
         />
 
@@ -699,7 +753,7 @@ function FeaturesSection() {
       </div>
 
       {/* horizontally scrollable card carousel — inner 1450px container for slim 4:5 cards */}
-      <div className={`relative ${INNER} mt-8 lg:mt-10`}>
+      <div className={`relative ${INNER_CARDS} mt-8 lg:mt-10`}>
           <div
             key={filter}
             ref={scrollRef}
@@ -731,7 +785,7 @@ function FeaturesSection() {
                   <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.dark }}>
                     {title}
                   </h3>
-                  <p className={`${FONT_MAIN} font-light text-[13px] leading-[1.75]`} style={{ color: C.dark }}>
+                  <p className={`${FONT_MAIN} font-light text-[11.5px] leading-[1.7]`} style={{ color: C.dark }}>
                     {desc}
                   </p>
                 </div>
@@ -760,41 +814,61 @@ function FeaturesSection() {
 function DemoCtaStrip() {
   return (
     <section className="w-full bg-white pb-20 lg:pb-24">
-      <div className={INNER}>
+      <div className={INNER_CARDS}>
         <div
-          className="relative overflow-hidden rounded-[32px] px-8 py-14 lg:px-16 lg:py-18"
-          style={{ background: "linear-gradient(105deg, #F9E3BC 0%, #DAF4F9 100%)" }}
+          className="relative overflow-hidden rounded-[30px]"
+          style={{ background: "linear-gradient(120deg, #031A1E 0%, #085D6F 55%, #3F97AA 100%)" }}
         >
-          {/* dot grid overlay */}
+          {/* dense small dot pattern */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: "radial-gradient(rgba(8,93,111,0.10) 1.5px, transparent 1.5px)",
-              backgroundSize: "22px 22px",
+              backgroundImage: "radial-gradient(rgba(255,255,255,0.10) 1.2px, transparent 1.2px)",
+              backgroundSize: "16px 16px",
             }}
           />
-
-          <div className="relative flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16">
-            <div className="flex flex-col items-start gap-6 max-w-[660px] lg:w-1/2">
-              <SectionEyebrow>Nézd meg működés közben</SectionEyebrow>
-              <p
-                className={`${FONT_MAIN} font-light text-base lg:text-lg leading-relaxed`}
-                style={{ color: C.dark }}
+          <div className="relative px-8 py-14 lg:px-16 lg:py-16 flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
+            {/* left: eyebrow, title, description */}
+            <div className="flex flex-col items-start gap-6 max-w-[640px] lg:w-1/2">
+              <SectionEyebrow color={C.a500}>Demo</SectionEyebrow>
+              <h2
+                className={`${FONT_MAIN} font-medium text-4xl lg:text-[50px] leading-[1.1] tracking-tight text-white`}
               >
-                Minden vállalkozás más. Mondd el, nálad milyen helyzetek okoznak problémát, és
+                Ne csak elképzeld.
+                <br />
+                Nézd meg <span style={{ color: C.a500 }}>élőben.</span>
+              </h2>
+              <p className={`${FONT_MAIN} font-light text-base leading-relaxed text-white/80`}>
+                Minden könyvelőiroda más. Mondd el, nálad milyen helyzetek okoznak problémát, és
                 megmutatjuk, hogyan segítene az eaisyBooks a te folyamataidban – demóban, a saját
                 példáddal.
               </p>
             </div>
-            {/* CTA centered within the right half of the strip */}
-            <div className="flex-1 flex justify-center">
+
+            {/* right half: CTA + meta pills, centered */}
+            <div className="flex-1 flex flex-col items-center justify-center gap-5 lg:py-6">
               <button
                 onClick={openDemoModal}
-                className={`${FONT_MAIN} shrink-0 inline-flex items-center justify-center px-10 h-[60px] lg:px-12 lg:h-[68px] rounded-full font-semibold text-sm lg:text-base tracking-[0.15em] uppercase text-white transition-opacity hover:opacity-90`}
+                className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
                 style={{ backgroundColor: C.a500 }}
               >
                 Kérj demot
               </button>
+              <div className="flex items-center gap-5">
+                {[
+                  { icon: Clock, label: "30-60 perc" },
+                  { icon: Video, label: "Google Meet" },
+                  { icon: Tag, label: "ingyenes" },
+                ].map(({ icon: Icon, label }) => (
+                  <span
+                    key={label}
+                    className={`${FONT_CARD} inline-flex items-center gap-1.5 text-[13px] text-white/75`}
+                  >
+                    <Icon className="w-4 h-4" strokeWidth={1.5} />
+                    {label}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -804,71 +878,82 @@ function DemoCtaStrip() {
 }
 
 function BenefitsSection() {
-  const { ref: gridRef, inView } = useInView<HTMLDivElement>(0.1);
+  const [activeRole, setActiveRole] = useState(0);
+  // fade keyframes injected once
+
+  const role = ROLES[activeRole];
   return (
-    <section id="elonyok" className="w-full bg-white pb-20 lg:pb-24">
-      <div className={`${INNER} flex flex-col`}>
+    <section id="elonyok" className="relative w-full overflow-hidden bg-white pb-20 lg:pb-24">
+      <style>{`@keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+      {/* soft glow top-left */}
+      <div
+        className="absolute left-[8%] top-[12%] w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2"
+        style={{ background: "radial-gradient(circle, rgba(63,151,170,0.10), transparent 70%)" }}
+      />
+
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
         <SectionHeader
-          eyebrow="Előnyök"
-          title="Előnyök, személyre szabva"
+          eyebrow="Előnyök - Személyre szabva"
+          eyebrowColor={C.p400}
+          title={
+            <>
+              Amiért minden szereplő <span style={{ color: C.a500 }}>értékelni fogja</span>
+            </>
+          }
           subtitle="Nem egyforma a munka, ha vezetsz, ha könyvelsz, vagy ha a saját vállalkozásod pénzügyeit kell látnod. Az eaisyBooks mindhárom szereplőnek a saját feladatához igazított előnyöket ad."
         />
 
-        <div ref={gridRef} className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 w-full">
-          {AUDIENCES.map(({ prefix, label, headerBg, accent, benefits }, colIdx) => {
-            // entrance: per column, boxes slide in from the top row by row
-            const enter = (rowIdx: number): React.CSSProperties => {
-              const delay = colIdx * 90 + rowIdx * 130;
-              return {
-                opacity: inView ? 1 : 0,
-                transform: inView ? "none" : "translateY(-32px)",
-                transition: `opacity 0.5s ease ${delay}ms, transform 0.5s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
-              };
-            };
-            return (
-              <div key={label} className="flex flex-col gap-4 lg:gap-5">
-                {/* audience header bar */}
-                <div
-                  className="rounded-[20px] px-6 py-6 lg:py-7 flex flex-col items-center gap-1.5 text-center"
-                  style={{ backgroundColor: headerBg, ...enter(0) }}
-                >
-                  <p className={`${FONT_MAIN} font-light text-xs lg:text-sm tracking-[0.25em] uppercase text-white/75`}>
-                    {prefix}
-                  </p>
-                  <p className={`${FONT_MAIN} font-medium text-xl lg:text-2xl tracking-wide uppercase text-white`}>
-                    {label}
-                  </p>
-                </div>
-
-                {/* benefit cards — equal height across the whole grid */}
-                {benefits.map(({ title, desc }, rowIdx) => (
-                  <div
-                    key={title}
-                    className={`${CARD_BASE} bg-white p-6 flex-1 flex flex-col gap-3`}
-                    style={{ border: "1px solid rgba(137,196,209,0.6)", ...enter(rowIdx + 1) }}
+        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch">
+          {/* left: role selector chips */}
+          <div className="flex flex-col justify-center gap-2 lg:w-1/2 lg:pl-[6%] lg:pr-14">
+            {ROLES.map((r, i) => {
+              const active = i === activeRole;
+              return (
+                <div key={r.id}>
+                  <button
+                    onClick={() => setActiveRole(i)}
+                    className="w-full flex items-center gap-4 px-5 py-3 lg:py-3.5 text-left rounded-full transition-all duration-300 hover:bg-[color-mix(in_srgb,var(--chip-soft)_45%,transparent)]"
+                    style={{ "--chip-soft": r.soft, backgroundColor: active ? r.soft : undefined } as React.CSSProperties}
                   >
-                    <div className="flex items-start gap-2.5">
-                      <Star
-                        className="w-4 h-4 mt-1 shrink-0"
-                        fill="currentColor"
-                        strokeWidth={0}
-                        style={{ color: accent }}
-                      />
-                      <h3
-                        className={`${FONT_MAIN} font-medium text-base lg:text-lg leading-snug`}
-                        style={{ color: accent }}
-                      >
-                        {title}
-                      </h3>
-                    </div>
-                    <p className={`${FONT_MAIN} font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
-                      {desc}
-                    </p>
-                  </div>
-                ))}
+                    <span
+                      className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+                      style={active ? { backgroundColor: "white" } : { border: `1.5px solid ${r.color}` }}
+                    >
+                      <User className="w-5 h-5" strokeWidth={1.5} style={{ color: r.color }} />
+                    </span>
+                    <span
+                      className={`${FONT_MAIN} text-base font-semibold`}
+                      style={{ color: active ? r.deep : "rgba(38,67,80,0.6)" }}
+                    >
+                      {r.label}
+                    </span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* right: benefits panel — background follows the role color, left edge on the page center line */}
+          <div
+            key={role.id}
+            className="lg:w-1/2 lg:min-h-[609px] rounded-[32px] px-8 py-4 lg:px-14 lg:py-8 transition-colors duration-500"
+            style={{ backgroundColor: role.soft, animation: "benefits-fade-in 0.4s ease both" }}
+          >
+            {role.benefits.map(({ title, desc }, i) => (
+              <div
+                key={title}
+                className="py-6 lg:py-7"
+                style={i > 0 ? { borderTop: `1px solid ${role.color}26` } : undefined}
+              >
+                <h3 className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.dark }}>
+                  {title}
+                </h3>
+                <p className={`${FONT_MAIN} mt-2.5 font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
+                  {desc}
+                </p>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -916,10 +1001,11 @@ function WhoForSection() {
         />
       </div>
 
-      <div className={`relative ${INNER} flex flex-col`}>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
         <SectionHeader
-          eyebrow="Kinek való"
-          title="Kinek való az eaisyBooks?"
+          eyebrow="Kinek való?"
+          eyebrowColor={C.p400}
+          title={<>Kinek lesz azonnali <span style={{ color: C.a500 }}>segítség?</span></>}
           subtitle="Öt irodatípus, ahol az eaisyBooks nem extra, hanem azonnali segítség — a növekvő portfóliótól a digitális átállásig."
         />
 
@@ -942,7 +1028,7 @@ function WhoForSection() {
               >
                 {title}
               </h3>
-              <p className={`${FONT_MAIN} mt-4 font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
+              <p className={`${FONT_MAIN} mt-4 font-light text-[13px] leading-[1.7]`} style={{ color: C.dark }}>
                 {desc}
               </p>
             </div>
@@ -953,57 +1039,69 @@ function WhoForSection() {
   );
 }
 
-function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
-  return (
-    <div
-      className="bg-white rounded-2xl px-6 mb-4 break-inside-avoid cursor-pointer transition-all duration-300 hover:shadow-sm hover:bg-[#DAF4F9]/40"
-      style={{ border: open ? "1px solid rgba(63,151,170,0.6)" : "1px solid rgba(137,196,209,0.6)" }}
-      onClick={onToggle}
-    >
-      <div className="flex items-center justify-between gap-4 py-5">
-        <p className={`${FONT_MAIN} font-medium text-base leading-snug`} style={{ color: C.dark }}>
-          {q}
-        </p>
-        <div
-          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300"
-          style={{ backgroundColor: open ? C.p400 : C.p50 }}
-        >
-          <ChevronDown
-            className="w-4 h-4 transition-transform duration-300"
-            style={{ color: open ? "white" : C.p400, transform: open ? "rotate(180deg)" : "none" }}
-          />
-        </div>
-      </div>
-      {/* smooth height animation via grid-rows */}
-      <div
-        className="grid transition-all duration-300 ease-in-out"
-        style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
-      >
-        <div className="overflow-hidden">
-          <p className={`${FONT_MAIN} pb-5 font-light text-[13px] leading-relaxed`} style={{ color: C.dark }}>
-            {a}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const half = Math.ceil(FAQS.length / 2);
+  const columns = [FAQS.slice(0, half), FAQS.slice(half)];
+
   return (
-    <section id="gyik" className="w-full bg-white py-20 lg:py-24">
-      <div className={`${INNER} flex flex-col`}>
-        <SectionHeader eyebrow="GYIK" title="Kérdések, amiket fel szoktak tenni" />
-        <div className="mt-12 lg:mt-16 w-full max-w-[1200px] mx-auto columns-1 lg:columns-2 gap-4">
-          {FAQS.map((f, i) => (
-            <FaqItem
-              key={f.q}
-              q={f.q}
-              a={f.a}
-              open={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-            />
+    <section id="gyik" className="w-full bg-white pb-20 lg:pb-24">
+      <div className={`${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="GYIK"
+          eyebrowColor={C.p400}
+          title={
+            <>
+              Amit meg szoktak <span style={{ color: C.a500 }}>kérdezni</span>
+            </>
+          }
+          subtitle="Válaszok a leggyakrabban felmerülő kérdésekre — a bevezetéstől az adatbiztonságig és az árazásig."
+        />
+
+        <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-x-14 w-full">
+          {columns.map((col, ci) => (
+            <div key={ci} className="flex flex-col">
+              {col.map((f) => {
+                const i = ci * half + col.indexOf(f);
+                const open = openIndex === i;
+                return (
+                  <div key={f.q} className="border-b border-black/10">
+                    <button
+                      onClick={() => setOpenIndex(open ? null : i)}
+                      className="w-full flex items-center justify-between gap-4 py-6 text-left group"
+                    >
+                      <span className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.dark }}>
+                        {f.q}
+                      </span>
+                      <span
+                        className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+                        style={
+                          open
+                            ? { backgroundColor: C.p400 }
+                            : { border: "1px solid rgba(63,151,170,0.5)" }
+                        }
+                      >
+                        {open ? (
+                          <Minus className="w-4 h-4" strokeWidth={2} style={{ color: "white" }} />
+                        ) : (
+                          <Plus className="w-4 h-4" strokeWidth={2} style={{ color: C.p400 }} />
+                        )}
+                      </span>
+                    </button>
+                    <div
+                      className="grid transition-all duration-300 ease-in-out"
+                      style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
+                    >
+                      <div className="overflow-hidden">
+                        <p className={`${FONT_MAIN} pb-6 font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
+                          {f.a}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           ))}
         </div>
       </div>
@@ -1039,8 +1137,8 @@ function ContactSection() {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              backgroundImage: "radial-gradient(rgba(255,255,255,0.09) 1.5px, transparent 1.5px)",
-              backgroundSize: "22px 22px",
+              backgroundImage: "radial-gradient(rgba(255,255,255,0.09) 1.2px, transparent 1.2px)",
+              backgroundSize: "16px 16px",
             }}
           />
 
