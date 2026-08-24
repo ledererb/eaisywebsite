@@ -94,8 +94,8 @@ const ROLES: {
     label: "Cégvezető",
     color: "#EA8767",
     deep: "#A64829",
-    soft: "rgba(234,135,103,0.16)",
-    panelBg: "#FBE9E3",
+    soft: "#F8D7CC",
+    panelBg: "rgba(248,215,204,0.3)",
     benefits: [
       { title: "Minden egy helyen", desc: "Számlák, bank, kintlévőségek, kimutatások, bérszámfejtés, munkaidő - 360 fokos átláthatóság." },
       { title: "Valós idejű kontroll", desc: "Bármikor látszik a cég pénzügyi helyzete, nem csak hónap végén. A döntésekhez friss adatok állnak rendelkezésre." },
@@ -107,7 +107,7 @@ const ROLES: {
     label: "Könyvelő",
     color: "#0D9488",
     deep: "#005757",
-    soft: "rgba(13,148,136,0.14)",
+    soft: "#E2FBF4",
     panelBg: "#E2FBF4",
     benefits: [
       { title: "Villámgyors hónapzárás", desc: "Az eaisyBill összeköti és kontírozza a tételeket, a könyvelőnek csak ellenőriznie kell, nem pedig adatot rögzítenie." },
@@ -120,7 +120,7 @@ const ROLES: {
     label: "Pénzügyi vezető",
     color: "#005757",
     deep: "#032D32",
-    soft: "rgba(0,87,87,0.12)",
+    soft: "#DCEEEC",
     panelBg: "#DCEEEC",
     benefits: [
       { title: "Valós idejű kontroll", desc: "Bármikor látszik a likviditás, a kintlévőségek állapota." },
@@ -976,7 +976,7 @@ function BenefitsSection() {
 
       {/* soft teal glow on the left */}
       <div
-        className="absolute left-[8%] top-1/2 w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-[8%] top-[12%] w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2"
         style={{ background: "radial-gradient(circle, rgba(13,148,136,0.10), transparent 70%)" }}
       />
 
@@ -992,19 +992,17 @@ function BenefitsSection() {
           subtitle="Nem egyforma a munka, ha vezetsz, ha könyvelsz, vagy ha a pénzügyekért felelsz. Az eaisyBill mindhárom szereplőnek a saját feladatához igazított előnyöket ad."
         />
 
-        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row gap-10 lg:gap-14 items-stretch">
+        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch">
           {/* left: role selector chips */}
-          <div className="flex flex-col justify-center lg:w-[36%]">
+          <div className="flex flex-col justify-center gap-2 lg:w-1/2 lg:pl-[6%] lg:pr-14">
             {ROLES.map((r, i) => {
               const active = i === activeRole;
               return (
-                <div key={r.id} className={i > 0 ? "border-t border-black/10" : undefined}>
+                <div key={r.id}>
                   <button
                     onClick={() => setActiveRole(i)}
-                    className={`w-full flex items-center gap-4 py-5 lg:py-6 text-left transition-all duration-300 ${
-                      active ? "rounded-full px-5" : "px-2"
-                    }`}
-                    style={active ? { backgroundColor: r.soft } : undefined}
+                    className="w-full flex items-center gap-4 px-5 py-3 lg:py-3.5 text-left rounded-full transition-all duration-300 hover:bg-[color-mix(in_srgb,var(--chip-soft)_45%,transparent)]"
+                    style={{ "--chip-soft": r.soft, backgroundColor: active ? r.soft : undefined } as React.CSSProperties}
                   >
                     <span
                       className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
@@ -1013,7 +1011,7 @@ function BenefitsSection() {
                       <User className="w-5 h-5" strokeWidth={1.5} style={{ color: r.color }} />
                     </span>
                     <span
-                      className={`${FONT_MAIN} text-lg ${active ? "font-semibold" : "font-medium"}`}
+                      className={`${FONT_MAIN} text-base font-semibold`}
                       style={{ color: active ? r.deep : "rgba(38,67,80,0.6)" }}
                     >
                       {r.label}
@@ -1027,7 +1025,7 @@ function BenefitsSection() {
           {/* right: benefits panel — background follows the role color */}
           <div
             key={role.id}
-            className="flex-1 rounded-[32px] px-8 py-4 lg:px-14 lg:py-8 transition-colors duration-500"
+            className="lg:w-1/2 rounded-[32px] px-8 py-4 lg:px-14 lg:py-8 transition-colors duration-500"
             style={{ backgroundColor: role.panelBg, animation: "benefits-fade-in 0.4s ease both" }}
           >
             {role.benefits.map(({ title, desc }, i) => (
@@ -1036,12 +1034,12 @@ function BenefitsSection() {
                 className="py-7 lg:py-9"
                 style={i > 0 ? { borderTop: `1px solid ${role.color}26` } : undefined}
               >
-                <h3 className={`${FONT_MAIN} font-medium text-xl lg:text-2xl`} style={{ color: C.ink }}>
+                <h3 className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.ink }}>
                   {title}
                 </h3>
                 <p
-                  className={`${FONT_MAIN} mt-3 font-light text-sm lg:text-[15px] leading-relaxed`}
-                  style={{ color: "rgba(38,67,80,0.75)" }}
+                  className={`${FONT_MAIN} mt-2.5 font-light text-sm leading-relaxed`}
+                  style={{ color: C.ink }}
                 >
                   {desc}
                 </p>
