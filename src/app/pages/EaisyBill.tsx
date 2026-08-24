@@ -1053,49 +1053,97 @@ function BenefitsSection() {
 }
 
 function WhoForSection() {
-  return (
-    <section id="kinek-valo" className="w-full py-20 lg:py-24" style={{ backgroundColor: "#F3F3F4" }}>
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-12">
+  const N = WHO_FOR.length;
+  const PER_VIEW = 3;
+  const [first, setFirst] = useState(0);
+  const maxFirst = N - PER_VIEW;
 
-        {/* header — eyebrow pill + headline with logo, per screenshot */}
-        <div className="flex flex-col items-start gap-5">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 bg-[#FCD2CD]/40 text-[#95333C] text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]">
-            Kinek való az eaisyBill?
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-black tracking-tight leading-tight">
-            Ahol megoldást jelent az
-          </h2>
-          <div style={{ width: 260, height: 63 }} className="max-w-full -mt-2">
-            <EaisybillLogo />
-          </div>
+  function WhoCard({ item, dark }: { item: (typeof WHO_FOR)[number]; dark: boolean }) {
+    const Icon = item.icon;
+    return (
+      <div
+        className={`flex-1 rounded-[24px] p-8 flex flex-col items-start gap-4 transition-colors duration-500 ${
+          dark ? "lg:-my-4 z-10 shadow-xl" : "bg-white"
+        }`}
+        style={
+          dark
+            ? { background: "linear-gradient(160deg, #04312E 0%, #046360 55%, #0F7B6E 100%)" }
+            : { border: "1px solid rgba(13,148,136,0.3)" }
+        }
+      >
+        <div
+          className="w-11 h-11 rounded-full flex items-center justify-center shrink-0"
+          style={dark ? { backgroundColor: "rgba(255,255,255,0.15)" } : { backgroundColor: "rgba(13,148,136,0.12)" }}
+        >
+          <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: dark ? "white" : C.main }} />
+        </div>
+        <h3
+          className={`${FONT_MAIN} font-medium text-lg leading-snug`}
+          style={{ color: dark ? "white" : C.ink }}
+        >
+          {item.title}
+        </h3>
+        <p
+          className={`${FONT_MAIN} font-light text-sm leading-relaxed`}
+          style={{ color: dark ? "rgba(255,255,255,0.85)" : C.ink }}
+        >
+          {item.desc}
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <section id="kinek-valo" className="w-full bg-white pb-20 lg:pb-24">
+      <style>{`
+        @keyframes who-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      `}</style>
+      <div className={`${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Kinek való?"
+          eyebrowColor={C.main}
+          title={
+            <>
+              Kinek lesz azonnali <span style={{ color: C.coral }}>segítség?</span>
+            </>
+          }
+          subtitle="Öt helyzet, amikor az eaisyBill nem extra, hanem azonnali segítség — a növekvő portfóliótól a digitális átállásig."
+        />
+
+        {/* desktop: 3-card carousel, dark highlighted middle card */}
+        <div key={first} className="mt-12 lg:mt-16 hidden lg:flex items-center gap-6" style={{ animation: "who-fade-in 0.4s ease both" }}>
+          {WHO_FOR.slice(first, first + PER_VIEW).map((item, i) => (
+            <WhoCard key={item.num} item={item} dark={i === 1} />
+          ))}
         </div>
 
-        {/* 5 interactive cards — 3 + centered 2 on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-stretch">
-          {WHO_FOR.map((w, i) => {
-            const Icon = w.icon;
-            return (
-              <div
-                key={w.num}
-                className={`lg:col-span-2 ${i === 3 ? "lg:col-start-2" : ""} bg-white rounded-2xl p-6 flex flex-col gap-5 border border-black/5 shadow-sm hover:-translate-y-1 hover:shadow-md hover:border-[#6ACCC3]/30 transition-all duration-300 group cursor-pointer h-full`}
-              >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: C.dark }}
-                >
-                  <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: "#FFA8A8" }} />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">
-                    {w.title}
-                  </h3>
-                  <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-black/55">
-                    {w.desc}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+        {/* mobile: stacked list (light cards) */}
+        <div className="mt-12 flex flex-col gap-5 lg:hidden">
+          {WHO_FOR.map((item) => (
+            <WhoCard key={item.num} item={item} dark={false} />
+          ))}
+        </div>
+
+        {/* chevron paging */}
+        <div className="mt-10 hidden lg:flex items-center justify-center gap-4">
+          <button
+            onClick={() => setFirst((v) => Math.max(0, v - 1))}
+            disabled={first === 0}
+            aria-label="Előző helyzetek"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#0D9488]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(13,148,136,0.5)" }}
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
+          <button
+            onClick={() => setFirst((v) => Math.min(maxFirst, v + 1))}
+            disabled={first === maxFirst}
+            aria-label="Következő helyzetek"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#0D9488]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(13,148,136,0.5)" }}
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
         </div>
       </div>
     </section>
