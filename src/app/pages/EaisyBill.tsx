@@ -1025,7 +1025,7 @@ function BenefitsSection() {
           {/* right: benefits panel — background follows the role color */}
           <div
             key={role.id}
-            className="lg:w-1/2 rounded-[32px] px-8 py-4 lg:px-14 lg:py-8 transition-colors duration-500"
+            className="lg:w-1/2 lg:min-h-[521px] rounded-[32px] px-8 py-4 lg:px-14 lg:py-8 transition-colors duration-500"
             style={{ backgroundColor: role.panelBg, animation: "benefits-fade-in 0.4s ease both" }}
           >
             {role.benefits.map(({ title, desc }, i) => (
