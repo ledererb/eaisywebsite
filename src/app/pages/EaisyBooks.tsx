@@ -314,7 +314,7 @@ const ROLES: {
 
 function Hero() {
   return (
-    <section id="hero" className="relative w-full overflow-hidden bg-white pt-32 pb-14 lg:pt-40 lg:pb-20">
+    <section id="hero" className="relative w-full overflow-hidden bg-white pt-36 pb-14 lg:pt-44 lg:pb-20">
       {/* centered 1615px gradient frame — top edge runs below the navbar, not off-screen */}
       <div className="absolute top-24 bottom-0 lg:top-[110px] left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-[40px]">
         <img
