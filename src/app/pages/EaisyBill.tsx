@@ -1062,7 +1062,7 @@ function WhoForSection() {
     const Icon = item.icon;
     return (
       <div
-        className={`flex-1 rounded-[24px] p-8 flex flex-col items-start gap-4 transition-colors duration-500 ${
+        className={`flex-1 lg:min-h-[305px] rounded-[24px] p-8 flex flex-col items-start gap-4 transition-colors duration-500 ${
           dark ? "lg:-my-4 z-10 shadow-xl" : "bg-white"
         }`}
         style={
