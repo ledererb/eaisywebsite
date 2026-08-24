@@ -1056,7 +1056,12 @@ function WhoForSection() {
   const N = WHO_FOR.length;
   const PER_VIEW = 3;
   const [first, setFirst] = useState(0);
+  const [dir, setDir] = useState<1 | -1>(1);
   const maxFirst = N - PER_VIEW;
+  function go(delta: 1 | -1) {
+    setDir(delta);
+    setFirst((v) => Math.max(0, Math.min(maxFirst, v + delta)));
+  }
 
   function WhoCard({ item, dark }: { item: (typeof WHO_FOR)[number]; dark: boolean }) {
     const Icon = item.icon;
@@ -1096,7 +1101,8 @@ function WhoForSection() {
   return (
     <section id="kinek-valo" className="w-full bg-white pb-20 lg:pb-24">
       <style>{`
-        @keyframes who-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes who-slide-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes who-slide-left { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: translateX(0); } }
       `}</style>
       <div className={`${INNER_CARDS} flex flex-col`}>
         <SectionHeader
@@ -1111,7 +1117,11 @@ function WhoForSection() {
         />
 
         {/* desktop: 3-card carousel, dark highlighted middle card */}
-        <div key={first} className="mt-12 lg:mt-16 hidden lg:flex items-center gap-6" style={{ animation: "who-fade-in 0.4s ease both" }}>
+        <div
+          key={first}
+          className="mt-12 lg:mt-16 hidden lg:flex items-center gap-6"
+          style={{ animation: `${dir === 1 ? "who-slide-right" : "who-slide-left"} 0.45s cubic-bezier(0.22,1,0.36,1) both` }}
+        >
           {WHO_FOR.slice(first, first + PER_VIEW).map((item, i) => (
             <WhoCard key={item.num} item={item} dark={i === 1} />
           ))}
@@ -1127,7 +1137,7 @@ function WhoForSection() {
         {/* chevron paging */}
         <div className="mt-10 hidden lg:flex items-center justify-center gap-4">
           <button
-            onClick={() => setFirst((v) => Math.max(0, v - 1))}
+            onClick={() => go(-1)}
             disabled={first === 0}
             aria-label="Előző helyzetek"
             className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#0D9488]/10 disabled:opacity-30 disabled:pointer-events-none"
@@ -1136,7 +1146,7 @@ function WhoForSection() {
             <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
           </button>
           <button
-            onClick={() => setFirst((v) => Math.min(maxFirst, v + 1))}
+            onClick={() => go(1)}
             disabled={first === maxFirst}
             aria-label="Következő helyzetek"
             className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#0D9488]/10 disabled:opacity-30 disabled:pointer-events-none"
