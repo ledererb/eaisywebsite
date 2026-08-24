@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
 import { Link } from "react-router";
-import { ChevronDown, ChevronLeft, ChevronRight, User, FileText, Calendar, Zap, Database, Clock, TrendingUp, Mail, BarChart3, Briefcase, Calculator, ArrowUpRight, ArrowDownRight, CheckCircle2, AlertCircle, EyeOff, RefreshCw, Users, Landmark, ChartColumn, Scale, Link2, Upload, Sparkles, SlidersHorizontal, MoveHorizontal, Video, Tag } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, User, Plus, Minus, FileText, Calendar, Zap, Database, Clock, TrendingUp, Mail, BarChart3, Briefcase, Calculator, ArrowUpRight, ArrowDownRight, CheckCircle2, AlertCircle, EyeOff, RefreshCw, Users, Landmark, ChartColumn, Scale, Link2, Upload, Sparkles, SlidersHorizontal, MoveHorizontal, Video, Tag } from "lucide-react";
 import imgHeroBg from "@/imports/EaisyBill/hero-background.webp"; // light mint gradient frame bg (transparent rounded corners baked in)
 import imgFunctionCardBg from "@/imports/EaisyBill/function-card-bg.webp";
 import imgGraphs from "@/imports/EaisyBill/graphs.png";
@@ -158,34 +158,6 @@ const WHO_SHOULD = [
 ];
 
 
-function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
-  return (
-    <div
-      className="bg-white rounded-2xl px-6 py-5 cursor-pointer border border-black/5 shadow-[0_1px_4px_rgba(0,0,0,0.05)] hover:border-[#6ACCC3] transition-all duration-300"
-      onClick={onToggle}
-    >
-      <div className="flex items-center justify-between gap-4">
-        <p className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">{q}</p>
-        <div
-          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-          style={{ backgroundColor: C.lightBg }}
-        >
-          <ChevronDown
-            className="w-4 h-4 transition-transform"
-            style={{ color: C.teal, transform: open ? "rotate(180deg)" : "none" }}
-          />
-        </div>
-      </div>
-      {open && (
-        <p className="font-['Inter',sans-serif] font-normal text-sm pt-3 leading-relaxed" style={{ color: C.bodyText }}>
-          {a}
-        </p>
-      )}
-    </div>
-  );
-}
-
-// donut chart showing exactly 90% (not a full ring)
 function Donut90() {
   const R = 50;
   const CIRC = 2 * Math.PI * R;
@@ -1176,29 +1148,70 @@ function WhoForSection() {
 }
 
 function FaqSection() {
-  // accordion — only one question open at a time
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const half = Math.ceil(FAQS.length / 2);
+  const columns = [FAQS.slice(0, half), FAQS.slice(half)];
+
   return (
-    <section id="gyik" className="w-full bg-white py-20 lg:py-24">
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0">
-        {/* light teal rounded rectangle backdrop */}
-        <div
-          className="rounded-[32px] px-6 py-10 lg:px-12 lg:py-14 flex flex-col gap-10"
-          style={{ backgroundColor: "rgba(226,251,244,0.5)" }}
-        >
-          <div className="flex flex-col gap-5">
-            <div className="inline-block self-start rounded-full px-4 py-1.5 bg-[#FCD2CD]/40 text-[#95333C] text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]">
-              GYIK
+    <section id="gyik" className="w-full bg-white pb-20 lg:pb-24">
+      <div className={`${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="GYIK"
+          eyebrowColor={C.main}
+          title={
+            <>
+              Amit meg szoktak <span style={{ color: C.coral }}>kérdezni</span>
+            </>
+          }
+          subtitle="Válaszok a leggyakrabban felmerülő kérdésekre — a bevezetéstől a NAV-megfelelésig és az árazásig."
+        />
+
+        <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-x-14 w-full">
+          {columns.map((col, ci) => (
+            <div key={ci} className="flex flex-col">
+              {col.map((f) => {
+                const i = ci * half + col.indexOf(f);
+                const open = openIndex === i;
+                return (
+                  <div key={f.q} className="border-b border-black/10">
+                    <button
+                      onClick={() => setOpenIndex(open ? null : i)}
+                      className="w-full flex items-center justify-between gap-4 py-6 text-left group"
+                    >
+                      <span className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                        {f.q}
+                      </span>
+                      <span
+                        className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+                        style={
+                          open
+                            ? { backgroundColor: C.main }
+                            : { border: "1px solid rgba(13,148,136,0.5)" }
+                        }
+                      >
+                        {open ? (
+                          <Minus className="w-4 h-4" strokeWidth={2} style={{ color: "white" }} />
+                        ) : (
+                          <Plus className="w-4 h-4" strokeWidth={2} style={{ color: C.main }} />
+                        )}
+                      </span>
+                    </button>
+                    {/* smooth height animation via grid-rows */}
+                    <div
+                      className="grid transition-all duration-300 ease-in-out"
+                      style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
+                    >
+                      <div className="overflow-hidden">
+                        <p className={`${FONT_MAIN} pb-6 font-light text-sm leading-relaxed`} style={{ color: C.ink }}>
+                          {f.a}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-black tracking-tight leading-tight">
-              Kérdések, amiket fel szoktak tenni
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-            {FAQS.map((f, i) => (
-              <FaqItem key={f.q} q={f.q} a={f.a} open={openIndex === i} onToggle={() => setOpenIndex(openIndex === i ? null : i)} />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
