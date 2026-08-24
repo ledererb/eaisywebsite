@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
 import { Link } from "react-router";
-import { ChevronDown, ChevronLeft, ChevronRight, FileText, Calendar, Zap, Database, Clock, TrendingUp, Mail, BarChart3, Briefcase, Calculator, ArrowUpRight, ArrowDownRight, CheckCircle2, AlertCircle, EyeOff, RefreshCw, Users, Landmark, ChartColumn, Scale, Link2, Upload, Sparkles, SlidersHorizontal, MoveHorizontal } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, User, FileText, Calendar, Zap, Database, Clock, TrendingUp, Mail, BarChart3, Briefcase, Calculator, ArrowUpRight, ArrowDownRight, CheckCircle2, AlertCircle, EyeOff, RefreshCw, Users, Landmark, ChartColumn, Scale, Link2, Upload, Sparkles, SlidersHorizontal, MoveHorizontal, Video, Tag } from "lucide-react";
 import imgHeroBg from "@/imports/EaisyBill/hero-background.webp"; // light mint gradient frame bg (transparent rounded corners baked in)
 import imgFunctionCardBg from "@/imports/EaisyBill/function-card-bg.webp";
 import imgGraphs from "@/imports/EaisyBill/graphs.png";
@@ -80,26 +80,49 @@ const FEATURES = [
   { num: 18, cat: "ai", title: "AI eszkalációs rendszer", desc: "Automatikusan priorizálja a figyelmet igénylő elemeket, és csak azokat a kérdéses tételeket emeli ki, amelyek valóban humán döntést igényelnek. A rutinszerű egyeztetéseket automatikusan rendezi — neked csak a valódi kivételekkel kell foglalkozni." },
 ];
 
-const AUDIENCE_BENEFITS = [
+const ROLES: {
+  id: string;
+  label: string;
+  color: string;
+  deep: string;
+  soft: string;
+  panelBg: string;
+  benefits: { title: string; desc: string }[];
+}[] = [
   {
-    eyebrow: "Amiért a", role: "Cégvezető", sub: "dönteni fog mellette", icon: Briefcase, gradient: `linear-gradient(135deg, #0D9488 0%, #005757 100%)`,
-    items: [
+    id: "cegvezeto",
+    label: "Cégvezető",
+    color: "#EA8767",
+    deep: "#A64829",
+    soft: "rgba(234,135,103,0.16)",
+    panelBg: "#FBE9E3",
+    benefits: [
       { title: "Minden egy helyen", desc: "Számlák, bank, kintlévőségek, kimutatások, bérszámfejtés, munkaidő - 360 fokos átláthatóság." },
       { title: "Valós idejű kontroll", desc: "Bármikor látszik a cég pénzügyi helyzete, nem csak hónap végén. A döntésekhez friss adatok állnak rendelkezésre." },
       { title: "Több idő a növekedésre", desc: "Ami eddig rengeteg adminisztráció volt, azt az eaisyBill elvégzi. A felszabaduló idő a vállalkozás fejlesztésére fordítható." },
     ],
   },
   {
-    eyebrow: "Amiért az", role: "Könyvelő", sub: "értékelni fogja", icon: Calculator, gradient: `linear-gradient(135deg, #005757 0%, #032D32 100%)`,
-    items: [
+    id: "konyvelo",
+    label: "Könyvelő",
+    color: "#0D9488",
+    deep: "#005757",
+    soft: "rgba(13,148,136,0.14)",
+    panelBg: "#E2FBF4",
+    benefits: [
       { title: "Villámgyors hónapzárás", desc: "Az eaisyBill összeköti és kontírozza a tételeket, a könyvelőnek csak ellenőriznie kell, nem pedig adatot rögzítenie." },
       { title: "Kevesebb egyeztetés", desc: "A rendezett, ellenőrizhető pénzügyi adatok szükségtelenné teszik az ismétlődő egyeztetéseket." },
       { title: "Pontosabb adatok", desc: "NAV-szinkron és AI validáció miatt kevesebb hiba, kevesebb utólagos javítás." },
     ],
   },
   {
-    eyebrow: "Amiért", role: "Pénzügyi vezető", sub: "megbízik benne", icon: TrendingUp, gradient: `linear-gradient(135deg, #032D32 0%, #02191C 100%)`,
-    items: [
+    id: "penzugyi",
+    label: "Pénzügyi vezető",
+    color: "#005757",
+    deep: "#032D32",
+    soft: "rgba(0,87,87,0.12)",
+    panelBg: "#DCEEEC",
+    benefits: [
       { title: "Valós idejű kontroll", desc: "Bármikor látszik a likviditás, a kintlévőségek állapota." },
       { title: "Mérhető megtakarítás", desc: "Lényegesen kevesebb adminisztratív kör - ez időben és költségben is mérhető megtakarítást jelent." },
       { title: "NAV megfelelés - automatikusan", desc: "Magyar jogszabályi formátumok — a Számviteli törvénynek mindenben megfelel." },
@@ -943,102 +966,88 @@ const FEATURE_CATEGORIES: { id: BillFeatureCat; label: string; icon: typeof Uplo
 ];
 
 function BenefitsSection() {
-  // equalize card heights across all columns: min-height = tallest card
-  useEffect(() => {
-    function adjustHeights() {
-      const cards = document.querySelectorAll(".benefit-card-item");
-      if (cards.length === 0) return;
-
-      // Reset heights first to measure natural height
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = "0px";
-      });
-
-      let maxHeight = 0;
-      cards.forEach((c) => {
-        const h = c.clientHeight;
-        if (h > maxHeight) maxHeight = h;
-      });
-
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = `${maxHeight}px`;
-      });
-    }
-
-    // Run on mount with a minor timeout to ensure content has rendered, and on resize
-    const timer = setTimeout(adjustHeights, 100);
-    window.addEventListener("resize", adjustHeights);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", adjustHeights);
-    };
-  }, []);
-
+  const [activeRole, setActiveRole] = useState(0);
+  const role = ROLES[activeRole];
   return (
-    <section
-      id="elonyok"
-      className="w-full py-20 lg:py-24"
-      style={{ background: "linear-gradient(180deg, #ffffff 0%, rgba(226,251,244,0.35) 100%)" }}
-    >
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-12">
+    <section id="elonyok" className="relative w-full overflow-hidden bg-white pb-20 lg:pb-24">
+      <style>{`
+        @keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      `}</style>
 
-        {/* header — same language as the rest of the page */}
-        <div className="flex flex-col items-start gap-5">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 bg-[#FCD2CD]/40 text-[#95333C] text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]">
-            Előnyök
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-black tracking-tight leading-tight">
-            Személyre szabott előnyök
-          </h2>
-          <p className="font-['Inter',sans-serif] font-normal text-base text-black/55 leading-relaxed max-w-[620px]">
-            Ugyanaz a platform — más eredmény minden szerepkörben. Nézd meg, mit kap tőle a cégvezető, a könyvelő és a pénzügyi vezető.
-          </p>
-        </div>
+      {/* soft teal glow on the left */}
+      <div
+        className="absolute left-[8%] top-1/2 w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(13,148,136,0.10), transparent 70%)" }}
+      />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-          {AUDIENCE_BENEFITS.map((col) => {
-            const RoleIcon = col.icon;
-            return (
-              <div key={col.role} className="flex flex-col gap-4 group">
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Előnyök - Személyre szabva"
+          eyebrowColor={C.main}
+          title={
+            <>
+              Amiért minden szereplő <span style={{ color: C.coral }}>értékelni fogja</span>
+            </>
+          }
+          subtitle="Nem egyforma a munka, ha vezetsz, ha könyvelsz, vagy ha a pénzügyekért felelsz. Az eaisyBill mindhárom szereplőnek a saját feladatához igazított előnyöket ad."
+        />
 
-                {/* role header — teal gradient card, like the Megoldás section */}
-                <div
-                  className="rounded-2xl p-6 flex items-center gap-4 shadow-sm group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300"
-                  style={{ background: col.gradient }}
-                >
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-[#FFA8A8]">
-                    <RoleIcon className="w-5 h-5" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex flex-col uppercase">
-                    <span className="font-['Inter',sans-serif] font-normal text-[11px] tracking-widest text-white/60">
-                      {col.eyebrow}
-                    </span>
-                    <span className="font-['Inter',sans-serif] font-extrabold text-xl tracking-wide text-white leading-tight">
-                      {col.role}
-                    </span>
-                    <span className="font-['Inter',sans-serif] font-normal text-[11px] tracking-widest text-white/60">
-                      {col.sub}
-                    </span>
-                  </div>
-                </div>
-
-                {/* benefit cards — white, interactive, page-consistent */}
-                {col.items.map((item) => (
-                  <div
-                    key={item.title}
-                    className="benefit-card-item flex-1 bg-white rounded-2xl p-6 flex flex-col gap-3 border border-[#E2FBF4] shadow-[0_1px_4px_rgba(0,0,0,0.06)] hover:border-[#6ACCC3] hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-default"
+        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row gap-10 lg:gap-14 items-stretch">
+          {/* left: role selector chips */}
+          <div className="flex flex-col justify-center lg:w-[36%]">
+            {ROLES.map((r, i) => {
+              const active = i === activeRole;
+              return (
+                <div key={r.id} className={i > 0 ? "border-t border-black/10" : undefined}>
+                  <button
+                    onClick={() => setActiveRole(i)}
+                    className={`w-full flex items-center gap-4 py-5 lg:py-6 text-left transition-all duration-300 ${
+                      active ? "rounded-full px-5" : "px-2"
+                    }`}
+                    style={active ? { backgroundColor: r.soft } : undefined}
                   >
-                    <h3 className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-black/55">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
+                    <span
+                      className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+                      style={active ? { backgroundColor: "white" } : { border: `1.5px solid ${r.color}` }}
+                    >
+                      <User className="w-5 h-5" strokeWidth={1.5} style={{ color: r.color }} />
+                    </span>
+                    <span
+                      className={`${FONT_MAIN} text-lg ${active ? "font-semibold" : "font-medium"}`}
+                      style={{ color: active ? r.deep : "rgba(38,67,80,0.6)" }}
+                    >
+                      {r.label}
+                    </span>
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* right: benefits panel — background follows the role color */}
+          <div
+            key={role.id}
+            className="flex-1 rounded-[32px] px-8 py-4 lg:px-14 lg:py-8 transition-colors duration-500"
+            style={{ backgroundColor: role.panelBg, animation: "benefits-fade-in 0.4s ease both" }}
+          >
+            {role.benefits.map(({ title, desc }, i) => (
+              <div
+                key={title}
+                className="py-7 lg:py-9"
+                style={i > 0 ? { borderTop: `1px solid ${role.color}26` } : undefined}
+              >
+                <h3 className={`${FONT_MAIN} font-medium text-xl lg:text-2xl`} style={{ color: C.ink }}>
+                  {title}
+                </h3>
+                <p
+                  className={`${FONT_MAIN} mt-3 font-light text-sm lg:text-[15px] leading-relaxed`}
+                  style={{ color: "rgba(38,67,80,0.75)" }}
+                >
+                  {desc}
+                </p>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1226,6 +1235,73 @@ function StickyDemoCta() {
   );
 }
 
+// demo request stopper — dotty teal gradient strip between features and benefits
+function DemoCtaStrip() {
+  return (
+    <section className="w-full bg-white pb-20 lg:pb-24">
+      <div className={INNER_CARDS}>
+        <div
+          className="relative overflow-hidden rounded-[30px]"
+          style={{ background: "linear-gradient(120deg, #04312E 0%, #046360 55%, #0F7B6E 100%)" }}
+        >
+          {/* dense small dot pattern */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255,255,255,0.10) 1.2px, transparent 1.2px)",
+              backgroundSize: "16px 16px",
+            }}
+          />
+          <div className="relative px-8 py-14 lg:px-16 lg:py-16 flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
+            {/* left: eyebrow, title, description */}
+            <div className="flex flex-col items-start gap-6 max-w-[640px] lg:w-1/2">
+              <SectionEyebrow color={C.coral}>Demo</SectionEyebrow>
+              <h2
+                className={`${FONT_MAIN} font-medium text-4xl lg:text-[50px] leading-[1.1] tracking-tight text-white`}
+              >
+                Ne csak elképzeld.
+                <br />
+                Nézd meg <span style={{ color: C.coral }}>élőben.</span>
+              </h2>
+              <p className={`${FONT_MAIN} font-light text-base leading-relaxed text-white/80`}>
+                Minden vállalkozás más. Mondd el, nálad milyen helyzetek okoznak problémát, és
+                megmutatjuk, hogyan segítene az eaisyBill a te folyamataidban – demóban, a saját
+                példáddal.
+              </p>
+            </div>
+
+            {/* right half: CTA + meta pills, centered */}
+            <div className="flex-1 flex flex-col items-center justify-center gap-5 lg:py-6">
+              <button
+                onClick={openDemoModal}
+                className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
+                style={{ backgroundColor: C.coral }}
+              >
+                Kérj demot
+              </button>
+              <div className="flex items-center gap-5">
+                {[
+                  { icon: Clock, label: "30-60 perc" },
+                  { icon: Video, label: "Google Meet" },
+                  { icon: Tag, label: "ingyenes" },
+                ].map(({ icon: Icon, label }) => (
+                  <span
+                    key={label}
+                    className={`${FONT_CARD} inline-flex items-center gap-1.5 text-[13px] text-white/75`}
+                  >
+                    <Icon className="w-4 h-4" strokeWidth={1.5} />
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function EaisyBill() {
   return (
     <div>
@@ -1247,6 +1323,7 @@ export default function EaisyBill() {
       <ProblemsSection />
       <SolutionSection />
       <FeaturesSection />
+      <DemoCtaStrip />
       <BenefitsSection />
       <WhoForSection />
       <FaqSection />
