@@ -10,7 +10,8 @@ import iconWhatsapp from "@/imports/EaisyDesk/icon-whatsapp.png";
 import iconInstagram from "@/imports/EaisyDesk/icon-instagram.png";
 
 const CHANNEL_ICONS = [iconPhone, iconMail, iconMessenger, iconWhatsapp, iconInstagram];
-import { SectionEyebrow } from "@/app/components/Section";
+import { SectionEyebrow, SectionHeader } from "@/app/components/Section";
+import { useInView } from "@/app/components/useInView";
 import imgFeaturesBg from "@/imports/EaisyDeskNyito/bg-funkciok.webp";
 import { openDemoModal } from "@/app/Root";
 import { Seo, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
@@ -38,14 +39,13 @@ const TEASER_CARD =
   "rounded-2xl ring-1 ring-inset ring-[rgba(24,109,152,0.25)] transition-all duration-300 hover:-translate-y-1";
 
 const PROBLEMS = [
-  { icon: Phone, title: "A telefon csörög, nincs aki felvegye", desc: "A hívások akkor érkeznek, amikor senki nem tudja fogadni őket — a kihagyott hívás sokszor elveszett érdeklődőt és üzletet jelent." },
-  { icon: Mail, title: "Megkésett válaszok", desc: "Az e-mailekre és üzenetekre órákkal vagy napokkal később érkezik válasz — addigra az ügyfél máshol dönt." },
-  { icon: Calendar, title: "Ütköző foglalások, no-show-k", desc: "A kézi időpont-egyeztetés hibalehetőségekkel jár: duplikált foglalások, elmaradt emlékeztetők, meg nem jelent ügyfelek." },
-  { icon: UserX, title: "Az érdeklődők nyom nélkül eltűnnek", desc: "Nem derül ki, ki keresett, milyen ügyben, és kaptunk-e rá választ — az utánkövetés nélküli megkeresések elvesznek." },
-  { icon: Clock, title: "Rutinfeladatokra megy el az idő", desc: "A sablonos kérdések megválaszolása, az időpont-egyeztetés és az adminisztráció elszívja a csapat idejét a valódi ügyek elől." },
-  { icon: BarChart3, title: "Nem lehet mérni a teljesítményt", desc: "Nincs rálátás arra, hány megkeresés érkezik, milyen csatornákon, és mennyi idő alatt kapnak választ — kontroll nélkül nincs fejlődés sem." },
+  { num: "01", title: "A telefon csörög, nincs aki felvegye", desc: "A hívások akkor érkeznek, amikor senki nem tudja fogadni őket — a kihagyott hívás sokszor elveszett érdeklődőt és üzletet jelent." },
+  { num: "02", title: "Megkésett válaszok", desc: "Az e-mailekre és üzenetekre órákkal vagy napokkal később érkezik válasz — addigra az ügyfél máshol dönt." },
+  { num: "03", title: "Ütköző foglalások, no-show-k", desc: "A kézi időpont-egyeztetés hibalehetőségekkel jár: duplikált foglalások, elmaradt emlékeztetők, meg nem jelent ügyfelek." },
+  { num: "04", title: "Az érdeklődők nyom nélkül eltűnnek", desc: "Nem derül ki, ki keresett, milyen ügyben, és kaptunk-e rá választ — az utánkövetés nélküli megkeresések elvesznek." },
+  { num: "05", title: "Rutinfeladatokra megy el az idő", desc: "A sablonos kérdések megválaszolása, az időpont-egyeztetés és az adminisztráció elszívja a csapat idejét a valódi ügyek elől." },
+  { num: "06", title: "Nem lehet mérni a teljesítményt", desc: "Nincs rálátás arra, hány megkeresés érkezik, milyen csatornákon, és mennyi idő alatt kapnak választ — kontroll nélkül nincs fejlődés sem." },
 ];
-
 const FEATURES = [
   { num: 1, title: "360 fokos interakciókezelés", desc: "Az eaisyDesk 5 csatornán fogadja és válaszolja meg az ügyfélmegkereséseket — telefonon, e-mailben, Messengeren, Instagramon és WhatsAppon — a nap 24 órájában. Kimenő kommunikáció e-mailben, telefonon és SMS-ben is indítható." },
   { num: 2, title: "Minden ügy egy kezelőfelületen", desc: "A bejövő és kimenő interakciók egy átlátható felületen követhetők: mindig látszik, ki keresett, milyen ügyben, kapott-e választ, és van-e további teendő." },
@@ -508,93 +508,83 @@ function TeaserCarousel() {
 
 
 function ProblemsSection() {
-  useEffect(() => {
-    function adjustHeights() {
-      const cards = document.querySelectorAll(".problem-card-item");
-      if (cards.length === 0) return;
+  const { ref: gridRef, inView } = useInView<HTMLDivElement>(0.15);
+  const spotRef = useRef<HTMLDivElement>(null);
 
-      // Reset heights first to measure natural height
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = "0px";
-      });
-
-      let maxHeight = 0;
-      cards.forEach((c) => {
-        const h = c.clientHeight;
-        if (h > maxHeight) maxHeight = h;
-      });
-
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = `${maxHeight}px`;
-      });
-    }
-
-    // Run on mount with a minor timeout to ensure content has rendered, and on resize
-    const timer = setTimeout(adjustHeights, 100);
-    window.addEventListener("resize", adjustHeights);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", adjustHeights);
-    };
-  }, []);
+  // cyan spot follows the cursor (parallax); magenta one is a static decoration on the left
+  function onMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const el = spotRef.current;
+    if (!el) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    el.style.transform = `translate(calc(-50% + ${dx * 0.18}px), calc(-50% + ${dy * 0.18}px))`;
+  }
+  function onMouseLeave() {
+    if (spotRef.current) spotRef.current.style.transform = "translate(-50%, -50%)";
+  }
 
   return (
-    <section id="problemak" className="w-full py-20 lg:py-24" style={{ backgroundColor: "#F3F3F4" }}>
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-10">
+    <section
+      id="problemak"
+      className="relative w-full overflow-hidden bg-white py-20 lg:py-24"
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      {/* decorative spots — magenta fixed on the left, cyan drifting with the cursor */}
+      <div
+        className="absolute left-[22%] top-1/2 w-[560px] h-[560px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(196,50,132,0.10), transparent 70%)" }}
+      />
+      <div
+        ref={spotRef}
+        className="absolute left-2/3 top-1/2 w-[520px] h-[520px] rounded-full pointer-events-none transition-transform duration-700 ease-out"
+        style={{ background: "radial-gradient(circle, rgba(24,109,152,0.12), transparent 70%)", transform: "translate(-50%, -50%)" }}
+      />
 
-        {/* eyebrow pill + title */}
-        <div className="flex flex-col gap-5 w-full">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={{ backgroundColor: "rgba(229,126,184,0.22)", color: C.magentaDeep }}>
-            Amikor a megkeresések elvesznek
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl tracking-tight leading-tight text-black">
-            Ismerős helyzetek?
-          </h2>
-          <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed w-full text-black/55">
-            Az ügyfelek minden csatornán keresnek — telefonon, e-mailben, social felületeken. A kézi kezelés már nem bírja a tempót: kihagyott hívások, megkésett válaszok, elveszett érdeklődők. A rutinfeladatok pedig elviszik a csapat idejét a valódi ügyek elől.
-          </p>
-        </div>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="A hagyományos ügyfélszolgálati működés korlátai"
+          eyebrowColor={C.main}
+          title={<>6 ismerős <span style={{ color: C.magenta }}>probléma</span></>}
+          subtitle="Ma már az ügyfelek úgy és akkor veszik fel a kapcsolatot a szolgáltatókkal, ahogy nekik kényelmes: Telefonon, e-mailben, social media felületeken vagy WhatsAppon. Bármely napszakban, nyitvatartási időn kívül is."
+        />
 
-        {/* 6 problem cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {PROBLEMS.map((p) => {
-            const Icon = p.icon;
+        {/* 6 numbered cards — fly in per row from both sides on scroll */}
+        <div
+          ref={gridRef}
+          className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full"
+        >
+          {PROBLEMS.map(({ num, title, desc }, i) => {
+            const row = Math.floor(i / 3);
+            const col = i % 3;
+            const delay = row * 140 + col * 70;
+            const hidden =
+              col === 0 ? "translateX(-48px)" : col === 2 ? "translateX(48px)" : "translateY(32px)";
             return (
               <div
-                key={p.title}
-                className="problem-card-item bg-white rounded-2xl p-6 flex flex-row gap-5 shadow-sm border border-black/5 hover:-translate-y-1 hover:shadow-md hover:border-[#90FFF8] transition-all duration-300 group cursor-pointer h-full"
+                key={num}
+                className="rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-white p-7 flex flex-col gap-4"
+                style={{
+                  border: "1px solid rgba(24,109,152,0.25)",
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "none" : hidden,
+                  transition: `opacity 0.5s ease ${delay}ms, transform 0.5s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
+                }}
               >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: C.dark }}
-                >
-                  <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: C.cyan }} />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">
-                    {p.title}
-                  </h3>
-                  <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-black/55">
-                    {p.desc}
-                  </p>
-                </div>
+                <p className={`${FONT_MAIN} font-bold text-xl leading-none`} style={{ color: C.magenta }}>
+                  {num}
+                </p>
+                <h3 className={`${FONT_MAIN} mt-6 font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                  {title}
+                </h3>
+                <p className={`${FONT_MAIN} font-light text-[13px] leading-[1.7]`} style={{ color: C.ink }}>
+                  {desc}
+                </p>
               </div>
             );
           })}
         </div>
-
-        {/* highlighted pullquote — pill shape, stronger magenta border */}
-        <div
-          className="rounded-full px-10 py-6"
-          style={{ backgroundColor: "rgba(229,126,184,0.12)", border: "2px solid rgba(196,50,132,0.45)" }}
-        >
-          <p className="font-['Inter',sans-serif] font-light text-lg lg:text-xl text-center" style={{ color: C.dark }}>
-            A legtöbb cégnél a probléma nem a szándék hiánya, hanem{" "}
-            <span className="font-semibold">az elveszett megkeresések.</span>
-          </p>
-        </div>
-
-
       </div>
     </section>
   );
