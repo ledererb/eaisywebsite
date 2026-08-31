@@ -192,7 +192,7 @@ function Hero() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-2.5">
             {/* kampányvarázsló — dark square */}
             <div
-              className="relative overflow-hidden rounded-2xl lg:aspect-square p-6 flex flex-col items-start gap-4"
+              className="relative overflow-hidden rounded-2xl p-6 flex flex-col items-start gap-4"
               style={{ backgroundColor: C.dark }}
             >
               <img
@@ -338,7 +338,7 @@ function Hero() {
             </div>
 
             {/* érdeklődőkezelés — light square (row 2) */}
-            <div className={`${TEASER_CARD} bg-white lg:aspect-square p-6 flex flex-col gap-3`}>
+            <div className={`${TEASER_CARD} bg-white p-6 flex flex-col gap-3`}>
               <div
                 className="w-11 h-11 rounded-[10px] flex items-center justify-center"
                 style={{ backgroundColor: "#F7E3EF" }}
