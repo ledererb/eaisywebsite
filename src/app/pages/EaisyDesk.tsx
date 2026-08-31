@@ -3,6 +3,13 @@ import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headp
 import imgLogo from "@/imports/EaisyDeskNyito/eaisydesk.png";
 import imgBigCard from "@/imports/EaisyDesk/big-card.webp";
 import imgSmallCard from "@/imports/EaisyDesk/small-card.png";
+import iconPhone from "@/imports/EaisyDesk/icon-phone.png";
+import iconMail from "@/imports/EaisyDesk/icon-mail.png";
+import iconMessenger from "@/imports/EaisyDesk/icon-messenger.png";
+import iconWhatsapp from "@/imports/EaisyDesk/icon-whatsapp.png";
+import iconInstagram from "@/imports/EaisyDesk/icon-instagram.png";
+
+const CHANNEL_ICONS = [iconPhone, iconMail, iconMessenger, iconWhatsapp, iconInstagram];
 import { SectionEyebrow } from "@/app/components/Section";
 import imgFeaturesBg from "@/imports/EaisyDeskNyito/bg-funkciok.webp";
 import { openDemoModal } from "@/app/Root";
@@ -145,13 +152,6 @@ function Hero() {
           className="absolute inset-0"
           style={{ background: "linear-gradient(115deg, #E8FAF6 0%, #FCFEFF 45%, #FDEDF6 100%)" }}
         />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(rgba(8,36,50,0.07) 1.2px, transparent 1.2px)",
-            backgroundSize: "16px 16px",
-          }}
-        />
       </div>
 
       <div className={`relative ${INNER} flex flex-col items-center`}>
@@ -213,8 +213,8 @@ function Hero() {
                   Kampányvarázsló funkció
                 </h3>
                 <p className={`${FONT_CARD} text-[13px] leading-relaxed text-white/75`}>
-                  Készíts és küldj célzott üzeneteket pár kattintással — ajánlatkövetésre,
-                  kedvezményekre vagy meglévő ügyfelek reaktiválására.
+                  Célzott üzenetek pár kattintással - ajánlatkövetés, kedvezmények, vagy meglévő
+                  ügyfelek reaktiválása.
                 </p>
               </div>
             </div>
@@ -222,20 +222,15 @@ function Hero() {
             {/* 5+3 csatorna — light landscape */}
             <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 p-6 flex flex-col gap-5`}>
               <div className="inline-flex items-center gap-2 self-start rounded-full bg-black/[0.04] px-3.5 py-2">
-                {[
-                  { icon: Phone, bg: "#25D366" },
-                  { icon: Mail, bg: "#1877F2" },
-                  { icon: MessageCircle, bg: "#0084FF" },
-                  { icon: MessagesSquare, bg: "#25D366" },
-                  { icon: Instagram, bg: "linear-gradient(135deg, #F58529 0%, #DD2A7B 55%, #8134AF 100%)" },
-                ].map(({ icon: Icon, bg }, i) => (
-                  <span
+                {CHANNEL_ICONS.map((src, i) => (
+                  <img
                     key={i}
-                    className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
-                    style={{ background: bg }}
-                  >
-                    <Icon className="w-4 h-4" strokeWidth={1.75} style={{ color: "white" }} />
-                  </span>
+                    src={src}
+                    alt=""
+                    className="w-9 h-9 rounded-full shrink-0"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 ))}
               </div>
               <div className="flex flex-col gap-2">
@@ -290,13 +285,13 @@ function Hero() {
             </div>
 
             {/* egy felületen — light landscape (row 2) */}
-            <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 p-6 flex flex-col gap-4`}>
+            <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 lg:h-full p-6 flex flex-col gap-3.5`}>
               <div className="flex items-center gap-3">
                 <div
-                  className="w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0"
+                  className="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0"
                   style={{ backgroundColor: C.lightBg }}
                 >
-                  <Monitor className="w-4 h-4" strokeWidth={1.5} style={{ color: C.main }} />
+                  <Monitor className="w-5 h-5" strokeWidth={1.5} style={{ color: C.main }} />
                 </div>
                 <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug`} style={{ color: C.ink }}>
                   A teljes ügyfélkommunikáció egy felületen
@@ -325,18 +320,18 @@ function Hero() {
                   { icon: MessagesSquare, ch: "WhatsApp", topic: "Egyéb", status: "Válasz előkészítve", pill: "Sürgős", pillBg: "#FDEAEA", pillColor: "#E5484D", note: "Azonnali beavatkozás szükséges" },
                   { icon: Mail, ch: "Email", topic: "Kérés", status: "Ajánlat elküldve", pill: "Nyitott", pillBg: "#FDF4DC", pillColor: "#B7791F", note: "Válasz jóváhagyása szükséges" },
                 ].map((r) => (
-                  <div key={r.ch} className="flex items-center gap-2.5 py-2 text-[11px]">
-                    <r.icon className="w-3.5 h-3.5 shrink-0" style={{ color: C.main }} strokeWidth={1.5} />
-                    <span className={`${FONT_CARD} font-semibold w-16`} style={{ color: C.ink }}>{r.ch}</span>
-                    <span className={`${FONT_CARD} w-14 text-black/45`}>{r.topic}</span>
-                    <span className={`${FONT_CARD} w-28 text-black/45`}>{r.status}</span>
+                  <div key={r.ch} className="grid grid-cols-[16px_70px_60px_120px_56px_1fr] items-center gap-x-2 py-1.5 text-[11px]">
+                    <r.icon className="w-3.5 h-3.5 justify-self-center" style={{ color: C.main }} strokeWidth={1.5} />
+                    <span className={`${FONT_CARD} font-semibold`} style={{ color: C.ink }}>{r.ch}</span>
+                    <span className={`${FONT_CARD} text-black/45`}>{r.topic}</span>
+                    <span className={`${FONT_CARD} text-black/45`}>{r.status}</span>
                     <span
-                      className={`${FONT_CARD} px-2 py-0.5 rounded-full font-semibold text-[10px] whitespace-nowrap`}
+                      className={`${FONT_CARD} px-2 py-0.5 rounded-full font-semibold text-[10px] text-center whitespace-nowrap`}
                       style={{ backgroundColor: r.pillBg, color: r.pillColor }}
                     >
                       {r.pill}
                     </span>
-                    <span className={`${FONT_CARD} ml-auto text-black/40 hidden xl:inline`}>{r.note}</span>
+                    <span className={`${FONT_CARD} text-black/40 hidden xl:inline`}>{r.note}</span>
                   </div>
                 ))}
               </div>
