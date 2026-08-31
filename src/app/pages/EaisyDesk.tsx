@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
-import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown } from "lucide-react";
-import imgHero from "@/imports/EaisyDeskNyito/A_recepcios.webp";
+import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram } from "lucide-react";
 import imgLogo from "@/imports/EaisyDeskNyito/eaisydesk.png";
+import imgBigCard from "@/imports/EaisyDesk/big-card.webp";
+import imgSmallCard from "@/imports/EaisyDesk/small-card.png";
+import { SectionEyebrow } from "@/app/components/Section";
 import imgFeaturesBg from "@/imports/EaisyDeskNyito/bg-funkciok.webp";
 import { openDemoModal } from "@/app/Root";
 import { Seo, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
@@ -17,7 +19,16 @@ const C = {
   magentaLight: "#E57EB8", // Magenta 400 — icon accent on dark
   lightBg: "#DFFFFD",    // Cyan 50
   bodyText: "rgba(0,0,0,0.55)",
+  ink: "#264350",        // site-wide dark text
 };
+
+// design-system shared bits (Bill/Books conventions)
+const FONT_MAIN = "font-['Montserrat',sans-serif]";
+const FONT_CARD = "font-['Inter',sans-serif]";
+const INNER = "w-full max-w-[1530px] mx-auto px-6 lg:px-10"; // → 1450px content
+const INNER_CARDS = "w-full max-w-[1434px] mx-auto px-6 lg:px-10"; // → 1354px content
+const TEASER_CARD =
+  "rounded-2xl ring-1 ring-inset ring-[rgba(24,109,152,0.25)] transition-all duration-300 hover:-translate-y-1";
 
 const PROBLEMS = [
   { icon: Phone, title: "A telefon csörög, nincs aki felvegye", desc: "A hívások akkor érkeznek, amikor senki nem tudja fogadni őket — a kihagyott hívás sokszor elveszett érdeklődőt és üzletet jelent." },
@@ -126,65 +137,235 @@ function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean
 
 function Hero() {
   return (
-    <section id="hero" className="relative w-full overflow-hidden pt-16" style={{ minHeight: 800 }}>
-      <style>{`
-        @keyframes hero-pill-in {
-          from { opacity: 0; transform: translateY(16px) scale(0.96); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .hero-pill { animation: none !important; }
-        }
-      `}</style>
-      {/* full-bleed background image */}
-      <img src={imgHero} alt="" decoding="async" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover object-center" />
+    <section id="hero" className="relative w-full overflow-hidden bg-white pt-36 pb-14 lg:pt-44 lg:pb-20">
+      {/* centered 1615px gradient frame — top edge runs below the navbar, rounded corners */}
+      <div className="absolute top-24 bottom-0 lg:top-[110px] left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-[40px]">
+        {/* light cyan→pink gradient + dense dots (CSS, like the other product pages) */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(115deg, #E8FAF6 0%, #FCFEFF 45%, #FDEDF6 100%)" }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(rgba(8,36,50,0.07) 1.2px, transparent 1.2px)",
+            backgroundSize: "16px 16px",
+          }}
+        />
+      </div>
 
-      {/* white fade overlay — responsive to protect text readability */}
-      <div
-        className="absolute inset-0 bg-white/90 lg:bg-transparent lg:bg-[linear-gradient(to_left,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_42%,rgba(255,255,255,0)_58%,transparent_100%)]"
-      />
+      <div className={`relative ${INNER} flex flex-col items-center`}>
+        {/* brand title */}
+        <p className={`${FONT_CARD} font-extrabold text-5xl lg:text-[64px] leading-none`} style={{ color: C.main }}>
+          eaisyDesk
+        </p>
 
-      {/* content — aligned to the right on desktop, centered on mobile */}
-      <div className="relative w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 py-20 flex justify-center lg:justify-end">
-        <div className="flex flex-col gap-7 w-full max-w-[520px] pt-12 lg:pt-0">
+        {/* main title */}
+        <h1
+          className={`${FONT_MAIN} mt-6 font-medium text-4xl lg:text-[60px] leading-[1.1] tracking-tight text-center`}
+          style={{ color: C.ink }}
+        >
+          Ügyfélszolgálat, ami nem áll meg
+          <br className="hidden lg:block" /> a hívások fogadásánál.
+        </h1>
 
-          <p className="font-['Inter',sans-serif] font-semibold text-xl lg:text-2xl leading-snug" style={{ color: C.main }}>
-            Az újgenerációs, AI-támogatott platform,<br />ami minden ügyfeledre figyel.
-          </p>
-
-          {/* logo — unified 100px height across product pages */}
-          <img src={imgLogo} alt="eaisyDesk" className="h-auto max-h-[100px] w-auto max-w-full object-contain self-start my-6" />
-
-          <div className="flex flex-wrap gap-2.5">
-            {BENEFITS.map((b, i) => (
-              <div
-                key={b}
-                className="hero-pill inline-flex items-center px-4 py-2 rounded-full w-fit"
-                style={{
-                  border: `1.5px solid ${C.main}`,
-                  color: C.main,
-                  animation: `hero-pill-in 0.55s cubic-bezier(0.22,1,0.36,1) ${350 + i * 110}ms both`,
-                }}
-              >
-                <span className="font-['Inter',sans-serif] font-medium text-sm">{b}</span>
-              </div>
-            ))}
-          </div>
-
+        {/* CTAs */}
+        <div className="mt-12 lg:mt-16 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="#problemak"
+            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full bg-white font-medium text-xl tracking-[0.2em] transition-opacity hover:opacity-80`}
+            style={{ border: `1px solid ${C.ink}`, color: C.ink }}
+          >
+            Fedezd fel
+          </a>
           <button
             onClick={openDemoModal}
-            className="self-start mt-10 px-8 py-3.5 rounded-full font-['Inter',sans-serif] font-extrabold text-sm tracking-widest text-white hover:opacity-90 transition-opacity"
+            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
             style={{ backgroundColor: C.magenta }}
           >
-            KÉRJ DEMOT
+            Kérj demot
           </button>
+        </div>
+
+        {/* ── teaser grid: 5-col — dark kampány square, csatorna landscape, dark 360 square, egy felületen, érdeklődőkezelés ── */}
+        <div className="mt-14 lg:mt-20 w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-2.5">
+            {/* kampányvarázsló — dark square */}
+            <div
+              className="relative overflow-hidden rounded-2xl lg:aspect-square p-6 flex flex-col items-start gap-4"
+              style={{ backgroundColor: C.dark }}
+            >
+              <img
+                src={imgSmallCard}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div className="relative flex flex-col gap-4">
+                <div
+                  className="w-11 h-11 rounded-[10px] flex items-center justify-center"
+                  style={{ backgroundColor: "#F7E3EF" }}
+                >
+                  <Wand2 className="w-5 h-5" strokeWidth={1.5} style={{ color: C.magenta }} />
+                </div>
+                <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug text-white`}>
+                  Kampányvarázsló funkció
+                </h3>
+                <p className={`${FONT_CARD} text-[13px] leading-relaxed text-white/75`}>
+                  Készíts és küldj célzott üzeneteket pár kattintással — ajánlatkövetésre,
+                  kedvezményekre vagy meglévő ügyfelek reaktiválására.
+                </p>
+              </div>
+            </div>
+
+            {/* 5+3 csatorna — light landscape */}
+            <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 p-6 flex flex-col gap-5`}>
+              <div className="inline-flex items-center gap-2 self-start rounded-full bg-black/[0.04] px-3.5 py-2">
+                {[
+                  { icon: Phone, bg: "#25D366" },
+                  { icon: Mail, bg: "#1877F2" },
+                  { icon: MessageCircle, bg: "#0084FF" },
+                  { icon: MessagesSquare, bg: "#25D366" },
+                  { icon: Instagram, bg: "linear-gradient(135deg, #F58529 0%, #DD2A7B 55%, #8134AF 100%)" },
+                ].map(({ icon: Icon, bg }, i) => (
+                  <span
+                    key={i}
+                    className="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+                    style={{ background: bg }}
+                  >
+                    <Icon className="w-4 h-4" strokeWidth={1.75} style={{ color: "white" }} />
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className={`${FONT_CARD} font-semibold text-xl leading-snug`} style={{ color: C.ink }}>
+                  5 bejövő és 3 kimenő csatorna
+                </h3>
+                <p className={`${FONT_CARD} text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+                  Az eaisyDesk 5 csatornán fogad és válaszol meg ügyfélmegkereséseket a nap 24
+                  órájában. Emellett 3 csatornán kimenő kommunikáció is indítható: e-mailben,
+                  telefonon és SMS-ben.
+                </p>
+              </div>
+            </div>
+
+            {/* 360° — dark big square, spans 2 rows */}
+            <div
+              className="relative overflow-hidden rounded-2xl sm:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[320px] lg:min-h-0 flex flex-col"
+              style={{ backgroundColor: C.dark }}
+            >
+              <img
+                src={imgBigCard}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              {/* inset ring above the image */}
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[rgba(24,109,152,0.25)] pointer-events-none" />
+              <div className="relative flex flex-col gap-4 px-5 py-5 lg:px-7 lg:py-7">
+                <div className="ml-auto w-11 h-11 rounded-[10px] bg-white/90 flex items-center justify-center transition-transform duration-300 hover:scale-110">
+                  <ArrowUpRight className="w-5 h-5" strokeWidth={2} style={{ color: C.dark }} />
+                </div>
+                <p className={`${FONT_CARD} font-extrabold text-6xl lg:text-[84px] leading-none tracking-tight text-white`}>
+                  360°
+                </p>
+                <p className={`${FONT_CARD} font-semibold text-2xl lg:text-[28px] leading-snug text-white`}>
+                  AI-támogatott,
+                  <br />
+                  többcsatornás
+                  <br />
+                  ügyfélszolgálat
+                </p>
+                <a
+                  href="#problemak"
+                  className={`${FONT_CARD} mt-2 inline-flex items-center gap-2 self-start px-6 h-[44px] rounded-full font-semibold text-sm tracking-wider transition-opacity hover:opacity-90`}
+                  style={{ backgroundColor: C.cyan, color: C.dark }}
+                >
+                  <Phone className="w-4 h-4" strokeWidth={2} />
+                  PRÓBÁLD KI
+                </a>
+              </div>
+            </div>
+
+            {/* egy felületen — light landscape (row 2) */}
+            <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 p-6 flex flex-col gap-4`}>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-9 h-9 rounded-[10px] flex items-center justify-center shrink-0"
+                  style={{ backgroundColor: C.lightBg }}
+                >
+                  <Monitor className="w-4 h-4" strokeWidth={1.5} style={{ color: C.main }} />
+                </div>
+                <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug`} style={{ color: C.ink }}>
+                  A teljes ügyfélkommunikáció egy felületen
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { n: "3", label: "Sürgős", dot: "#E5484D" },
+                  { n: "7", label: "Nyitott", dot: "#F5A623" },
+                  { n: "14", label: "Lezárt", dot: "#34A853" },
+                ].map(({ n, label, dot }) => (
+                  <span
+                    key={label}
+                    className={`${FONT_CARD} inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-black/10 text-xs`}
+                    style={{ color: C.ink }}
+                  >
+                    <span className="font-semibold">{n}</span>
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: dot }} />
+                    {label}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-col divide-y divide-black/5">
+                {[
+                  { icon: MessageCircle, ch: "Messenger", topic: "Időpont", status: "Időpont módosítva", pill: "Lezárt", pillBg: "#E6F6EC", pillColor: "#34A853", note: "Nincs további teendő" },
+                  { icon: MessagesSquare, ch: "WhatsApp", topic: "Egyéb", status: "Válasz előkészítve", pill: "Sürgős", pillBg: "#FDEAEA", pillColor: "#E5484D", note: "Azonnali beavatkozás szükséges" },
+                  { icon: Mail, ch: "Email", topic: "Kérés", status: "Ajánlat elküldve", pill: "Nyitott", pillBg: "#FDF4DC", pillColor: "#B7791F", note: "Válasz jóváhagyása szükséges" },
+                ].map((r) => (
+                  <div key={r.ch} className="flex items-center gap-2.5 py-2 text-[11px]">
+                    <r.icon className="w-3.5 h-3.5 shrink-0" style={{ color: C.main }} strokeWidth={1.5} />
+                    <span className={`${FONT_CARD} font-semibold w-16`} style={{ color: C.ink }}>{r.ch}</span>
+                    <span className={`${FONT_CARD} w-14 text-black/45`}>{r.topic}</span>
+                    <span className={`${FONT_CARD} w-28 text-black/45`}>{r.status}</span>
+                    <span
+                      className={`${FONT_CARD} px-2 py-0.5 rounded-full font-semibold text-[10px] whitespace-nowrap`}
+                      style={{ backgroundColor: r.pillBg, color: r.pillColor }}
+                    >
+                      {r.pill}
+                    </span>
+                    <span className={`${FONT_CARD} ml-auto text-black/40 hidden xl:inline`}>{r.note}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* érdeklődőkezelés — light square (row 2) */}
+            <div className={`${TEASER_CARD} bg-white lg:aspect-square p-6 flex flex-col gap-3`}>
+              <div
+                className="w-11 h-11 rounded-[10px] flex items-center justify-center"
+                style={{ backgroundColor: "#F7E3EF" }}
+              >
+                <Users className="w-5 h-5" strokeWidth={1.5} style={{ color: C.magenta }} />
+              </div>
+              <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug`} style={{ color: C.ink }}>
+                Érdeklődőkezelés
+              </h3>
+              <p className={`${FONT_CARD} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
+                Automatikusan felismeri és címkézi az érdeklődőket és ügyfeleket, így mindig
+                látszik, kivel érdemes foglalkozni, kit kell utánkövetni, és hol van még üzleti
+                lehetőség.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-// ── Autoplay teaser: vertical loop of product panels ──
 const TEASER_BARS = [38, 52, 44, 62, 48, 70, 56, 66, 50, 60, 74, 58];
 
 function TeaserHeader({ icon: Icon, label, alert = false }: { icon: typeof BarChart3; label: string; alert?: boolean }) {
@@ -329,6 +510,7 @@ function TeaserCarousel() {
     </div>
   );
 }
+
 
 function ProblemsSection() {
   useEffect(() => {
