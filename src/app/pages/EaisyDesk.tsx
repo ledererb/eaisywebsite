@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
-import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram, Globe, Zap, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram, Globe, Zap, ChevronLeft, ChevronRight, BookOpen, UserCheck, History, MoveHorizontal } from "lucide-react";
 import imgLogo from "@/imports/EaisyDeskNyito/eaisydesk.png";
 import imgFeaturesBg from "@/imports/EaisyDeskNyito/bg-funkciok.webp";
 import imgBigCard from "@/imports/EaisyDesk/big-card.webp";
@@ -46,14 +46,27 @@ const PROBLEMS = [
   { num: "05", title: "Rutinfeladatokra megy el az idő", desc: "A sablonos kérdések megválaszolása, az időpont-egyeztetés és az adminisztráció elszívja a csapat idejét a valódi ügyek elől." },
   { num: "06", title: "Nem lehet mérni a teljesítményt", desc: "Nincs rálátás arra, hány megkeresés érkezik, milyen csatornákon, és mennyi idő alatt kapnak választ — kontroll nélkül nincs fejlődés sem." },
 ];
-const DESK_FEATURES: { icon: typeof MessagesSquare; title: string; desc: string }[] = [
-  { icon: MessagesSquare, title: "360 fokos interakciókezelés", desc: "Az eaisyDesk 5 csatornán fogad és válaszol meg ügyfélmegkereséseket — telefonon, e-mailben, Messengeren, Instagramon és WhatsAppon - a nap 24 órájában. Emellett 3 csatornán kimenő kommunikáció is indítható: e-mailben, telefonon és SMS-ben." },
-  { icon: Monitor, title: "Átlátható kezelőfelület", desc: "A bejövő és kimenő interakciók egy átlátható felületen követhetők, így mindig látszik, ki keresett, milyen ügyben, kapott-e választ, és van-e további teendő." },
-  { icon: Headset, title: "Természetes hang", desc: "Az eaisyDesk telefonos kommunikációja nem gépies, hanem természetes és könnyen érthető, mindig udvarias és türelmes. A kommunikáció stílusa (pl. professzionális, barátságos) — az adott üzlet profiljához és márkájához igazítható." },
-  { icon: Globe, title: "Többnyelvű kommunikáció", desc: "A kommunikáció nyelvileg is illeszthető az adott ügyfélkörhöz: ez különösen fontos azoknál a szolgáltatóknál, ahol a gyors és magabiztos idegen nyelvű kommunikáció közvetlenül hat az ügyfélszerzésre." },
-  { icon: Tags, title: "Érdeklődéskezelés és címkézés", desc: "Automatikusan felismeri és címkézi az érdeklődőket és ügyfeleket (pl. inaktív, potenciális vásárló), így mindig látszik, kivel érdemes foglalkozni, és hol van üzleti lehetőség." },
-  { icon: Zap, title: "AI gyorsaság, emberi kontrollal", desc: "Az eaisyDesk tudja, mikor válaszolhat önállóan, mikor kell jóváhagyást kérni, és mikor kell élő kollégának átadni az ügyet — a teljes előzménnyel együtt." },
-  { icon: BarChart3, title: "Analitika és riportok", desc: "Láthatóvá teszi, milyen csatornákon érkeznek a megkeresések, hol akad el a folyamat, milyen ügytípusok ismétlődnek, és min érdemes javítani a hatékonyabb működés érdekében." },
+type DeskFeatureCat = "komm" | "aikontroll" | "ugyfel" | "analitika";
+
+const DESK_FEATURE_CATS: { id: DeskFeatureCat; label: string; icon: typeof MessagesSquare; color: string; soft: string; deep: string }[] = [
+  { id: "komm", label: "Bejövő- és kimenő kommunikáció", icon: MessagesSquare, color: "#1CEEE0", soft: "rgba(28,238,224,0.15)", deep: "#0F4E71" },
+  { id: "aikontroll", label: "AI & kontroll", icon: Zap, color: "#186D98", soft: "rgba(24,109,152,0.14)", deep: "#082432" },
+  { id: "ugyfel", label: "Ügyfélkezelés", icon: Users, color: "#C43284", soft: "rgba(196,50,132,0.14)", deep: "#A2005B" },
+  { id: "analitika", label: "Analitika", icon: BarChart3, color: "#082432", soft: "rgba(8,36,50,0.10)", deep: "#082432" },
+];
+
+const DESK_FEATURES: { cat: DeskFeatureCat; icon: typeof MessagesSquare; title: string; desc: string }[] = [
+  { cat: "komm", icon: MessagesSquare, title: "360 fokos interakciókezelés", desc: "Az eaisyDesk 5 csatornán fogad és válaszol meg ügyfélmegkereséseket — telefonon, e-mailben, Messengeren, Instagramon és WhatsAppon - a nap 24 órájában. Emellett 3 csatornán kimenő kommunikáció is indítható: e-mailben, telefonon és SMS-ben." },
+  { cat: "komm", icon: Globe, title: "Többnyelvű kommunikáció", desc: "A kommunikáció nyelvileg is illeszthető az adott ügyfélkörhöz: ez különösen fontos azoknál a szolgáltatóknál, ahol a gyors és magabiztos idegen nyelvű kommunikáció közvetlenül hat az ügyfélszerzésre." },
+  { cat: "komm", icon: Headset, title: "Természetes hang", desc: "Az eaisyDesk telefonos kommunikációja nem gépies, hanem természetes és könnyen érthető, mindig udvarias és türelmes. A kommunikáció stílusa (pl. professzionális, barátságos) — az adott üzlet profiljához és márkájához igazítható." },
+  { cat: "komm", icon: CalendarCheck, title: "Automatikus értesítések", desc: "Időpont-visszaigazolások, emlékeztetők, módosítások, lemondások visszajelzése. Az utókövető üzenetek - a napi működés fontos, ismétlődő kommunikációs helyzeteit az eaisyDesk önállóan kezeli, így segít abban, hogy fontos ügyfélértesítések ne maradjanak el." },
+  { cat: "komm", icon: Megaphone, title: "Kampányvarázsló funkció", desc: "Az eaisyDesk kampányvarázslójával néhány lépésben indíthatsz célzott kampányokat: válaszd ki a célzott kampányokat. Válaszd ki a megszólítani kívánt ügyfélkört, add meg az üzenet célját, és a rendszer segít megírni, kiküldeni és követni a kommunikációt." },
+  { cat: "aikontroll", icon: BookOpen, title: "Cégre szabott tudásbázis", desc: "Az eaisyDesk nem általános, sablonos válaszokból dolgozik, hanem teljesen az adott cég működésére felkészített tudásbázisból. A felhasználói setup első lépéseként az eaisyDesk kezelőfelületén feltöltjük a szolgáltatóra jellemző tudást és működési logikát." },
+  { cat: "aikontroll", icon: UserCheck, title: "Human-in-the-loop", desc: "Az eaisyDesk az írásos válaszokat igény szerint ember jóváhagyáshoz köti: a küldés előtt az ügyfél szerinte, a gyorsaság mellett a kontroll is megmarad: a kiküldés előtt minden üzenet ellenőrizhető." },
+  { cat: "aikontroll", icon: History, title: "Átadás előzményekkel", desc: "Az eaisyDesk tudja, mikor válaszolhat önállóan, mikor kell jóváhagyást kérni, és mikor kell élő kollégának átadni az ügyet — az előzményekkel együtt. Az AI-eszközök nem helyettesítik fel a kompetenciáit, hanem ismeri a kompetenciahatárait." },
+  { cat: "aikontroll", icon: Clock, title: "24/7 működés", desc: "Rá mindig lehet számítani: a megkereséseknek nyitvatartási időn kívül is fogadja, nem jár le a munkakörje és nem megy szabadságra. Ha pedig egy ügy emberi döntést igényel, azt rendszerezve és előkészítve adja tovább." },
+  { cat: "ugyfel", icon: Users, title: "Érdeklődőkezelés", desc: "Automatikusan felismeri és címkézi az érdeklődőket és ügyfeleket, így mindig látszik, kivel érdemes foglalkozni, kit kell utánkövetni, és hol van még üzleti lehetőség." },
+  { cat: "analitika", icon: BarChart3, title: "Analitika és riportok", desc: "Az eaisyDesk nemcsak kezeli a megkereséseket, hanem mérhetővé is teszi őket. Láthatóvá válik, milyen csatornákon mi érkezik, milyen forgalom, hol akad el a folyamat, és mely területeken érdemes finomhangolni a működést." },
 ];
 
 const AUDIENCE_BENEFITS = [
@@ -664,25 +677,141 @@ function SolutionSection() {
 function FeaturesSection() {
   const PER_VIEW = 4;
   const N = DESK_FEATURES.length;
+  const [filter, setFilter] = useState<DeskFeatureCat | "all">("all");
   const [first, setFirst] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
-  const maxFirst = N - PER_VIEW;
+  const [toastVisible, setToastVisible] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const drag = useRef({ active: false, startX: 0, scrollLeft: 0, lastX: 0, lastT: 0, v: 0, raf: 0 });
+
+  const visible = filter === "all" ? DESK_FEATURES : DESK_FEATURES.filter((f) => f.cat === filter);
+  const visibleCount = visible.length;
+  const countOf = (cat: DeskFeatureCat) => DESK_FEATURES.filter((f) => f.cat === cat).length;
+  const maxFirst = Math.max(0, visibleCount - PER_VIEW);
   function go(delta: 1 | -1) {
     setDir(delta);
     setFirst((v) => Math.max(0, Math.min(maxFirst, v + delta)));
   }
 
-  function FeatureCard({ icon: Icon, title, desc }: { icon: typeof MessagesSquare; title: string; desc: string }) {
+  // swipe hint toast: show once when the section scrolls into view
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setToastVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  // auto-dismiss the toast after a few seconds
+  useEffect(() => {
+    if (!toastVisible) return;
+    const t = setTimeout(() => setToastVisible(false), 4500);
+    return () => clearTimeout(t);
+  }, [toastVisible]);
+
+  // back to the start whenever the filter changes
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ left: 0 });
+    updateArrows();
+  }, [filter]);
+
+  // chevron paging state
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(true);
+  function updateArrows() {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanLeft(el.scrollLeft > 4);
+    setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }
+  useEffect(() => {
+    updateArrows();
+  }, []);
+  function page(dir: 1 | -1) {
+    const el = scrollRef.current;
+    if (!el) return;
+    stopMomentum();
+    el.scrollBy({ left: dir * el.clientWidth, behavior: "smooth" });
+  }
+
+  // mouse drag-to-scroll with pointer capture + momentum glide (touch uses native scrolling)
+  const DRAG_RATIO = 1.4;
+  function stopMomentum() {
+    cancelAnimationFrame(drag.current.raf);
+  }
+  function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== "mouse" || !scrollRef.current) return;
+    stopMomentum();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drag.current.active = true;
+    drag.current.startX = e.clientX;
+    drag.current.scrollLeft = scrollRef.current.scrollLeft;
+    drag.current.lastX = e.clientX;
+    drag.current.lastT = performance.now();
+    drag.current.v = 0;
+  }
+  function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (!drag.current.active || !scrollRef.current) return;
+    scrollRef.current.scrollLeft =
+      drag.current.scrollLeft - (e.clientX - drag.current.startX) * DRAG_RATIO;
+    const now = performance.now();
+    const dt = now - drag.current.lastT;
+    if (dt > 0) {
+      const inst = ((e.clientX - drag.current.lastX) / dt) * 16;
+      drag.current.v = drag.current.v * 0.6 + inst * 0.4;
+      drag.current.lastX = e.clientX;
+      drag.current.lastT = now;
+    }
+  }
+  function endDrag() {
+    if (!drag.current.active) return;
+    drag.current.active = false;
+    const el = scrollRef.current;
+    let v = -drag.current.v * DRAG_RATIO;
+    if (!el || Math.abs(v) < 0.5) return;
+    const step = () => {
+      el.scrollLeft += v;
+      v *= 0.93;
+      if (Math.abs(v) >= 0.5) drag.current.raf = requestAnimationFrame(step);
+    };
+    drag.current.raf = requestAnimationFrame(step);
+  }
+
+  const chipCls = (active: boolean) =>
+    `inline-flex items-center gap-2 h-[46px] px-5 rounded-full border ${FONT_MAIN} text-sm whitespace-nowrap transition-all duration-200 ${
+      active
+        ? "border-transparent text-white font-medium shadow-md"
+        : "bg-white border-black/10 font-medium hover:border-[#186D98]/60 hover:shadow-sm"
+    }`;
+
+  function FeatureCard({ cat, icon: Icon, title, desc }: { cat: DeskFeatureCat; icon: typeof MessagesSquare; title: string; desc: string }) {
+    const category = DESK_FEATURE_CATS.find((c) => c.id === cat)!;
     return (
       <div
-        className="flex-1 rounded-[20px] p-8 flex flex-col items-center text-center gap-6"
+        className="snap-start shrink-0 grow-0 basis-[85%] sm:basis-[calc(50%_-_12px)] lg:basis-[calc((100%_-_72px)/_4)] lg:min-h-[426px] relative overflow-hidden rounded-[20px] p-8 lg:p-10 flex flex-col items-center text-center gap-6"
         style={{ border: "1px solid rgba(24,109,152,0.3)", backgroundColor: "rgba(255,255,255,0.75)" }}
       >
+        {/* category pill */}
+        <span
+          className={`${FONT_MAIN} inline-flex items-center px-3.5 py-1.5 rounded-full font-medium text-[11px] leading-none whitespace-nowrap`}
+          style={{ backgroundColor: category.soft, color: category.deep }}
+        >
+          {category.label}
+        </span>
         <div
           className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
-          style={{ backgroundColor: C.lightBg }}
+          style={{ backgroundColor: category.color }}
         >
-          <Icon className="w-6 h-6" strokeWidth={1.5} style={{ color: C.dark }} />
+          <Icon className="w-6 h-6" strokeWidth={1.5} style={{ color: "white" }} />
         </div>
         <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
           {title}
@@ -690,15 +819,22 @@ function FeaturesSection() {
         <p className={`${FONT_MAIN} font-light text-[13px] leading-[1.7]`} style={{ color: C.ink }}>
           {desc}
         </p>
+        {/* fine bottom gradient in the category color */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[38%] pointer-events-none"
+          style={{ background: `linear-gradient(to top, ${category.soft}, transparent)` }}
+        />
       </div>
     );
   }
 
   return (
-    <section id="funkciok" className="relative w-full overflow-hidden bg-white py-20 lg:py-24">
+    <section id="funkciok" ref={sectionRef} className="relative w-full overflow-hidden bg-white py-20 lg:py-24">
       <style>{`
         @keyframes feat-slide-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes feat-slide-left { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes swipe-hint-wiggle { 0%, 100% { transform: translateX(-7px); } 50% { transform: translateX(7px); } }
+        @media (prefers-reduced-motion: reduce) { .swipe-hint-anim { animation: none !important; } }
       `}</style>
 
       {/* static teal + rose spots */}
@@ -723,46 +859,32 @@ function FeaturesSection() {
           }
           subtitle="Minden, ami az ügyfélkommunikációt gördülékenyebbé teszi: a bejövő megkeresésektől és időpontfoglalástól az érdeklődőkezelésen át a kimenő kampányokig."
         />
+      </div>
 
-        {/* desktop: 4-card carousel */}
+      {/* horizontally scrollable card carousel */}
+      <div className={`relative ${INNER_CARDS} mt-8 lg:mt-10`}>
         <div
-          key={first}
-          className="mt-12 lg:mt-16 hidden lg:grid grid-cols-4 gap-5"
-          style={{ animation: `${dir === 1 ? "feat-slide-right" : "feat-slide-left"} 0.45s cubic-bezier(0.22,1,0.36,1) both` }}
+          key={filter}
+          ref={scrollRef}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerLeave={endDrag}
+          onScroll={() => { setToastVisible(false); updateArrows(); }}
+          className={`flex gap-5 lg:gap-6 overflow-x-auto snap-x snap-proximity pb-2 select-none cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden ${
+            visibleCount < PER_VIEW ? "lg:justify-center" : ""
+          }`}
+          style={{ scrollbarWidth: "none", animation: "feat-slide-right 0.45s cubic-bezier(0.22,1,0.36,1) both" }}
         >
-          {DESK_FEATURES.slice(first, first + PER_VIEW).map(({ icon: Icon, title, desc }) => (
-            <FeatureCard key={title} icon={Icon} title={title} desc={desc} />
-          ))}
-        </div>
-
-        {/* mobile: stacked list */}
-        <div className="mt-12 flex flex-col gap-5 lg:hidden">
-          {DESK_FEATURES.map(({ icon: Icon, title, desc }) => (
-            <div
-              key={title}
-              className="rounded-[20px] bg-white p-6 flex flex-col items-center text-center gap-4"
-              style={{ border: "1px solid rgba(24,109,152,0.3)" }}
-            >
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
-                style={{ backgroundColor: C.lightBg }}
-              >
-                <Icon className="w-6 h-6" strokeWidth={1.5} style={{ color: C.dark }} />
-              </div>
-              <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
-                {title}
-              </h3>
-              <p className={`${FONT_MAIN} font-light text-[13px] leading-relaxed`} style={{ color: C.ink }}>
-                {desc}
-              </p>
-            </div>
+          {visible.map(({ cat, icon: Icon, title, desc }) => (
+            <FeatureCard key={title} cat={cat} icon={Icon} title={title} desc={desc} />
           ))}
         </div>
 
         {/* chevron paging */}
         <div className="mt-10 hidden lg:flex items-center justify-center gap-4">
           <button
-            onClick={() => go(-1)}
+            onClick={() => page(-1)}
             disabled={first === 0}
             aria-label="Előző funkciók"
             className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#1CEEE0]/15 disabled:opacity-30 disabled:pointer-events-none"
@@ -771,14 +893,28 @@ function FeaturesSection() {
             <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
           </button>
           <button
-            onClick={() => go(1)}
-            disabled={first === maxFirst}
+            onClick={() => page(1)}
+            disabled={first >= maxFirst}
             aria-label="Következő funkciók"
             className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#1CEEE0]/15 disabled:opacity-30 disabled:pointer-events-none"
             style={{ border: "1px solid rgba(24,109,152,0.5)" }}
           >
             <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
           </button>
+        </div>
+
+        {/* swipe hint toast — appears once, auto-dismisses */}
+        <div
+          aria-hidden
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none transition-all duration-500 ${
+            toastVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
+          }`}
+        >
+          <div className="w-16 h-16 rounded-full bg-white border border-black/5 shadow-[0_12px_32px_rgba(0,0,0,0.18)] flex items-center justify-center">
+            <div className="swipe-hint-anim" style={{ animation: "swipe-hint-wiggle 1.6s ease-in-out infinite" }}>
+              <MoveHorizontal className="w-7 h-7" strokeWidth={2} style={{ color: C.magenta }} />
+            </div>
+          </div>
         </div>
       </div>
     </section>
