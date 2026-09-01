@@ -593,111 +593,70 @@ function ProblemsSection() {
 function SolutionSection() {
   return (
     <section id="megoldas" className="w-full bg-white py-20 lg:py-24 relative overflow-hidden">
+      <div className={INNER_CARDS}>
+        <div
+          className="relative overflow-hidden rounded-[32px]"
+          style={{ background: "linear-gradient(120deg, #082432 0%, #0A2C40 60%, #0F4E71 130%)" }}
+        >
+          {/* sparse dot pattern */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255,255,255,0.07) 1.4px, transparent 1.4px)",
+              backgroundSize: "20px 20px",
+            }}
+          />
 
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-16 relative z-10">
-
-        {/* Top block: text on left, teaser on right */}
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-
-          {/* Left Column: Eyebrow, Logo, Paragraphs */}
-          <div className="flex-1 flex flex-col items-start gap-6 w-full lg:max-w-[620px]">
-
-            {/* Eyebrow badge */}
-            <div className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={{ backgroundColor: "rgba(229,126,184,0.22)", color: C.magentaDeep }}>
-              A mi megoldásunk
-            </div>
-
-            {/* Logo */}
-            <img src={imgLogo} alt="eaisyDesk" className="w-full max-w-[220px] h-auto" />
-
-            {/* Paragraphs */}
-            <div className="flex flex-col gap-5 text-black/55">
-              <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed">
-                Az eaisyDesk egy újgenerációs, AI-támogatott ügyfélkommunikációs platform, amely minden csatornán — telefonon, e-mailben, Messengeren, Instagramon és WhatsAppon — figyeli és kezeli az ügyfeleidet, a nap 24 órájában.
-              </p>
-              <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed">
-                Omnichannel ügyfélszolgálatot, sales-, marketing- és CRM funkciókat, valamint átlátható ügyféladatokat és analitikát ad egy kézbe — cégre szabott tudásbázissal, természetes, emberi hangon, több nyelven is.
-              </p>
-
-              {/* Third paragraph with left border */}
-              <div
-                className="pl-5 py-0.5 border-l-4"
-                style={{ borderLeftColor: C.main }}
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 px-8 py-12 lg:px-16 lg:py-20">
+            {/* left: eyebrow, brand, body, taglines */}
+            <div className="flex flex-col items-start gap-6">
+              <SectionEyebrow color={C.magentaLight}>A mi megoldásunk</SectionEyebrow>
+              <p
+                className={`${FONT_CARD} font-extrabold text-5xl lg:text-[64px] leading-none`}
+                style={{ color: C.cyan }}
               >
-                <p className="font-['Inter',sans-serif] font-semibold text-base leading-relaxed" style={{ color: C.main }}>
-                  Nem chatbot. Nem csak AI ügyfélszolgálat. Valódi, intelligens munkatárs — aki 24/7 dolgozik.
+                eaisyDesk
+              </p>
+              <p className={`${FONT_MAIN} font-light text-lg leading-relaxed text-white/90`}>
+                Az eaisyDesk egy AI-támogatott, omnichannel ügyfélkommunikációs rendszer, amelyben
+                minden csatornán egy AI asszisztens válaszol az ügyfeleknek. Időpontot foglal,
+                értesítést küld, válaszol hívásokra, social media üzenetekre — és ha kell, azonnal
+                eszkalál élő kollégának. Sőt, kimenő kommunikációt és kampányokat is indít.
+              </p>
+              <div className="flex flex-col gap-1 mt-2">
+                <p className={`${FONT_CARD} text-base leading-snug`} style={{ color: C.accent }}>
+                  Nem chatbot. Nem csak AI ügyfélszolgálat.
+                </p>
+                <p className={`${FONT_CARD} font-semibold text-base leading-snug`} style={{ color: C.cyan }}>
+                  Valódi, intelligens munkatárs — aki 24/7 dolgozik.
                 </p>
               </div>
             </div>
 
+            {/* right: bordered call card with CTA (útvonal később) */}
+            <div
+              className="rounded-[24px] flex flex-col items-center justify-center text-center gap-7 px-8 py-12"
+              style={{ border: "1px solid rgba(28,238,224,0.4)" }}
+            >
+              <span
+                className="w-20 h-20 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: C.cyan }}
+              >
+                <Mic className="w-8 h-8" strokeWidth={1.5} style={{ color: C.dark }} />
+              </span>
+              <p className={`${FONT_CARD} font-light text-lg leading-relaxed text-white/90 max-w-[400px]`}>
+                Beszélj élőben az eaisyDesk telefonos AI-asszisztensével. A demó kedvéért most egy
+                fogászati rendelő recepcióját bíztuk rá.
+              </p>
+              <button
+                className={`${FONT_CARD} mt-2 inline-flex items-center justify-center px-8 h-[46px] rounded-full font-semibold text-sm tracking-widest uppercase text-white cursor-pointer`}
+                style={{ backgroundColor: C.magenta }}
+              >
+                Próbáld ki
+              </button>
+            </div>
           </div>
-
-          {/* Right column: autoplay teaser (vertical loop, white fades) */}
-          <div className="flex-1 w-full flex justify-center lg:justify-end">
-            <TeaserCarousel />
-          </div>
-
         </div>
-
-        {/* Bottom block: 3 colored cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-
-          {/* Card 1 */}
-          <div
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#186D98" }}
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#E57EB8] group-hover:scale-110 transition-transform duration-300">
-              <Headphones className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                360 fokos, omnichannel ügyfélszolgálat
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                Kezeld az összes beérkező megkeresést — telefont, e-mailt és social üzeneteket — egyetlen, egységes intelligens felületen.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 2 */}
-          <div
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#0F4E71" }}
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#E57EB8] group-hover:scale-110 transition-transform duration-300">
-              <Megaphone className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                Sales-, marketing- és CRM funkciók
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                Integrált ügyfélkezelés, amely automatizálja az értékesítési folyamatokat és a marketing kampányokat.
-              </p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#082432" }}
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#E57EB8] group-hover:scale-110 transition-transform duration-300">
-              <BarChart3 className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                Átlátható ügyféladatok és analitika
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                Valós idejű adatok és mélyreható elemzések a hatékonyabb üzleti döntéshozatalért.
-              </p>
-            </div>
-          </div>
-
-        </div>
-
       </div>
     </section>
   );
