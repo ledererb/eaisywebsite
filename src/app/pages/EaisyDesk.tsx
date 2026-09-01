@@ -539,7 +539,7 @@ function ProblemsSection() {
       <div
         ref={spotRef}
         className="absolute left-2/3 top-1/2 w-[520px] h-[520px] rounded-full pointer-events-none transition-transform duration-700 ease-out"
-        style={{ background: "radial-gradient(circle, rgba(28,238,224,0.44) 36%, #90FFF8 75%, rgba(255,255,255,0.41) 100%)", transform: "translate(-50%, -50%)" }}
+        style={{ background: "radial-gradient(circle, rgba(144,255,248,0.35) 0%, rgba(28,238,224,0.18) 45%, transparent 72%)", transform: "translate(-50%, -50%)" }}
       />
 
       <div className={`relative ${INNER_CARDS} flex flex-col`}>
