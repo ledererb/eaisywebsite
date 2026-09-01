@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
-import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram } from "lucide-react";
+import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram, Globe, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 import imgLogo from "@/imports/EaisyDeskNyito/eaisydesk.png";
+import imgFeaturesBg from "@/imports/EaisyDeskNyito/bg-funkciok.webp";
 import imgBigCard from "@/imports/EaisyDesk/big-card.webp";
 import imgSmallCard from "@/imports/EaisyDesk/small-card.png";
 import iconPhone from "@/imports/EaisyDesk/icon-phone.png";
@@ -12,7 +13,6 @@ import iconInstagram from "@/imports/EaisyDesk/icon-instagram.png";
 const CHANNEL_ICONS = [iconPhone, iconMail, iconMessenger, iconWhatsapp, iconInstagram];
 import { SectionEyebrow, SectionHeader } from "@/app/components/Section";
 import { useInView } from "@/app/components/useInView";
-import imgFeaturesBg from "@/imports/EaisyDeskNyito/bg-funkciok.webp";
 import { openDemoModal } from "@/app/Root";
 import { Seo, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
 
@@ -46,15 +46,14 @@ const PROBLEMS = [
   { num: "05", title: "Rutinfeladatokra megy el az idő", desc: "A sablonos kérdések megválaszolása, az időpont-egyeztetés és az adminisztráció elszívja a csapat idejét a valódi ügyek elől." },
   { num: "06", title: "Nem lehet mérni a teljesítményt", desc: "Nincs rálátás arra, hány megkeresés érkezik, milyen csatornákon, és mennyi idő alatt kapnak választ — kontroll nélkül nincs fejlődés sem." },
 ];
-const FEATURES = [
-  { num: 1, title: "360 fokos interakciókezelés", desc: "Az eaisyDesk 5 csatornán fogadja és válaszolja meg az ügyfélmegkereséseket — telefonon, e-mailben, Messengeren, Instagramon és WhatsAppon — a nap 24 órájában. Kimenő kommunikáció e-mailben, telefonon és SMS-ben is indítható." },
-  { num: 2, title: "Minden ügy egy kezelőfelületen", desc: "A bejövő és kimenő interakciók egy átlátható felületen követhetők: mindig látszik, ki keresett, milyen ügyben, kapott-e választ, és van-e további teendő." },
-  { num: 3, title: "Természetes, emberi hang — több nyelven", desc: "A voice agent hangja nem gépies, hanem teljesen természetes — bármilyen nyelven elérhető. A hang és a stílus az adott üzlet profiljához és márkájához igazítható." },
-  { num: 4, title: "Cégre szabott tudásbázis", desc: "Nem általános, sablonos válaszokból dolgozik, hanem a cég működésére felkészített tudásanyagból — amit az első beállítás lépéseként töltünk fel, és bármikor rugalmasan módosítható." },
-  { num: 5, title: "Automatikus értesítések és kampányvarázsló", desc: "Automatikus értesítések biztosítják, hogy ne maradjon el fontos tájékoztatás. A kampányvarázslóval célzott üzenetek indíthatók — ajánlatkövetésre, kedvezményekre vagy ügyfél-reaktiválásra (e-mail, telefon, SMS)." },
-  { num: 6, title: "Érdeklődéskezelés és címkézés", desc: "Automatikusan felismeri és címkézi az érdeklődőket és ügyfeleket (pl. inaktív, potenciális vásárló), így mindig látszik, kivel érdemes foglalkozni, és hol van üzleti lehetőség." },
-  { num: 7, title: "AI gyorsaság, emberi kontrollal", desc: "Az eaisyDesk tudja, mikor válaszolhat önállóan, mikor kell jóváhagyást kérni, és mikor kell élő kollégának átadni az ügyet — a teljes előzménnyel együtt." },
-  { num: 8, title: "Analitika és riportok", desc: "Láthatóvá teszi, milyen csatornákon érkeznek a megkeresések, hol akad el a folyamat, milyen ügytípusok ismétlődnek, és min érdemes javítani a hatékonyabb működés érdekében." },
+const DESK_FEATURES: { icon: typeof MessagesSquare; title: string; desc: string }[] = [
+  { icon: MessagesSquare, title: "360 fokos interakciókezelés", desc: "Az eaisyDesk 5 csatornán fogad és válaszol meg ügyfélmegkereséseket — telefonon, e-mailben, Messengeren, Instagramon és WhatsAppon - a nap 24 órájában. Emellett 3 csatornán kimenő kommunikáció is indítható: e-mailben, telefonon és SMS-ben." },
+  { icon: Monitor, title: "Átlátható kezelőfelület", desc: "A bejövő és kimenő interakciók egy átlátható felületen követhetők, így mindig látszik, ki keresett, milyen ügyben, kapott-e választ, és van-e további teendő." },
+  { icon: Headset, title: "Természetes hang", desc: "Az eaisyDesk telefonos kommunikációja nem gépies, hanem természetes és könnyen érthető, mindig udvarias és türelmes. A kommunikáció stílusa (pl. professzionális, barátságos) — az adott üzlet profiljához és márkájához igazítható." },
+  { icon: Globe, title: "Többnyelvű kommunikáció", desc: "A kommunikáció nyelvileg is illeszthető az adott ügyfélkörhöz: ez különösen fontos azoknál a szolgáltatóknál, ahol a gyors és magabiztos idegen nyelvű kommunikáció közvetlenül hat az ügyfélszerzésre." },
+  { icon: Tags, title: "Érdeklődéskezelés és címkézés", desc: "Automatikusan felismeri és címkézi az érdeklődőket és ügyfeleket (pl. inaktív, potenciális vásárló), így mindig látszik, kivel érdemes foglalkozni, és hol van üzleti lehetőség." },
+  { icon: Zap, title: "AI gyorsaság, emberi kontrollal", desc: "Az eaisyDesk tudja, mikor válaszolhat önállóan, mikor kell jóváhagyást kérni, és mikor kell élő kollégának átadni az ügyet — a teljes előzménnyel együtt." },
+  { icon: BarChart3, title: "Analitika és riportok", desc: "Láthatóvá teszi, milyen csatornákon érkeznek a megkeresések, hol akad el a folyamat, milyen ügytípusok ismétlődnek, és min érdemes javítani a hatékonyabb működés érdekében." },
 ];
 
 const AUDIENCE_BENEFITS = [
@@ -663,192 +662,124 @@ function SolutionSection() {
 }
 
 function FeaturesSection() {
-  const N = FEATURES.length;
-  // Cards rendered 3x so the row loops seamlessly (8, 7... appear left of 1)
-  const LOOP = [...FEATURES, ...FEATURES, ...FEATURES];
-  const [pos, setPos] = useState(N);
-  const [instant, setInstant] = useState(false);
-  const [paused, setPaused] = useState(false);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const dragStartX = useRef<number | null>(null);
-  const swiped = useRef(false);
-  const [metrics, setMetrics] = useState({ step: 0, card: 0, view: 0 });
+  const PER_VIEW = 4;
+  const N = DESK_FEATURES.length;
+  const [first, setFirst] = useState(0);
+  const [dir, setDir] = useState<1 | -1>(1);
+  const maxFirst = N - PER_VIEW;
+  function go(delta: 1 | -1) {
+    setDir(delta);
+    setFirst((v) => Math.max(0, Math.min(maxFirst, v + delta)));
+  }
 
-  const active = ((pos % N) + N) % N;
-
-  // Measure card width + gap + viewport width so the active card centers precisely
-  useEffect(() => {
-    const measure = () => {
-      const track = trackRef.current;
-      if (!track || track.children.length < 2) return;
-      const first = track.children[0] as HTMLElement;
-      const second = track.children[1] as HTMLElement;
-      setMetrics({
-        step: second.offsetLeft - first.offsetLeft,
-        card: first.offsetWidth,
-        view: track.parentElement?.offsetWidth ?? window.innerWidth,
-      });
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
-
-  // Autoplay - pauses on hover / gesture
-  useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => setPos((p) => p + 1), 5000);
-    return () => clearInterval(id);
-  }, [paused]);
-
-  const go = (dir: number) => setPos((p) => p + dir);
-
-  // Jump to feature i using the copy nearest to the current position
-  const goTo = (i: number) => setPos((p) => Math.round((p - i) / N) * N + i);
-
-  // After animating into an outer copy, snap back to the middle copy invisibly
-  const handleTransitionEnd = (e: TransitionEvent) => {
-    if (e.target !== trackRef.current || e.propertyName !== "transform") return;
-    if (pos < N || pos >= 2 * N) {
-      setInstant(true);
-      setPos(N + active);
-    }
-  };
-
-  // Re-enable the transition right after the invisible snap
-  useEffect(() => {
-    if (!instant) return;
-    const id = requestAnimationFrame(() => requestAnimationFrame(() => setInstant(false)));
-    return () => cancelAnimationFrame(id);
-  }, [instant]);
-
-  // Gesture swipe (touch / pen / mouse) - horizontal; vertical scroll stays free
-  const onPointerDown = (e: PointerEvent) => {
-    dragStartX.current = e.clientX;
-    swiped.current = false;
-    setPaused(true);
-  };
-  const endDrag = (x: number | null) => {
-    if (dragStartX.current == null) return;
-    if (x != null) {
-      const dx = x - dragStartX.current;
-      if (Math.abs(dx) > 24) {
-        swiped.current = true;
-        // longer swipes skip multiple cards — no big mandatory flick needed
-        const steps = Math.max(1, Math.round(Math.abs(dx) / (metrics.step || 240)));
-        go(dx < 0 ? steps : -steps);
-      }
-    }
-    dragStartX.current = null;
-    setPaused(false);
-  };
-
-  return (
-    <section
-      id="funkciok"
-      className="w-full py-20 lg:py-24 overflow-hidden relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {/* Background photo + dark blue overlay */}
-      <img
-        src={imgFeaturesBg}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
+  function FeatureCard({ icon: Icon, title, desc }: { icon: typeof MessagesSquare; title: string; desc: string }) {
+    return (
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(160deg, rgba(8,36,50,0.94) 0%, rgba(11,60,86,0.88) 55%, rgba(24,109,152,0.90) 135%)" }}
-      />
-
-      <div className="relative z-10">
-      {/* Header */}
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col items-start gap-5 mb-12">
-        <div className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={{ backgroundColor: "rgba(196,50,132,0.25)", color: C.magentaLight }}>
-          Egy szoftver. Számtalan lehetőség.
-        </div>
-        <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-white tracking-tight leading-tight max-w-[720px]">
-          8 funkció, amitől lényegesen könnyebb lesz kézben tartani az ügyfélkommunikációt
-        </h2>
-      </div>
-
-      {/* Spotlight carousel: active card centered, neighbours dimmed and peeking */}
-      <div
-        className="relative"
-        style={{
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 7%, black 93%, transparent)",
-          maskImage: "linear-gradient(to right, transparent, black 7%, black 93%, transparent)",
-          touchAction: "pan-y",
-        }}
-        onPointerDown={onPointerDown}
-        onPointerUp={(e) => endDrag(e.clientX)}
-        onPointerCancel={() => endDrag(null)}
-        onPointerLeave={() => endDrag(null)}
+        className="flex-1 rounded-[20px] p-8 flex flex-col items-center text-center gap-6"
+        style={{ border: "1px solid rgba(24,109,152,0.3)", backgroundColor: "rgba(255,255,255,0.75)" }}
       >
         <div
-          ref={trackRef}
-          onTransitionEnd={handleTransitionEnd}
-          className={`flex gap-3 w-max py-6 ${instant ? "" : "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"}`}
-          style={{ transform: `translateX(${metrics.view / 2 - (pos * metrics.step + metrics.card / 2)}px)` }}
+          className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+          style={{ backgroundColor: C.lightBg }}
         >
-          {LOOP.map((f, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => {
-                if (swiped.current) {
-                  swiped.current = false;
-                  return;
-                }
-                goTo(f.num - 1);
-              }}
-              aria-current={idx === pos}
-              className={`w-[250px] sm:w-[280px] lg:w-[320px] aspect-[4/5] shrink-0 text-left rounded-3xl bg-white p-5 lg:p-6 flex flex-col gap-5 border-[3px] transition-all duration-500 ${
-                idx === pos
-                  ? "opacity-100 scale-105 shadow-2xl relative z-10 border-[#1CEEE0]"
-                  : "opacity-40 scale-95 shadow-md hover:opacity-70 cursor-pointer relative z-0 border-transparent"
-              }`}
-            >
-              <span
-                className="font-['Inter',sans-serif] font-extrabold text-6xl leading-none select-none"
-                style={{ color: "rgba(196,50,132,0.35)" }}
-              >
-                {f.num}
-              </span>
-              <p className="font-['Inter',sans-serif] font-bold text-base lg:text-lg leading-snug text-black">
-                {f.title}
-              </p>
-              <p className="font-['Inter',sans-serif] font-normal text-xs lg:text-sm leading-relaxed" style={{ color: C.bodyText }}>
-                {f.desc}
-              </p>
-            </button>
-          ))}
+          <Icon className="w-6 h-6" strokeWidth={1.5} style={{ color: C.dark }} />
         </div>
+        <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+          {title}
+        </h3>
+        <p className={`${FONT_MAIN} font-light text-[13px] leading-[1.7]`} style={{ color: C.ink }}>
+          {desc}
+        </p>
       </div>
+    );
+  }
 
-      {/* Numbered navigation 1-8 (hidden on mobile — swipe gestures take over) */}
-      <div className="mt-8 px-6 hidden sm:block">
-        <div className="flex flex-wrap justify-center gap-2.5 max-w-[520px] mx-auto">
-          {FEATURES.map((f, i) => (
-            <button
-              key={f.num}
-              type="button"
-              onClick={() => goTo(i)}
-              aria-label={`Funkció ${f.num}: ${f.title}`}
-              className={`w-9 h-9 lg:w-10 lg:h-10 rounded-full font-['Inter',sans-serif] text-sm transition-all duration-300 ${
-                i === active ? "text-white font-semibold scale-125 mx-3" : "text-white/80 font-light ring-1 ring-white/40 hover:bg-white/25"
-              }`}
-              style={{
-                backgroundColor: i === active ? C.magenta : "rgba(255,255,255,0.15)",
-              }}
-            >
-              {f.num}
-            </button>
+  return (
+    <section id="funkciok" className="relative w-full overflow-hidden bg-white py-20 lg:py-24">
+      <style>{`
+        @keyframes feat-slide-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes feat-slide-left { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: translateX(0); } }
+      `}</style>
+
+      {/* static teal + rose spots */}
+      <div
+        className="absolute left-[24%] top-[30%] w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(196,50,132,0.08), transparent 70%)" }}
+      />
+      <div
+        className="absolute left-[78%] top-[70%] w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(28,238,224,0.10), transparent 70%)" }}
+      />
+
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Funkciók - Teljes áttekintés"
+          eyebrowColor={C.main}
+          title={
+            <>
+              Nincs több elveszett megkeresés. Minden csatorna, minden ügyfél -{" "}
+              <span style={{ color: C.magenta }}>egy rendszerben.</span>
+            </>
+          }
+          subtitle="Minden, ami az ügyfélkommunikációt gördülékenyebbé teszi: a bejövő megkeresésektől és időpontfoglalástól az érdeklődőkezelésen át a kimenő kampányokig."
+        />
+
+        {/* desktop: 4-card carousel */}
+        <div
+          key={first}
+          className="mt-12 lg:mt-16 hidden lg:grid grid-cols-4 gap-5"
+          style={{ animation: `${dir === 1 ? "feat-slide-right" : "feat-slide-left"} 0.45s cubic-bezier(0.22,1,0.36,1) both` }}
+        >
+          {DESK_FEATURES.slice(first, first + PER_VIEW).map(({ icon: Icon, title, desc }) => (
+            <FeatureCard key={title} icon={Icon} title={title} desc={desc} />
           ))}
         </div>
-      </div>
+
+        {/* mobile: stacked list */}
+        <div className="mt-12 flex flex-col gap-5 lg:hidden">
+          {DESK_FEATURES.map(({ icon: Icon, title, desc }) => (
+            <div
+              key={title}
+              className="rounded-[20px] bg-white p-6 flex flex-col items-center text-center gap-4"
+              style={{ border: "1px solid rgba(24,109,152,0.3)" }}
+            >
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+                style={{ backgroundColor: C.lightBg }}
+              >
+                <Icon className="w-6 h-6" strokeWidth={1.5} style={{ color: C.dark }} />
+              </div>
+              <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                {title}
+              </h3>
+              <p className={`${FONT_MAIN} font-light text-[13px] leading-relaxed`} style={{ color: C.ink }}>
+                {desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* chevron paging */}
+        <div className="mt-10 hidden lg:flex items-center justify-center gap-4">
+          <button
+            onClick={() => go(-1)}
+            disabled={first === 0}
+            aria-label="Előző funkciók"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#1CEEE0]/15 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(24,109,152,0.5)" }}
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
+          <button
+            onClick={() => go(1)}
+            disabled={first === maxFirst}
+            aria-label="Következő funkciók"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#1CEEE0]/15 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(24,109,152,0.5)" }}
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
+        </div>
       </div>
     </section>
   );
