@@ -550,7 +550,7 @@ function ProblemsSection() {
   return (
     <section
       id="problemak"
-      className="relative w-full overflow-hidden bg-white py-20 lg:py-24"
+      className="relative w-full overflow-hidden bg-white py-16 lg:py-20"
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
@@ -615,7 +615,7 @@ function ProblemsSection() {
 
 function SolutionSection() {
   return (
-    <section id="megoldas" className="w-full bg-white py-20 lg:py-24 relative overflow-hidden">
+    <section id="megoldas" className="w-full bg-white py-16 lg:py-20 relative overflow-hidden">
       <div className={INNER_CARDS}>
         <div
           className="relative overflow-hidden rounded-[32px]"
@@ -808,7 +808,7 @@ function FeaturesSection() {
     const category = DESK_FEATURE_CATS.find((c) => c.id === cat)!;
     return (
       <div
-        className="snap-start shrink-0 grow-0 basis-[85%] sm:basis-[calc(50%_-_12px)] lg:basis-[calc((100%_-_72px)/_4)] lg:min-h-[426px] relative overflow-hidden rounded-[20px] p-8 lg:p-10 flex flex-col items-center text-center gap-6"
+        className="snap-start shrink-0 grow-0 basis-[85%] sm:basis-[calc(50%_-_12px)] lg:basis-[calc((100%_-_72px)/_4)] lg:min-h-[501px] relative overflow-hidden rounded-[20px] p-8 lg:p-10 flex flex-col items-center text-center gap-6"
         style={{ border: "1px solid rgba(24,109,152,0.3)", backgroundColor: "rgba(255,255,255,0.75)" }}
       >
         {/* category pill */}
@@ -840,7 +840,7 @@ function FeaturesSection() {
   }
 
   return (
-    <section id="funkciok" ref={sectionRef} className="relative w-full overflow-hidden bg-white py-20 lg:py-24">
+    <section id="funkciok" ref={sectionRef} className="relative w-full overflow-hidden bg-white py-16 lg:py-20">
       <style>{`
         @keyframes feat-slide-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes feat-slide-left { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: translateX(0); } }
@@ -1044,7 +1044,7 @@ function BenefitsSection() {
   return (
     <section
       id="elonyok"
-      className="relative w-full overflow-hidden bg-white py-20 lg:py-24"
+      className="relative w-full overflow-hidden bg-white py-16 lg:py-20"
     >
       <style>{`@keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
       {/* soft teal glow top-right */}
@@ -1120,7 +1120,7 @@ function BenefitsSection() {
 
 function WhoForSection() {
   return (
-    <section id="kinek-valo" className="w-full py-20 lg:py-24" style={{ backgroundColor: "#F3F3F4" }}>
+    <section id="kinek-valo" className="w-full py-16 lg:py-20" style={{ backgroundColor: "#F3F3F4" }}>
       <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-12">
 
         {/* header — eyebrow pill + headline with logo */}
@@ -1170,7 +1170,7 @@ function FaqSection() {
   // accordion — only one question open at a time
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
-    <section id="gyik" className="w-full bg-white py-20 lg:py-24">
+    <section id="gyik" className="w-full bg-white py-16 lg:py-20">
       <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0">
         {/* light cyan rounded rectangle backdrop */}
         <div
