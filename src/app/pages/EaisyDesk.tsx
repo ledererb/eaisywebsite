@@ -1066,7 +1066,7 @@ function BenefitsSection() {
           subtitle="Ugyanaz a platform — más eredmény minden szerepkörben. Nézd meg, mit kap tőle a csapat, az ügyfeleid és a vezetés."
         />
 
-        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch gap-10 lg:gap-20">
+        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch gap-10 lg:gap-10">
           {/* left: role chips */}
           <div className="flex flex-col items-center justify-center gap-3 lg:w-[34%]">
             {BENEFIT_ROLES.map((r, i) => {
@@ -1075,7 +1075,7 @@ function BenefitsSection() {
                 <button
                   key={r.id}
                   onClick={() => setActive(i)}
-                  className={`${FONT_MAIN} w-full max-w-[280px] h-[52px] rounded-full uppercase tracking-wide text-sm transition-all duration-300 cursor-pointer ${
+                  className={`${FONT_MAIN} w-full max-w-[260px] h-[75px] rounded-full uppercase tracking-wide text-sm transition-all duration-300 cursor-pointer ${
                     isActive ? "font-bold" : "font-light"
                   }`}
                   style={
@@ -1096,7 +1096,7 @@ function BenefitsSection() {
               <div key={title} className="flex items-stretch gap-4">
                 <span className="w-[2px] rounded-full shrink-0" style={{ backgroundColor: role.numColor }} />
                 <span
-                  className={`${FONT_MAIN} font-semibold text-3xl leading-none shrink-0 mt-1`}
+                  className={`${FONT_MAIN} font-semibold text-3xl leading-none shrink-0 self-center`}
                   style={{ color: role.numColor }}
                 >
                   {String(i + 1).padStart(2, "0")}
