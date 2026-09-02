@@ -964,7 +964,10 @@ function DemoCtaStrip() {
       <div className={INNER_CARDS}>
         <div
           className="relative overflow-hidden rounded-[30px]"
-          style={{ background: "linear-gradient(120deg, #082432 0%, #0A2C40 60%, #0F4E71 130%)" }}
+          style={{
+            background:
+              "radial-gradient(circle at 92% 40%, rgba(229,126,184,0.25) 0%, rgba(196,50,132,0.12) 30%, transparent 55%), linear-gradient(100deg, #082432 0%, #0A2C40 60%, #0F4E71 100%)",
+          }}
         >
           {/* dense small dot pattern */}
           <div
