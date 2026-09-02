@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
-import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram, Globe, Zap, ChevronLeft, ChevronRight, BookOpen, UserCheck, History, MoveHorizontal } from "lucide-react";
+import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram, Globe, Zap, ChevronLeft, ChevronRight, BookOpen, UserCheck, History, MoveHorizontal, ListChecks } from "lucide-react";
 import imgLogo from "@/imports/EaisyDeskNyito/eaisydesk.png";
 import imgFeaturesBg from "@/imports/EaisyDeskNyito/bg-funkciok.webp";
 import imgBigCard from "@/imports/EaisyDesk/big-card.webp";
@@ -49,26 +49,27 @@ const PROBLEMS = [
 type DeskFeatureCat = "komm" | "aikontroll" | "ugyfel" | "analitika";
 
 const DESK_FEATURE_CATS: { id: DeskFeatureCat; label: string; icon: typeof MessagesSquare; color: string; soft: string; deep: string }[] = [
-  { id: "komm", label: "Bejövő- és kimenő kommunikáció", icon: MessagesSquare, color: "#1CEEE0", soft: "rgba(28,238,224,0.15)", deep: "#0F4E71" },
-  { id: "aikontroll", label: "AI & kontroll", icon: Zap, color: "#186D98", soft: "rgba(24,109,152,0.14)", deep: "#082432" },
-  { id: "ugyfel", label: "Ügyfélkezelés", icon: Users, color: "#C43284", soft: "rgba(196,50,132,0.14)", deep: "#A2005B" },
+  { id: "komm", label: "Bejövő- és kimenő kommunikáció", icon: MessagesSquare, color: "#186D98", soft: "rgba(24,109,152,0.12)", deep: "#186D98" },
+  { id: "aikontroll", label: "AI & kontroll", icon: Zap, color: "#0F4E71", soft: "rgba(15,78,113,0.12)", deep: "#0F4E71" },
+  { id: "ugyfel", label: "Ügyfélkezelés", icon: Users, color: "#C43284", soft: "rgba(196,50,132,0.12)", deep: "#A2005B" },
   { id: "analitika", label: "Analitika", icon: BarChart3, color: "#082432", soft: "rgba(8,36,50,0.10)", deep: "#082432" },
 ];
-
 const DESK_FEATURES: { cat: DeskFeatureCat; icon: typeof MessagesSquare; title: string; desc: string }[] = [
   { cat: "komm", icon: MessagesSquare, title: "360 fokos interakciókezelés", desc: "Az eaisyDesk 5 csatornán fogad és válaszol meg ügyfélmegkereséseket — telefonon, e-mailben, Messengeren, Instagramon és WhatsAppon - a nap 24 órájában. Emellett 3 csatornán kimenő kommunikáció is indítható: e-mailben, telefonon és SMS-ben." },
   { cat: "komm", icon: Globe, title: "Többnyelvű kommunikáció", desc: "A kommunikáció nyelvileg is illeszthető az adott ügyfélkörhöz: ez különösen fontos azoknál a szolgáltatóknál, ahol a gyors és magabiztos idegen nyelvű kommunikáció közvetlenül hat az ügyfélszerzésre." },
   { cat: "komm", icon: Headset, title: "Természetes hang", desc: "Az eaisyDesk telefonos kommunikációja nem gépies, hanem természetes és könnyen érthető, mindig udvarias és türelmes. A kommunikáció stílusa (pl. professzionális, barátságos) — az adott üzlet profiljához és márkájához igazítható." },
-  { cat: "komm", icon: CalendarCheck, title: "Automatikus értesítések", desc: "Időpont-visszaigazolások, emlékeztetők, módosítások, lemondások visszajelzése. Az utókövető üzenetek - a napi működés fontos, ismétlődő kommunikációs helyzeteit az eaisyDesk önállóan kezeli, így segít abban, hogy fontos ügyfélértesítések ne maradjanak el." },
-  { cat: "komm", icon: Megaphone, title: "Kampányvarázsló funkció", desc: "Az eaisyDesk kampányvarázslójával néhány lépésben indíthatsz célzott kampányokat: válaszd ki a célzott kampányokat. Válaszd ki a megszólítani kívánt ügyfélkört, add meg az üzenet célját, és a rendszer segít megírni, kiküldeni és követni a kommunikációt." },
+  { cat: "komm", icon: CalendarCheck, title: "Automatikus értesítések", desc: "Időpont-visszaigazolások, emlékeztetők, módosítások, lemondások visszajelzése. Az utókövető üzenetek - a napi működés fontos, ismétlődő kommunikációs helyzeteit az eaisyDesk önállóan kezeli, így segít abban, hogy a fontos ügyfélértesítések ne maradjanak el." },
+  { cat: "komm", icon: Megaphone, title: "Kampányvarázsló funkció", desc: "Az eaisyDesk kampányvarázslójával néhány lépésben indíthatsz célzott kimenő ügyfélkommunikációs kampányokat. Válaszd ki a megszólítani kívánt ügyfélkört, add meg az üzenet célját, és a rendszer segít megírni, kiküldeni és követni a kommunikációt." },
   { cat: "aikontroll", icon: BookOpen, title: "Cégre szabott tudásbázis", desc: "Az eaisyDesk nem általános, sablonos válaszokból dolgozik, hanem teljesen az adott cég működésére felkészített tudásbázisból. A felhasználói setup első lépéseként az eaisyDesk kezelőfelületén feltöltjük a szolgáltatóra jellemző tudást és működési logikát." },
-  { cat: "aikontroll", icon: UserCheck, title: "Human-in-the-loop", desc: "Az eaisyDesk az írásos válaszokat igény szerint ember jóváhagyáshoz köti: a küldés előtt az ügyfél szerinte, a gyorsaság mellett a kontroll is megmarad: a kiküldés előtt minden üzenet ellenőrizhető." },
+  { cat: "aikontroll", icon: UserCheck, title: "Human-in-the-loop", desc: "Az eaisyDesk az írásos válaszokat igény szerint emberi jóváhagyáshoz köti. Így ha az ügyfél szeretné, a gyorsaság mellett a kontroll is megmarad: a kiküldés előtt minden üzenet ellenőrizhető." },
   { cat: "aikontroll", icon: History, title: "Átadás előzményekkel", desc: "Az eaisyDesk tudja, mikor válaszolhat önállóan, mikor kell jóváhagyást kérni, és mikor kell élő kollégának átadni az ügyet — az előzményekkel együtt. Az AI-eszközök nem helyettesítik fel a kompetenciáit, hanem ismeri a kompetenciahatárait." },
   { cat: "aikontroll", icon: Clock, title: "24/7 működés", desc: "Rá mindig lehet számítani: a megkereséseknek nyitvatartási időn kívül is fogadja, nem jár le a munkakörje és nem megy szabadságra. Ha pedig egy ügy emberi döntést igényel, azt rendszerezve és előkészítve adja tovább." },
-  { cat: "ugyfel", icon: Users, title: "Érdeklődőkezelés", desc: "Automatikusan felismeri és címkézi az érdeklődőket és ügyfeleket, így mindig látszik, kivel érdemes foglalkozni, kit kell utánkövetni, és hol van még üzleti lehetőség." },
-  { cat: "analitika", icon: BarChart3, title: "Analitika és riportok", desc: "Az eaisyDesk nemcsak kezeli a megkereséseket, hanem mérhetővé is teszi őket. Láthatóvá válik, milyen csatornákon mi érkezik, milyen forgalom, hol akad el a folyamat, és mely területeken érdemes finomhangolni a működést." },
+  { cat: "ugyfel", icon: Inbox, title: "Omnichannel ügyfélkommunikáció", desc: "A rendszer egységes ügyfélhistoriába rendezi az interakciókat, ezért akkor is folyatható a kommunikáció, ha az ügyfél másik csatornán tér vissza. Így a csapat mindig ugyanabból a kontextusból dolgozik, az ügyfélnek pedig nem kell újra elmondania, hol tartott az ügy." },
+  { cat: "ugyfel", icon: ListChecks, title: "Intelligens ügykezelés", desc: "Az eaisyDesk a beérkező megkereséseket nem egyszerű üzenetként tárolja, hanem automatikusan ügyekké rendezi. Az ügyhöz státuszt, ügytípust, prioritást és szükséges teendőket rendel, így azonnal látszik, hol tart a folyamat, mi a következő lépés, és mely esetek igényelnek gyors beavatkozást." },
+  { cat: "ugyfel", icon: Tags, title: "Érdeklődőkezelés", desc: "Automatikusan felismeri az értékesítési szempontból fontos megkereséseket, és a megfelelő csatornákon kezeli őket. Így a valódi vásárlási potenciállal rendelkező érdeklődők nem vesznek el a napi kommunikációban, könnyebben szegmentálhatók, célzottabban szólíthatók meg, és az értesítési utankövetés is átláthatóbbá válik." },
+  { cat: "ugyfel", icon: Monitor, title: "Átlátható kezelőfelület", desc: "Nincs több széttartó kommunikáció és folyamatos váltogatás az e-mail, telefon, Messenger, Instagram vagy WhatsApp között. Az eaisyDesk egy közös felületre rendezi a bejövő és kimenő interakciókat, így minden ügyfélkapcsolat egy helyen követhető." },
+  { cat: "analitika", icon: BarChart3, title: "Analitika és riportok", desc: "Az eaisyDesk nemcsak kezeli a megkereséseket, hanem mérhetővé is teszi őket. Láthatóvá válik, milyen csatornákon mi érkezik, miből lesz foglalás, hol akad el a folyamat, és mely területeken érdemes finomhangolni a működést." },
 ];
-
 const AUDIENCE_BENEFITS = [
   {
     eyebrow: "Amiért a", role: "Kollégák", sub: "kedvence lesz", icon: Users, gradient: `linear-gradient(135deg, #186D98 0%, #0F4E71 100%)`,
