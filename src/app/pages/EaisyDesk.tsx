@@ -1075,7 +1075,7 @@ function BenefitsSection() {
                 <button
                   key={r.id}
                   onClick={() => setActive(i)}
-                  className={`${FONT_MAIN} w-full max-w-[280px] h-[52px] rounded-full uppercase tracking-wide text-sm font-medium transition-all duration-300 cursor-pointer`}
+                  className={`${FONT_MAIN} w-full max-w-[280px] h-[52px] rounded-full uppercase tracking-wide text-sm font-bold transition-all duration-300 cursor-pointer`}
                   style={
                     active
                       ? { backgroundColor: r.fill, color: r.id === "ugyfelek" ? C.dark : "white" }
@@ -1092,7 +1092,7 @@ function BenefitsSection() {
           <div key={role.id} className="flex-1 flex flex-col gap-7" style={{ animation: "benefits-fade-in 0.4s ease both" }}>
             {role.benefits.map(({ title, desc }, i) => (
               <div key={title} className="flex items-stretch gap-4">
-                <span className="w-[2px] rounded-full shrink-0" style={{ backgroundColor: C.accent }} />
+                <span className="w-[2px] rounded-full shrink-0" style={{ backgroundColor: role.numColor }} />
                 <span
                   className={`${FONT_MAIN} font-semibold text-3xl leading-none shrink-0 mt-1`}
                   style={{ color: role.numColor }}
