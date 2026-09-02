@@ -1047,12 +1047,6 @@ function BenefitsSection() {
       className="relative w-full overflow-hidden bg-white py-16 lg:py-20"
     >
       <style>{`@keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
-      {/* soft teal glow top-right */}
-      <div
-        className="absolute right-[8%] top-[10%] w-[520px] h-[520px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(28,238,224,0.10), transparent 70%)" }}
-      />
-
       <div className={`relative ${INNER_CARDS} flex flex-col`}>
         <SectionHeader
           eyebrow="Előnyök"
@@ -1145,6 +1139,16 @@ function SummarySection() {
           className="relative overflow-hidden rounded-[24px] px-8 py-12 lg:px-16 lg:py-16"
           style={{ border: "1px solid #D9E5EE", backgroundColor: "rgba(255,255,255,0.6)" }}
         >
+          {/* soft rose + teal halos behind the two bullet columns */}
+          <div
+            className="absolute left-[44%] top-1/2 w-[460px] h-[460px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+            style={{ background: "radial-gradient(circle, rgba(234,126,184,0.12), transparent 70%)" }}
+          />
+          <div
+            className="absolute left-[76%] top-1/2 w-[460px] h-[460px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+            style={{ background: "radial-gradient(circle, rgba(28,238,224,0.12), transparent 70%)" }}
+          />
+
           {/* faint dot pattern, top-left area only */}
           <div
             className="absolute left-8 top-8 w-[420px] h-[340px] pointer-events-none"
