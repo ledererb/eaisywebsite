@@ -1076,10 +1076,10 @@ function BenefitsSection() {
                   key={r.id}
                   onClick={() => setActive(i)}
                   className={`${FONT_MAIN} w-full max-w-[280px] h-[52px] rounded-full uppercase tracking-wide text-sm transition-all duration-300 cursor-pointer ${
-                    active ? "font-bold" : "font-light"
+                    isActive ? "font-bold" : "font-light"
                   }`}
                   style={
-                    active
+                    isActive
                       ? { backgroundColor: r.fill, color: r.id === "ugyfelek" ? C.dark : "white" }
                       : { backgroundColor: "white", border: "1px solid rgba(13,109,138,0.45)", color: C.ink }
                   }
