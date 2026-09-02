@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
-import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram, Globe, Zap, ChevronLeft, ChevronRight, BookOpen, UserCheck, History, MoveHorizontal, ListChecks } from "lucide-react";
+import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ChevronDown, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram, Globe, Zap, ChevronLeft, ChevronRight, BookOpen, UserCheck, History, MoveHorizontal, ListChecks, TrendingDown, TrendingUp } from "lucide-react";
 import imgLogo from "@/imports/EaisyDeskNyito/eaisydesk.png";
 import imgFeaturesBg from "@/imports/EaisyDeskNyito/bg-funkciok.webp";
 import imgBigCard from "@/imports/EaisyDesk/big-card.webp";
@@ -1118,6 +1118,115 @@ function BenefitsSection() {
   );
 }
 
+// kvázi összegző panel: kevesebb veszteség / több eredmény
+const SUMMARY_DECREASES = [
+  "a kezeletlen megkeresések száma",
+  "a párhuzamos terhelésből fakadó elveszett érdeklődők száma",
+  "a no-show-k száma",
+  "a rutinkérésekre fordított élő munkaidő",
+  "új ügyfelek megszerzésének költsége",
+  "a szétszórt kommunikációból eredő működési káosz",
+];
+
+const SUMMARY_INCREASES = [
+  "a megválaszolt megkeresések aránya",
+  "a megjelenési arány",
+  "az utánkövetett érdeklődők száma",
+  "a meglévő ügyféladatbázis hasznosíthatósága",
+  "a konverzióra alkalmas üzleti lehetőségek száma",
+  "a sikeresen lezárt ügyek aránya",
+];
+
+function SummarySection() {
+  return (
+    <section className="w-full bg-white pb-20 lg:pb-24">
+      <div className={INNER_CARDS}>
+        <div
+          className="relative overflow-hidden rounded-[24px] px-8 py-12 lg:px-16 lg:py-16"
+          style={{ border: "1px solid #D9E5EE", backgroundColor: "rgba(255,255,255,0.6)" }}
+        >
+          {/* faint dot pattern, top-left area only */}
+          <div
+            className="absolute left-8 top-8 w-[420px] h-[340px] pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(13,109,138,0.16) 1.5px, transparent 1.5px)",
+              backgroundSize: "22px 22px",
+              WebkitMaskImage: "radial-gradient(circle at top left, black 35%, transparent 78%)",
+              maskImage: "radial-gradient(circle at top left, black 35%, transparent 78%)",
+            }}
+          />
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-[1.1fr_1fr_1fr] gap-12 lg:gap-16">
+            {/* left: title + body */}
+            <div className="flex flex-col justify-center">
+              <h2
+                className={`${FONT_MAIN} font-medium text-4xl lg:text-[50px] leading-[1.15] tracking-tight`}
+                style={{ color: C.ink }}
+              >
+                Kevesebb veszteség.
+                <br />
+                Több <span style={{ color: C.magenta }}>eredmény.</span>
+              </h2>
+              <p className={`${FONT_MAIN} mt-6 font-light text-lg leading-relaxed`} style={{ color: C.ink }}>
+                Bár minden business más számokkal dolgozik, bizonyos hatások szinte minden
+                szolgáltatói működésben ugyanabba az irányba mozdulnak el. Az eaisyDesk
+                bevezetésével egyes veszteségek biztosan csökkennek, míg bizonyos eredmények és
+                üzleti mutatók biztosan növekednek.
+              </p>
+            </div>
+
+            {/* middle: decreases */}
+            <div className="flex flex-col items-start gap-5">
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: "rgba(196,50,132,0.12)" }}
+              >
+                <TrendingDown className="w-6 h-6" strokeWidth={1.5} style={{ color: C.magenta }} />
+              </div>
+              <h3 className={`${FONT_MAIN} font-semibold text-lg`} style={{ color: C.magenta }}>
+                Biztosan csökkenni fog...
+              </h3>
+              <ul className="flex flex-col gap-2.5">
+                {SUMMARY_DECREASES.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full mt-[7px] shrink-0" style={{ backgroundColor: C.magenta }} />
+                    <span className={`${FONT_MAIN} font-light text-[15px] leading-snug`} style={{ color: C.ink }}>
+                      {t}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* right: increases */}
+            <div className="flex flex-col items-start gap-5">
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: "rgba(13,148,136,0.12)" }}
+              >
+                <TrendingUp className="w-6 h-6" strokeWidth={1.5} style={{ color: "#0D9488" }} />
+              </div>
+              <h3 className={`${FONT_MAIN} font-semibold text-lg`} style={{ color: "#0D9488" }}>
+                Biztosan nőni fog...
+              </h3>
+              <ul className="flex flex-col gap-2.5">
+                {SUMMARY_INCREASES.map((t) => (
+                  <li key={t} className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full mt-[7px] shrink-0" style={{ backgroundColor: "#0D9488" }} />
+                    <span className={`${FONT_MAIN} font-light text-[15px] leading-snug`} style={{ color: C.ink }}>
+                      {t}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function WhoForSection() {
   return (
     <section id="kinek-valo" className="w-full py-16 lg:py-20" style={{ backgroundColor: "#F3F3F4" }}>
@@ -1323,6 +1432,7 @@ export default function EaisyDesk() {
       <FeaturesSection />
       <DemoCtaStrip />
       <BenefitsSection />
+      <SummarySection />
       <WhoForSection />
       <FaqSection />
       <CtaSection />
