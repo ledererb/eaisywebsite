@@ -1167,7 +1167,7 @@ function SummarySection() {
                 <br />
                 Több <span style={{ color: C.magenta }}>eredmény.</span>
               </h2>
-              <p className={`${FONT_MAIN} mt-6 font-light text-lg leading-relaxed`} style={{ color: C.ink }}>
+              <p className={`${FONT_MAIN} mt-6 font-light text-base leading-relaxed`} style={{ color: C.ink }}>
                 Bár minden business más számokkal dolgozik, bizonyos hatások szinte minden
                 szolgáltatói működésben ugyanabba az irányba mozdulnak el. Az eaisyDesk
                 bevezetésével egyes veszteségek biztosan csökkennek, míg bizonyos eredmények és
