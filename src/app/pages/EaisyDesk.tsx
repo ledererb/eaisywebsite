@@ -70,29 +70,39 @@ const DESK_FEATURES: { cat: DeskFeatureCat; icon: typeof MessagesSquare; title: 
   { cat: "ugyfel", icon: Monitor, title: "Átlátható kezelőfelület", desc: "Nincs több széttartó kommunikáció és folyamatos váltogatás az e-mail, telefon, Messenger, Instagram vagy WhatsApp között. Az eaisyDesk egy közös felületre rendezi a bejövő és kimenő interakciókat, így minden ügyfélkapcsolat egy helyen követhető." },
   { cat: "analitika", icon: BarChart3, title: "Analitika és riportok", desc: "Az eaisyDesk nemcsak kezeli a megkereséseket, hanem mérhetővé is teszi őket. Láthatóvá válik, milyen csatornákon mi érkezik, miből lesz foglalás, hol akad el a folyamat, és mely területeken érdemes finomhangolni a működést." },
 ];
-const AUDIENCE_BENEFITS = [
+// Előnyök — szerepválasztós (A csapat / Az ügyfelek / A cégvezető)
+const BENEFIT_ROLES = [
   {
-    eyebrow: "Amiért a", role: "Kollégák", sub: "kedvence lesz", icon: Users, gradient: `linear-gradient(135deg, #186D98 0%, #0F4E71 100%)`,
-    items: [
-      { title: "Kisebb terhelés", desc: "Az ügyfélkommunikáció jelentős része automatizált — a kollégák a fontosabb ügyekre koncentrálhatnak." },
-      { title: "Marketing — egyszerűen", desc: "Segít profi üzeneteket készíteni és kiküldeni, külön marketinges kapacitás nélkül is." },
-      { title: "Átlátható kezelőfelület", desc: "Könnyen kezelhető, modern felület — minden megkeresés és ügy egy helyen." },
+    id: "csapat",
+    label: "A csapat",
+    fill: "#C43284",
+    numColor: "#C43284",
+    benefits: [
+      { title: "Kisebb terhelés", desc: "Az eaisyDesk leveszi a csapat válláról az ismétlődő ügyfélkommunikáció jelentős részét, így a kollégák több időt fordíthatnak azokra az ügyekre, ahol valóban emberi figyelem kell." },
+      { title: "Marketingmunka - egyszerűbben", desc: "Nem kell külön marketingkapacitás minden egyes ügyfélaktiváló üzenethez. Az eaisyDesk segít célzott kommunikációt készíteni és kiküldeni, így a meglévő ügyfélkör is könnyebben megszólítható." },
+      { title: "Minden egy átlátható felületen", desc: "Nem kell több csatorna és felület között váltogatni. A megkeresések, ügyek, státuszok és teendők egy közös kezelőfelületen követhetők. Így a napi munka átláthatóbb és gyorsabb." },
     ],
   },
   {
-    eyebrow: "Amiért az", role: "Ügyfeleid", sub: "szeretni fogják", icon: Heart, gradient: `linear-gradient(135deg, #0F4E71 0%, #082432 100%)`,
-    items: [
-      { title: "Villámgyors reakcióidő", desc: "A válasz percek, sokszor másodpercek alatt érkezik — bármelyik csatornán, bármikor." },
-      { title: "Jobb ügyfélélmény", desc: "Gyors, pontos és személyes kommunikáció minden csatornán, a nap 24 órájában." },
-      { title: "Pontos tájékoztatás", desc: "Azonnali visszaigazolások, emlékeztető értesítések és naptárfájlok." },
+    id: "ugyfelek",
+    label: "Az ügyfelek",
+    fill: "#1CEEE0",
+    numColor: "#1CEEE0",
+    benefits: [
+      { title: "Villámgyors reakcióidő", desc: "Az ügyfeleknek nem kell órákat vagy akár napokat várniuk a válaszra. Az eaisyDesk a megkeresésekre azonnal reagál, és csak akkor von be kollégát, amikor valóban szükséges." },
+      { title: "Jobb ügyfélélmény", desc: "Az ügyfél ugyanazt a gyors, következetes és személyre szabott kommunikációt kapja több csatornán is. Nem kell újra és újra elmondania, mi történt korábban, a kommunikáció ott folytatódik, ahol abbamaradt." },
+      { title: "Pontos és kiszámítható tájékoztatás", desc: "A visszajelzések, emlékeztetők és fontos értesítések nem maradnak el a napi leterheltség miatt. Az automatizált kommunikáció gondoskodik róla, hogy a megfelelő információ a megfelelő időben jusson el az ügyfélhez." },
     ],
   },
   {
-    eyebrow: "Amiért", role: "Vezetőként", sub: "értékelni fogod", icon: Briefcase, gradient: `linear-gradient(135deg, #082432 0%, #041219 100%)`,
-    items: [
-      { title: "Nincs több elveszett megkeresés", desc: "Minden megkeresés nyomon követhető és kezelhető — egyik sem vész el." },
-      { title: "Jobban hasznosított adatbázis", desc: "Az ügyféladatok strukturáltan, azonnal felhasználhatóan állnak rendelkezésre." },
-      { title: "Nagyobb üzleti kontroll", desc: "Valós idejű rálátás az ügyfélkommunikációra és a csapat teljesítményére." },
+    id: "cegvezeto",
+    label: "A cégvezető",
+    fill: "#2C6E91",
+    numColor: "#2C6E91",
+    benefits: [
+      { title: "Nincs több elveszett megkeresés", desc: "Az érdeklődők nem tűnnek el inboxokban és social media üzenetekben. Az eaisyDesk rendszerezi és követhető ügyekké alakítja őket, így segít abban, hogy az érdeklődők ne vesszenek el, hanem követhetően haladjanak a konverzió felé." },
+      { title: "Jobban hasznosított adatbázis", desc: "Az ügyfélkommunikációból keletkező információ nem csak eltárolódik. Az eaisyDesk segít felismerni az érdeklődőket, szegmentálni az ügyfélkört és célzott utánkövetéseket vagy kampányokat indítani." },
+      { title: "Nagyobb üzleti kontroll", desc: "Nem érzésekből kell megítélni, hogyan működik az ügyfélkezelés. A riportok és státuszadatok megmutatják, mennyi megkeresés érkezik, hol akadnak el az ügyek, milyen gyors a reakcióidő és mely területeken van szükség beavatkozásra." },
     ],
   },
 ];
@@ -1028,102 +1038,78 @@ function DemoCtaStrip() {
 }
 
 function BenefitsSection() {
-  // equalize card heights across all columns: min-height = tallest card
-  useEffect(() => {
-    function adjustHeights() {
-      const cards = document.querySelectorAll(".benefit-card-item");
-      if (cards.length === 0) return;
-
-      // Reset heights first to measure natural height
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = "0px";
-      });
-
-      let maxHeight = 0;
-      cards.forEach((c) => {
-        const h = c.clientHeight;
-        if (h > maxHeight) maxHeight = h;
-      });
-
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = `${maxHeight}px`;
-      });
-    }
-
-    // Run on mount with a minor timeout to ensure content has rendered, and on resize
-    const timer = setTimeout(adjustHeights, 100);
-    window.addEventListener("resize", adjustHeights);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", adjustHeights);
-    };
-  }, []);
+  const [active, setActive] = useState(0);
+  const role = BENEFIT_ROLES[active];
 
   return (
     <section
       id="elonyok"
-      className="w-full py-20 lg:py-24"
-      style={{ background: "linear-gradient(180deg, #ffffff 0%, rgba(223,255,253,0.4) 100%)" }}
+      className="relative w-full overflow-hidden bg-white py-20 lg:py-24"
     >
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-12">
+      <style>{`@keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+      {/* soft teal glow top-right */}
+      <div
+        className="absolute right-[8%] top-[10%] w-[520px] h-[520px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(28,238,224,0.10), transparent 70%)" }}
+      />
 
-        {/* header — same language as the rest of the page */}
-        <div className="flex flex-col items-start gap-5">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={{ backgroundColor: "rgba(229,126,184,0.22)", color: C.magentaDeep }}>
-            Előnyök
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-black tracking-tight leading-tight">
-            Személyre szabott előnyök
-          </h2>
-          <p className="font-['Inter',sans-serif] font-normal text-base text-black/55 leading-relaxed max-w-[620px]">
-            Ugyanaz a platform — más eredmény minden szerepkörben. Nézd meg, mit kap tőle a csapat, az ügyfeleid és a vezetés.
-          </p>
-        </div>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Előnyök"
+          eyebrowColor={C.main}
+          title={
+            <>
+              Amiért minden szereplő <br className="hidden lg:block" />
+              <span style={{ color: C.magenta }}>értékelni</span> fogja
+            </>
+          }
+          subtitle="Ugyanaz a platform — más eredmény minden szerepkörben. Nézd meg, mit kap tőle a csapat, az ügyfeleid és a vezetés."
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-          {AUDIENCE_BENEFITS.map((col) => {
-            const RoleIcon = col.icon;
-            return (
-              <div key={col.role} className="flex flex-col gap-4 group">
-
-                {/* role header — blue gradient card, like the Megoldás section */}
-                <div
-                  className="rounded-2xl p-6 flex items-center gap-4 shadow-sm group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300"
-                  style={{ background: col.gradient }}
+        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch gap-10 lg:gap-20">
+          {/* left: role chips */}
+          <div className="flex flex-col items-center justify-center gap-3 lg:w-[34%]">
+            {BENEFIT_ROLES.map((r, i) => {
+              const isActive = i === active;
+              return (
+                <button
+                  key={r.id}
+                  onClick={() => setActive(i)}
+                  className={`${FONT_MAIN} w-full max-w-[280px] h-[52px] rounded-full uppercase tracking-wide text-sm font-medium transition-all duration-300 cursor-pointer`}
+                  style={
+                    active
+                      ? { backgroundColor: r.fill, color: r.id === "ugyfelek" ? C.dark : "white" }
+                      : { backgroundColor: "white", border: "1px solid rgba(13,109,138,0.45)", color: C.ink }
+                  }
                 >
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-[#E57EB8]">
-                    <RoleIcon className="w-5 h-5" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex flex-col uppercase">
-                    <span className="font-['Inter',sans-serif] font-normal text-[11px] tracking-widest text-white/60">
-                      {col.eyebrow}
-                    </span>
-                    <span className="font-['Inter',sans-serif] font-extrabold text-xl tracking-wide text-white leading-tight">
-                      {col.role}
-                    </span>
-                    <span className="font-['Inter',sans-serif] font-normal text-[11px] tracking-widest text-white/60">
-                      {col.sub}
-                    </span>
-                  </div>
-                </div>
+                  {r.label}
+                </button>
+              );
+            })}
+          </div>
 
-                {/* benefit cards — white, interactive, page-consistent */}
-                {col.items.map((item) => (
-                  <div
-                    key={item.title}
-                    className="benefit-card-item flex-1 bg-white rounded-2xl p-6 flex flex-col gap-3 border border-[#DFFFFD] shadow-[0_1px_4px_rgba(0,0,0,0.06)] hover:border-[#1CEEE0] hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-default"
-                  >
-                    <h3 className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-black/55">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
+          {/* right: numbered benefits of the selected role */}
+          <div key={role.id} className="flex-1 flex flex-col gap-7" style={{ animation: "benefits-fade-in 0.4s ease both" }}>
+            {role.benefits.map(({ title, desc }, i) => (
+              <div key={title} className="flex items-stretch gap-4">
+                <span className="w-[2px] rounded-full shrink-0" style={{ backgroundColor: C.accent }} />
+                <span
+                  className={`${FONT_MAIN} font-semibold text-3xl leading-none shrink-0 mt-1`}
+                  style={{ color: role.numColor }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex flex-col gap-2">
+                  <h3 className={`${FONT_MAIN} font-semibold text-xl`} style={{ color: C.ink }}>
+                    {title}
+                  </h3>
+                  <p className={`${FONT_MAIN} font-light text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+                    {desc}
+                  </p>
+                </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
