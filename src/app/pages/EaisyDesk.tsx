@@ -1206,17 +1206,17 @@ function SummarySection() {
             <div className="flex flex-col items-start gap-5">
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: "rgba(13,148,136,0.12)" }}
+                style={{ backgroundColor: "rgba(24,109,152,0.12)" }}
               >
-                <TrendingUp className="w-6 h-6" strokeWidth={1.5} style={{ color: "#0D9488" }} />
+                <TrendingUp className="w-6 h-6" strokeWidth={1.5} style={{ color: C.main }} />
               </div>
-              <h3 className={`${FONT_MAIN} font-semibold text-lg`} style={{ color: "#0D9488" }}>
+              <h3 className={`${FONT_MAIN} font-semibold text-lg`} style={{ color: C.main }}>
                 Biztosan nőni fog...
               </h3>
               <ul className="flex flex-col gap-2.5">
                 {SUMMARY_INCREASES.map((t) => (
                   <li key={t} className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full mt-[7px] shrink-0" style={{ backgroundColor: "#0D9488" }} />
+                    <span className="w-1.5 h-1.5 rounded-full mt-[7px] shrink-0" style={{ backgroundColor: C.main }} />
                     <span className={`${FONT_MAIN} font-light text-[15px] leading-snug`} style={{ color: C.ink }}>
                       {t}
                     </span>
