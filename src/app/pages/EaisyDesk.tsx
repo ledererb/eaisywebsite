@@ -650,7 +650,7 @@ function SolutionSection() {
                 <p className={`${FONT_CARD} text-base leading-snug`} style={{ color: C.accent }}>
                   Nem chatbot. Nem csak AI ügyfélszolgálat.
                 </p>
-                <p className={`${FONT_CARD} font-semibold text-base leading-snug`} style={{ color: C.cyan }}>
+                <p className={`${FONT_MAIN} font-semibold text-base leading-snug`} style={{ color: C.cyan }}>
                   Valódi, intelligens munkatárs — aki 24/7 dolgozik.
                 </p>
               </div>
