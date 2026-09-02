@@ -957,6 +957,73 @@ function FeaturesSection() {
   );
 }
 
+// demo request stopper — dark teal gradient strip between features and benefits
+function DemoCtaStrip() {
+  return (
+    <section className="w-full bg-white pb-20 lg:pb-24">
+      <div className={INNER_CARDS}>
+        <div
+          className="relative overflow-hidden rounded-[30px]"
+          style={{ background: "linear-gradient(120deg, #082432 0%, #0A2C40 60%, #0F4E71 130%)" }}
+        >
+          {/* dense small dot pattern */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(rgba(255,255,255,0.09) 1.2px, transparent 1.2px)",
+              backgroundSize: "16px 16px",
+            }}
+          />
+          <div className="relative px-8 py-14 lg:px-16 lg:py-16 flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
+            {/* left: eyebrow, title, description */}
+            <div className="flex flex-col items-start gap-6 max-w-[640px] lg:w-1/2">
+              <SectionEyebrow color={C.magentaLight}>Demo</SectionEyebrow>
+              <h2
+                className={`${FONT_MAIN} font-medium text-4xl lg:text-[50px] leading-[1.1] tracking-tight text-white`}
+              >
+                Ne csak elképzeld.
+                <br />
+                Nézd meg <span style={{ color: C.magentaLight }}>élőben.</span>
+              </h2>
+              <p className={`${FONT_MAIN} font-light text-base leading-relaxed text-white/80`}>
+                Minden vállalkozás más. Mondd el, nálad milyen helyzetek okoznak problémát, és
+                megmutatjuk, hogyan segítene az eaisyDesk a te folyamataidban – demóban, a saját
+                példáddal.
+              </p>
+            </div>
+
+            {/* right half: CTA + meta pills, centered */}
+            <div className="flex-1 flex flex-col items-center justify-center gap-5 lg:py-6">
+              <button
+                onClick={openDemoModal}
+                className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
+                style={{ backgroundColor: C.magenta }}
+              >
+                Kérj demot
+              </button>
+              <div className="flex items-center gap-5">
+                {[
+                  { icon: Clock, label: "30-60 perc" },
+                  { icon: Headset, label: "Google Meet" },
+                  { icon: Tags, label: "Ingyenes" },
+                ].map(({ icon: Icon, label }) => (
+                  <span
+                    key={label}
+                    className={`${FONT_CARD} inline-flex items-center gap-1.5 text-[13px] text-white/80`}
+                  >
+                    <Icon className="w-4 h-4" strokeWidth={1.5} style={{ color: "white" }} />
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function BenefitsSection() {
   // equalize card heights across all columns: min-height = tallest card
   useEffect(() => {
@@ -1263,6 +1330,7 @@ export default function EaisyDesk() {
       <ProblemsSection />
       <SolutionSection />
       <FeaturesSection />
+      <DemoCtaStrip />
       <BenefitsSection />
       <WhoForSection />
       <FaqSection />
