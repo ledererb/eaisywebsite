@@ -860,6 +860,41 @@ function FeaturesSection() {
           }
           subtitle="Minden, ami az ügyfélkommunikációt gördülékenyebbé teszi: a bejövő megkeresésektől és időpontfoglalástól az érdeklődőkezelésen át a kimenő kampányokig."
         />
+
+        {/* filter chips — two rows */}
+        <div className="mt-14 lg:mt-20 w-full max-w-[900px] mx-auto flex flex-wrap items-center justify-center gap-3">
+          <button
+            onClick={() => { setFilter("all"); setFirst(0); setToastVisible(false); }}
+            className={chipCls(filter === "all")}
+            style={filter === "all" ? { backgroundColor: C.magenta } : undefined}
+          >
+            Összes{" "}
+            <span className="font-semibold" style={{ color: filter === "all" ? "rgba(255,255,255,0.9)" : C.magenta }}>
+              {N}
+            </span>
+          </button>
+          {DESK_FEATURE_CATS.map(({ id, label, icon: Icon }) => {
+            const active = filter === id;
+            return (
+              <button
+                key={id}
+                onClick={() => { setFilter(id); setFirst(0); setToastVisible(false); }}
+                className={chipCls(active)}
+                style={active ? { backgroundColor: C.magenta } : undefined}
+              >
+                <Icon
+                  className="w-4 h-4"
+                  strokeWidth={1.5}
+                  style={{ color: active ? "rgba(255,255,255,0.9)" : C.main }}
+                />
+                <span className="font-light" style={{ color: active ? "white" : C.ink }}>{label}</span>
+                <span className="font-semibold" style={{ color: active ? "rgba(255,255,255,0.9)" : C.magenta }}>
+                  {countOf(id)}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* horizontally scrollable card carousel */}
