@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
 import { Link } from "react-router";
-import { ChevronDown, ChevronLeft, ChevronRight, User, Plus, Minus, FileText, Calendar, Zap, Database, Clock, TrendingUp, Mail, BarChart3, Briefcase, Calculator, ArrowUpRight, ArrowDownRight, CheckCircle2, AlertCircle, EyeOff, RefreshCw, Users, Landmark, ChartColumn, Scale, Link2, Upload, Sparkles, SlidersHorizontal, MoveHorizontal, Video, Tag } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Plus, Minus, FileText, Calendar, Zap, Database, Clock, TrendingUp, Mail, BarChart3, Briefcase, Calculator, ArrowUpRight, ArrowDownRight, CheckCircle2, AlertCircle, EyeOff, RefreshCw, Users, Landmark, ChartColumn, Scale, Link2, Upload, Sparkles, SlidersHorizontal, MoveHorizontal, Video, Tag } from "lucide-react";
 import imgHeroBg from "@/imports/EaisyBill/hero-background.webp"; // light mint gradient frame bg (transparent rounded corners baked in)
 import imgFunctionCardBg from "@/imports/EaisyBill/function-card-bg.webp";
 import imgGraphs from "@/imports/EaisyBill/graphs.png";
@@ -80,22 +80,19 @@ const FEATURES = [
   { num: 18, cat: "ai", title: "AI eszkalációs rendszer", desc: "Automatikusan priorizálja a figyelmet igénylő elemeket, és csak azokat a kérdéses tételeket emeli ki, amelyek valóban humán döntést igényelnek. A rutinszerű egyeztetéseket automatikusan rendezi — neked csak a valódi kivételekkel kell foglalkozni." },
 ];
 
+// Előnyök — szerepválasztós (Desk-struktúra, Bill brand colors)
 const ROLES: {
   id: string;
   label: string;
-  color: string;
-  deep: string;
-  soft: string;
-  panelBg: string;
+  fill: string;
+  numColor: string;
   benefits: { title: string; desc: string }[];
 }[] = [
   {
     id: "cegvezeto",
     label: "Cégvezető",
-    color: "#EA8767",
-    deep: "rgba(38,67,80,0.6)",
-    soft: "#FDF3F0",
-    panelBg: "#FDF3F0",
+    fill: "#EA8767",
+    numColor: "#EA8767",
     benefits: [
       { title: "Minden egy helyen", desc: "Számlák, bank, kintlévőségek, kimutatások, bérszámfejtés, munkaidő - 360 fokos átláthatóság." },
       { title: "Valós idejű kontroll", desc: "Bármikor látszik a cég pénzügyi helyzete, nem csak hónap végén. A döntésekhez friss adatok állnak rendelkezésre." },
@@ -105,10 +102,8 @@ const ROLES: {
   {
     id: "konyvelo",
     label: "Könyvelő",
-    color: "#0D9488",
-    deep: "#005757",
-    soft: "#E2FBF4",
-    panelBg: "#E2FBF4",
+    fill: "#0D9488",
+    numColor: "#0D9488",
     benefits: [
       { title: "Villámgyors hónapzárás", desc: "Az eaisyBill összeköti és kontírozza a tételeket, a könyvelőnek csak ellenőriznie kell, nem pedig adatot rögzítenie." },
       { title: "Kevesebb egyeztetés", desc: "A rendezett, ellenőrizhető pénzügyi adatok szükségtelenné teszik az ismétlődő egyeztetéseket." },
@@ -118,10 +113,8 @@ const ROLES: {
   {
     id: "penzugyi",
     label: "Pénzügyi vezető",
-    color: "#005757",
-    deep: "#032D32",
-    soft: "#DCEEEC",
-    panelBg: "#DCEEEC",
+    fill: "#005757",
+    numColor: "#005757",
     benefits: [
       { title: "Valós idejű kontroll", desc: "Bármikor látszik a likviditás, a kintlévőségek állapota." },
       { title: "Mérhető megtakarítás", desc: "Lényegesen kevesebb adminisztratív kör - ez időben és költségben is mérhető megtakarítást jelent." },
@@ -938,20 +931,15 @@ const FEATURE_CATEGORIES: { id: BillFeatureCat; label: string; icon: typeof Uplo
 ];
 
 function BenefitsSection() {
-  const [activeRole, setActiveRole] = useState(0);
-  const role = ROLES[activeRole];
+  const [active, setActive] = useState(0);
+  const role = ROLES[active];
+
   return (
-    <section id="elonyok" className="relative w-full overflow-hidden bg-white pb-20 lg:pb-24">
-      <style>{`
-        @keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-      `}</style>
-
-      {/* soft teal glow on the left */}
-      <div
-        className="absolute left-[8%] top-[12%] w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2"
-        style={{ background: "radial-gradient(circle, rgba(13,148,136,0.10), transparent 70%)" }}
-      />
-
+    <section
+      id="elonyok"
+      className="relative w-full overflow-hidden bg-white py-16 lg:py-20"
+    >
+      <style>{`@keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
       <div className={`relative ${INNER_CARDS} flex flex-col`}>
         <SectionHeader
           eyebrow="Előnyök - Személyre szabva"
@@ -964,57 +952,49 @@ function BenefitsSection() {
           subtitle="Nem egyforma a munka, ha vezetsz, ha könyvelsz, vagy ha a pénzügyekért felelsz. Az eaisyBill mindhárom szereplőnek a saját feladatához igazított előnyöket ad."
         />
 
-        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch">
-          {/* left: role selector chips */}
-          <div className="flex flex-col justify-center gap-2 lg:w-1/2 lg:pl-[6%] lg:pr-14">
+        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch gap-10 lg:gap-10">
+          {/* left: role chips */}
+          <div className="flex flex-col items-center justify-center gap-3 lg:w-[34%]">
             {ROLES.map((r, i) => {
-              const active = i === activeRole;
+              const isActive = i === active;
               return (
-                <div key={r.id}>
-                  <button
-                    onClick={() => setActiveRole(i)}
-                    className="w-full flex items-center gap-4 px-5 py-3 lg:py-3.5 text-left rounded-full transition-all duration-300 hover:bg-[color-mix(in_srgb,var(--chip-soft)_45%,transparent)]"
-                    style={{ "--chip-soft": r.soft, backgroundColor: active ? r.soft : undefined } as React.CSSProperties}
-                  >
-                    <span
-                      className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
-                      style={active ? { backgroundColor: "white" } : { border: `1.5px solid ${r.color}` }}
-                    >
-                      <User className="w-5 h-5" strokeWidth={1.5} style={{ color: r.color }} />
-                    </span>
-                    <span
-                      className={`${FONT_MAIN} text-base font-semibold`}
-                      style={{ color: active ? r.deep : "rgba(38,67,80,0.6)" }}
-                    >
-                      {r.label}
-                    </span>
-                  </button>
-                </div>
+                <button
+                  key={r.id}
+                  onClick={() => setActive(i)}
+                  className={`${FONT_MAIN} w-full max-w-[260px] h-[75px] rounded-full uppercase tracking-wide text-sm transition-all duration-300 cursor-pointer ${
+                    isActive ? "font-bold" : "font-light"
+                  }`}
+                  style={
+                    isActive
+                      ? { backgroundColor: r.fill, color: "white" }
+                      : { backgroundColor: "white", border: "1px solid rgba(13,148,136,0.45)", color: C.ink }
+                  }
+                >
+                  {r.label}
+                </button>
               );
             })}
           </div>
 
-          {/* right: benefits panel — background follows the role color */}
-          <div
-            key={role.id}
-            className="lg:w-1/2 lg:min-h-[521px] rounded-[32px] px-8 py-4 lg:px-14 lg:py-8 transition-colors duration-500"
-            style={{ backgroundColor: role.panelBg, animation: "benefits-fade-in 0.4s ease both" }}
-          >
+          {/* right: numbered benefits of the selected role */}
+          <div key={role.id} className="flex-1 flex flex-col gap-7" style={{ animation: "benefits-fade-in 0.4s ease both" }}>
             {role.benefits.map(({ title, desc }, i) => (
-              <div
-                key={title}
-                className="py-7 lg:py-9"
-                style={i > 0 ? { borderTop: `1px solid ${role.color}26` } : undefined}
-              >
-                <h3 className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.ink }}>
-                  {title}
-                </h3>
-                <p
-                  className={`${FONT_MAIN} mt-2.5 font-light text-sm leading-relaxed`}
-                  style={{ color: C.ink }}
+              <div key={title} className="flex items-stretch gap-4">
+                <span className="w-[2px] rounded-full shrink-0" style={{ backgroundColor: role.numColor }} />
+                <span
+                  className={`${FONT_MAIN} font-semibold text-3xl leading-none shrink-0 self-center`}
+                  style={{ color: role.numColor }}
                 >
-                  {desc}
-                </p>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex flex-col gap-2">
+                  <h3 className={`${FONT_MAIN} font-semibold text-xl`} style={{ color: C.ink }}>
+                    {title}
+                  </h3>
+                  <p className={`${FONT_MAIN} font-light text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+                    {desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Plus, Minus, Clock, Video, Tag, User, ChevronLeft, ChevronRight, TrendingUp, Layers, Rocket, Laptop, Award } from "lucide-react";
+import { Wand2, Eye, ArrowUpRight, Briefcase, Database, Landmark, FileText, Sparkles, MoveHorizontal, Plus, Minus, Clock, Video, Tag, ChevronLeft, ChevronRight, TrendingUp, Layers, Rocket, Laptop, Award } from "lucide-react";
 import { openDemoModal } from "@/app/Root";
 import { Seo, SITE_URL, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
 import { SectionEyebrow, SectionHeader } from "@/app/components/Section";
@@ -262,21 +262,19 @@ const FAQS = [
 
 
 
-// ── benefits: role selector (Bill design system, Books brand colors) ────────
+// Előnyök — szerepválasztós (Desk-struktúra, Books brand colors)
 const ROLES: {
   id: string;
   label: string;
-  color: string;
-  deep: string;
-  soft: string;
+  fill: string;
+  numColor: string;
   benefits: { title: string; desc: string }[];
 }[] = [
   {
     id: "irodavezeto",
     label: "Irodavezető",
-    color: "#89C4D1",
-    deep: "#085D6F",
-    soft: "#DAF4F9",
+    fill: "#89C4D1",
+    numColor: "#89C4D1",
     benefits: [
       { title: "Teljes portfólió-áttekintés", desc: "Minden ügyfél státusza, minden kolléga terhelése, minden határidő egyetlen dashboardon. Nincs több „hol tartunk?” körkérdés." },
       { title: "Skálázható növekedés", desc: "Sokkal több ügyfél ugyanazzal a csapattal. A növekedés nem jár arányos létszámbővítéssel — a fix költségek nem növekednek, csak a bevétel." },
@@ -287,9 +285,8 @@ const ROLES: {
   {
     id: "senior",
     label: "Senior könyvelő",
-    color: "#3F97AA",
-    deep: "#032A32",
-    soft: "#D9EDF2",
+    fill: "#3F97AA",
+    numColor: "#3F97AA",
     benefits: [
       { title: "Jóváhagyás, nem adatrögzítés", desc: "A rendszer kontíroz, számol, könyvel. A senior könyvelő ellenőriz és jóváhagy — a szakértelmére koncentrál, nem az adatbevitelre." },
       { title: "Villámgyors hónapzárás", desc: "A bérszámfejtési varázsló, az automatikus járulékszámítás és a bevallás-generálás a havi ciklust napokról órákra rövidíti." },
@@ -300,9 +297,8 @@ const ROLES: {
   {
     id: "ugyfel",
     label: "Ügyfél (cégvezető)",
-    color: "#E58F0E",
-    deep: "#8A5300",
-    soft: "#FFF0D9",
+    fill: "#E58F0E",
+    numColor: "#E58F0E",
     benefits: [
       { title: "Valós idejű rálátás", desc: "Az ügyfélportálon keresztül a cégvezető bármikor látja a számláit, a bérjegyzékeit, a bevallásai állapotát. Nem kell várni a havi zárásra." },
       { title: "Kevesebb adminisztráció", desc: "Automatikus adatbekérők, dokumentum-feltöltési lehetőség, online nyilatkozattétel. Az ügyfélnek kevesebb időt kell töltenie az adminisztrációval." },
@@ -964,19 +960,15 @@ function DemoCtaStrip() {
 }
 
 function BenefitsSection() {
-  const [activeRole, setActiveRole] = useState(0);
-  // fade keyframes injected once
+  const [active, setActive] = useState(0);
+  const role = ROLES[active];
 
-  const role = ROLES[activeRole];
   return (
-    <section id="elonyok" className="relative w-full overflow-hidden bg-white pb-20 lg:pb-24">
+    <section
+      id="elonyok"
+      className="relative w-full overflow-hidden bg-white py-16 lg:py-20"
+    >
       <style>{`@keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
-      {/* soft glow top-left */}
-      <div
-        className="absolute left-[8%] top-[12%] w-[520px] h-[520px] rounded-full pointer-events-none -translate-x-1/2"
-        style={{ background: "radial-gradient(circle, rgba(63,151,170,0.10), transparent 70%)" }}
-      />
-
       <div className={`relative ${INNER_CARDS} flex flex-col`}>
         <SectionHeader
           eyebrow="Előnyök - Személyre szabva"
@@ -989,54 +981,49 @@ function BenefitsSection() {
           subtitle="Nem egyforma a munka, ha vezetsz, ha könyvelsz, vagy ha a saját vállalkozásod pénzügyeit kell látnod. Az eaisyBooks mindhárom szereplőnek a saját feladatához igazított előnyöket ad."
         />
 
-        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch">
-          {/* left: role selector chips */}
-          <div className="flex flex-col justify-center gap-2 lg:w-1/2 lg:pl-[6%] lg:pr-14">
+        <div className="mt-12 lg:mt-16 flex flex-col lg:flex-row items-stretch gap-10 lg:gap-10">
+          {/* left: role chips */}
+          <div className="flex flex-col items-center justify-center gap-3 lg:w-[34%]">
             {ROLES.map((r, i) => {
-              const active = i === activeRole;
+              const isActive = i === active;
               return (
-                <div key={r.id}>
-                  <button
-                    onClick={() => setActiveRole(i)}
-                    className="w-full flex items-center gap-4 px-5 py-3 lg:py-3.5 text-left rounded-full transition-all duration-300 hover:bg-[color-mix(in_srgb,var(--chip-soft)_45%,transparent)]"
-                    style={{ "--chip-soft": r.soft, backgroundColor: active ? r.soft : undefined } as React.CSSProperties}
-                  >
-                    <span
-                      className="w-11 h-11 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
-                      style={active ? { backgroundColor: "white" } : { border: `1.5px solid ${r.color}` }}
-                    >
-                      <User className="w-5 h-5" strokeWidth={1.5} style={{ color: r.color }} />
-                    </span>
-                    <span
-                      className={`${FONT_MAIN} text-base font-semibold`}
-                      style={{ color: active ? r.deep : "rgba(38,67,80,0.6)" }}
-                    >
-                      {r.label}
-                    </span>
-                  </button>
-                </div>
+                <button
+                  key={r.id}
+                  onClick={() => setActive(i)}
+                  className={`${FONT_MAIN} w-full max-w-[260px] h-[75px] rounded-full uppercase tracking-wide text-sm transition-all duration-300 cursor-pointer ${
+                    isActive ? "font-bold" : "font-light"
+                  }`}
+                  style={
+                    isActive
+                      ? { backgroundColor: r.fill, color: r.id === "irodavezeto" ? C.dark : "white" }
+                      : { backgroundColor: "white", border: "1px solid rgba(63,151,170,0.45)", color: C.dark }
+                  }
+                >
+                  {r.label}
+                </button>
               );
             })}
           </div>
 
-          {/* right: benefits panel — background follows the role color, left edge on the page center line */}
-          <div
-            key={role.id}
-            className="lg:w-1/2 lg:min-h-[609px] rounded-[32px] px-8 py-4 lg:px-14 lg:py-8 transition-colors duration-500"
-            style={{ backgroundColor: role.soft, animation: "benefits-fade-in 0.4s ease both" }}
-          >
+          {/* right: numbered benefits of the selected role */}
+          <div key={role.id} className="flex-1 flex flex-col gap-7" style={{ animation: "benefits-fade-in 0.4s ease both" }}>
             {role.benefits.map(({ title, desc }, i) => (
-              <div
-                key={title}
-                className="py-6 lg:py-7"
-                style={i > 0 ? { borderTop: `1px solid ${role.color}26` } : undefined}
-              >
-                <h3 className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.dark }}>
-                  {title}
-                </h3>
-                <p className={`${FONT_MAIN} mt-2.5 font-light text-sm leading-relaxed`} style={{ color: C.dark }}>
-                  {desc}
-                </p>
+              <div key={title} className="flex items-stretch gap-4">
+                <span className="w-[2px] rounded-full shrink-0" style={{ backgroundColor: role.numColor }} />
+                <span
+                  className={`${FONT_MAIN} font-semibold text-3xl leading-none shrink-0 self-center`}
+                  style={{ color: role.numColor }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex flex-col gap-2">
+                  <h3 className={`${FONT_MAIN} font-semibold text-xl`} style={{ color: C.dark }}>
+                    {title}
+                  </h3>
+                  <p className={`${FONT_MAIN} font-light text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+                    {desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
