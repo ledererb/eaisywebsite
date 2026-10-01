@@ -30,12 +30,12 @@ export function openDemoModal() {
 
 const products = [
   { name: "eaisyBill", path: "/eaisy-bill", color: "#05512a", icon: FileText, desc: "AI-támogatott pénzügyi és kontrolling platform" },
+  { name: "eaisyBooks", path: "/eaisy-books", color: "#085D6F", icon: BookOpen, desc: "AI platform könyvelőirodáknak" },
   { name: "eaisyDesk", path: "/eaisy-desk", color: "#186d98", icon: Headphones, desc: "Omnichannel AI ügyfélkommunikáció" },
   { name: "eaisyBoost", path: "/eaisy-boost", color: "#701ab7", icon: Megaphone, desc: "Social media és hirdetéskezelés AI-val" },
-  { name: "eaisyBooks", path: "/eaisy-books", color: "#085D6F", icon: BookOpen, desc: "AI platform könyvelőirodáknak" },
 ];
 
-const DEMO_PRODUCTS = ["Mind", "eaisyBill", "eaisyDesk", "eaisyBoost", "eaisyBooks", "eaisyDocs", "eaisyCRM", "eaisyHR"];
+const DEMO_PRODUCTS = ["Mind", "eaisyBill", "eaisyBooks", "eaisyDesk", "eaisyBoost", "eaisyDocs", "eaisyCRM", "eaisyHR"];
 
 // demo modal product metadata — icon + short description, like the nav dropdown
 const DEMO_PRODUCT_META: Record<string, { icon: typeof FileText; color: string; desc: string }> = {
