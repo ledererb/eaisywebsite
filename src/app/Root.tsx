@@ -578,6 +578,133 @@ function SiteFooter() {
   );
 }
 
+// ── product-specific footer (Bill + Books): logo / divider / slogan + 3 columns ──
+const FOOTER_PRODUCTS = [
+  { name: "eaisyBill", desc: "Pénzügy és kontrolling", path: "/eaisy-bill" },
+  { name: "eaisyBooks", desc: "Könyvelés", path: "/eaisy-books" },
+  { name: "eaisyDesk", desc: "Ügyfélkommunikáció", path: "/eaisy-desk" },
+  { name: "eaisyBoost", desc: "Közösségi média kezelés", path: "/eaisy-boost" },
+];
+
+// the ÁSZF and the data-processing notice are shared across products
+const ASZF_PATH = "/aszf";
+const ADATKEZELES_PATH = "/adatkezelesi-tajekoztato";
+
+const BILL_FOOTER_DOCS = [
+  { label: "eaisyBill ÁSZF", path: ASZF_PATH },
+  { label: "eaisyBill Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
+];
+
+const BOOKS_FOOTER_DOCS = [
+  { label: "eaisyBooks ÁSZF", path: ASZF_PATH },
+  { label: "eaisyBooks Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
+];
+
+function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path: string }[] }) {
+  const colHeadingCls =
+    "font-['Montserrat',sans-serif] font-medium text-2xl lg:text-[28px] uppercase tracking-wide text-[#59BEB2]";
+  return (
+    <footer className="text-white" style={{ backgroundColor: bg }}>
+      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 pt-16 pb-8 flex flex-col gap-16">
+
+        {/* top: logo — thin divider — slogan */}
+        <div className="flex flex-col items-start gap-5">
+          <div className="h-9">
+            <EaisyLogo dark />
+          </div>
+          <div className="w-[200px] h-px bg-white/25" />
+          <p className="font-['Montserrat',sans-serif] font-light text-xs uppercase tracking-wider text-white/60 max-w-[250px] leading-relaxed">
+            The future was yesterday. We are tomorrow.
+          </p>
+        </div>
+
+        {/* three columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8">
+
+          {/* Kapcsolat */}
+          <div className="flex flex-col items-start gap-5">
+            <h3 className={colHeadingCls}>Kapcsolat</h3>
+            <p className="font-['Montserrat',sans-serif] font-light text-sm lg:text-base text-white/85 leading-relaxed">
+              Kérdésed van az eaisy termékekkel kapcsolatban?
+              <br />
+              Válaszolunk egy munkanapon belül.
+            </p>
+            <a
+              href="mailto:hello@thinkai.hu"
+              className="inline-flex items-center justify-center px-6 py-2.5 bg-white text-[#333333] rounded-full font-['Inter',sans-serif] font-medium text-sm hover:bg-[#1CEEE0]/20 transition-colors"
+            >
+              hello@thinkai.hu
+            </a>
+          </div>
+
+          {/* Dokumentáció */}
+          <div className="flex flex-col items-start gap-5">
+            <h3 className={colHeadingCls}>Dokumentáció</h3>
+            <nav className="flex flex-col gap-3">
+              {docs.map((d) => (
+                <Link
+                  key={d.path}
+                  to={d.path}
+                  className="group inline-flex items-center gap-2 font-['Montserrat',sans-serif] font-light text-sm lg:text-base text-white/85 hover:text-white transition-colors"
+                >
+                  {d.label}
+                  <ArrowUpRight
+                    className="w-4 h-4 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                    strokeWidth={1.5}
+                  />
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Termékek */}
+          <div className="flex flex-col items-start gap-5">
+            <h3 className={colHeadingCls}>Termékek</h3>
+            <nav className="flex flex-col gap-2.5">
+              {FOOTER_PRODUCTS.map((p) => (
+                <Link
+                  key={p.path}
+                  to={p.path}
+                  className="font-['Montserrat',sans-serif] font-light text-sm lg:text-base text-white/85 hover:text-white transition-colors"
+                >
+                  {p.name} - {p.desc}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        </div>
+
+        {/* bottom bar */}
+        <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p className="text-xs font-['Montserrat',sans-serif] font-light text-white/30">
+            © 2024 THINK AI Kft. Minden jog fenntartva.
+          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="/privacy"
+              className="text-xs font-['Montserrat',sans-serif] font-light text-white/30 hover:text-white transition-colors underline-offset-2 hover:underline"
+            >
+              Adatvédelem / Privacy Policy
+            </a>
+            <p className="text-xs font-['Montserrat',sans-serif] font-light text-white/30">
+              100% GDPR kompatibilis
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+// document subpages render without a site footer (their own article footer carries the contact info)
+const NO_FOOTER_PATHS = new Set([ASZF_PATH, ADATKEZELES_PATH]);
+
+// product-specific footers: same structure, per-product background and document labels
+const PRODUCT_FOOTERS: Record<string, { bg: string; docs: { label: string; path: string }[] }> = {
+  "/eaisy-bill": { bg: "#235556", docs: BILL_FOOTER_DOCS },
+  "/eaisy-books": { bg: "#032A32", docs: BOOKS_FOOTER_DOCS },
+};
+
 export default function Root() {
   const [demoOpen, setDemoOpen] = useState(false);
   const location = useLocation();
@@ -606,7 +733,14 @@ export default function Root() {
       <main className="flex-1">
         <Outlet />
       </main>
-      <SiteFooter />
+      {PRODUCT_FOOTERS[location.pathname] ? (
+        <ProductFooter
+          bg={PRODUCT_FOOTERS[location.pathname].bg}
+          docs={PRODUCT_FOOTERS[location.pathname].docs}
+        />
+      ) : NO_FOOTER_PATHS.has(location.pathname) ? null : (
+        <SiteFooter />
+      )}
       {demoOpen && <ContactModal onClose={() => setDemoOpen(false)} />}
     </div>
   );
