@@ -1,0 +1,1128 @@
+{
+ "title": "Általános Szerződési Feltételek",
+ "meta": [
+  "Hatályos: 2026. augusztus 26. napjától visszavonásig hatályos."
+ ],
+ "sections": [
+  {
+   "id": "1-a-szolgaltato-adatai",
+   "heading": "1. A Szolgáltató adatai",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Cégnév: Think AI Kft."
+    },
+    {
+     "type": "p",
+     "text": "Székhely: 1111 Budapest, Lágymányosi utca 12. Fsz. 2. ajtó"
+    },
+    {
+     "type": "p",
+     "text": "Adószám: 32478620-2-43"
+    },
+    {
+     "type": "p",
+     "text": "Cégjegyzékszáma a Fővárosi Törvényszék Cégbíróságánál: 01-09-426295"
+    },
+    {
+     "type": "p",
+     "text": "Statisztikai számjel: 32478620-6220-113-01"
+    },
+    {
+     "type": "p",
+     "text": "Elektronikus elérhetőség: hello@thinkai.hu"
+    },
+    {
+     "type": "p",
+     "text": "Szerződés nyelve: magyar"
+    },
+    {
+     "type": "p",
+     "text": "Telefonos elérhetőség: +36-30/444-1162"
+    },
+    {
+     "type": "p",
+     "text": "Kapcsolattartó, képviseli: Benke Viktor ügyvezető"
+    },
+    {
+     "type": "p",
+     "text": "Tárhelyszolgáltatók adatai:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "DigitalOcean, LLC (székhely: 105 Edgeview Drive, Ste. 425, Broomfield, CO 80021, Amerikai Egyesült Államok, DPF listában szereplő szervezet)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "2-fogalommeghatarozasok",
+   "heading": "2. Fogalommeghatározások",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "Szolgáltatás: A Szolgáltató által díj ellenében nyújtott, mesterséges intelligenciával támogatott, moduláris üzleti szoftverplatform és az ahhoz kapcsolódó, az Egyedi Szerződésben meghatározott szolgáltatások összessége. A Szolgáltatás funkcionális tartalma Felhasználónként eltérhet, és kizárólag az Egyedi Szerződésben licencelt Modulokra, funkciókra, integrációkra, felhasználói és mennyiségi keretekre terjed ki. Az eaisyBooks Modul könyvelőprogramként számviteli nyilvántartások vezetésére és könyvelési műveletek elvégzésére szolgál. A szoftver rendelkezésre bocsátása önmagában nem minősül a Szolgáltató által végzett könyvelői, adótanácsadási, könyvvizsgálói, jogi, pénzforgalmi vagy minősített elektronikus archiválási szolgáltatásnak, kivéve, ha valamely ilyen szolgáltatás nyújtásáról a Felek kifejezetten és jogszerűen külön megállapodnak. A jelen bekezdésben foglalt korlátozás nem kizárólag az eaisyBooks Modulra, hanem a Szolgáltatás valamennyi Moduljára - így különösen az eaisyBillre is - irányadó.",
+      "Szolgáltatási Díj: A Szolgáltatás és a Kiegészítő Szolgáltatások Egyedi Szerződésben meghatározott ellenértéke. A szoftverlicenc díjazása - eltérő Egyedi Szerződés hiányában - egyszeri. A Szolgáltatás működéséhez kapcsolódó AI/LLM-szolgáltatások, valamint egyéb Harmadik Fél Szolgáltatók igénybevételéből eredő, ténylegesen felmerülő költségek a szoftverlicenc díjától elkülönülten, az Egyedi Szerződésben meghatározott módon - így különösen időszakos vagy használatalapú díjként - számíthatók fel. Az Egyedi Szerződés eltérően is rendelkezhet, így különösen meghatározhatja, hogy valamely ilyen költség a Szolgáltatási Díjban foglalt, vagy a Felhasználót további díjfizetési kötelezettség nem terheli. A pontos díjakat, azok esedékességét és fizetési feltételeit az Egyedi Szerződés tartalmazza.",
+      "Kiegészítő Szolgáltatás: Minden olyan, a Szolgáltatáshoz kapcsolódó, az alaplicenc részét nem képező szolgáltatás, amelyet a Szolgáltató a Felhasználó egyedi igénye alapján, külön díjazás ellenében nyújt, így különösen egyedi konfiguráció, integráció, migráció, oktatás, tanácsadási jellegű technikai támogatás, valamint CRM-, ERP- vagy egyéb rendszerillesztés. A Kiegészítő Szolgáltatás tartalmát és díját az Egyedi Szerződés vagy külön írásbeli megállapodás határozza meg.",
+      "Felhasználó: Az a jogi személy vagy jogi személyiséggel nem rendelkező egyéb szervezet, amely részére a Szolgáltató az Egyedi Szerződés alapján Fiókot hozott létre, és amely a Szolgáltatást, illetve az Egyedi Szerződésben licencelt Modulokat igénybe veszi. A Felhasználó felel a nevében eljáró valamennyi jogosult felhasználó magatartásáért.",
+      "Megrendelő: A Szolgáltatás vagy Kiegészítő Szolgáltatás igénybevételére irányuló szerződéskötést kezdeményező jogi személy vagy - amennyiben a Szolgáltató elfogadja - jogi személyiséggel nem rendelkező egyéb szervezet.",
+      "Fiók: A Szolgáltató által a Felhasználó részére, a Felhasználó által rendelkezésre bocsátott adatok és az Egyedi Szerződés alapján létrehozott felhasználói fiók, amelyen keresztül a Felhasználó az aktivált Modulokhoz és funkciókhoz hozzáfér.",
+      "Szolgáltató: A jelen ÁSZF feltételei szerint Think AI Kft. jogi személy.",
+      "Fél és Felek: Szolgáltató és Felhasználó (ideértve a Megrendelőt, amennyiben értelmezhető) külön-külön, illetve együttesen.",
+      "Honlap/Weboldal: A www.app.eaisybill.hu weboldal és minden aloldala, amelynek üzemeltetője a Szolgáltató.",
+      "Egyedi Szerződés: A Szolgáltató és a Felhasználó között létrejövő, a Felhasználó személyére, az igénybe vett Szolgáltatásra és Kiegészítő Szolgáltatásokra – ideértve szükség szerint a Modulokat és licenceket, funkciókat, felhasználói és mennyiségi kereteket, díjazást, időtartamot, auditot, integrációkat, bevezetést, migrációt, tanácsadást, támogatást és szolgáltatási szintet – vonatkozó egyedi feltételeket tartalmazó szerződés. Az Egyedi Szerződés az ÁSZF-fel együttesen értelmezendő; eltérés esetén az Egyedi Szerződés rendelkezése irányadó.",
+      "Felhasználói Szerződés: Az Egyedi Szerződés, annak szerződéses mellékletei és a jelen ÁSZF együttesen.",
+      "Modul: A Szolgáltatás funkcionálisan elkülönülő, önállóan licencelhető szoftverkomponense. Jelen ÁSZF különös rendelkezései jelenleg az eaisyBill, eaisyBooks és eaisyDesk Modulokra vonatkoznak.",
+      "Licenc / Felhasználási Jog: A Szolgáltató által a Felhasználó részére az Egyedi Szerződés alapján biztosított, nem kizárólagos, át nem ruházható és tovább nem engedélyezhető, a szerződéses időtartamra, felhasználói körre, jogi személyekre, funkciókra és mennyiségi keretekre korlátozott jog az adott Modul használatára. A Licenc nem jelent tulajdonjog- vagy forráskód-átruházást.",
+      "AI/LLM Szolgáltatás: A Szolgáltatás olyan funkciója vagy háttérfolyamata, amely mesterséges intelligenciát, gépi tanulást, nagy nyelvi modellt (LLM), beszédfelismerést, szintetikus hangot, dokumentumfelismerést vagy más automatizált modellalapú feldolgozást használ.",
+      "Felhasználói Adat: Minden olyan adat, dokumentum, fájl, számla, bizonylat, tudásbázis, szöveg, prompt, ügyfél- vagy munkavállalói adat, kommunikációs tartalom, konfiguráció és egyéb információ, amelyet a Felhasználó vagy az ő nevében eljáró személy a Szolgáltatásba feltölt, továbbít, összekapcsol vagy a Szolgáltatás számára hozzáférhetővé tesz.",
+      "Harmadik Fél Szolgáltató: A Szolgáltatás működéséhez vagy valamely integrációhoz kapcsolódó, a Szolgáltatótól független szolgáltató, így különösen hatósági rendszer, banki vagy PSD2-szolgáltató, elektronikus levelezési vagy kommunikációs platform, közösségimédia-platform, felhő- vagy tárhelyszolgáltató, valamint AI/LLM szolgáltató.",
+      "AI Rendelet: Az Európai Parlament és a Tanács (EU) 2024/1689 rendelete a mesterséges intelligenciára vonatkozó harmonizált szabályok megállapításáról, mindenkor hatályos szövege szerint.",
+      "GDPR rendelet: Az Európai Parlament és a Tanács (EU) 2016/679 rendelete a természetes személyeknek a személyes adatok kezelése tekintetében történő védelméről és az ilyen adatok szabad áramlásáról, mindenkor hatályos szövege szerint.",
+      "Bizonylat: A Számvitelről szóló 2000. évi C. törvény 166. §-a alapján számviteli bizonylat minden olyan, a gazdálkodó által kiállított, készített, illetve a gazdálkodóval üzleti vagy egyéb kapcsolatban álló természetes személy vagy más gazdálkodó által kiállított, készített okmány (számla, szerződés, megállapodás, kimutatás, hitelintézeti bizonylat, bankkivonat, jogszabályi rendelkezés, egyéb ilyennek minősíthető irat) - függetlenül annak nyomdai vagy egyéb előállítási módjától -, amely a gazdasági esemény számviteli elszámolását (nyilvántartását) támasztja alá.",
+      "Számla: A számla olyan papíralapú vagy elektronikus úton kibocsátott bizonylat, amelyet termék értékesítésekor vagy szolgáltatás teljesítésekor állítanak ki. Számla továbbá minden olyan okirat, amely megfelel az általános forgalmi adóról szóló 2007. évi CXXVII. törvény (a továbbiakban: „Áfa. tv.”).",
+      "Nyugta: A nyugta az ellenérték átvételét igazolja. Abban az esetben, ha az adóalany az Áfa tv. 165. § (1) bekezdése szerint mentesül a számlakibocsátási kötelezettség alól, akkor köteles a nyugta kibocsátásáról gondoskodni.",
+      "API Szolgáltatás: Szolgáltató által biztosított egységes vagy adott esetben egyedi funkcionalitású API. Ez a szoftveres megoldás lehetőséget nyújt a Felhasználók számára, hogy saját rendszereiket az önálló fejlesztéseikkel összekapcsolják a Szolgáltatás egyes elemeivel, és közvetlenül a saját rendszereikből is működtethessék a Szolgáltatást.",
+      "NAV: Nemzeti Adó- és Vámhivatal",
+      "NAV integráció: Egy olyan folyamat, amely során egy vállalkozás vagy szervezet informatikai rendszereit összekapcsolják a NAV rendszerével.",
+      "Felhasználóoldali Eszköz: a szolgáltatás rendeltetésszerű használatához szükséges felhasználóoldali hardver és szoftver eszközök, amelyeket Felhasználó biztosít a saját részére, többek között munkaállomások és azok perifériái, operációs rendszer, szoftverek (pl.: Java, TomCat, Apache), internetes böngésző a munkaállomásokon (pl.: Mozilla Firefox, Google Chrome, Safari), internetes nyilvános hálózat a kiszolgáló szerver eléréséhez, illetve hálózati (internet-) kapcsolat.",
+      "Rendszeres Karbantartás: a szolgáltatás átmeneti szünetelését igénylő rendszer, a Szolgáltató, vagy az érdekében, illetve megbízása alapján eljáró személy által végzett karbantartási munkálat.",
+      "Vis Maior Esemény: olyan előre nem látható természeti vagy más eredetű erők által okozott esemény (háború, polgári felkelés, terrorista cselekmények, sztrájk), amelynek bekövetkezése egyrészt nem előre kiszámítható, másrészt emberi beavatkozás kevés ahhoz, hogy elhárítsa.",
+      "Szolgáltató (AI Rendelet szerinti értelmezés): a jelen ÁSZF-ben használt \"Szolgáltató\" kifejezés a Felek közötti szerződéses jogviszonyban betöltött pozíciót jelöli, és nem azonos az AI Rendelet 3. cikke szerinti \"szolgáltató\" (provider) fogalmával."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "3-aszf-hatalya-modositasa-es-ertelmezese",
+   "heading": "3. ÁSZF hatálya, módosítása és értelmezése",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Szolgáltató jogosult a jelen ÁSZF-et a jogszabályi vagy hatósági környezet változása, információbiztonsági vagy adatvédelmi ok, technológiai változás, új vagy módosított Modul, Harmadik Fél Szolgáltató feltételeinek változása, a Szolgáltatás fejlesztése, illetve üzleti vagy működési ok miatt módosítani. A Szolgáltató a módosított ÁSZF-et - sürgős jogszabályi, hatósági vagy biztonsági intézkedés kivételével - annak hatálybalépése előtt legalább 15 nappal elérhetővé teszi és a Felhasználót a nyilvántartott kapcsolattartási elérhetőségen értesíti. Sürgős jogszabályi, hatósági vagy biztonsági okból a módosítás rövidebb határidővel vagy azonnal is hatályba léphet. Az ÁSZF módosítása az Egyedi Szerződésben kifejezetten rögzített egyedi feltételeket csak akkor módosítja, ha azt az Egyedi Szerződés lehetővé teszi vagy a módosítást kötelező jogszabály írja elő. A hatálybalépést követő további használat az ÁSZF elfogadásának minősül, feltéve, hogy a Felhasználó számára a megismerés lehetősége biztosított volt."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "4-a-szolgaltatas",
+   "heading": "4. A Szolgáltatás",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "a) A Szolgáltatás területi hatálya"
+    },
+    {
+     "type": "p",
+     "text": "A Honlap és a Szolgáltatás technikailag belföldről és külföldről is elérhető lehet, azonban a Felhasználó kizárólag olyan területen és olyan célra jogosult azt használni, ahol a használat jogszerű, és ahol az Egyedi Szerződés, a Harmadik Fél Szolgáltatók feltételei, valamint az alkalmazandó jogszabályok azt lehetővé teszik. A Felhasználó felel a saját tevékenységére, felhasználóira és ügyfeleire alkalmazandó helyi jogi követelmények betartásáért."
+    },
+    {
+     "type": "p",
+     "text": "A Szolgáltató az Egyedi Szerződés hatálya alatt a Felhasználó részére az ott meghatározott Modulokra korlátozott Licencet biztosít. A Licenc kizárólag a Felhasználó saját belső üzleti tevékenységéhez használható; a Szolgáltatás harmadik személy részére történő továbbértékesítése, bérbeadása, szolgáltatásként történő továbbengedése vagy allicencbe adása a Szolgáltató előzetes írásbeli hozzájárulása nélkül tilos."
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó a Licenc keretében kizárólag az Egyedi Szerződésben meghatározott számú felhasználó, kezelt szervezet, bankszámla, kommunikációs csatorna, dokumentum-, tranzakció- vagy egyéb mennyiségi keret szerint jogosult a Szolgáltatást igénybe venni. A hozzáférési adatok megosztása a licenckorlátok megkerülése érdekében tilos."
+    },
+    {
+     "type": "p",
+     "text": "A Szolgáltató jogosult a Licenc és az alkalmazandó mennyiségi korlátok betartását technikai napló- és használati adatok alapján ellenőrizni. A szerződéses keretek túllépése esetén a Szolgáltató jogosult a túllépő használatot korlátozni. A mennyiségi keretek bővítése kizárólag külön írásbeli megállapodás alapján, az abban meghatározott további egyszeri díj ellenében történhet; a kerettúllépés önmagában nem keletkeztet automatikus többletdíjat."
+    },
+    {
+     "type": "h3",
+     "text": "b) A Fiók bizalmassága és biztonsága"
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó felel a Fiók, a hozzáférési adatok és a hozzáférésre jogosult személyek biztonságáért. A Felhasználó köteles megfelelő jelszó- és hozzáférés-kezelési szabályokat alkalmazni, a megszűnt vagy megváltozott jogosultságokat haladéktalanul visszavonni, és a Szolgáltatót késedelem nélkül értesíteni minden vélt vagy valós jogosulatlan hozzáférésről, adatvesztésről vagy biztonsági eseményről. A Fiókon keresztül végzett műveleteket - a Szolgáltató bizonyított hibájának kivételével - a Felhasználó műveleteinek kell tekinteni."
+    },
+    {
+     "type": "h3",
+     "text": "c) Jogszerű használat kötelezettsége"
+    },
+    {
+     "type": "p",
+     "text": "A Szolgáltatás kizárólag jogszerű, rendeltetésszerű, az Egyedi Szerződésben meghatározott üzleti célra, harmadik személyek jogainak, a Szolgáltató szellemi tulajdonának, adatbiztonságának és jó hírnevének sérelme nélkül használható. A Felhasználó felel azért, hogy a Szolgáltatás használatához szükséges valamennyi engedéllyel, jogosultsággal, adatkezelési jogalappal és harmadik fél hozzájárulásával rendelkezzen."
+    },
+    {
+     "type": "p",
+     "text": "Tilos különösen a szolgáltatás biztonságának vagy teljesítményének veszélyeztetése, jogosultsági vagy mennyiségi korlátok megkerülése, automatizált tömeges lekérdezés vagy adatkinyerés a Szolgáltató engedélye nélkül, a forráskód vagy a modellek visszafejtése, modell- vagy promptkinyerés, sérülékenységvizsgálat engedély nélkül, kártékony kód terjesztése, valamint a Szolgáltatás felhasználása versengő szolgáltatás vagy modell jogosulatlan létrehozására."
+    },
+    {
+     "type": "p",
+     "text": "A jogszerű vagy rendeltetésszerű használat kötelezettségének megszegése súlyos szerződésszegésnek minősülhet. A Szolgáltató jogosult a hozzáférést előzetes értesítés nélkül is ideiglenesen korlátozni vagy felfüggeszteni, ha ez jogsértés, információbiztonsági kockázat, harmadik személy jogainak védelme, hatósági rendelkezés vagy a Szolgáltatás stabilitásának megóvása érdekében szükséges."
+    }
+   ]
+  },
+  {
+   "id": "5-a-szerzodeskotest-megelozo-egyeztetesek-a-szolgaltatas-meg",
+   "heading": "5. A szerződéskötést megelőző egyeztetések, a Szolgáltatás megrendelése, a Szerződés létrejötte és igénybevételének feltételei",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Szolgáltatás igénybevételére irányuló folyamat a Megrendelő és a Szolgáltató közötti kapcsolatfelvétellel kezdődik. A Megrendelő a Szolgáltatóval különösen a https://thinkai.hu/#ajanlatkeres oldalon elérhető kapcsolatfelvételi vagy ajánlatkérő felületen, elektronikus levélben, telefonon, illetve a Szolgáltató által biztosított egyéb kommunikációs csatornán keresztül veheti fel a kapcsolatot. A kapcsolatfelvétel, az ajánlatkérés, illetve a Szolgáltatás iránti érdeklődés önmagában nem minősül a Megrendelő részéről szerződéses ajánlatnak vagy megrendelésnek, és nem eredményezi a Szerződés létrejöttét, a Fiók létrehozását, illetve Modul-licenc megszerzését.",
+      "A kapcsolatfelvételt követően a Szolgáltató a Megrendelő üzleti, szakmai és technikai igényeinek megismerése érdekében egyeztetést folytat a Megrendelővel. Ennek keretében – a Megrendelő igényeinek és a tervezett Szolgáltatás jellegének függvényében – sor kerülhet különösen igényfelmérésre, szervezeti vagy folyamatokra vonatkozó auditra, technikai specifikációs egyeztetésre, valamint a Megrendelő által használt folyamatok, rendszerek és informatikai környezet áttekintésére."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben a Megrendelő a kapcsolatfelvétel időpontjában még nem határozta meg pontosan a szükséges megoldást, a Szolgáltató az igényfelmérést követően személyre szabott bemutató vagy prezentáció keretében ismertetheti a Megrendelő számára javasolt megoldásokat, azok lehetséges funkcióit és a rendelkezésre álló modulokat. Amennyiben a Megrendelő már konkrét műszaki vagy funkcionális igényekkel rendelkezik, a Felek közvetlenül technikai specifikációs egyeztetést folytathatnak."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "A Felek az egyeztetések során közösen határozzák meg a Megrendelő igényeihez igazodó szolgáltatási tartalmat, így különösen az igénybe venni kívánt Modulokat, funkciókat, licencek számát és időtartamát, felhasználói és mennyiségi korlátokat, integrációkat, egyedi fejlesztéseket és Kiegészítő Szolgáltatásokat. A Szolgáltató nem köteles valamennyi elérhető funkciót vagy Modul-elemet a Megrendelő rendelkezésére bocsátani; a Felhasználó kizárólag az Egyedi Szerződésben meghatározott szolgáltatási tartalom igénybevételére jogosult.",
+      "Az igényfelmérés és a szükséges egyeztetések lezárását követően a Szolgáltató egyedi ajánlatot készíthet. Az ajánlat tartalmazhatja a kiválasztott Modulokat és funkciókat, licenc- és mennyiségi kereteket, technikai feltételeket, integrációkat, bevezetési feladatokat, díjakat, fizetési feltételeket és az ütemezést. A Honlapon, prezentációban, demóban, ügyféltájékoztatóban vagy más marketinganyagban szereplő funkció- és eredményleírások tájékoztató jellegűek; szerződéses vállalásnak csak az Egyedi Szerződésbe vagy annak kifejezetten szerződéses részévé tett mellékletébe foglalt tartalom minősül."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben az ajánlat elkészítéséhez további adatok vagy információk szükségesek, a Szolgáltató jogosult ezek rendelkezésre bocsátására felhívni a Megrendelőt. A Szolgáltató az ajánlat elkészítését a szükséges adatok és információk hiánytalan rendelkezésre bocsátásától teheti függővé."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "A Felhasználói Szerződés a Felek által az Egyedi Szerződésben, illetve az annak részét képező vagy ahhoz kapcsolódó ajánlatban, megrendelésben vagy egyéb szerződéses dokumentumban meghatározott feltételek szerint jön létre. A Szerződés létrejöttének feltétele, hogy a Felek a Szolgáltatás lényeges feltételeiben, így különösen a Szolgáltatás tartalmában és az igénybe venni kívánt Modulokban, valamint a fizetendő díjban megállapodjanak.",
+      "A Szerződés megkötésére, illetve az ajánlat elfogadására a Megrendelő törvényes képviselője vagy a Megrendelő képviseletére megfelelően feljogosított más személy jogosult. A Szolgáltató jogosult a képviseleti jogosultság megfelelő igazolását kérni.",
+      "A kapcsolatfelvétel, az igényfelmérés, a prezentáció, a technikai egyeztetés, valamint az ajánlat megküldése önmagában nem hozza létre a Felhasználói Szerződést.",
+      "A Felek a szerződéskötést megelőző egyeztetések és tárgyalások során kötelesek egymással együttműködni, valamint egymást a Szerződést érintő lényeges körülményekről megfelelően tájékoztatni. A Megrendelő köteles a Szolgáltató rendelkezésére bocsátani mindazon adatokat és információkat, amelyek a Megrendelő igényeinek felméréséhez, az ajánlat elkészítéséhez, illetve a Szerződés megkötéséhez szükségesek.",
+      "A Megrendelő köteles a Szolgáltatót indokolatlan késedelem nélkül tájékoztatni minden olyan, a tárgyalások során bekövetkező változásról, amely a szerződéskötést, a Megrendelő személyét, képviseletét, kapcsolattartási adatait vagy a Szolgáltatás kialakítását érdemben érinti.",
+      "A szerződéskötési tárgyalások megkezdése egyik Fél számára sem keletkeztet szerződéskötési kötelezettséget. Amennyiben a Szerződés nem jön létre, önmagában a szerződéskötés elmaradása miatt egyik Fél sem köteles a másik Fél költségeinek vagy kárának megtérítésére. Ez nem érinti a Felek jogszabályból eredő, különösen a szerződéskötési tárgyalások során fennálló együttműködési és tájékoztatási kötelezettség megszegéséből fakadó felelősségét.",
+      "A Szolgáltató jogosult a Megrendelővel történő szerződéskötést indokolás nélkül megtagadni, illetve az ajánlatadástól eltekinteni, különösen, de nem kizárólagosan abban az esetben, ha:",
+      "a Szolgáltató megítélése szerint a Megrendelő által igényelt szolgáltatás műszakilag nem, vagy csak aránytalan ráfordítással megvalósítható;",
+      "a Megrendelő a Szolgáltató által kért, a szerződéskötéshez szükséges adatokat vagy információkat nem bocsátja rendelkezésre;",
+      "a Megrendelőnek a Szolgáltatóval szemben bármely korábbi vagy fennálló jogviszonyból eredő lejárt tartozása áll fenn;",
+      "a Megrendelő által igényelt szolgáltatás jogszabályba, hatósági előírásba vagy harmadik személy jogába ütközne; vagy",
+      "a Szolgáltatás nyújtásának egyéb műszaki, jogi vagy üzleti akadálya áll fenn.",
+      "Szolgáltatást – amennyiben az Egyedi Szerződés eltérően nem rendelkezik – Magyarországon nyilvántartásba vett jogi személyek, valamint jogi személyiséggel nem rendelkező egyéb szervezetek vehetik igénybe. A Megrendelő a Szerződés megkötésével kijelenti, hogy jogszerűen működő szervezet, továbbá a Szerződés megkötésének és teljesítésének vele szemben jogi vagy hatósági akadálya nem áll fenn.",
+      "A Megrendelő nevében a szerződéskötési folyamat során kizárólag olyan személy jogosult jognyilatkozatot tenni, aki a Megrendelő képviseletére jogszabály, létesítő okirat, meghatalmazás vagy más megfelelő jogcím alapján jogosult.",
+      "A Felhasználó Honlapon történő regisztrációját és Fiókjának létrehozását a Felhasználói Szerződés létrejöttét követően a Szolgáltató végzi el a Megrendelő, illetve a Felhasználó által rendelkezésére bocsátott adatok alapján. A Felhasználó saját maga a Honlapon Fiókot nem hoz létre.",
+      "A Szolgáltató a Fiókot az Egyedi Szerződésben meghatározott feltételek teljesülését követően hozza létre, és a Fiók használatához szükséges hozzáférési adatokat vagy a hozzáférés aktiválásához szükséges információkat a Felhasználó által megjelölt kapcsolattartó vagy felhasználó részére bocsátja rendelkezésre.",
+      "A Fiók létrehozása és aktiválása önmagában nem keletkeztet a Felhasználói Szerződésben meghatározottakon túl további szolgáltatásra vagy Modul használatára vonatkozó jogosultságot.",
+      "Az Egyedi Szerződés megkötése, a Fiók létrehozása, a Szolgáltatás teljesítése, a kapcsolattartás és a számlázás érdekében a Megrendelő köteles a Szolgáltató rendelkezésére bocsátani az ehhez szükséges adatokat, így különösen – amennyiben az adott adat az adott jogviszonyban szükséges – az alábbiakat:",
+      "a Megrendelő teljes neve vagy cégneve;",
+      "székhelye;",
+      "nyilvántartási vagy cégjegyzékszáma;",
+      "adószáma;",
+      "számlázási adatai;",
+      "törvényes képviselőjének vagy a szerződéskötésre jogosult személynek a neve és tisztsége;",
+      "a kapcsolattartó személy neve, e-mail-címe és telefonszáma;",
+      "a Szolgáltatás teljesítéséhez szükséges egyéb szakmai, technikai vagy kapcsolattartási adatok.",
+      "A Megrendelő, illetve a Felhasználó felel az általa vagy nevében a Szolgáltató rendelkezésére bocsátott adatok pontosságáért, aktualitásáért és valóságtartalmáért, és köteles az azokban bekövetkezett változásokról a Szolgáltatót indokolatlan késedelem nélkül tájékoztatni.",
+      "A Szolgáltató – a jogszabály alapján ki nem zárható felelősség esetét kivéve – nem felel az olyan kárért, késedelemért vagy többletköltségért, amely a Megrendelő vagy a Felhasználó által megadott hibás, hiányos, pontatlan, elavult vagy valótlan adatból, illetve a szükséges adat rendelkezésre bocsátásának elmulasztásából ered.",
+      "A Felhasználói Szerződés tartalmát a Felek között létrejött Egyedi Szerződés, annak szerződéses mellékletei és a jelen ÁSZF együttesen határozzák meg. Eltérés esetén az Egyedi Szerződés rendelkezése irányadó; az ÁSZF-en belül az adott Modulra vonatkozó különös rendelkezés megelőzi az általános rendelkezést. Az ajánlat, prezentáció, műszaki specifikáció vagy egyéb dokumentum csak akkor válik a Felhasználói Szerződés részévé, ha az Egyedi Szerződés erre kifejezetten hivatkozik.",
+      "A Felhasználó kizárólag az Egyedi Szerződésben meghatározott Modulok, licencek, felhasználói keretek, funkciók és integrációk használatára jogosult. További Modul, felhasználó, kezelt szervezet, funkció, integráció, egyedi fejlesztés vagy Kiegészítő Szolgáltatás igénybevételéhez külön írásbeli megállapodás vagy a Szolgáltató erre vonatkozó ajánlatának elfogadása szükséges."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "6-a-szolgaltatas-folyamatos-mukodese",
+   "heading": "6. A Szolgáltatás folyamatos működése",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Szolgáltató észszerű szakmai gondossággal törekszik a Szolgáltatás folyamatos és biztonságos működésére. A Szolgáltatás azonban internet-, felhő-, kommunikációs-, hatósági, banki és AI/LLM infrastruktúráktól is függhet, ezért megszakítás nélküli, hibamentes vagy meghatározott rendelkezésre állás kizárólag akkor garantált, ha az Egyedi Szerződés külön szolgáltatási szintet (SLA) tartalmaz. SLA hiányában a rendelkezésre állási célértékek, marketingállítások és becsült válaszidők nem minősülnek eredménykötelemnek.",
+      "A Szolgáltatás vagy valamely Modul átmeneti szünetelésére különösen az alábbi esetekben kerülhet sor:",
+      "tervezett karbantartás, frissítés, migráció, biztonsági javítás, rendszerátalakítás vagy verzióváltás esetén, lehetőség szerint előzetes értesítés mellett; sürgős biztonsági vagy üzemeltetési beavatkozás esetén előzetes értesítés nélkül;",
+      "a Szolgáltatótól független üzemzavar, Harmadik Fél Szolgáltató kiesése vagy API-változása, internet- vagy telekommunikációs hiba, hatósági korlátozás, kibertámadás, Vis Maior Esemény vagy egyéb, a Szolgáltató észszerű ellenőrzési körén kívül eső körülmény esetén.",
+      "A Szolgáltató jogosult a Szolgáltatást, annak kezelőfelületét, technikai architektúráját, AI/LLM modelljeit, integrációit és funkcióit fejleszteni, módosítani vagy biztonsági, jogszabályi, műszaki, licencelési vagy harmadik fél által előidézett okból helyettesíteni. A Szolgáltató nem köteles valamely korábbi verziót, külső API-t vagy kezelőfelületet változatlanul fenntartani, feltéve, hogy az Egyedi Szerződésben kifejezetten vállalt lényeges funkcionalitást - az elháríthatatlan külső okok kivételével - nem szünteti meg érdemi helyettesítő megoldás nélkül.",
+      "Ha a Felhasználó használata a Szolgáltatás biztonságát, teljesítményét, jogszerű működését vagy más felhasználók érdekeit veszélyezteti, a Szolgáltató jogosult a hozzáférést a veszély elhárításához szükséges mértékben korlátozni vagy felfüggeszteni. A felfüggesztés nem érinti a Felhasználó addig esedékessé vált fizetési kötelezettségeit.",
+      "A Felhasználó köteles a Szolgáltatásból számára üzletileg vagy jogszabály alapján lényeges adatokról, kimutatásokról és dokumentumokról az Egyedi Szerződés szerinti exportlehetőségek felhasználásával saját biztonsági mentésről és jogszabályszerű archiválásról gondoskodni. A Szolgáltatás használata nem mentesíti a Felhasználót a jogszabályi iratmegőrzési, könyvvezetési vagy archiválási kötelezettségeinek teljesítése alól.",
+      "A Szolgáltató a Szolgáltatáshoz kapcsolódó általános technikai és felhasználói támogatást munkanapokon 9:00 és 17:00 óra között, a jelen ÁSZF-ben megjelölt elektronikus elérhetőségeken biztosítja. Ettől eltérő rendelkezésre állást, válaszidőt, ügyeletet vagy kiemelt támogatást kizárólag az Egyedi Szerződésben vállal."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "7-felhasznalokra-vonatkozo-rendelkezesek-belepes-a-honlap-al",
+   "heading": "7. Felhasználókra vonatkozó rendelkezések, belépés, a Honlap általános felépítése",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "a) Elfelejtett jelszó funkció"
+    },
+    {
+     "type": "p",
+     "text": "Ha a Fiókhoz tartozó jogosult felhasználó elfelejtette jelszavát, a Belépés oldalon elérhető jelszó-visszaállítási funkcióval, a Szolgáltató által megadott eljárás szerint kezdeményezhet új jelszót. A Felhasználó köteles biztosítani, hogy a helyreállításhoz használt e-mail-fiókhoz kizárólag arra jogosult személy férjen hozzá."
+    },
+    {
+     "type": "h3",
+     "text": "b) Belépés"
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó a Szolgáltató által létrehozott és aktivált hozzáféréssel, a részére vagy az általa kijelölt jogosult felhasználó részére megadott e-mail-cím és jelszó, illetve a Szolgáltató által mindenkor támogatott hitelesítési mód használatával jelentkezhet be. A hozzáférés személyhez vagy szerepkörhöz kötött; az Egyedi Szerződésben megengedett körön kívüli megosztása tilos."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Honlap felépítése"
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Belépés után a Felhasználó kizárólag az Egyedi Szerződés és a részére kiosztott jogosultságok szerint elérhető vállalkozásokat, Modulokat és funkciókat kezelheti. A kezelőfelület, a menüpontok és az elérhető funkciók verziónként és konfigurációnként eltérhetnek. A Fiókban megjelenő technikai lehetőség önmagában nem keletkeztet Licencet vagy díjmentes használati jogosultságot olyan Modulra vagy funkcióra, amelyet az Egyedi Szerződés nem tartalmaz."
+    }
+   ]
+  },
+  {
+   "id": "8-a-szolgaltatasi-dij-kifizetese-a-szamlazas-es-a-szolgaltat",
+   "heading": "8. A Szolgáltatási Díj kifizetése, a számlázás, és a Szolgáltatási díj késedelmes megfizetésének jogkövetkezményei",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Felhasználó a Szolgáltatásért az Egyedi Szerződésben, illetve az annak részét képező elfogadott ajánlatban meghatározott Szolgáltatási Díjat köteles megfizetni. A díjak - eltérő kifejezett rendelkezés hiányában - nettó összegek, amelyekhez a mindenkor hatályos jogszabályok szerinti általános forgalmi adó és egyéb közteher járul. A szoftverlicenc díja - eltérő Egyedi Szerződés hiányában - egyszeri; az AI/LLM- és egyéb Harmadik Fél Szolgáltatói költségek, valamint az Egyedi Szerződésben meghatározott más díjelemek egyszeri, időszakos vagy használatalapú díjként is meghatározhatók. A díjfizetés szabályai a következők:",
+      "Egyszeri díjas konstrukció: a Felhasználó egy alkalommal fizet licenc-, bevezetési, fejlesztési vagy Kiegészítő Szolgáltatási díjat az Egyedi Szerződésben meghatározott Modulra, szolgáltatási tartalomra és terjedelemre. Az egyszeri díj nem eredményez tulajdonjogot a szoftveren. Az Egyedi Szerződésben meghatározott szolgáltatási tartalmon felüli további Modul, funkció, integráció, egyedi fejlesztés vagy Kiegészítő Szolgáltatás csak külön írásbeli megállapodás és az abban rögzített további díj alapján vehető igénybe.",
+      "A Szolgáltatási Díj terjedelmét és az ahhoz tartozó Modulokat, funkciókat, felhasználói és mennyiségi kereteket, integrációkat, bevezetési feladatokat és Kiegészítő Szolgáltatásokat az Egyedi Szerződés határozza meg. E szolgáltatási kör bővítése vagy módosítása kizárólag külön írásbeli megállapodás alapján, az abban meghatározott további díj ellenében történhet.",
+      "A Szolgáltató a Szolgáltatási Díjról a hatályos jogszabályoknak megfelelő számlát állít ki, és azt a Felhasználó által megadott számlázási e-mail-címre vagy az Egyedi Szerződésben meghatározott más elektronikus csatornán megküldi. A Felhasználó a számlát - eltérő Egyedi Szerződés hiányában - banki átutalással, a számlán feltüntetett bankszámlára és fizetési határidőn belül köteles kiegyenlíteni. A fizetés módját az Egyedi Szerződés és a kiállított számla határozza meg; eltérő kifejezett megállapodás hiányában a fizetés banki átutalással történik.",
+      "A díj akkor minősül megfizetettnek, amikor annak teljes összege a Szolgáltató bankszámláján jóváírásra került. Az átutalással, devizaváltással és banki teljesítéssel összefüggő, a Felhasználó oldalán felmerülő költségeket a Felhasználó viseli.",
+      "A Harmadik Fél Szolgáltatók - különösen AI/LLM, kommunikációs vagy integrációs szolgáltatók - díjainak vagy feltételeinek változása a már megállapított vagy megfizetett Szolgáltatási Díjat automatikusan nem módosítja. Amennyiben a Szolgáltatás használata során az Egyedi Szerződésben foglalt keretet meghaladó vagy korábban nem tervezett AI/LLM- vagy más Harmadik Fél Szolgáltatói költség merül fel, annak további viselése, illetve az ehhez kapcsolódó szolgáltatásbővítés, módosítás vagy többletteljesítés kizárólag a Felek előzetes írásbeli megállapodása és az abban meghatározott további díj alapján történhet. Az Egyedi Szerződés ettől eltérően is rendelkezhet, így különösen rögzítheti, hogy az ilyen költség a már megállapított díjban foglalt és további díj nem számítható fel.",
+      "Fizetési késedelem esetén a Szolgáltató a Ptk. 6:155. § szerinti, vállalkozások közötti késedelmi kamatra, továbbá a behajtási költségátalányról szóló 2016. évi IX. törvény szerinti behajtási költségátalányra és a jogszerűen érvényesíthető további behajtási költségekre jogosult.",
+      "Ha a Felhasználó valamely esedékes díjat nem fizet meg, a Szolgáltató elektronikus fizetési felszólítást küldhet. Amennyiben a Felhasználó a felszólítás kézhezvételétől számított 3 naptári napon belül sem teljesít, a Szolgáltató jogosult a Fiókot, az érintett Modult vagy a Szolgáltatás egészét részben vagy egészben felfüggeszteni. A felfüggesztés időtartama nem hosszabbítja meg a Licenc időtartamát és nem mentesít a díjfizetés alól.",
+      "A Szolgáltató a hozzáférést a lejárt tőke-, kamat- és egyéb jogszerűen követelt összegek teljes kiegyenlítését követően észszerű határidőn belül állítja helyre. Ismételt vagy jelentős fizetési késedelem esetén a Szolgáltató jogosult a további teljesítést előrefizetéshez vagy megfelelő fizetési biztosítékhoz kötni.",
+      "A Felhasználó fizetési kötelezettségét a Szolgáltatás olyan részleges hibája vagy átmeneti kiesése nem érinti, amely az Egyedi Szerződés szerint nem alapoz meg díjcsökkentést vagy szolgáltatási jóváírást. Beszámításra a Szolgáltató által írásban elismert vagy jogerős bírósági határozattal megállapított követelés erejéig kerülhet sor."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "9-felhasznalo-altal-biztositando-technikai-feltetelek",
+   "heading": "9. Felhasználó által biztosítandó technikai feltételek",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Szolgáltatás igénybevételéhez a Felhasználónak rendelkeznie kell megfelelő hardver- és szoftverkörnyezettel, amelyek a következők:",
+      "Szélessávú internetkapcsolat;",
+      "Internet böngésző futtatására alkalmas számítógép, mobiltelefon, tablet;",
+      "A Szolgáltató által mindenkor támogatott, naprakész internetböngésző - különösen Google Chrome, Microsoft Edge, Mozilla Firefox vagy Safari - és a böngésző biztonsági frissítéseinek telepítése;",
+      "API kulcsok igénybevétele esetén a Felhasználók a fentieken túl saját költségükre maguk kötelesek gondoskodni saját, a Szolgáltatások egyes elemeivel összekapcsolódó rendszereik létrehozásáról, karbantartásáról és működtetéséről, az összekapcsoláshoz szükséges informatikai fejlesztésekről, a fejlesztési- és tesztkörnyezetről.",
+      "Ha a Felhasználó nem támogatott, elavult vagy módosított böngészőt, operációs rendszert, hálózati eszközt, kiegészítőt vagy más Felhasználóoldali Eszközt használ, a Szolgáltató az ebből eredő hibát nem köteles reprodukálni vagy javítani, és az ebből eredő üzemzavarért nem felel, kivéve, ha a hiba a támogatott környezetben is fennáll.",
+      "A Felhasználó felel saját informatikai környezetének, internetkapcsolatának, végpontjainak, hálózatának, vírus- és kártevővédelmének, hozzáférés-kezelésének, valamint az általa biztosított API-kulcsok, e-mail-fiókok és integrációs hitelesítő adatok biztonságának fenntartásáért. A Szolgáltató nem felel a Felhasználóoldali Eszközök hibájából vagy helytelen konfigurációjából eredő károkért.",
+      "Az egyes Modulokhoz, integrációkhoz vagy egyedi fejlesztésekhez további technikai előfeltételek szükségesek lehetnek. Ezeket a Szolgáltató az igényfelmérés, a bevezetés vagy az Egyedi Szerződés során közli. A Szolgáltató jogosult a Szolgáltatás biztonsága érdekében elavult vagy nem támogatott technikai környezetből érkező hozzáférést korlátozni."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "10-mesterseges-intelligencia-ai-hasznalatanak-feltetelei",
+   "heading": "10. Mesterséges intelligencia (AI) használatának feltételei",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "a) Az AI-rendszerek jellege és korlátai"
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó tudomásul veszi, hogy a Szolgáltatás egyes funkciói AI/LLM rendszereket alkalmaznak. Az ilyen rendszerek statisztikai és valószínűségi módszerekkel állítanak elő eredményt, ezért az AI-kimenet lehet téves, hiányos, pontatlan, elavult, nem egyedi, ellentmondásos vagy a Felhasználó céljára alkalmatlan. A Szolgáltató nem garantálja az AI-kimenetek ténybeli, jogi, számviteli, adózási, pénzügyi vagy szakmai helyességét. Az AI-kimenetek - eltérő kifejezett Egyedi Szerződés hiányában - kizárólag támogató, tájékoztató és előkészítő jellegűek, és nem minősülnek jogi, adó-, számviteli, könyvvizsgálói, befektetési vagy más szakmai tanácsnak."
+    },
+    {
+     "type": "h3",
+     "text": "b) Emberi ellenőrzés és jogszerű használat"
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó köteles az AI által kinyert, számított, generált, kategorizált vagy kommunikált tartalmakat a felhasználás céljához igazodó emberi ellenőrzésnek alávetni. Különösen kötelező az ellenőrzés könyvelés, adóbevallás, utalás, bérszámfejtés, szerződéses vagy ügyfél felé tett kötelezettségvállalás, marketingkommunikáció, hatósági adatszolgáltatás vagy más érdemi üzleti döntés előtt."
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó saját felelősségére határozza meg, hogy valamely AI-funkció milyen folyamatban és milyen emberi jóváhagyási szint mellett használható. A Szolgáltatás nem használható önmagában olyan automatizált döntés kizárólagos alapjaként, amely természetes személyre nézve jogi hatással jár vagy őt hasonlóan jelentős mértékben érinti, kivéve, ha az ilyen felhasználás jogszerűségét a Felhasználó előzetesen biztosította, és arról a Felek az Egyedi Szerződésben kifejezetten megállapodtak."
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó köteles gondoskodni arról, hogy az AI-funkciókat kezelő vagy felügyelő személyek a feladatukhoz és a használat kockázatához igazodó megfelelő AI-ismerettel és belső utasításokkal rendelkezzenek."
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó köteles az AI-funkciókat az AI Rendelet, a GDPR rendelet és más alkalmazandó jogszabályok szerint, átlátható és jogszerű módon használni. Ha a Szolgáltatás az AI-jellegre vonatkozó tájékoztatást, megjelölést vagy technikai jelzést biztosít, annak eltávolítása, megkerülése vagy megtévesztő használata tilos."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Tilos az AI-funkciókat jogellenes, megtévesztő, csalárd, diszkriminatív, zaklató vagy harmadik személy jogait sértő célra használni.",
+      "Tilos az AI-funkciók biztonsági korlátainak, jogosultsági szabályainak vagy használati korlátainak megkerülése, illetve a modell vagy rendszer jogosulatlan visszafejtése vagy kinyerése.",
+      "Tilos AI-kimenetet ellenőrzött, hiteles vagy szakember által jóváhagyott tartalomként feltüntetni, ha ilyen ellenőrzés vagy jóváhagyás ténylegesen nem történt meg."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Az AI-funkciók működésében Harmadik Fél Szolgáltatók vehetnek részt. A Szolgáltató jogosult az alkalmazott AI/LLM modellt vagy szolgáltatót biztonsági, minőségi, jogi, adatvédelmi, műszaki, költség- vagy elérhetőségi okból lecserélni vagy módosítani. A Harmadik Fél Szolgáltató kiesése, korlátozása vagy modellváltozása az AI-funkciók eredményét vagy elérhetőségét befolyásolhatja."
+    },
+    {
+     "type": "h3",
+     "text": "c) Személyes adatok és harmadik személyek adatainak kezelése"
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó kizárólag olyan személyes adatot, üzleti titkot, bizalmas adatot vagy harmadik személyhez tartozó tartalmat jogosult a Szolgáltatásba feltölteni, továbbítani, AI-funkciónak megadni vagy integráción keresztül hozzáférhetővé tenni, amelynek ilyen módon történő kezelésére megfelelő jogalappal, jogosultsággal és - ahol szükséges - tájékoztatással vagy hozzájárulással rendelkezik."
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó felel különösen saját munkavállalói, ügyfelei, érdeklődői, beszállítói és egyéb harmadik személyek személyes adatainak jogszerű gyűjtéséért, a megfelelő adatkezelési tájékoztatásért, az adatminimalizálásért, a megőrzési idők meghatározásáért, valamint az érintetti kérelmek és egyéb adatkezelői kötelezettségek teljesítéséért, amennyiben az adott adatkezelés célját és eszközeit ő határozza meg."
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó köteles kerülni olyan személyes adat, különleges adat, üzleti titok vagy más érzékeny információ AI-funkcióba történő bevitelét, amely a konkrét szolgáltatási célhoz nem szükséges. Különleges személyes adat kizárólag akkor kezelhető a Szolgáltatásban, ha annak szükségességét, jogalapját és megfelelő technikai-szervezési feltételeit a Felhasználó előzetesen biztosította."
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó felel a saját adatkezelési döntéseiből, jogalap vagy tájékoztatás hiányából, jogellenes adattovábbításából vagy olyan Felhasználói Adatból eredő igényekért és károkért, amelyet jogszerűen nem tehetett volna a Szolgáltatás számára hozzáférhetővé. A Felhasználó köteles a Szolgáltatót mentesíteni és a jogszabály által megengedett mértékben megtéríteni a Felhasználó ilyen szerződésszegésére közvetlenül visszavezethető, igazolt harmadik személyi igényeket és észszerű költségeket; ez nem érinti a Szolgáltató saját jogsértéséért fennálló, jogszabály alapján ki nem zárható felelősségét."
+    }
+   ]
+  },
+  {
+   "id": "11-a-felhasznalok-altalanos-kotelezettsegei-es-rajuk-vonatko",
+   "heading": "11. A Felhasználók általános kötelezettségei és rájuk vonatkozó tilalmak",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "A Felhasználó különösen az alábbi kötelezettségek teljesítésére köteles:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "a Fiók és valamennyi jogosult felhasználó hozzáférésének biztonságáról, a jelszavak és hitelesítési adatok titkosságáról, valamint a jogosultságok naprakész kezeléséről gondoskodni;",
+      "a Szolgáltatást kizárólag az Egyedi Szerződés, a Licenc, a jelen ÁSZF, a Harmadik Fél Szolgáltatók alkalmazandó feltételei és a jogszabályok szerint használni;",
+      "biztosítani, hogy valamennyi Felhasználói Adat feltöltése, továbbítása, kezelése és kommunikációs felhasználása jogszerű legyen, és a Felhasználó rendelkezzen az ehhez szükséges jogokkal, felhatalmazásokkal és adatkezelési jogalappal;",
+      "a Szolgáltatás által végzett adatkivonások, kimutatások, csoportosítások, kontírozási javaslatok, integrációk, AI-kimenetek, ügyfélkommunikációk és egyéb automatizált folyamatok eredményét a felhasználás előtt a kockázattal arányosan ellenőrizni."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó számára különösen tilos:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "a Szolgáltatás jogellenes, megtévesztő, csalárd, diszkriminatív, zaklató vagy harmadik személy jogát sértő célra történő használata;",
+      "a Licenc szerinti felhasználói, szervezeti, mennyiségi vagy funkcionális korlátok megkerülése, hozzáférések jogosulatlan megosztása, illetve a Szolgáltatás továbbértékesítése vagy allicencbe adása;",
+      "kártékony szoftver, vírus, trójai program, automatizált támadás vagy más káros tartalom feltöltése, terjesztése vagy a Szolgáltatás stabilitásának szándékos veszélyeztetése;",
+      "a Szolgáltató rendszeréhez, forráskódjához, modelljeihez vagy nem engedélyezett API-jaihoz történő jogosulatlan hozzáférés, visszafejtés, sérülékenységvizsgálat, modell- vagy adatkivonás megkísérlése;",
+      "kéretlen vagy jogellenes elektronikus marketing, jogosulatlan tömeges kommunikáció, megtévesztő megszemélyesítés vagy olyan tartalom küldése, amelyhez a Felhasználó nem rendelkezik megfelelő jogalappal vagy felhatalmazással;",
+      "a Honlap, a Modulok, a dokumentáció, a szerződéses vagy technikai információk, illetve a Szolgáltatásból automatizáltan kinyert rendszeradatok felhasználása versengő termék, szolgáltatás vagy modell jogosulatlan fejlesztésére, valamint a Szolgáltató szellemi tulajdonjogainak bármely más módon történő megsértése."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "12-adatvedelem-adatfeldolgozas",
+   "heading": "12. Adatvédelem, adatfeldolgozás",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Felhasználó tudomásul veszi, hogy a Szolgáltatás igénybevétele során a Felhasználó, illetve az általa a Szolgáltatás használatára feljogosított személyek személyes adatokat tartalmazó dokumentumokat, adatokat és egyéb információkat tölthetnek fel, rögzíthetnek vagy egyéb módon bocsáthatnak a Szolgáltatás keretében működő rendszer rendelkezésére.",
+      "A Felek rögzítik, hogy az ilyen személyes adatok tekintetében a Felhasználó minősül adatkezelőnek, míg a Szolgáltató adatfeldolgozóként jár el. A Szolgáltató a személyes adatokat kizárólag a Felhasználó nevében és dokumentált utasításai alapján, a Szolgáltatás biztosításához, működtetéséhez és a Felhasználói Szerződés teljesítéséhez szükséges mértékben dolgozza fel.",
+      "A Szolgáltató adatfeldolgozási tevékenysége elsődlegesen a Felhasználó által a Szolgáltatás keretében feltöltött, rögzített vagy egyéb módon rendelkezésre bocsátott adatok automatizált informatikai feldolgozására, továbbítására, rendszerezésére, valamint technikai tárolására terjed ki. A Szolgáltató a Szolgáltatást a beépített és alapértelmezett adatvédelem elvének megfelelően úgy alakítja ki és olyan hozzáférés-kezelést alkalmaz, hogy a Felhasználói Adat olvasható tartalma a rendes, üzemszerű működés során a Szolgáltató munkatársai és közreműködői számára ne legyen hozzáférhető; a tartalmi feldolgozást a szükséges mértékben automatizált informatikai és AI/LLM-rendszerek végzik. A Szolgáltató az ilyen adatokat saját céljára nem használja fel, azok tartalmát nem ellenőrzi, és azok tekintetében önálló adatkezelési célt nem határoz meg.",
+      "A Felhasználói Adat olvasható tartalmához történő emberi hozzáférés alapértelmezetten technikailag korlátozott. A Szolgáltató, illetve az általa erre feljogosított személyek kizárólag akkor és olyan mértékben férhetnek hozzá a Felhasználó által rendelkezésre bocsátott adatok olvasható tartalmához, amennyiben az a Felhasználó kifejezett kérésére történő technikai támogatás, hibaelhárítás, információbiztonsági esemény kezelése, jogszabályi kötelezettség teljesítése vagy a Szolgáltatás biztonságos működésének biztosítása érdekében feltétlenül szükséges. Az ilyen kivételes hozzáférés szerepköralapú, a legkisebb jogosultság elvéhez igazodik, a szükséges mértékre és időtartamra korlátozott, és megfelelően naplózott; amennyiben a körülmények és a hozzáférés célja ezt lehetővé teszik, a Szolgáltató a hozzáférést a Felhasználó előzetes kéréséhez vagy jóváhagyásához köti. Jogszabályon vagy kötelező hatósági rendelkezésen alapuló hozzáféréshez a Felhasználó előzetes jóváhagyása nem szükséges.",
+      "A Szolgáltató a Felhasználó által a Szolgáltatás keretében rendelkezésre bocsátott adatok jogszerűségét, pontosságát, tartalmát, eredetét, valamint az adatkezelés jogalapjának fennállását nem vizsgálja és nem köteles vizsgálni.",
+      "A Felhasználó kizárólagos felelőssége annak biztosítása, hogy a Szolgáltatás keretében rendelkezésre bocsátott vagy annak igénybevétele során egyéb módon kezelt személyes adatok kezelése jogszerű legyen, továbbá, hogy az adatkezeléshez megfelelő jogalappal rendelkezzen, az érintettek részére a szükséges adatkezelési tájékoztatást megadja, és az adatkezelés során a vonatkozó adatvédelmi jogszabályok valamennyi rá irányadó rendelkezését betartsa.",
+      "Amennyiben a Felhasználó a Szolgáltatás igénybevétele során különleges személyes adatokat is feltölt, rögzít vagy egyéb módon kezel, kizárólag a Felhasználó köteles biztosítani az ilyen adatkezelés jogszerűségéhez szükséges valamennyi feltétel fennállását.",
+      "A Felhasználó köteles gondoskodni továbbá arról, hogy a Szolgáltatás keretében kizárólag olyan személyes adat kerüljön rendelkezésre bocsátásra, amelynek kezelése a Felhasználó által meghatározott cél eléréséhez szükséges, valamint, hogy a szükségtelenné vált személyes adatok törléséről vagy törlésének kezdeményezéséről megfelelően gondoskodjon.",
+      "A Szolgáltató nem felel a Felhasználó által a Szolgáltatás keretében jogellenesen, megfelelő jogalap nélkül, az érintett megfelelő tájékoztatásának hiányában vagy egyébként az alkalmazandó adatvédelmi rendelkezések megsértésével rendelkezésre bocsátott vagy kezelt személyes adatokból eredő jogkövetkezményekért.",
+      "A Szolgáltató adatfeldolgozói tevékenységének részletes feltételeit a jelen ÁSZF 1. számú mellékletét képező Adatfeldolgozási Szerződés tartalmazza, amely a jelen ÁSZF elválaszthatatlan részét képezi.",
+      "Amennyiben a jelen ÁSZF és az Adatfeldolgozási Szerződés rendelkezései között az adatfeldolgozással összefüggő kérdésben eltérés vagy ellentmondás áll fenn, az adott kérdésben az Adatfeldolgozási Szerződés rendelkezései irányadók."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "13-a-szerzodes-megszuntetese",
+   "heading": "13. A szerződés megszüntetése",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Felhasználói Szerződés és az egyes Modul-licencek időtartamát az Egyedi Szerződés határozza meg. A Fiók létrehozása önmagában nem hoz létre határozatlan idejű felhasználási jogot, és a Fiók fennállása nem hosszabbítja meg a Licenc szerződéses időtartamát.",
+      "A szerződés megszüntetésére az Egyedi Szerződés és az alábbi szabályok együttesen irányadók:",
+      "Egyszeri díjas konstrukció: a Licenc időtartamát az Egyedi Szerződés határozza meg. A Felhasználó a használattal bármikor felhagyhat vagy a Fiók megszüntetését kérheti, azonban a már esedékessé vált vagy megfizetett egyszeri Szolgáltatási Díj nem jár vissza, kivéve, ha az Egyedi Szerződés vagy kötelező jogszabály ettől eltérően rendelkezik.",
+      "Határozott időtartamú Licenc: a Felhasználói Szerződés és az érintett Licenc az Egyedi Szerződésben meghatározott időtartam lejártával - ha a Felek eltérően nem állapodnak meg - külön nyilatkozat nélkül megszűnik. Automatikus megújulás nincs. A Licenc lejárata a használati jogosultság megszűnését jelenti, azonban a Fiók technikai fennállása önmagában nem szűnik meg automatikusan. A Szolgáltató jogosult a Fiókot inaktív, korlátozott vagy kizárólag a megújításhoz, illetve az adatok kezeléséhez szükséges állapotban fenntartani az Egyedi Szerződés, az adatfeldolgozási feltételek és az alkalmazandó jogszabályok szerint. A Felhasználó a Licenc lejártát követően később is kezdeményezheti a Licenc megújítását vagy új időszakra szóló használati jog biztosítását, amely új vagy módosított Egyedi Szerződés és az abban meghatározott további díj alapján történhet. A Fiók vagy az abban kezelt adatok megőrzése nem korlátlan időtartamú; az adatvisszaadásra és törlésre a jelen ÁSZF, az Adatfeldolgozási Szerződés és a Tájékoztató irányadó.",
+      "Rendkívüli felmondás: bármelyik Fél jogosult a szerződést azonnali hatállyal megszüntetni, ha a másik Fél súlyos szerződésszegést követ el és - amennyiben a szerződésszegés orvosolható - az írásbeli felszólításban megjelölt észszerű póthatáridőn belül sem orvosolja azt. Biztonsági, jogellenes, szellemi tulajdont sértő vagy azonnali kárt okozó magatartás esetén a Szolgáltató előzetes póthatáridő nélkül is jogosult felfüggeszteni a hozzáférést és a szerződést azonnali hatállyal felmondani.",
+      "A Szolgáltató különösen az alábbi esetekben jogosult a szerződés vagy az érintett Modul azonnali megszüntetésére, illetve a hozzáférés felfüggesztésére:",
+      "a Felhasználó lényeges vagy valótlan adatot közöl, jogosultságát megtévesztően igazolja, vagy olyan lényeges körülményt hallgat el, amely miatt a szerződés fenntartása a Szolgáltatótól észszerűen nem várható el;",
+      "a Felhasználó írásbeli figyelmeztetés ellenére szerződésszegő, jogellenes, adatbiztonságot vagy harmadik személy jogát veszélyeztető magatartást folytat;",
+      "a Felhasználó jogosulatlanul megosztja a hozzáférési adatokat, megkerüli a licenc- vagy mennyiségi korlátokat, illetve a Szolgáltató szellemi tulajdonát vagy technikai védelmét sérti;",
+      "a Felhasználó valamely esedékes díjat a fizetési felszólítás ellenére sem fizet meg, vagy fizetésképtelenségére, megszűnésére, illetve a teljesítés érdemi veszélyeztetésére utaló körülmény merül fel."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "A jogviszony megszűnésekor a Felhasználó köteles a számára szükséges adatokat a rendelkezésére álló exportfunkciókkal legkésőbb a hozzáférés megszűnéséig kimenteni. A hozzáférés megszűnése után az adatok megőrzésére, visszaadására vagy törlésére az Egyedi Szerződés, az adatfeldolgozási feltételek és az alkalmazandó jogszabályok irányadók. A Szolgáltató nem köteles a megszűnt Fiók adatait korlátlan ideig megőrizni. A megszűnés nem érinti a már esedékessé vált díjakat, a titoktartási, szellemi tulajdonjogi, felelősségi és elszámolási rendelkezések fennmaradását."
+    }
+   ]
+  },
+  {
+   "id": "14-szerzoi-jogok",
+   "heading": "14. Szerzői jogok",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Honlap, a Szolgáltatás és valamennyi Modul teljes szoftveres, technikai és vizuális tartalma - ideértve különösen a forrás- és objektumkódot, adatmodellt, munkafolyamatokat, prompt- és modellorkesztrációt, algoritmusokat, interfészeket, dokumentációt, sablonokat, elrendezést, védjegyeket, logókat és fejlesztéseket - a Szolgáltató vagy jogosult licencadója szellemi tulajdonát képezi. A Felhasználói Szerződés kizárólag a kifejezetten meghatározott Licencet biztosítja, és semmilyen tulajdonjogot vagy forráskódhoz való hozzáférést nem ruház át.",
+      "A Felhasználó nem jogosult a Szolgáltatást vagy annak részét visszafejteni, dekompilálni, szétszerelni, lemásolni, származékos mű létrehozására felhasználni, technikai védelmét megkerülni vagy a Szolgáltató üzleti titkát feltárni, kivéve az alkalmazandó jogszabály kifejezetten eltérést nem engedő rendelkezése által megengedett mértékben.",
+      "A Felhasználó a saját Felhasználói Adataihoz fűződő jogait megtartja. A Szolgáltatás által a Felhasználó adataiból előállított exportok, kimutatások és AI-kimenetek a Felhasználó saját üzleti tevékenységében felhasználhatók, azonban a Szolgáltató nem garantálja, hogy az AI által generált tartalom szerzői jogi védelemben részesül, kizárólagos, egyedi vagy harmadik személy jogától mentes. A Felhasználó felel az ilyen kimenet külső felhasználása előtt szükséges jogi és tartalmi ellenőrzésért.",
+      "A Felhasználó szavatolja, hogy valamennyi Felhasználói Adat, dokumentum, kép, tudásanyag, adatbázis, kommunikációs tartalom és egyéb anyag tekintetében rendelkezik a Szolgáltatás nyújtásához szükséges jogokkal és engedélyekkel, és azok nem sértik harmadik személy szerzői, adatvédelmi, személyiségi, üzleti titokhoz fűződő vagy más jogát.",
+      "Az Egyedi Szerződés eltérő rendelkezése hiányában az egyedi konfiguráció, integráció, csatlakozó, workflow, sablon, általánosítható fejlesztési elem és Kiegészítő Szolgáltatás során létrejövő szoftveres megoldás szellemi tulajdonjoga a Szolgáltatót illeti; a Felhasználó ezekre a szolgáltatás igénybevételéhez szükséges Licencet kapja. A Felhasználó saját, már meglévő anyagai és adatai továbbra is a Felhasználót illetik.",
+      "A Felhasználó által önkéntesen adott, bizalmas információt nem tartalmazó általános fejlesztési javaslatot, hibajelzést és visszajelzést a Szolgáltató díjmentesen felhasználhatja a Szolgáltatás fejlesztésére, feltéve, hogy a felhasználás nem teszi azonosíthatóvá a Felhasználó üzleti titkát vagy személyes adatait."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "15-felelosseg",
+   "heading": "15. Felelősség",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Felhasználó üzleti célú szoftverszolgáltatásként veszi igénybe a Szolgáltatást, és tudomásul veszi a felhőalapú rendszerek, integrációk és mesterséges intelligencia technikai korlátait. A Szolgáltató a Felhasználói Szerződésben kifejezetten vállalt szolgáltatásokat köteles nyújtani, azonban nem vállal felelősséget olyan üzleti eredmény, megtakarítás, bevétel, adózási vagy számviteli eredmény, ügyfélelégedettség vagy más eredmény eléréséért, amelyet a Honlap, prezentáció vagy marketinganyag példaként, célként vagy becslésként mutat be.",
+      "A jogszabály által megengedett mértékben a Szolgáltató nem felel elmaradt haszonért, bevétel- vagy üzletvesztésért, elmaradt megtakarításért, jóhírnév-csökkenésért, üzletmenet-kiesésért, közvetett vagy következményi kárért, illetve olyan adatvesztésért, amely észszerű biztonsági mentéssel vagy exporttal megelőzhető lett volna.",
+      "A Szolgáltató felelőssége különösen az alábbi körülmények tekintetében kizárt vagy korlátozott a jogszabály által megengedett mértékben:",
+      "a Felhasználó vagy harmadik személy által megadott hibás, hiányos, elavult, jogellenes vagy nem megfelelően konfigurált adatokból, tudásanyagból, promptból, jogosultságból vagy utasításból eredő hiba vagy kár;",
+      "Harmadik Fél Szolgáltató - így különösen NAV, banki/PSD2 szolgáltató, e-mail- vagy kommunikációs szolgáltató, közösségi platform, tárhely-, felhő- vagy AI/LLM szolgáltató - kiesése, API-változása, hibás adata, késedelme, jogosultság-visszavonása vagy szolgáltatási feltételeinek változása;",
+      "a Felhasználóoldali Eszköz, internetkapcsolat, hálózat, hitelesítő adat, e-mail-fiók, végpont, vírusvédelem vagy más, a Felhasználó ellenőrzése alatt álló technikai környezet hibája, továbbá külső kibertámadás vagy Vis Maior Esemény, amennyiben az nem a Szolgáltató szerződésszegésére vezethető vissza;",
+      "AI/LLM által generált vagy kinyert hibás, hiányos, pontatlan, elavult, nem egyedi vagy félreérthető tartalom, kalkuláció, kategorizálás, előrejelzés, kontírozási javaslat, válasz vagy más kimenet, valamint a Felhasználó által elmulasztott emberi ellenőrzés következménye;",
+      "a Felhasználó könyvelési, adózási, pénzügyi, utalási, bér-, HR-, marketing-, értékesítési, ügyfélszolgálati, szerződéses vagy hatósági döntése, kommunikációja vagy mulasztása, ideértve az AI-kimenetre vagy automatizált folyamatra alapított döntést is;",
+      "a Felhasználó által elmulasztott jogszabályszerű megőrzés, archiválás, biztonsági mentés vagy export, illetve a megszűnt vagy felfüggesztett Fiókhoz való későbbi hozzáférés hiánya;",
+      "jogszabály, hatósági gyakorlat, adókulcs, számviteli szabály, külső szolgáltatói feltétel vagy technikai szabvány változása és az ehhez kapcsolódó átmeneti módosítási, fejlesztési vagy frissítési idő, kivéve, ha az Egyedi Szerződés kifejezett, határidőhöz kötött jogszabálykövetési kötelezettséget állapít meg.",
+      "A Felhasználó köteles a kár megelőzése és enyhítése érdekében észszerűen eljárni, a hibát vagy káreseményt indokolatlan késedelem nélkül bejelenteni, a szükséges naplókat és körülményeket megőrizni, és a Szolgáltató hibaelhárításában együttműködni. A Szolgáltató nem felel a kár azon részéért, amely e kötelezettség megszegésével okozati összefüggésben növekedett.",
+      "Amennyiben a Szolgáltató felelőssége jogszerűen nem zárható ki, a Szolgáltató teljes, valamennyi jogcímen fennálló kártérítési felelőssége az érintett Modul tekintetében legfeljebb az adott Modulra a Felhasználó által ténylegesen megfizetett összes Szolgáltatási Díj összegéig terjed. Az Egyedi Szerződés ettől eltérő - ideértve alacsonyabb, összegszerűen rögzített - felelősségi limitet állapíthat meg.",
+      "A jelen felelősségkorlátozó és -kizáró rendelkezések nem alkalmazhatók olyan mértékben, amennyiben a felelősség korlátozását vagy kizárását kötelező jogszabály tiltja. Különösen nem korlátozható vagy zárható ki a Szolgáltató felelőssége a szándékosan okozott, valamint emberi életet, testi épséget vagy egészséget megkárosító szerződésszegésért.",
+      "A Felhasználó köteles a jogszabály által megengedett mértékben megtéríteni a Szolgáltatónak a Felhasználó szerződésszegéséből, jogellenes Felhasználói Adatából, személyesadat-kezeléséből, jogosulatlan kommunikációjából, szellemi tulajdonjog-sértéséből vagy Licenc-túllépéséből közvetlenül eredő, igazolt harmadik személyi igényeket és észszerű költségeket. A Szolgáltató a jogszabályok keretei között együttműködik a hatóságokkal és jogosult a Felhasználó jogsértéséből eredő saját igényeit érvényesíteni.",
+      "A Felhasználó a jelen ÁSZF elfogadásával kijelenti, hogy a felelősségkorlátozó, AI-kimenetekre, Harmadik Fél Szolgáltatókra, adatkezelési felelősségmegosztásra, felfüggesztésre és licenckorlátokra vonatkozó rendelkezéseket megismerte. A Felek az Egyedi Szerződésben külön is rögzíthetik azokat a rendelkezéseket, amelyek jogszabály alapján külön tájékoztatást és kifejezett elfogadást igényelnek."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "16-panaszkezeles-modja",
+   "heading": "16. Panaszkezelés módja",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "Szolgáltató célja, hogy a Szolgáltatás megfelelő minőségben, Felhasználó teljes megelégedettsége mellett teljesítésre kerüljön. Amennyiben a Felhasználónak (B2B) mégis valamilyen panasza van a Szolgáltatással, annak teljesítésével kapcsolatban, úgy panaszát az hello@thinkai.hu elérhetőségeken közölheti.",
+      "A Szolgáltató a szóbeli panaszt azonnal megvizsgálja, szükség szerint orvosolja. Amennyiben Felhasználó a panasz kezelésével nem ért egyet, a Szolgáltató a panaszról, az azzal kapcsolatos álláspontjáról haladéktalanul jegyzőkönyvet vesz fel, és annak egy másolati példányát Felhasználó rendelkezésére bocsátja e-mailben. Amennyiben a panasz azonnali kivizsgálása nem lehetséges, úgy a Szolgáltató a panaszról jegyzőkönyvet vesz fel, és annak másolati példányát Felhasználó rendelkezésére bocsátja e-mailben.",
+      "Az írásbeli panaszt a Szolgáltató 30 napon belül írásban, e-mailben megválaszolja, panaszt elutasító álláspontját megindokolja. A Szolgáltató a válasz másolati példányát 3 évig megőrzi, és azt az ellenőrző hatóságoknak kérésükre bemutatja."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "17-vegyes-rendelkezesek",
+   "heading": "17. Vegyes rendelkezések",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A Felek kötelesek bizalmasan kezelni minden olyan, a másik Fél üzleti tevékenységére, ügyfeleire, áraira, technológiájára, biztonságára, forráskódjára, modelljeire, folyamataira, Egyedi Szerződésére vagy egyéb üzleti titkára vonatkozó információt, amelyhez a jogviszony során hozzáférnek. Bizalmas információ kizárólag a Felhasználói Szerződés teljesítéséhez szükséges mértékben, arra jogosult munkavállaló vagy közreműködő részére adható át. Nem minősül bizalmasnak a jogszerűen nyilvános, a fogadó Fél által bizonyíthatóan korábban ismert, vagy jogszabály, hatóság vagy bíróság alapján kötelezően közlendő információ. Az üzleti titokra vonatkozó titoktartási kötelezettség annak üzleti titok jellege fennállásáig a szerződés megszűnését követően is fennmarad.",
+      "A kármegelőzési és kárenyhítési kötelezettség körében a Felhasználó köteles a Szolgáltatót haladéktalanul értesíteni, ha a Szolgáltatás hibás működését, jogosulatlan hozzáférést, adatbiztonsági eseményt vagy lényeges adateltérést észlel. A Szolgáltató nem felel a kár azon részéért, amely a késedelmes bejelentés vagy együttműködés hiánya miatt növekedett.",
+      "A Szolgáltató a kötelezettségei teljesítéséhez közreműködőket, alvállalkozókat és Harmadik Fél Szolgáltatókat, ideértve felhő-, tárhely-, kommunikációs, banki, API- és AI/LLM szolgáltatókat is igénybe vehet. Személyes adatok adatfeldolgozására igénybe vett al-adatfeldolgozókra az alkalmazandó adatvédelmi dokumentumok és a GDPR követelményei irányadók.",
+      "A Felek nem felelnek olyan késedelemért vagy teljesítési akadályért, amely Vis Maior Eseményből vagy más, az érintett Fél észszerű ellenőrzési körén kívül eső és elháríthatatlan körülményből ered, feltéve, hogy az érintett Fél a másik Felet észszerűen lehetséges időn belül tájékoztatja és a következmények enyhítése érdekében elvárható intézkedéseket megteszi.",
+      "A Felek közötti, a Felhasználói Szerződéssel kapcsolatos értesítések a jelen ÁSZF-ben vagy az Egyedi Szerződésben megjelölt e-mail-címre megküldhetők. A Felhasználó köteles kapcsolattartási és számlázási adatait naprakészen tartani; a változás bejelentésének elmulasztásából eredő sikertelen vagy késedelmes kézbesítés következményei a Felhasználót terhelik.",
+      "A Szolgáltató saját adatkezelői minőségében végzett adatkezelésére az Adatkezelési Tájékoztató irányadó.",
+      "A Felhasználó a Felhasználói Szerződésből eredő jogait és kötelezettségeit a Szolgáltató előzetes írásbeli hozzájárulása nélkül nem ruházhatja át. A Szolgáltató jogosult a Felhasználói Szerződést jogutódjára, kapcsolt vállalkozására vagy a Szolgáltatás üzletágának jogutódjára átruházni, feltéve, hogy ez a Felhasználó lényeges szerződéses jogait nem csorbítja és az alkalmazandó adatvédelmi követelmények teljesülnek.",
+      "A Szolgáltató szellemi tulajdonának, üzleti titkának, Licenc-korlátainak vagy technikai védelmének jogosulatlan megsértése esetén a Szolgáltató jogosult a jogsértés abbahagyását, a hozzáférés felfüggesztését, kártérítést és minden egyéb, jogszabály vagy az Egyedi Szerződés alapján rendelkezésére álló jogkövetkezményt érvényesíteni.",
+      "Amennyiben a jelen ÁSZF bármely rendelkezése érvénytelen, jogellenes vagy kikényszeríthetetlen, az a többi rendelkezés érvényességét nem érinti. A Felek az érvénytelen rendelkezést olyan érvényes rendelkezéssel kötelesek helyettesíteni, amely gazdasági céljához a jogszabály által megengedett legközelebb áll.",
+      "Ha a Szolgáltató valamely jogát egy alkalommal nem vagy késedelmesen gyakorolja, az nem minősül a jogról való lemondásnak. A Szolgáltató jogáról való lemondás kizárólag kifejezett írásbeli nyilatkozattal érvényes.",
+      "A Felek törekednek a jogviták tárgyalásos rendezésére. Ha a jogvita tárgyalásos úton nem rendezhető, a Felek - amennyiben az illetékességi kikötést jogszabály lehetővé teszi - a Felhasználói Szerződésből eredő vagyonjogi jogvitákra, hatáskörtől függően a Budapesti XX., XXI. és XXIII. Kerületi Bíróság kizárólagos illetékességét kötik ki."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "18-az-egyes-modulokra-vonatkozo-rendelkezesek",
+   "heading": "18. Az egyes modulokra vonatkozó rendelkezések",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "Az egyes Modulok önállóan licencelhető szoftverkomponensek. A Felhasználó kizárólag az Egyedi Szerződésben megjelölt Modulokra, funkciókra, felhasználói és mennyiségi keretekre szerez Licencet; az Egyedi Szerződésben nem szereplő Modul vagy funkció a Fiókban esetlegesen látható technikai elérhetősége ellenére sem használható díjmentesen. A Modulok díját, Licenc-időtartamát, bevezetési feltételeit és egyedi konfigurációját az Egyedi Szerződés határozza meg. További Modul, funkció vagy szolgáltatási terjedelem kizárólag külön írásbeli megállapodás és további díj alapján biztosítható. Az ügyféltájékoztatók és demók a lehetséges funkcionalitást mutatják be, és önmagukban nem jelentenek valamennyi bemutatott funkcióra vonatkozó szerződéses vállalást.",
+      "A Szolgáltató jogosult a Modulok hibajavítására, biztonsági frissítésére, fejlesztésére és verzióváltására, valamint az alkalmazott AI/LLM modellt, külső szolgáltatót, API-t vagy technikai megoldást módosítani vagy helyettesíteni. A Szolgáltató nem köteles egy korábbi verziót vagy kezelőfelületet változatlanul fenntartani. Egyedi fejlesztés, garantált jogszabálykövetési határidő, SLA vagy speciális támogatás kizárólag akkor terheli a Szolgáltatót, ha azt az Egyedi Szerződés kifejezetten tartalmazza."
+     ]
+    },
+    {
+     "type": "h3",
+     "text": "A) eaisyBill-szolgáltatás"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Az eaisyBill a Szolgáltatás mesterséges intelligenciával támogatott pénzügyi és kontrolling Modulja, amely a Felhasználó pénzügyi adatainak összegyűjtését, rendszerezését, számla- és bizonylatfeldolgozását, banki és egyéb pénzügyi adatok egyeztetését, valamint vezetői kimutatások előállítását támogatja. Az eaisyBill nem számlázóprogram, nem könyvelési vagy adótanácsadási szolgáltatás, és nem helyettesíti a Felhasználó könyvelőjének, pénzügyi szakemberének vagy adótanácsadójának ellenőrzését.",
+      "Az eaisyBill kizárólag akkor és olyan funkciókörrel használható, ahogyan azt az Egyedi Szerződés licenceli és konfigurálja. A funkciók, felhasználók, kezelt vállalkozások, bankszámlák, integrációk, dokumentummennyiség, dashboardok és egyéb limitek Felhasználónként eltérhetnek.",
+      "Számla- és bizonylatforrások: az eaisyBill - a választott konfiguráció szerint - képes számlák és bizonylatok NAV Online Számla integrációból, e-mailből, manuális fájlfeltöltésből, illetve más engedélyezett integrációból történő fogadására. A dokumentumokból AI-funkció strukturált adatokat nyerhet ki és azokat a rendszerben feldolgozhatja.",
+      "Manuális feltöltés: a Felhasználó a kezelőfelületen a Szolgáltató által mindenkor támogatott fájlformátumokban - így különösen PDF, JPEG, PNG és, ha az aktuális felület támogatja, HEIC/HEIF formátumban - számlaképet vagy más bizonylatot tölthet fel. A Felhasználó felel a feltöltött fájl olvashatóságáért, eredetéért, jogszerűségéért, tartalmáért, valamint a duplikált vagy téves feltöltések ellenőrzéséért.",
+      "NAV integráció: a Felhasználó köteles a NAV Online Számla rendszerben a kapcsolat létrehozásához szükséges regisztrációval, technikai vagy másodlagos felhasználóval, jogosultságokkal és hitelesítő adatokkal rendelkezni. A Szolgáltató a Felhasználó NAV-regisztrációját nem végzi el, a Felhasználót a NAV előtt nem képviseli, és a NAV által kiadott vagy kezelt hitelesítő adatok jogszerű létrehozásáért nem felel. A NAV-integrációhoz szükséges felhasználói azonosítók, jelszavak, kulcsok és jogosultságok érvényességéről, biztonságáról, felülvizsgálatáról és szükség szerinti frissítéséről a Felhasználó köteles gondoskodni. Ha a hitelesítő adat lejár, visszavonásra kerül, hibás vagy nem megfelelő jogosultságú, az ebből eredő elmaradt vagy hibás adatszinkronizációért a Szolgáltató nem felel.",
+      "A NAV-adatok szinkronizálása az eaisyBill mindenkori technikai konfigurációja szerint automatikusan, és ahol a felület ezt támogatja, manuálisan is kezdeményezhető. A „valós idejű” vagy automatikus szinkronizáció nem jelent garantált, megszakítás nélküli vagy meghatározott másodperc- vagy percalapú frissítési kötelezettséget. A NAV rendszerében nyilvántartott hivatalos adat elsődlegességét a Szolgáltatásban megjelenő adat nem érinti.",
+      "Külső pénzügyi integrációk: a konfiguráció része lehet banki/PSD2 adatkapcsolat, e-mail alapú banki értesítő, manuális banki adatimport, futárcég-, SZÉP-kártya-, CRM-, ERP- vagy más rendszerkapcsolat. E funkciók működése Harmadik Fél Szolgáltatók elérhetőségétől, API-jaitól, hitelesítő adataitól és feltételeitől függ; a Szolgáltató azok hibájáért vagy változásáért nem felel.",
+      "Az Egyedi Szerződés szerinti konfiguráció függvényében az eaisyBill többek között támogathatja a számlák és banki tételek párosítását, hiányzó számlaképek azonosítását és bekérését, kintlévőség-kezelést, ÁFA-analitikát, utalási listákat, házipénztárat, költségkategória- és profitcenter-kimutatásokat, tárgyi eszközök nyilvántartását, bér- és járulékszámítási háttérfolyamatokat, projekt- és munkaidő-nyilvántartást, valamint vezetői dashboardokat. A felsorolás lehetséges funkciókat jelöl, nem valamennyi funkció automatikus licencelését.",
+      "AI-alapú dokumentumfeldolgozás esetén az eaisyBill a feltöltött vagy e-mailben érkező bizonylatból adatot nyerhet ki, kategorizálhat, párosíthat és számításokat készíthet. A Felhasználó köteles minden lényeges adatot - különösen számlaazonosítókat, összegeket, devizát, ÁFA-adatot, teljesítési és fizetési dátumot, bankszámlaadatot, partneradatot és kontírozási eredményt - könyvelés, bevallás, utalás vagy más külső felhasználás előtt ellenőrizni.",
+      "Az eaisyBill nem minősül a digitális archiválásra vonatkozó jogszabályok szerinti minősített elektronikus archiválási szolgáltatásnak. A számlák és bizonylatok jogszabály szerinti eredeti, hiteles és előírt időtartamú megőrzése a Felhasználó kötelezettsége; a Szolgáltatásban tárolt másolat vagy adat nem mentesít e kötelezettség alól.",
+      "A Felhasználó felel az e-mailből, NAV-ból, bankból, feltöltésből vagy más integrációból származó személyes és üzleti adatok jogszerű kezeléséért és azért, hogy az adatok továbbítására megfelelő jogosultsággal rendelkezzen. Az eaisyBill használatára a 10. fejezet adat- és AI-használati rendelkezései teljeskörűen alkalmazandók.",
+      "A Szolgáltatásban elérhető exportok és kimutatások a Felhasználó saját ellenőrzési és archiválási folyamatainak támogatására szolgálnak. A Felhasználó köteles az üzletileg vagy jogszabályilag lényeges adatokról saját mentést készíteni, és a Szolgáltató nem felel azért, ha a Felhasználó az exportálható adatot határidőben nem mentette ki.",
+      "A NAV, banki, e-mail- és más külső rendszerek adatstruktúrájának, API-jának vagy jogszabályi környezetének változása miatt az integráció átmenetileg korlátozottá válhat vagy módosításra szorulhat. A Szolgáltató észszerű erőfeszítést tesz a szükséges technikai adaptációra, de eltérő Egyedi Szerződés hiányában nem garantál azonnali vagy megszakítás nélküli külső kompatibilitást.",
+      "A Felhasználó felel a saját törzsadatai, könyvelési vagy pénzügyi beállításai, kategóriái, partneradatai, bankszámlái, jogosultságai és egyéb konfigurációi helyességéért. Az ezek hibájára visszavezethető téves kimutatásért, párosításért, értesítésért vagy számításért a Szolgáltató nem felel.",
+      "Az eaisyBill használatának feltétele a 9. fejezet szerinti megfelelő Felhasználóoldali Eszközök és a szükséges integrációs előfeltételek biztosítása. A Szolgáltató jogosult az integrációt vagy a Modul egészét biztonsági, kompatibilitási vagy jogszerűségi okból korlátozni, amíg a Felhasználó a szükséges feltételeket nem biztosítja."
+     ]
+    },
+    {
+     "type": "h3",
+     "text": "B) eaisyBooks-szolgáltatás"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Az eaisyBooks a Szolgáltatás mesterséges intelligenciával támogatott számviteli és könyvelőprogramként működő Modulja, amely a Felhasználó könyvviteli nyilvántartásainak vezetésére, gazdasági eseményeinek rögzítésére és kontírozására, főkönyvi és kapcsolódó számviteli adatok kezelésére, valamint zárási, beszámolási és bevallási folyamatok elvégzésére és támogatására szolgál. Az eaisyBooks szoftveres könyvelőprogram; a Modul rendelkezésre bocsátásával a Szolgáltató nem nyújt a Felhasználó helyett személyes könyvelői, adótanácsadási, könyvvizsgálói vagy jogi szakmai szolgáltatást.",
+      "Az eaisyBooks kizárólag az Egyedi Szerződésben meghatározott funkciókkal használható. A jelenlegi funkciók különösen az alábbi könyvelési, számviteli, zárási és ellenőrzési területekre terjedhetnek ki:",
+      "Számviteli nyilvántartások és kimutatások: főkönyvi kivonat, eredménykimutatás, mérleg és beszámolási adatok előállítása, strukturált kezelése és megjelenítése a rendelkezésre álló forrásadatok alapján;",
+      "ÁFA-analitika és bevallás-előkészítés: az adóhatósági adatok és a rendelkezésre álló bizonylatok alapján ÁFA-analitikák és bevallási tervezetek előállítása;",
+      "Könyvelési tételek kezelése és adategyeztetés: számlák és egyéb bizonylatok kontírozása, könyvelési tételek rögzítése, banki tranzakciók, házipénztári és más számviteli tételek egyeztetése, ellenőrzése és zárási felülvizsgálata.",
+      "A Felhasználó az eaisyBooksban könyvviteli nyilvántartásait vezetheti, könyvelési tételeket rögzíthet és számviteli kimutatásokat állíthat elő. A szoftver használata nem mentesíti a Felhasználót vagy az általa megbízott könyvelőt, adótanácsadót vagy más szakembert a forrásadatok, kontírozás, adókulcsok, mentességi jogcímek, számviteli politika és a végleges bevallási vagy beszámolási adatok jogszabályoknak megfelelő ellenőrzése és jóváhagyása alól.",
+      "A Felhasználó felel a számlatükör, főkönyvi struktúra, nyitóegyenlegek, partner- és adótörzsadatok, időszakok, számviteli politika, adózási státusz és minden más olyan beállítás helyességéért, amelyből a Modul számítást vagy kimutatást készít.",
+      "Az AI-alapú kontírozási, kategorizálási, adatkivonási vagy számítási eredmény hibás vagy hiányos lehet. A Felhasználó köteles az ilyen AI-kimenetet a könyvelési nyilvántartásban történő végleges rögzítés, beszámoló, bevallás, adatszolgáltatás vagy vezetői döntés előtt emberi ellenőrzésnek alávetni.",
+      "Jogszabály, adókulcs, hatósági nyomtatvány, számviteli vagy adózási gyakorlat megváltozása esetén a Modul frissítése időt vehet igénybe. Eltérő Egyedi Szerződés hiányában a Szolgáltató nem vállal garanciát arra, hogy valamennyi jogszabályváltozás a hatálybalépés pillanatában automatikusan átvezetésre kerül. A bevallási, beszámolási és más jogszabályi határidők betartása a Felhasználó felelőssége.",
+      "Az eaisyBooks más Modulból vagy Harmadik Fél Szolgáltatótól átvett adatának pontossága a forrásadat és az integráció minőségétől függ. A Szolgáltató nem felel olyan számviteli eltérésért, amely hibás, hiányzó, késedelmes vagy duplikált forrásadatból ered.",
+      "A Felhasználó felel az eaisyBooksban kezelt munkavállalói, partneri vagy más személyes adatok jogszerűségéért és szükséges mértékére korlátozásáért. A 10. fejezet AI-használati rendelkezései az eaisyBooksra teljeskörűen alkalmazandók.",
+      "A Szolgáltató nem garantálja, hogy az eaisyBooks által előállított kimutatást, tervezetet vagy adatállományt hatóság, könyvvizsgáló, bank vagy más harmadik személy további ellenőrzés, módosítás vagy kiegészítés nélkül elfogadja.",
+      "Az eaisyBooks kezelőfelülete, riportjai és automatizmusai a konfigurációtól és a Licenctől függően eltérhetnek; a szerződéses funkciók körét az Egyedi Szerződés határozza meg.",
+      "Az eaisyBooks használatának feltétele a 9. fejezet szerinti megfelelő Felhasználóoldali Eszközök, továbbá a Szolgáltató által a bevezetés során meghatározott adat- és konfigurációs előfeltételek biztosítása."
+     ]
+    },
+    {
+     "type": "h3",
+     "text": "C) eaisyDesk-szolgáltatás"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Az eaisyDesk a Szolgáltatás mesterséges intelligenciával támogatott, omnichannel ügyfélkommunikációs és CRM Modulja, amely bejövő és kimenő ügyfélinterakciók kezelését, automatizált AI-asszisztensi válaszadást, értesítéseket, kampányokat és ügyféladat-elemzést támogathat. A Modul technikailag folyamatos automatizált működésre tervezhető, azonban a „24/7” működés nem jelent megszakítás nélküli rendelkezésre állási garanciát, ha az Egyedi Szerződés nem tartalmaz külön SLA-t.",
+      "Az eaisyDesk kizárólag az Egyedi Szerződésben licencelt kommunikációs csatornákkal, felhasználókkal, telefonszámokkal, tudásbázisokkal, kampány- és CRM-funkciókkal használható. Egyes funkciók Harmadik Fél Szolgáltató technikai vagy szerződéses feltételeitől függhetnek.",
+      "Omnichannel interakciókezelés: a konfiguráció szerint bejövő megkeresések kezelhetők e-mailen, telefonon/Voice Agenten, Messengeren, Instagramon és WhatsAppon, továbbá kimenő kommunikáció indítható e-mailben, telefonon és SMS-ben. A konkrét csatornakészletet az Egyedi Szerződés és a külső platformok mindenkori technikai elérhetősége határozza meg.",
+      "Egységes kezelőfelület és tudásbázis: az eaisyDesk a Felhasználó által biztosított céges tudásanyag, szabályok, termék- és szolgáltatási információk, árak, elérhetőségek, folyamatok és egyéb konfiguráció alapján válaszolhat. A Felhasználó felel a tudásbázis tartalmának jogszerűségéért, pontosságáért, aktualitásáért és azért, hogy a már nem érvényes információkat haladéktalanul frissítse.",
+      "Automatikus értesítések és kampányok: a Modul a konfiguráció szerint kimenő üzeneteket, ajánlatkövetést, emlékeztetőt, reaktiváló vagy más kampánykommunikációt készíthet és indíthat. A Felhasználó felel minden címzettlista, jogalap, hozzájárulás, leiratkozási lehetőség, kapcsolattartási preferencia és a küldött tartalom jogszerűségéért.",
+      "Érdeklődéskezelés, címkézés és CRM: a Modul a beérkező interakciókat automatikusan kategorizálhatja, ügyfél- vagy érdeklődői státuszt rendelhet hozzájuk és riportokat készíthet. Az automatikus besorolás tévedhet; a Felhasználó köteles az üzletileg vagy személyes joghatással bíró besorolásokat szükség szerint ellenőrizni.",
+      "AI-válaszadás emberi kontrollal: az eaisyDesk önállóan generálhat szöveges vagy hangalapú választ, időponttal vagy folyamattal kapcsolatos műveletet kezdeményezhet, és a beállított szabályok szerint élő kollégához eszkalálhat. A Felhasználó köteles megfelelő jóváhagyási, tiltási és eszkalációs szabályokat kialakítani, valamint az AI-működést rendszeresen ellenőrizni.",
+      "Analitika és riportok: a Modul a megkeresések, csatornák, státuszok, ismétlődő ügytípusok és kommunikációs teljesítmény alapján kimutatásokat készíthet. A riportok pontossága a forrásadatok teljességétől, a külső csatornák adatszolgáltatásától és a konfigurációtól függ.",
+      "AI-transzparencia: a Felhasználó köteles biztosítani, hogy az eaisyDesk által közvetlenül megszólított természetes személy a jogszabály által megkövetelt esetben megfelelően tájékoztatást kapjon arról, hogy mesterséges intelligenciával kommunikál. A Szolgáltatás az eaisyDesk útján folytatott kommunikáció során alapértelmezetten biztosít automatikus tájékoztatást vagy jelzést arról, hogy a kommunikáció mesterséges intelligencia útján történik, az AI Rendelet 50. cikke szerinti kötelezettségek teljesítése érdekében; a Felhasználó ezt nem távolíthatja el és nem teheti megtévesztővé. A Felhasználó felel az adott kommunikációs helyzethez szükséges további ágazati vagy adatvédelmi tájékoztatásokért.",
+      "Direkt marketing és kimenő kommunikáció: a Szolgáltató kizárólag technikai eszközt biztosít. A Felhasználó minősül a saját kampányainak és üzleti kommunikációjának kezdeményezőjének, és kizárólagosan felel az alkalmazandó reklám-, elektronikus kereskedelmi, hírközlési és adatvédelmi szabályok, valamint a külső platformok feltételeinek betartásáért. A Szolgáltatás kéretlen vagy jogellenes üzenetküldésre nem használható.",
+      "Személyes adatok, telefon és átiratok: amennyiben a konfiguráció hangrögzítést, beszédfelismerést, átiratkészítést, időpontfoglalást vagy más személyesadat-kezelést alkalmaz, a Felhasználó köteles a szükséges jogalapot, tájékoztatást, megőrzési időt, hozzáférési szabályokat és érintetti jogok gyakorlását biztosítani.",
+      "Külső csatornák és integrációk: a közösségimédia-, telefon-, SMS-, e-mail-, naptár- vagy más külső platform API-jának kiesése, korlátozása, díj-, jogosultság- vagy szabályváltozása miatt egyes eaisyDesk funkciók átmenetileg vagy tartósan módosulhatnak. A Szolgáltató ilyen esetben jogosult más technikai megoldást alkalmazni vagy az érintett funkciót a külső akadály fennállásáig korlátozni.",
+      "A Felhasználó viseli annak kockázatát, hogy a pontatlan vagy elavult tudásbázis, hibás konfiguráció vagy nem megfelelően kialakított jóváhagyási szabály következtében az AI téves árat, feltételt, nyitvatartást, elérhetőséget, időpontot vagy más információt kommunikál. A Felhasználó köteles az üzletileg lényeges ajánlatok, kötelezettségvállalások és érzékeny ügytípusok esetére emberi kontrollt vagy eszkalációt beállítani.",
+      "Az eaisyDesk nem használható önmagában természetes személyre vonatkozó, jogi vagy hasonlóan jelentős hatású döntés meghozatalára, illetve olyan szakmai döntés kiváltására, amelyhez jogszabály emberi vagy képesített szakértői döntést követel meg, kivéve, ha az ilyen felhasználás jogszerűségét a Felhasználó biztosította és arról a Felek kifejezetten megállapodtak.",
+      "A Szolgáltató nem garantálja, hogy valamely kommunikációs csatorna vagy Harmadik Fél Szolgáltató a szerződés teljes időtartama alatt változatlan API-val, díjjal vagy funkciókkal rendelkezésre áll. A külső szolgáltató feltételeinek megszegéséből eredő korlátozásért, amennyiben azt a Felhasználó magatartása okozza, a Szolgáltató nem felel.",
+      "Az eaisyDesk használatának feltétele a 9. fejezet szerinti megfelelő Felhasználóoldali Eszközök és a bevezetés során meghatározott kommunikációs, jogosultsági és tudásbázis-előfeltételek biztosítása. A Felhasználó köteles az eaisyDesk kezelésében részt vevő munkatársait a Modul rendeltetésszerű és felelős AI-használatára megfelelően felkészíteni."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "19-zaro-rendelkezesek",
+   "heading": "19. Záró rendelkezések",
+   "blocks": [
+    {
+     "type": "ul",
+     "items": [
+      "A jelen ÁSZF-ben és az Egyedi Szerződésben nem szabályozott kérdésekre a mindenkor hatályos magyar jog, különösen a Ptk., továbbá a Szolgáltatás jellegétől függően az alkalmazandó adatvédelmi, elektronikus kereskedelmi, szerzői jogi, számviteli és mesterséges intelligenciára vonatkozó jogszabályok irányadók.",
+      "A Szolgáltató jogosult a Felhasználói Szerződésből eredő esedékes követelésének érvényesítéséhez követeléskezelő, jogi képviselő vagy más közreműködő szolgáltatását igénybe venni. A Felhasználó köteles megtéríteni a késedelméből vagy szerződésszegéséből eredő, jogszabály alapján érvényesíthető és igazolt behajtási költségeket.",
+      "Amennyiben a jelen ÁSZF bármely rendelkezése érvénytelenné, jogszerűtlenné vagy kikényszeríthetetlenné válik, az a fennmaradó rendelkezések érvényességét, jogszerűségét és kikényszeríthetőségét nem érinti."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben az ÁSZF-fel kapcsolatban bármilyen további kérdése lenne, úgy kérjük, írja meg azt az hello@thinkai.hu e-mail címre."
+    },
+    {
+     "type": "p",
+     "text": "Jelen Általános Szerződési Feltételek 2026. augusztus 26. napjától hatályosak."
+    },
+    {
+     "type": "p",
+     "text": "Budapest, 2026. augusztus 26."
+    },
+    {
+     "type": "p",
+     "text": "Think AI Kft."
+    },
+    {
+     "type": "p",
+     "text": "1. számú melléklet"
+    },
+    {
+     "type": "h3",
+     "text": "ADATFELDOLGOZÁSI SZERZŐDÉS"
+    },
+    {
+     "type": "p",
+     "text": "Jelen adatfeldolgozási szerződés a Think AI Korlátolt Felelősségű Társaság által nyújtott, az Általános Szerződési Feltételekben (a továbbiakban: „ÁSZF”) meghatározott, mesterséges intelligenciával támogatott, moduláris üzleti platform (a továbbiakban: „Szolgáltatás”) igénybevételéhez kapcsolódó adatfeldolgozási feltételeket tartalmazza. Jelen adatfeldolgozási szerződés az ÁSZF 1. számú mellékletét képezi."
+    },
+    {
+     "type": "p",
+     "text": "Szerződő fél"
+    },
+    {
+     "type": "p",
+     "text": "Meghatározás"
+    },
+    {
+     "type": "p",
+     "text": "Felhasználó / Adatkezelő"
+    },
+    {
+     "type": "p",
+     "text": "Az ÁSZF szerinti Felhasználó, vagyis az a jogi személy vagy jogi személyiséggel nem rendelkező egyéb szervezet, amely részére a Szolgáltató az Egyedi Szerződés alapján Fiókot hozott létre, és amely a Szolgáltatást, illetve az Egyedi Szerződésben licencelt Modulokat igénybe veszi; a Szolgáltatásba bevitt vagy azon keresztül kezelt személyes adatok tekintetében – amennyiben azok kezelésének célját és lényeges eszközeit ő határozza meg – adatkezelőnek minősül."
+    },
+    {
+     "type": "p",
+     "text": "Adatfeldolgozó / Szolgáltató"
+    },
+    {
+     "type": "p",
+     "text": "Think AI Korlátolt Felelősségű TársaságSzékhely: 1111 Budapest, Lágymányosi utca 12. Fsz. 2. ajtóCégjegyzékszám: 01-09-426295Adószám: 32478620-2-43Képviseli: Benke Viktor ügyvezető"
+    },
+    {
+     "type": "p",
+     "text": "A Felhasználó és az Adatfeldolgozó a továbbiakban együttesen: „Felek”."
+    }
+   ]
+  },
+  {
+   "id": "i-elozmenyek-es-a-szerzodes-celja",
+   "heading": "I. ELŐZMÉNYEK ÉS A SZERZŐDÉS CÉLJA",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "1.1. A Szolgáltatás a Szolgáltató által nyújtott, mesterséges intelligenciával támogatott, moduláris üzleti platform, amely egymástól elkülönülő, önállóan licencelhető Modulokból áll. Jelen adatfeldolgozási szerződés az Egyedi Szerződésben aktivált Modulok igénybevétele során a Felhasználó nevében végzett személyesadat-feldolgozásra alkalmazandó."
+    },
+    {
+     "type": "p",
+     "text": "1.2. A Szolgáltató az Egyedi Szerződés alapján Fiókot hoz létre, az aktivált Modulokhoz és funkciókhoz hozzáférést biztosít, továbbá a Szolgáltatás üzemeltetéséhez, tárhelyéhez, technikai működtetéséhez, karbantartásához, hibajavításához, biztonsági mentéséhez és támogatásához szükséges technikai szolgáltatásokat nyújtja."
+    },
+    {
+     "type": "p",
+     "text": "1.3. A Szolgáltató a Szolgáltatás teljesítése során a Felhasználó nevében és dokumentált utasításai alapján kizárólag a Szolgáltatás működéséhez szükséges technikai adattárolási és az ahhoz közvetlenül kapcsolódó informatikai műveleteket végzi. A Szolgáltató a Felhasználó által a Szolgáltatás keretében rendelkezésre bocsátott személyes adatok kezelésének célját és módját nem határozza meg, a Felhasználó által végzett műveleteket nem követi nyomon, nem értékeli és nem ellenőrzi, továbbá a Szolgáltatás rendes, üzemszerű működése során nem ismeri meg és nem tekinti meg a Felhasználó által feltöltött, rögzített vagy egyéb módon rendelkezésre bocsátott adatok és tartalmak érdemi tartalmát. A Szolgáltató adatfeldolgozói tevékenysége ennek megfelelően elsődlegesen a személyes adatok technikai fogadására, továbbítására, tárolására, biztonsági mentésére, helyreállítására és törlésére korlátozódik, kizárólag olyan mértékben, amely a Szolgáltatás technikai működtetéséhez szükséges. A Szolgáltató nem végez a Felhasználó által rendelkezésre bocsátott személyes adatok tartalmára irányuló önálló elemzést, értékelést, profilalkotást vagy egyéb, saját célú adatkezelési műveletet, és az ilyen adatokat saját céljára nem használja fel."
+    },
+    {
+     "type": "p",
+     "text": "1.4. Jelen szerződés célja, hogy a Felek az adatfeldolgozási tevékenység feltételeit a GDPR rendelet 28. cikkének megfelelően szabályozzák, és meghatározzák azokat a technikai, szervezési, titoktartási, incidenskezelési, ellenőrzési és együttműködési garanciákat, amelyek az érintettek jogainak és szabadságainak védelmét biztosítják."
+    },
+    {
+     "type": "p",
+     "text": "1.5. Jelen szerződés a Felhasználói Szerződés elválaszthatatlan részét képezi. Adatfeldolgozási kérdésekben a jelen szerződés rendelkezései irányadók. A jelen szerződés nem érinti azokat az adatkezeléseket, amelyeket a Szolgáltató saját nevében, önálló adatkezelőként végez – így különösen a saját szerződéses, számlázási, kapcsolattartási, jogi megfelelési, ügyfélszolgálati vagy marketing célú adatkezeléseket –, amelyekre a Szolgáltató mindenkor hatályos Adatkezelési Tájékoztatója vonatkozik."
+    }
+   ]
+  },
+  {
+   "id": "ii-definiciok",
+   "heading": "II. DEFINÍCIÓK",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Felhasználó / Adatkezelő: az ÁSZF szerinti Felhasználó, vagyis az a jogi személy vagy jogi személyiséggel nem rendelkező egyéb szervezet, amely részére a Szolgáltató az Egyedi Szerződés alapján Fiókot hozott létre, és amely a Szolgáltatást, illetve az Egyedi Szerződésben licencelt Modulokat igénybe veszi; a saját adatkezelései tekintetében meghatározza a személyes adatok kezelésének céljait és lényeges eszközeit."
+    },
+    {
+     "type": "p",
+     "text": "Adatfeldolgozó / Szolgáltató: a Think AI Korlátolt Felelősségű Társaság (székhely: 1111 Budapest, Lágymányosi utca 12. Fsz. 2. ajtó; cégjegyzékszám: 01-09-426295; adószám: 32478620-2-43), amely a Felhasználó nevében, a Felhasználó dokumentált utasításai szerint végzi a Szolgáltatás teljesítéséhez szükséges adatfeldolgozási műveleteket."
+    },
+    {
+     "type": "p",
+     "text": "Fiók: az ÁSZF szerinti, a Szolgáltató által a Felhasználó részére, a Felhasználó által rendelkezésre bocsátott adatok és az Egyedi Szerződés alapján létrehozott felhasználói fiók, amelyen keresztül a Felhasználó az aktivált Modulokhoz és funkciókhoz hozzáfér."
+    },
+    {
+     "type": "p",
+     "text": "Felhasználói Tartalom: a Felhasználó vagy az általa feljogosított személy által a Szolgáltatásba feltöltött, rögzített, továbbított, integráción keresztül hozzáférhetővé tett vagy egyéb módon rendelkezésre bocsátott dokumentum, adat, szöveg, üzenet, hanganyag, kép, számla, bizonylat, pénzügyi, számviteli, ügyfélkapcsolati vagy egyéb tartalom."
+    },
+    {
+     "type": "p",
+     "text": "Automatizált Kimenet: a Felhasználói Tartalomból vagy a Szolgáltatásban rendelkezésre álló adatokból a Szolgáltatás által automatizált vagy részben automatizált módon előállított, strukturált, megjelenített, exportálható, elemzett vagy kommunikációs célra felhasznált adat, eredmény vagy egyéb kimenet."
+    },
+    {
+     "type": "p",
+     "text": "Harmadik személy: minden olyan természetes személy, akinek személyes adata a Felhasználói Tartalomban vagy az Automatizált Kimenetben szerepelhet, így különösen a Felhasználó munkavállalója, képviselője, kapcsolattartója, ügyfele, érdeklődője, beszállítója, partnere, fizető fele, kedvezményezettje vagy más azonosítható természetes személy."
+    },
+    {
+     "type": "p",
+     "text": "Személyes adat: azonosított vagy azonosítható természetes személyre vonatkozó bármely információ a GDPR szerinti értelemben."
+    },
+    {
+     "type": "p",
+     "text": "Üzleti, pénzügyi és kommunikációs adat: a Felhasználó üzleti működéséhez kapcsolódó olyan adat, amely személyes adatot is tartalmazhat, így különösen számla- és bizonylatadat, banki vagy fizetési adat, könyvelési adat, munkavállalói adat, ügyfél- és kapcsolattartási adat, üzenet, kommunikációs előzmény, hanganyag vagy átirat."
+    },
+    {
+     "type": "p",
+     "text": "Különleges személyes adat: a GDPR 9. cikke szerinti különleges személyes adatkategória. A Szolgáltatás célja nem különleges személyes adatok kezelése; ilyen adat kizárólag a Felhasználó döntése és felelőssége alapján, a szükséges jogalap és feltételek fennállása esetén kerülhet a Szolgáltatásba."
+    },
+    {
+     "type": "p",
+     "text": "Adatvédelmi incidens: a biztonság olyan sérülése, amely a továbbított, tárolt vagy más módon kezelt személyes adatok véletlen vagy jogellenes megsemmisítését, elvesztését, megváltoztatását, jogosulatlan közlését vagy az azokhoz való jogosulatlan hozzáférést eredményezi."
+    },
+    {
+     "type": "p",
+     "text": "Al-adatfeldolgozó: a Szolgáltató által a Felhasználó nevében végzett adatfeldolgozási tevékenység meghatározott részének ellátására igénybe vett további adatfeldolgozó."
+    },
+    {
+     "type": "p",
+     "text": "Harmadik ország: az Európai Gazdasági Térségen kívüli ország vagy terület."
+    }
+   ]
+  },
+  {
+   "id": "iii-az-adatfeldolgozas-targya-jellege-es-celja",
+   "heading": "III. AZ ADATFELDOLGOZÁS TÁRGYA, JELLEGE ÉS CÉLJA",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "3.1. Az adatfeldolgozás tárgya a Felhasználó által a Szolgáltatás keretében rendelkezésre bocsátott vagy a Felhasználó utasítása alapján integrációkon keresztül hozzáférhetővé tett személyes adatoknak a Felhasználói Szerződés teljesítéséhez szükséges technikai és automatizált feldolgozása."
+    },
+    {
+     "type": "p",
+     "text": "3.2. A Szolgáltató a Felhasználó által a Szolgáltatás keretében végzett műveleteket nem követi nyomon, nem ellenőrzi és nem értékeli. A Felhasználói Tartalom olvasható, érdemi tartalmát a Szolgáltatás rendes, üzemszerű működése során a Szolgáltató munkatársai és közreműködői számára nem teszi hozzáférhetővé; a Szolgáltatás keretében végzett automatizált informatikai vagy AI/LLM-feldolgozás önmagában nem jelent emberi hozzáférést vagy tartalmi megismerést. A Szolgáltató a személyes adatokat saját céljára nem használja fel, azok tartalmára irányuló önálló elemzést, profilalkotást vagy egyéb tartalmi adatkezelési műveletet nem végez."
+    },
+    {
+     "type": "p",
+     "text": "3.3. Az adatfeldolgozás célja kizárólag a Felhasználói Szerződés szerinti Szolgáltatás biztosítása. Az adatfeldolgozás konkrét műveletei az aktivált Modultól és konfigurációtól függnek, így különösen az eaisyBill esetében számla- és pénzügyi adatok technikai tárolását és automatizált feldolgozását, az eaisyBooks esetében számviteli és könyvelési adatok technikai kezelését, ideértve a könyvviteli nyilvántartásokhoz és könyvelési műveletekhez kapcsolódó adatokat, az eaisyDesk esetében pedig – ha az adott funkció aktivált – ügyfélkommunikációs, kapcsolattartási és CRM-adatok automatizált kezelését foglalhatják magukban."
+    },
+    {
+     "type": "p",
+     "text": "3.4. A Szolgáltató a Felhasználó választása szerint a Felhasználói Szerződés megszűnésekor vagy az alkalmazandó törlési határidő lejártáig a személyes adatokat a rendelkezésre álló exportfunkciók útján visszaszolgáltatja, illetve törli, kivéve, ha uniós vagy tagállami jog az adatok további megőrzését írja elő. A biztonsági mentésekben fennmaradó példányok törlése a Szolgáltató szokásos mentési ciklusa szerint történhet, feltéve, hogy azok további rendes felhasználásra nem kerülnek."
+    },
+    {
+     "type": "p",
+     "text": "3.5. A Szolgáltató a személyes adatok kezelésének célját nem határozza meg, és saját céljából nem végez olyan automatizált döntéshozatalt vagy profilalkotást, amely az érintettre nézve joghatással járna vagy őt hasonlóképpen jelentős mértékben érintené. Amennyiben a Felhasználó valamely Modul automatizált funkcióját ilyen döntési vagy kommunikációs folyamatba illeszti, annak jogszerű kialakításáért és alkalmazásáért a Felhasználó felel."
+    }
+   ]
+  },
+  {
+   "id": "iv-a-felhasznalo-kotelezettsegei-es-jogai",
+   "heading": "IV. A FELHASZNÁLÓ KÖTELEZETTSÉGEI ÉS JOGAI",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "4.1. A Felhasználó adatkezelőként kizárólagosan jogosult és köteles meghatározni a Szolgáltató részére továbbított, feltöltött vagy egyéb módon hozzáférhetővé tett személyes adatok kezelésének célját és lényeges eszközeit."
+    },
+    {
+     "type": "p",
+     "text": "4.2. A Felhasználó biztosítja, hogy a Szolgáltatás keretében kezelt személyes adatok kezeléséhez megfelelő jogalappal rendelkezzen. Amennyiben különleges személyes adat kezelése válik szükségessé, a Felhasználó köteles biztosítani a GDPR rendelet 6. cikke szerinti megfelelő jogalapot, továbbá a GDPR rendelet 9. cikke szerinti valamely alkalmazható feltétel fennállását."
+    },
+    {
+     "type": "p",
+     "text": "4.3. A Felhasználó köteles az érintetteket – különösen saját munkavállalóit, képviselőit, kapcsolattartóit, ügyfeleit, érdeklődőit, beszállítóit és egyéb harmadik személyeket – az adatkezelésről, a Szolgáltató adatfeldolgozóként történő igénybevételéről, az esetleges adattovábbításokról és az érintetti jogokról megfelelően tájékoztatni. Az eaisyDesk kommunikációs, hang- vagy átiratkészítési funkcióinak használata esetén a szükséges tájékoztatások és jogalapok biztosítása szintén a Felhasználó feladata."
+    },
+    {
+     "type": "p",
+     "text": "4.4. A Felhasználó kizárólag olyan Felhasználói Tartalmat és személyes adatot jogosult a Szolgáltatásba feltölteni, rögzíteni, továbbítani, integráción keresztül hozzáférhetővé tenni vagy feldolgoztatni, amelynek ilyen módon történő kezelésére megfelelő jogosultsággal és jogalappal rendelkezik. A Felhasználó köteles az adatminimalizálás elvét betartani, és kerülni a szolgáltatási célhoz nem szükséges különleges vagy egyéb érzékeny adatok bevitelét."
+    },
+    {
+     "type": "p",
+     "text": "4.5. A Felhasználó felel az általa vagy az ő nevében rögzített, feltöltött, továbbított vagy hozzáférhetővé tett adatok pontosságáért, jogszerűségéért, naprakészségéért, tartalmi megfelelőségéért és megőrzési idejéért. A Szolgáltató a Felhasználói Tartalom tartalmát nem köteles ellenőrizni, és nem felel annak valódiságáért, teljességéért vagy jogszerűségéért."
+    },
+    {
+     "type": "p",
+     "text": "4.6. A Felhasználó köteles gondoskodni a Fiókhoz kapcsolódó belépési adatok, jelszavak, felhasználói jogosultságok, saját eszközei és informatikai környezete megfelelő védelméről, valamint arról, hogy a Fiókhoz csak megfelelően feljogosított személy férjen hozzá."
+    },
+    {
+     "type": "p",
+     "text": "4.7. A Felhasználó köteles haladéktalanul értesíteni a Szolgáltatót, ha belépési adatai elvesztésének, ellopásának, jogosulatlan felhasználásának vagy a Fiókkal kapcsolatos jogosulatlan hozzáférésnek a gyanúja felmerül."
+    },
+    {
+     "type": "p",
+     "text": "4.8. A Felhasználó jogosult a Szolgáltató adatfeldolgozási tevékenységét a jelen szerződés XII. fejezetében meghatározott keretek között ellenőrizni."
+    },
+    {
+     "type": "p",
+     "text": "4.9. A Felhasználó utasításainak jogszerűségéért a Felhasználó felel. A Szolgáltató haladéktalanul tájékoztatja a Felhasználót, ha megítélése szerint valamely utasítás sérti a GDPR-t vagy más alkalmazandó adatvédelmi jogszabályt. A Szolgáltató jogosult a nyilvánvalóan jogellenes, biztonságot veszélyeztető vagy a Felhasználói Szerződésbe ütköző utasítás teljesítését annak tisztázásáig felfüggeszteni vagy megtagadni."
+    }
+   ]
+  },
+  {
+   "id": "v-az-adatfeldolgozo-altalanos-kotelezettsegei",
+   "heading": "V. AZ ADATFELDOLGOZÓ ÁLTALÁNOS KÖTELEZETTSÉGEI",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "5.1. A Szolgáltató kizárólag a Felhasználó dokumentált utasítása alapján és a Felhasználói Szerződés teljesítéséhez szükséges mértékben dolgozhat fel személyes adatokat, kivéve, ha az adatfeldolgozást uniós vagy tagállami jog írja elő; ilyen esetben a Szolgáltató – jogszabályi tilalom hiányában – az adatfeldolgozás előtt tájékoztatja a Felhasználót e jogi előírásról."
+    },
+    {
+     "type": "p",
+     "text": "5.2. Dokumentált utasításnak minősül különösen az Egyedi Szerződés, az ÁSZF, a jelen adatfeldolgozási szerződés, a Szolgáltatás rendeltetésszerű használata során a Felhasználó által végzett beállítás, feltöltés, integráció-aktiválás, feldolgozás-indítás, exportálás, letöltés, törlés vagy egyéb rendszerbeli művelet, valamint a Felhasználó igazolható írásbeli utasítása."
+    },
+    {
+     "type": "p",
+     "text": "5.3. A Szolgáltató nem határozhatja meg önállóan a Felhasználói Tartalomban szereplő személyes adatok kezelésének célját, és ezeket az adatokat saját célra nem használhatja fel. A Szolgáltató a Felhasználói Tartalmat saját marketing-, profilalkotási vagy az érintettek önálló értékelésére irányuló célból nem dolgozza fel."
+    },
+    {
+     "type": "p",
+     "text": "5.4. A Szolgáltató a Szolgáltatás működésére, használatára, teljesítményére és biztonságára vonatkozó technikai napló- és működési adatokat elemezhet a Szolgáltatás minőségének, megbízhatóságának, teljesítményének, biztonságának és használhatóságának fenntartása vagy fejlesztése érdekében, feltéve, hogy az ilyen elemzés nem irányul a Felhasználói Tartalomban szereplő érintettek azonosítására, profilalkotására vagy egyedi értékelésére."
+    },
+    {
+     "type": "p",
+     "text": "5.5. A Szolgáltató az aktivált Modul működéséhez automatizált technológiai megoldásokat, ideértve AI/LLM Szolgáltatást, dokumentumfelismerést, beszédfelismerést vagy más automatizált feldolgozást is alkalmazhat, amennyiben az az Egyedi Szerződés szerinti funkció biztosításához szükséges. Az automatizált feldolgozás önmagában nem jelenti azt, hogy a Szolgáltató munkatársai a Felhasználói Tartalom tartalmát megismerik."
+    },
+    {
+     "type": "p",
+     "text": "5.6. A Szolgáltató munkatársai és közreműködői a Felhasználói Tartalmat rendes üzemszerű működés során nem tekintik meg. Emberi hozzáférés kizárólag akkor és olyan mértékben történhet, amennyiben az a Felhasználó kifejezett támogatási kérése, hibaelhárítás, információbiztonsági esemény kezelése, jogszabályi kötelezettség teljesítése vagy a Szolgáltatás biztonságos működésének biztosítása érdekében feltétlenül szükséges."
+    },
+    {
+     "type": "p",
+     "text": "5.7. A Szolgáltató köteles biztosítani, hogy az esetlegesen személyes adatokhoz hozzáférő személyek megfelelő felhatalmazással rendelkezzenek, titoktartási kötelezettség alatt álljanak, és az adatokat kizárólag a feladatuk ellátásához szükséges mértékben kezeljék."
+    },
+    {
+     "type": "p",
+     "text": "5.8. A Szolgáltató köteles az irányadó adatvédelmi jogszabályok rendelkezéseit betartani, és megfelelő garanciákat nyújtani a GDPR követelményeinek teljesítésére."
+    },
+    {
+     "type": "p",
+     "text": "5.9. A Szolgáltató a Felhasználó rendelkezésére bocsátja mindazokat az észszerűen szükséges információkat, amelyek a GDPR rendelet 28. cikke szerinti adatfeldolgozói kötelezettségek teljesítésének igazolásához szükségesek."
+    },
+    {
+     "type": "p",
+     "text": "5.10. A Szolgáltató jogosult a Szolgáltatás vagy valamely Modul elérhetőségét a rendszer vagy a személyes adatok biztonsága, karbantartás, fejlesztés, visszaélés megelőzése vagy megfelelő működés érdekében a szükséges mértékben korlátozni vagy ideiglenesen szüneteltetni, feltéve, hogy ezzel adatvédelmi és adatbiztonsági kötelezettségeit nem sérti."
+    }
+   ]
+  },
+  {
+   "id": "vi-kulonleges-szemelyes-adatokra-vonatkozo-rendelkezesek",
+   "heading": "VI. KÜLÖNLEGES SZEMÉLYES ADATOKRA VONATKOZÓ RENDELKEZÉSEK",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "6.1. A Felek rögzítik, hogy a Szolgáltatás célja nem különleges személyes adatok kezelése. A Felhasználói Tartalomban ugyanakkor a Felhasználó döntése alapján vagy a feldolgozott üzleti dokumentumok, ügyfélkommunikáció vagy más tartalom részeként esetlegesen különleges személyes adat is előfordulhat."
+    },
+    {
+     "type": "p",
+     "text": "6.2. A Felhasználó kizárólag akkor jogosult különleges személyes adatot a Szolgáltatás keretében kezelni, ha annak kezelése a konkrét célhoz szükséges, az alkalmazandó jogalap és a GDPR rendelet 9. cikke szerinti feltétel fennáll, valamint a megfelelő adatvédelmi és adatbiztonsági követelményeket biztosította."
+    },
+    {
+     "type": "p",
+     "text": "6.3. Tekintettel arra, hogy a Szolgáltató a Felhasználói Tartalmat rendes működése során nem tekinti meg és tartalmilag nem ellenőrzi, a Szolgáltató nem köteles annak megállapítására, hogy a Felhasználó által rendelkezésre bocsátott adatok között különleges személyes adat található-e. Ennek azonosítása és jogszerű kezelésének biztosítása a Felhasználó felelőssége."
+    },
+    {
+     "type": "p",
+     "text": "6.4. Amennyiben különleges személyes adat feldolgozására kerül sor, a Szolgáltató az ilyen adatokra is a jelen szerződésben meghatározott, kockázattal arányos technikai és szervezési biztonsági intézkedéseket alkalmazza; az adatok továbbítása kizárólag megfelelően védett kommunikációs csatornán történhet."
+    },
+    {
+     "type": "p",
+     "text": "6.5. Általános fejlesztési vagy tesztelési célra éles Felhasználói Tartalom nem használható; a Szolgáltató ilyen célra elsődlegesen szintetikus, megfelelően anonimizált vagy álnevesített adatot alkalmaz. Demonstráció, oktatás, képernyőmegosztás vagy más, ügyfél illetve külső személy számára hozzáférhető bemutató során kizárólag szintetikus vagy megfelelően anonimizált adat használható, és biztosítani kell, hogy más ügyfél Fiókja, azonosítható adata vagy bizalmas tartalma ne legyen látható vagy hozzáférhető. Éles Felhasználói Tartalom kizárólag akkor használható hibaelhárítási vagy a Szolgáltatás működésének helyreállításához, illetve biztosításához közvetlenül szükséges vizsgálati célra, ha a feladat szintetikus, anonimizált vagy álnevesített adattal észszerűen nem végezhető el. Ilyen esetben a hozzáférés kizárólag kijelölt, emelt jogosultságú adminisztratív szerepkörrel, dokumentáltan, a legkisebb szükséges adatkörre és időtartamra korlátozva és naplózott módon történhet. A feladat befejezését követően az ideiglenesen létrehozott másolatokat, exportokat és gyorsítótárazott tartalmakat indokolatlan késedelem nélkül törölni kell, kivéve, ha azok további megőrzését jogszabály vagy dokumentált incidenskezelési kötelezettség írja elő."
+    },
+    {
+     "type": "p",
+     "text": "6.6. Különleges személyes adatot érintő adatvédelmi incidens esetén a Szolgáltató a VIII. fejezet szerint, indokolatlan késedelem nélkül tájékoztatja a Felhasználót."
+    }
+   ]
+  },
+  {
+   "id": "vii-adatbiztonsagi-intezkedesek",
+   "heading": "VII. ADATBIZTONSÁGI INTÉZKEDÉSEK",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "7.1. A Szolgáltató a tudomány és technológia állása, a megvalósítás költségei, az adatfeldolgozás jellege, hatóköre, körülményei és céljai, valamint az érintettek jogaira és szabadságaira jelentett kockázat figyelembevételével megfelelő technikai és szervezési intézkedéseket alkalmaz."
+    },
+    {
+     "type": "p",
+     "text": "7.2. A Szolgáltató az adott Modul és infrastruktúra jellegéhez igazodva olyan intézkedéseket alkalmaz, amelyek az észszerűen elvárható szinten támogatják a személyes adatok bizalmasságát, sértetlenségét, rendelkezésre állását és a feldolgozó rendszerek ellenálló képességét."
+    },
+    {
+     "type": "p",
+     "text": "7.3. A Szolgáltató gondoskodik arról, hogy az irányítása alatt eljáró, személyes adatokhoz esetlegesen hozzáférő természetes személyek kizárólag a Felhasználó dokumentált utasításának, a jelen szerződésnek és a vonatkozó jogszabályoknak megfelelően kezelhessék az adatokat."
+    },
+    {
+     "type": "p",
+     "text": "7.4. A Szolgáltató a biztonsági intézkedéseket a technológiai és kockázati környezet változásához igazíthatja, feltéve, hogy az összességében biztosított védelmi szint lényegesen nem csökken."
+    },
+    {
+     "type": "p",
+     "text": "7.5. A Szolgáltató jogosult a hozzáférést technikai vagy biztonsági feltételekhez kötni, korlátozni, módosítani, felfüggeszteni vagy megszüntetni, ha ez a személyes adatok, a Szolgáltatás, a Felhasználó vagy más felhasználók biztonsága érdekében szükséges."
+    }
+   ]
+  },
+  {
+   "id": "viii-adatvedelmi-incidensek-kezelese",
+   "heading": "VIII. ADATVÉDELMI INCIDENSEK KEZELÉSE",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "8.1. A Szolgáltató az általa észlelt és megerősített, a Felhasználó nevében feldolgozott személyes adatokat érintő adatvédelmi incidensről indokolatlan késedelem nélkül írásban tájékoztatja a Felhasználót. Amennyiben az incidens vizsgálata még folyamatban van, a Szolgáltató a rendelkezésére álló információkat fokozatosan is átadhatja."
+    },
+    {
+     "type": "p",
+     "text": "8.2. Az incidensről szóló tájékoztatás – a Szolgáltató rendelkezésére álló információk mértékében – tartalmazza az incidens jellegét, az érintett személyek és adatkategóriák ismert vagy becsült körét, az incidens valószínűsíthető következményeit, az érintett rendszereket, valamint a megtett vagy tervezett intézkedéseket és a kapcsolattartási információkat."
+    },
+    {
+     "type": "p",
+     "text": "8.3. A Szolgáltató az adatfeldolgozás jellegére és a rendelkezésére álló információkra figyelemmel észszerű mértékben együttműködik a Felhasználóval az incidens kivizsgálása, elhárítása, hatásainak csökkentése, valamint a Felhasználót terhelő esetleges hatósági vagy érintetti bejelentési kötelezettségek teljesítése érdekében. Az adatkezelői bejelentési és tájékoztatási kötelezettségek teljesítéséért a Felhasználó felel."
+    },
+    {
+     "type": "p",
+     "text": "8.4. A Szolgáltató az incidenssel összefüggésben megteszi a tőle észszerűen elvárható technikai, szervezési és korrekciós intézkedéseket. Ha az incidens oka nem a Szolgáltató érdekkörében merült fel, a Felhasználó által igényelt, szokásos mértéket meghaladó támogatás költségeit a Felek az Egyedi Szerződés vagy külön megállapodás szerint rendezik."
+    }
+   ]
+  },
+  {
+   "id": "ix-al-adatfeldolgozok-igenybevetele",
+   "heading": "IX. AL-ADATFELDOLGOZÓK IGÉNYBEVÉTELE",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "9.1. A Felhasználó jelen szerződés elfogadásával általános felhatalmazást ad a Szolgáltató részére Al-adatfeldolgozók igénybevételére, ideértve az Egyedi Szerződés szerinti Modulok működtetéséhez szükséges tárhely-, felhő-, kommunikációs, API-, AI/LLM- és egyéb technológiai szolgáltatókat. A mindenkor igénybe vett Al-adatfeldolgozók listáját a Szolgáltató a Felhasználó számára elektronikus úton vagy a mindenkor hatályos adatvédelmi dokumentációban elérhetővé teszi. A Szolgáltató Adatkezelési Tájékoztatója elérhető innen: _____________"
+    },
+    {
+     "type": "p",
+     "text": "9.2. A Szolgáltató a tervezett új Al-adatfeldolgozó bevonásáról vagy annak cseréjéről észszerű idővel előzetesen tájékoztatja a Felhasználót, lehetőséget biztosítva arra, hogy a Felhasználó igazolt és észszerű adatvédelmi okból kifogást emeljen. Ha a Felek a kifogást észszerű időn belül nem tudják rendezni, a Szolgáltató jogosult az érintett technikai megoldás helyettesítésére, illetve – ha ez észszerűen nem lehetséges – az érintett Modul vagy funkció nyújtását megszüntetni az Egyedi Szerződés szabályai szerint."
+    },
+    {
+     "type": "p",
+     "text": "9.3. A Szolgáltató az Al-adatfeldolgozóval olyan szerződéses vagy más kötelező jogi feltételeket alkalmaz, amelyek az Al-adatfeldolgozóra a GDPR 28. cikk (4) bekezdésével összhangban megfelelő adatvédelmi kötelezettségeket telepítenek."
+    },
+    {
+     "type": "p",
+     "text": "9.4. A Szolgáltató az Al-adatfeldolgozó adatvédelmi kötelezettségeinek teljesítéséért a GDPR-ban meghatározottak szerint felel a Felhasználóval szemben."
+    },
+    {
+     "type": "p",
+     "text": "9.5. A Szolgáltató az Al-adatfeldolgozók kiválasztásakor figyelembe veszi a feldolgozott adatok jellegét, a Szolgáltatás műszaki követelményeit és az Al-adatfeldolgozó által nyújtott adatvédelmi és adatbiztonsági garanciákat."
+    }
+   ]
+  },
+  {
+   "id": "x-erintetti-jogok-gyakorlasanak-tamogatasa",
+   "heading": "X. ÉRINTETTI JOGOK GYAKORLÁSÁNAK TÁMOGATÁSA",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "10.1. A Szolgáltató az adatfeldolgozás jellegére figyelemmel, megfelelő technikai és szervezési intézkedésekkel, a tőle észszerűen elvárható mértékben segíti a Felhasználót az érintetti jogok gyakorlásával kapcsolatos kérelmek teljesítésében. Elsődlegesen a Szolgáltatásban rendelkezésre álló keresési, exportálási, helyesbítési és törlési funkciók alkalmazandók; a Szolgáltató nem köteles a Felhasználói Tartalom manuális tartalmi átvizsgálására."
+    }
+   ]
+  },
+  {
+   "id": "xi-hatasvizsgalat-elozetes-konzultacio-es-megfeleles-igazola",
+   "heading": "XI. HATÁSVIZSGÁLAT, ELŐZETES KONZULTÁCIÓ ÉS MEGFELELÉS IGAZOLÁSA",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "11.1. A Szolgáltató az adatfeldolgozás jellegére és a rendelkezésére álló információkra figyelemmel, észszerű mértékben segíti a Felhasználót a GDPR 32–36. cikke szerinti kötelezettségek teljesítésében, különösen adatbiztonsági, adatvédelmi hatásvizsgálati és előzetes konzultációs kérdésekben."
+    },
+    {
+     "type": "p",
+     "text": "11.2. A Felhasználó észszerű, konkrét és adatvédelmi jogszabályi kötelezettség teljesítéséhez szükséges kérésére a Szolgáltató írásos tájékoztatást ad az általa alkalmazott technikai és szervezési intézkedések főbb jellemzőiről és az adatfeldolgozási megfelelésről. A szokásos együttműködés körét lényegesen meghaladó, ismétlődő vagy egyedi szakértői közreműködés külön díjazás tárgyát képezheti, kivéve, ha annak szükségessége a Szolgáltató szerződésszegésére vezethető vissza."
+    },
+    {
+     "type": "p",
+     "text": "11.3. A Szolgáltató a Felhasználó rendelkezésére bocsátja mindazokat az észszerűen szükséges információkat, amelyek a jelen szerződés és a GDPR 28. cikke szerinti adatfeldolgozói kötelezettségek teljesítésének igazolásához szükségesek."
+    }
+   ]
+  },
+  {
+   "id": "xii-ellenorzesi-jog",
+   "heading": "XII. ELLENŐRZÉSI JOG",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "12.1. A Felhasználó jogosult a Szolgáltató adatfeldolgozási tevékenységének megfelelőségét ellenőrizni."
+    },
+    {
+     "type": "p",
+     "text": "12.2. Adatvédelmi incidens, hatósági megkeresés vagy a Szolgáltató adatfeldolgozási kötelezettségeinek megalapozottan feltételezett lényeges megsértése esetén a Felhasználót a szükséges mértékben rendkívüli ellenőrzési jog illeti meg."
+    },
+    {
+     "type": "p",
+     "text": "12.3. A Szolgáltató köteles az ellenőrzéshez észszerű segítséget nyújtani, ugyanakkor jogosult annak terjedelmét úgy korlátozni, hogy az ne veszélyeztesse más ügyfelek személyes adatait, üzleti titkait, a Szolgáltató forráskódját, algoritmikus működését, információbiztonsági megoldásait vagy más bizalmas információját. Forráskód-hozzáférés, penetrációs teszt vagy a Szolgáltatás működését befolyásoló vizsgálat kizárólag a Szolgáltató előzetes írásbeli hozzájárulásával végezhető. Az ellenőrzés észszerű költségeit a Felhasználó viseli, kivéve, ha az ellenőrzés a Szolgáltató lényeges szerződésszegését igazolja."
+    }
+   ]
+  },
+  {
+   "id": "xiii-titoktartas-felelosseg-es-karterites",
+   "heading": "XIII. TITOKTARTÁS, FELELŐSSÉG ÉS KÁRTÉRÍTÉS",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "13.1. A Szolgáltatót a Felhasználó nevében feldolgozott személyes adatok tekintetében a Felhasználói Szerződés teljesítésétől és megszűnésétől függetlenül titoktartási kötelezettség terheli."
+    },
+    {
+     "type": "p",
+     "text": "13.2. Bizalmas információnak minősül különösen a Szolgáltatás működése, adatstruktúrája, felülete, fejlesztési tervei, üzleti modellje, árazása, technikai dokumentációja, algoritmikus működése, modellhasználati logikája, szerződéses feltételei, valamint minden olyan nem nyilvános információ, amelyet a Felek a jogviszony során egymás rendelkezésére bocsátanak."
+    },
+    {
+     "type": "p",
+     "text": "13.3. A Szolgáltató az adatfeldolgozás által okozott kárért a GDPR 82. cikkében és az egyéb kötelező jogszabályokban meghatározott feltételek szerint felel, különösen akkor, ha nem tartotta be a GDPR-ban kifejezetten az adatfeldolgozókra rótt kötelezettségeket, vagy a Felhasználó jogszerű utasításaitól eltérően járt el."
+    },
+    {
+     "type": "p",
+     "text": "13.4. A Felhasználó felel és köteles a Szolgáltatót – a jogszabályok által megengedett mértékben – mentesíteni azon harmadik személyi igények, bírságok, károk és észszerű költségek alól, amelyek a Felhasználó jogellenes adatkezeléséből, megfelelő jogalap vagy tájékoztatás hiányából, jogellenes utasításából, vagy olyan Felhasználói Tartalom rendelkezésre bocsátásából erednek, amelynek kezelésére a Felhasználó nem volt jogosult, feltéve, hogy a jogkövetkezmény nem a Szolgáltató saját kötelezettségszegéséből ered."
+    },
+    {
+     "type": "p",
+     "text": "13.5. A Szolgáltató nem felel a Felhasználó vagy a Felhasználó által feljogosított személy által megadott adatok pontatlanságáért, jogellenességéért, a Felhasználó saját rendszereinek vagy hozzáférési adatainak hibájáért, a Felhasználó utasításainak jogellenességéből, illetve a Felhasználó által választott adatkezelési célból eredő kárért. A Felek egymás közötti jogviszonyában – a GDPR és más kógens jogszabályok által ki nem zárható felelősség sérelme nélkül – az Egyedi Szerződés és az ÁSZF felelősségkorlátozó rendelkezései is alkalmazandók."
+    }
+   ]
+  },
+  {
+   "id": "xiv-harmadik-orszagba-torteno-adattovabbitas",
+   "heading": "XIV. HARMADIK ORSZÁGBA TÖRTÉNŐ ADATTOVÁBBÍTÁS",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "14.1. A Szolgáltató a Felhasználó nevében feldolgozott személyes adatot az Európai Gazdasági Térségen kívülre kizárólag a Felhasználó dokumentált utasítása, a jelen szerződés szerinti általános Al-adatfeldolgozói felhatalmazás vagy alkalmazandó jogszabály alapján, és a GDPR rendelet V. fejezetében előírt feltételek teljesülése mellett továbbíthat."
+    },
+    {
+     "type": "p",
+     "text": "14.2. Megfelelő adattovábbítási mechanizmus lehet különösen az Európai Bizottság megfelelőségi határozata, az EU–USA Adatvédelmi Keretrendszer megfelelően alkalmazható tanúsítása, az Európai Bizottság által elfogadott általános szerződési feltételek, vagy más, a GDPR szerinti jogszerű garancia."
+    },
+    {
+     "type": "p",
+     "text": "14.3. A Szolgáltató a Felhasználót a jelen szerződés IX. fejezete szerint tájékoztatja az Al-adatfeldolgozói vagy adattovábbítási feltételek olyan lényeges változásáról, amely a személyes adatok harmadik országba történő továbbítását vagy annak jogalapját, illetve garanciáit érdemben érinti."
+    }
+   ]
+  },
+  {
+   "id": "xv-eljaras-a-szerzodes-megszunese-eseten",
+   "heading": "XV. ELJÁRÁS A SZERZŐDÉS MEGSZŰNÉSE ESETÉN",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "15.1. A Felhasználói Szerződés megszűnése jelen adatfeldolgozási szerződés megszűnését is eredményezi, kivéve azokat a rendelkezéseket, amelyek természetüknél fogva a megszűnést követően is hatályban maradnak."
+    },
+    {
+     "type": "p",
+     "text": "15.2. A Felhasználó köteles a számára szükséges adatokat a hozzáférés megszűnéséig a Szolgáltatásban rendelkezésre álló exportfunkciókkal kimenteni. A Szolgáltató a Felhasználó választása szerint a személyes adatokat a rendelkezésre álló technikai lehetőségek szerint visszaszolgáltatja vagy biztonságosan törli. Egyedi formátumú, manuális adatexport vagy migráció csak külön megállapodás alapján és külön díjazás ellenében igényelhető."
+    },
+    {
+     "type": "p",
+     "text": "15.3. A törlést vagy visszaszolgáltatást – az Egyedi Szerződés eltérő rendelkezése hiányában – legkésőbb a Felhasználói Szerződés megszűnését követő 90. napig kell teljesíteni. A biztonsági mentésekben technikailag fennmaradó adatok a rendes mentési ciklus szerint kerülnek felülírásra vagy törlésre, és addig elkülönítetten, további rendes feldolgozás nélkül kezelhetők, kivéve, ha jogszabály további megőrzést ír elő."
+    },
+    {
+     "type": "p",
+     "text": "15.4. A Szolgáltató a Felhasználó észszerű kérésére megfelelő módon igazolja a visszaszolgáltatás vagy törlés megtörténtét, illetve tájékoztatást ad azokról az adatokról, amelyeket jogszabályi kötelezettség alapján továbbra is meg kell őriznie."
+    },
+    {
+     "type": "p",
+     "text": "15.5. A jogszabály alapján tovább őrzött személyes adatokra jelen szerződés adatvédelmi, adatbiztonsági és titoktartási rendelkezései a megőrzési idő végéig alkalmazandók."
+    }
+   ]
+  },
+  {
+   "id": "xvi-zaro-rendelkezesek",
+   "heading": "XVI. ZÁRÓ RENDELKEZÉSEK",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "16.1. A jelen szerződésben nem szabályozott kérdésekben a GDPR, az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvény, a Polgári Törvénykönyvről szóló 2013. évi V. törvény, továbbá az egyéb alkalmazandó adatvédelmi és ágazati jogszabályok, valamint a Felhasználói Szerződés rendelkezései irányadók."
+    },
+    {
+     "type": "p",
+     "text": "16.2. A Felek a jelen szerződéssel kapcsolatos vitás kérdéseket elsődlegesen egyeztetés útján kísérlik meg rendezni. A jogvitákra az Egyedi Szerződés és az ÁSZF jogválasztási és illetékességi rendelkezései megfelelően alkalmazandók."
+    },
+    {
+     "type": "p",
+     "text": "16.3. Jelen szerződés az ÁSZF 1. számú mellékleteként a Felhasználói Szerződés részévé válik, és annak hatálybalépésével, illetve az Egyedi Szerződésben meghatározott módon lép hatályba. A jelen szerződés a Felhasználói Szerződés fennállásáig, illetve a megszűnését követően az adatfeldolgozás lezárásához szükséges rendelkezések tekintetében azok teljesítéséig marad hatályban."
+    }
+   ]
+  }
+ ]
+}

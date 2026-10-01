@@ -13,6 +13,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://eaisy.hu/aszf</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://eaisy.hu/adatkezelesi-tajekoztato</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://eaisy.hu/eaisy-desk</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>

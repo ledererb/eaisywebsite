@@ -34,7 +34,7 @@ async function launchBrowser() {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(__dirname, "../dist");
 
-const ROUTES = ["/", "/eaisy-bill", "/eaisy-desk", "/eaisy-boost", "/eaisy-books", "/privacy", "/eaisydesk/privacy"];
+const ROUTES = ["/", "/eaisy-bill", "/aszf", "/adatkezelesi-tajekoztato", "/eaisy-desk", "/eaisy-boost", "/eaisy-books", "/privacy", "/eaisydesk/privacy"];
 
 const MIME = {
   ".html": "text/html; charset=utf-8",

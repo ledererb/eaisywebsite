@@ -1,0 +1,1806 @@
+{
+ "title": "Adatkezelési Tájékoztató",
+ "meta": [
+  "Kelt: Budapest, 2026. augusztus 26. napja"
+ ],
+ "sections": [
+  {
+   "id": "bevezetes",
+   "heading": "BEVEZETÉS",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "A természetes személyeknek a személyes adatok kezelése tekintetében történő védelméről és az ilyen adatok szabad áramlásáról, valamint a 95/46/EK irányelv hatályon kívül helyezéséről szóló AZ EURÓPAI PARLAMENT ÉS A TANÁCS (EU) 2016/679 RENDELETE (a továbbiakban: „GDPR rendelet”, „Rendelet”, „általános adatvédelemi rendelet”) előírja, hogy az Adatkezelő megfelelő intézkedéseket hoz annak érdekében, hogy az érintett részére a személyes adatok kezelésére vonatkozó, minden egyes tájékoztatást tömör, átlátható, érthető és könnyen hozzáférhető formában, világosan és közérthetően megfogalmazva nyújtsa, továbbá hogy az Adatkezelő elősegíti az érintett jogainak a gyakorlását."
+    },
+    {
+     "type": "p",
+     "text": "Az érintett előzetes tájékoztatási kötelezettségét az információs önrendelkezési jogról és az információszabadságról 2011. évi CXII. törvény is előírja. Az alábbiakban olvasható tájékoztatással e jogszabályi kötelezettségünknek teszünk eleget."
+    },
+    {
+     "type": "p",
+     "text": "Miért készült ez a tájékoztató?"
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelő működése során több célból kezel személyes adatokat és mindezt az érintettek jogainak tiszteletben tartásával, valamint a jogszabályi kötelezettségnek teljesítésével kívánja tenni. Adatkezelő fontosnak tartja azt is, hogy bemutassa az érintetteknek az adatkezelési tevékenysége során a tudomására jutott személyes adatok kezelését, annak legfontosabb jellemzőt."
+    },
+    {
+     "type": "p",
+     "text": "Milyen alapon történik az érintettek személyes adatainak kezelése?"
+    },
+    {
+     "type": "p",
+     "text": "A személyes adatok csak meghatározott célból és megfelelő jogalappal kerülnek kezelésre. Ezek a célok és jogalapok a konkrét adatkezelések vonatkozásában egyedileg kerülnek bemutatásra."
+    },
+    {
+     "type": "p",
+     "text": "Milyen külső segítség igénybevételére kerül sor a személyes adatai kezelése során?"
+    },
+    {
+     "type": "p",
+     "text": "A személyes adatokat többnyire az Adatkezelő a saját telephelyén kezeli. Vannak azonban olyan műveletek, amelyhez külső segítséget, adatfeldolgozót vesz igénybe. Az adatfeldolgozó személye az egyes adatkezelések jellemzőinek megfelelően változhat."
+    },
+    {
+     "type": "p",
+     "text": "Ki kezeli a személyes adatait?"
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelési tájékoztató következő II. fejezetében kaphat felvilágosítást az Érintett az Adatkezelő által alkalmazott adatfeldolgozók személyéről és elérhetőségéről."
+    },
+    {
+     "type": "p",
+     "text": "Milyen elveket tart fontosnak Adatkezelő a személyes adatai kezelése során?"
+    },
+    {
+     "type": "p",
+     "text": "A személyes adatok kezelésére a hatályos jogi szabályozás alapján kerül sor, különös tekintettel az Európai Parlament és a tanács 2016/679 rendeletében (2016. április 27.) (GDPR rendelet) foglaltakra."
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelő tevékenységei során csak az egyedi adatkezelések körében meghatározott személyes adatok kezelésére kerül sor és a megadott, személyes adatok biztonsága a lehetséges és szükséges technikai és szervezési intézkedéssel részesül védelemben. Ennek során különösen nagy figyelem fordítására kerül sor a személyes adatok bizalmasságának, sértetlenségének és rendelkezésre állásának biztosítása érdekében."
+    },
+    {
+     "type": "p",
+     "text": "A személyes adatok valódiságáért és pontosságáért az Érintett által történt megadás után a Adatkezelő felel. Azok a kifejezések, amelyek jelen tájékoztatóban alkalmazásra kerülnek az információs önrendelkezési jogról és a GDPR rendelet értelmező rendelkezései között meghatározott fogalmak szerint kerültek értelmezésre."
+    }
+   ]
+  },
+  {
+   "id": "i-fejezet",
+   "heading": "I. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "AZ ADATKEZELŐ MEGNEVEZÉSE"
+    },
+    {
+     "type": "p",
+     "text": "E tájékoztatás kiadója, egyben az Adatkezelő:"
+    },
+    {
+     "type": "p",
+     "text": "NÉV: Think AI Korlátolt Felelősségű Társaság"
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 1111 Budapest, Lágymányosi utca 12. Fsz. 2. ajtó"
+    },
+    {
+     "type": "p",
+     "text": "CégjegyzékSZÁM: 01-09-426295"
+    },
+    {
+     "type": "p",
+     "text": "ADÓSZÁM: 32478620-2-43"
+    },
+    {
+     "type": "p",
+     "text": "KÉPVISELI: Benke Viktor ügyvezető"
+    },
+    {
+     "type": "p",
+     "text": "E-MAIL: hello@thinkai.hu"
+    },
+    {
+     "type": "p",
+     "text": "ELÉRHETŐSÉGEK: https://thinkai.hu „kapcsolat” menüpontja alatt"
+    },
+    {
+     "type": "p",
+     "text": "(a továbbiakban, mint: „Adatkezelő”, „Társaság”)"
+    }
+   ]
+  },
+  {
+   "id": "ii-fejezet",
+   "heading": "II. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "ADATFELDOLGOZÓK MEGNEVEZÉSE"
+    },
+    {
+     "type": "p",
+     "text": "Adatfeldolgozó: az a természetes vagy jogi személy, közhatalmi szerv, ügynökség vagy bármely egyéb szerv, amely az adatkezelő nevében személyes adatokat kezel; (Rendelet 4. cikk 8.)"
+    },
+    {
+     "type": "p",
+     "text": "Az adatfeldolgozó igénybevételéhez az érintett hozzájárulása nem szükséges. Az Adatkezelő ugyanakkor kizárólag olyan adatfeldolgozót vesz igénybe, amely megfelelő garanciákat nyújt, és az adatfeldolgozást a GDPR rendelet 28. cikkének megfelelő szerződés szabályozza. Az egyes szolgáltatók közül csak azok kaphatnak adatot, amelyek az adott adatkezelési cél megvalósításában ténylegesen közreműködnek."
+    },
+    {
+     "type": "p",
+     "text": "Könyvelői feladatokat ellátó adatfeldolgozó:"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: TAXOLOGY Kft."
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 1118 Budapest, Villányi út 107. mfszt 1."
+    },
+    {
+     "type": "p",
+     "text": "CégjegyzékSZÁM: 01-09-292765"
+    },
+    {
+     "type": "p",
+     "text": "ADÓSZÁM: 14160877-2-43"
+    },
+    {
+     "type": "p",
+     "text": "Számlázási tevékenységet nyújtó adatfeldolgozó:"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: KBOSS.hu Kereskedelmi és Szolgáltató Kft. (Számlázz.hu)"
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 1031 Budapest, Záhony utca 7."
+    },
+    {
+     "type": "p",
+     "text": "CégjegyzékSZÁM: 01-09-303201"
+    },
+    {
+     "type": "p",
+     "text": "ADÓSZÁM: 13421739-2-41"
+    },
+    {
+     "type": "p",
+     "text": "Tárhelyszolgáltatás nyújtó adatfeldolgozó:"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: DigitalOcean, LLC."
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 105 Edgeview Drive St 425 Broomfield, CO 80021 USA"
+    },
+    {
+     "type": "p",
+     "text": "(DPF listában szerepelő szervezet)"
+    },
+    {
+     "type": "p",
+     "text": "WEBLAP: https://www.digitalocean.com/"
+    },
+    {
+     "type": "p",
+     "text": "Hírlevélküldő rendszer szolgáltatást nyújtó adatfeldolgozók:"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: Sendinblue SAS (kereskedelmi nevén: Brevo)"
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 17 rue de Salneuve, 75017 Párizs, Franciaország"
+    },
+    {
+     "type": "p",
+     "text": "HONLAP: https://www.brevo.com"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: The Rocket Science Group, LLC (Mailchimp)"
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 675 Ponce de Leon Ave NE, Suite 5000, Atlanta, GA 30308, USA"
+    },
+    {
+     "type": "p",
+     "text": "(DPF listában szerepelő szervezet)"
+    },
+    {
+     "type": "p",
+     "text": "HONLAP: https://www.mailchimp.com"
+    },
+    {
+     "type": "p",
+     "text": "IT szolgáltatást nyújtó adatfeldolgozó:"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: Supabase Pte. Ltd."
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 65 Chulia Street, #38-02/03, OCBC Centre, Singapore 049513HONLAP: https://supabase.com"
+    },
+    {
+     "type": "p",
+     "text": "A Supabase szolgáltatásaival kapcsolatos adatfeldolgozás részletes feltételeit a Supabase Data Processing Addendum (DPA) és a kapcsolódó szolgáltatási feltételek határozzák meg. A DPA a Supabase hivatalos weboldalán érhető el: https://supabase.com/legal/customer-resources/data-processing-addendum"
+    },
+    {
+     "type": "p",
+     "text": "Mesterséges intelligencia alapú szolgáltatást nyújtó adatfeldolgozók:"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: OpenAI, Inc."
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 1455 3rd Street, San Francisco, CA 94158, USA"
+    },
+    {
+     "type": "p",
+     "text": "HONLAP: https://openai.com"
+    },
+    {
+     "type": "p",
+     "text": "Az OpenAI-val kapcsolatos adatfeldolgozás részletes feltételeit az OpenAI Data Processing Addendum és a kapcsolódó OpenAI Services Agreement határozza meg, amelyek a fizetett szolgáltatások igénybevételével automatikusan hatályba lépnek. A DPA elérhető az OpenAI hivatalos weboldalán: https://openai.com/policies/data-processing-addendum"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: Anthropic, PBC"
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 548 Market Street, PMB 90375, San Francisco, CA 94104, USAHONLAP: https://www.anthropic.com"
+    },
+    {
+     "type": "p",
+     "text": "Az Anthropic szolgáltatásaival kapcsolatos adatfeldolgozás részletes feltételeit az Anthropic Data Processing Addendum (DPA) és a kapcsolódó szolgáltatási feltételek határozzák meg. A DPA az Anthropic hivatalos weboldalán érhető el: https://www.anthropic.com/legal/data-processing-addendum"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: Mistral AI (Société par actions simplifiée / SAS),SZÉKHELY: 15 rue des Halles, 75001 Paris, FranciaországHONLAP: https://mistral.ai  A Mistral AI-val kapcsolatos adatfeldolgozás részletes feltételeit a Mistral AI Data Processing Addendum és a kapcsolódó Mistral AI Commercial Terms of Service határozza meg, amelyek a felek közötti Megállapodás (Agreement) hatálybalépésével, illetve legkésőbb attól az időponttól automatikusan hatályba lépnek, amikor a Mistral AI megkezdi az ügyfél nevében a személyes adatok kezelését. A DPA a Mistral AI Data Processing Addendum részeként, arra hivatkozással válik a Megállapodás szerves részévé, és elérhető a Mistral AI hivatalos weboldalán: https://legal.mistral.ai/terms/data-processing-addendum"
+    },
+    {
+     "type": "p",
+     "text": "Egyéb Címzettek:"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: Google LLC"
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 1600 Amphitheatre Pkwy Mountain View, CA 94043"
+    },
+    {
+     "type": "p",
+     "text": "(DPF listában szerepelő szervezet)"
+    },
+    {
+     "type": "p",
+     "text": "HONLAP: https://www.google.com/"
+    },
+    {
+     "type": "p",
+     "text": "CÉGNÉV: Meta Platforms, Inc."
+    },
+    {
+     "type": "p",
+     "text": "SZÉKHELY: 1601 Willow Rd Menlo Park, CA 94025"
+    },
+    {
+     "type": "p",
+     "text": "HONLAP: https://www.facebook.com/ és https://www.instagram.com"
+    },
+    {
+     "type": "p",
+     "text": "(DPF listában szerepelő szervezet)"
+    },
+    {
+     "type": "p",
+     "text": "Olyan esetekben, ahol a Tájékoztató általában a Társaság adatfeldolgozói részére való adattovábbításról rendelkezik, azokban az esetekben azt a fenti címzettek részére történő adattovábbításra is kell érteni."
+    }
+   ]
+  },
+  {
+   "id": "iii-fejezet",
+   "heading": "III. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "AZ ADATKEZELÉS JOGSZERŰSÉGÉNEK BIZTOSÍTÁSA"
+    },
+    {
+     "type": "p",
+     "text": "A jelen pontban rögzített tájékoztatás meghaladja a jogszabályok által kötelezően előírt tájékoztatás körét. Az alábbi tájékoztatással az a célunk, hogy segítséget nyújtsunk Önnek az Alapvető adatvédelmi fogalmak között eligazodni, amelyeket a tájékoztatónkban a jogszabályok rendelkezéseivel összhangban mi is következetesen használunk. Ezt követően az adatkezeléseink jogszerűségét biztosító jogalapokról, adatkezelésünk elveiről és az alkalmazott technikai és szervezési intézkedésekről, végül a Társaságunk által megvalósított adatkezelésekről kívánunk átfogó képet adni az Ön számára."
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben az egyes adatkezeléseink Rendelet 13. cikke szerinti részletei felől érdeklődik, kérjük ugorjon a IV. – V. fejezetekre."
+    },
+    {
+     "type": "p",
+     "text": "Alapvető adatvédelmi fogalmak:"
+    },
+    {
+     "type": "p",
+     "text": "E Tájékoztató alkalmazásában irányadó fogalommeghatározásokat a Rendelet 4. cikke tartalmazza. Ennek megfelelően emeljük ki a főbb fogalmakat:"
+    },
+    {
+     "type": "p",
+     "text": "1. „személyes adat”: azonosított vagy azonosítható természetes személyre („érintett”) vonatkozó bármely információ; azonosítható az a természetes személy, aki közvetlen vagy közvetett módon, különösen valamely azonosító, például név, szám, helymeghatározó adat, online azonosító vagy a természetes személy testi, fiziológiai, genetikai, szellemi, gazdasági, kulturális vagy szociális azonosságára vonatkozó egy vagy több tényező alapján azonosítható;"
+    },
+    {
+     "type": "p",
+     "text": "1. „személyes adat”: azonosított vagy azonosítható természetes személyre („érintett”) vonatkozó bármely információ; azonosítható az a természetes személy, aki közvetlen vagy közvetett módon, különösen valamely azonosító, például név, szám, helymeghatározó adat, online azonosító vagy a természetes személy testi, fiziológiai, genetikai, szellemi, gazdasági, kulturális vagy szociális azonosságára vonatkozó egy vagy több tényező alapján azonosítható;"
+    },
+    {
+     "type": "p",
+     "text": "2. „adatkezelés”: a személyes adatokon vagy adatállományokon automatizált vagy nem automatizált módon végzett bármely művelet vagy műveletek összessége, így a gyűjtés, rögzítés, rendszerezés, tagolás, tárolás, átalakítás vagy megváltoztatás, lekérdezés, betekintés, felhasználás, közlés továbbítás, terjesztés vagy egyéb módon történő hozzáférhetővé tétel útján, összehangolás vagy összekapcsolás, korlátozás, törlés, illetve megsemmisítés;"
+    },
+    {
+     "type": "p",
+     "text": "3. „az adatkezelés korlátozása”: a tárolt személyes adatok megjelölése jövőbeli kezelésük korlátozása céljából;"
+    },
+    {
+     "type": "p",
+     "text": "4. „profilalkotás”: személyes adatok automatizált kezelésének bármely olyan formája, amelynek során a személyes adatokat valamely természetes személyhez fűződő bizonyos személyes jellemzők értékelésére, különösen a munkahelyi teljesítményhez, gazdasági helyzethez, egészségi állapothoz, személyes preferenciákhoz, érdeklődéshez, megbízhatósághoz, viselkedéshez, tartózkodási helyhez vagy mozgáshoz kapcsolódó jellemzők elemzésére vagy előrejelzésére használják;"
+    },
+    {
+     "type": "p",
+     "text": "5. „álnevesítés”: a személyes adatok olyan módon történő kezelése, amelynek következtében további információk felhasználása nélkül többé már nem állapítható meg, hogy a személyes adat mely konkrét természetes személyre vonatkozik, feltéve, hogy az ilyen további információt külön tárolják, és technikai és szervezési intézkedések megtételével biztosított, hogy azonosított vagy azonosítható természetes személyekhez ezt a személyes adatot nem lehet kapcsolni;"
+    },
+    {
+     "type": "p",
+     "text": "6. „nyilvántartási rendszer”: a személyes adatok bármely módon – centralizált, decentralizált vagy funkcionális vagy földrajzi szempontok szerint – tagolt állománya, amely meghatározott ismérvek alapján hozzáférhető;"
+    },
+    {
+     "type": "p",
+     "text": "7. „adatkezelő”: az a természetes vagy jogi személy, közhatalmi szerv, ügynökség vagy bármely egyéb szerv, amely a személyes adatok kezelésének céljait és eszközeit önállóan vagy másokkal együtt meghatározza; ha az adatkezelés céljait és eszközeit az uniós vagy a tagállami jog határozza meg, az adatkezelőt vagy az adatkezelő kijelölésére vonatkozó különös szempontokat az uniós vagy a tagállami jog is meghatározhatja;"
+    },
+    {
+     "type": "p",
+     "text": "8. „adatfeldolgozó”: az a természetes vagy jogi személy, közhatalmi szerv, ügynökség vagy bármely egyéb szerv, amely az adatkezelő nevében személyes adatokat kezel;"
+    },
+    {
+     "type": "p",
+     "text": "9. „címzett”: az a természetes vagy jogi személy, közhatalmi szerv, ügynökség vagy bármely egyéb szerv, akivel vagy amellyel a személyes adatot közlik, függetlenül attól, hogy harmadik fél-e. Azon közhatalmi szervek, amelyek egy egyedi vizsgálat keretében az uniós vagy a tagállami joggal összhangban férhetnek hozzá személyes adatokhoz, nem minősülnek címzettnek; az említett adatok e közhatalmi szervek általi kezelése meg kell, hogy feleljen az adatkezelés céljainak megfelelően az alkalmazandó adatvédelmi szabályoknak;"
+    },
+    {
+     "type": "p",
+     "text": "10. „harmadik fél”: az a természetes vagy jogi személy, közhatalmi szerv, ügynökség vagy bármely egyéb szerv, amely nem azonos az érintettel, az adatkezelővel, az adatfeldolgozóval vagy azokkal a személyekkel, akik az adatkezelő vagy adatfeldolgozó közvetlen irányítása alatt a személyes adatok kezelésére felhatalmazást kaptak;"
+    },
+    {
+     "type": "p",
+     "text": "11. „az érintett hozzájárulása”: az érintett akaratának önkéntes, konkrét és megfelelő tájékoztatáson alapuló és egyértelmű kinyilvánítása, amellyel az érintett nyilatkozat vagy a megerősítést félreérthetetlenül kifejező cselekedet útján jelzi, hogy beleegyezését adja az őt érintő személyes adatok kezeléséhez;"
+    },
+    {
+     "type": "p",
+     "text": "12. „adatvédelmi incidens”: a biztonság olyan sérülése, amely a továbbított, tárolt vagy más módon kezelt személyes adatok véletlen vagy jogellenes megsemmisítését, elvesztését, megváltoztatását, jogosulatlan közlését vagy az azokhoz való jogosulatlan hozzáférést eredményezi."
+    },
+    {
+     "type": "p",
+     "text": "13. „mesterséges intelligencia rendszer”: olyan gépi alapú rendszer, amelyet különböző autonómiaszinteken történő működésre terveztek, amely a bevezetését követően alkalmazkodóképességet tanúsíthat, és amely a kapott bemenetből – explicit vagy implicit célok érdekében – kikövetkezteti, miként generáljon olyan kimeneteket, mint előrejelzések, tartalmak, ajánlások vagy döntések, amelyek befolyásolhatják a fizikai vagy virtuális környezetet."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés jogszerűségének a biztosítása:"
+    },
+    {
+     "type": "p",
+     "text": "1. Adatkezelés az érintett hozzájárulása alapján"
+    },
+    {
+     "type": "p",
+     "text": "1.1. Amennyiben a Társaság hozzájáruláson alapuló adatkezelést kíván végezni, az érintett hozzájárulását személyes adatai kezeléséhez az adatkezelési szabályzatban meghatározott adatkérő lap szerinti tartalommal és tájékoztatással kell kérni."
+    },
+    {
+     "type": "p",
+     "text": "1.2. Hozzájárulásnak minősül az is, ha az érintett a Társaság internetes honlapjának megtekintése során bejelöl egy erre vonatkozó négyzetet, az információs társadalommal összefüggő szolgáltatások igénybevétele során erre vonatkozó technikai beállításokat hajt végre, valamint bármely egyéb olyan nyilatkozat vagy cselekedet is, amely az adott összefüggésben az érintett hozzájárulását személyes adatainak tervezett kezeléséhez egyértelműen jelzi. A hallgatás, az előre bejelölt négyzet vagy a nem cselekvés ezért nem minősül hozzájárulásnak.  Hozzájárulásnak minősül megfelelő tájékoztatás meghallgatása után a telefonhívás folytatása."
+    },
+    {
+     "type": "p",
+     "text": "1.3. A hozzájárulás az ugyanazon cél vagy célok érdekében végzett összes adatkezelési tevékenységre kiterjed. Ha az adatkezelés egyszerre több célt is szolgál, akkor a hozzájárulást az összes adatkezelési célra vonatkozóan meg kell adni."
+    },
+    {
+     "type": "p",
+     "text": "1.4. Ha az érintett hozzájárulását olyan írásbeli nyilatkozat keretében adja meg, amely más ügyekre is vonatkozik – például értékesítési, szolgáltatási szerződés megkötése - a hozzájárulás iránti kérelmet ezektől a más ügyektől egyértelműen megkülönböztethető módon kell előadni, érthető és könnyen hozzáférhető formában, világos és egyszerű nyelvezettel. Az érintett hozzájárulását tartalmazó ilyen nyilatkozat bármely olyan része, amely sérti a Rendeletet, kötelező erővel nem bír."
+    },
+    {
+     "type": "p",
+     "text": "1.5. A Társaság nem kötheti szerződés megkötését, teljesítését olyan személyes adatok kezeléséhez való hozzájárulás megadásához, amelyek nem szükségesek a szerződés teljesítéséhez."
+    },
+    {
+     "type": "p",
+     "text": "1.6. A hozzájárulás visszavonását ugyanolyan egyszerű módon kell lehetővé tenni, mint annak megadását. Az érintett a hozzájárulását bármikor visszavonhatja az I. fejezetben megadott e-mail címre küldött levél útján."
+    },
+    {
+     "type": "p",
+     "text": "1.7. Amennyiben az érintett visszavonja a hozzájárulását, az adatkezelő nem kezelheti többé az adatait. A hozzájárulás visszavonásakor adatkezelőnek biztosítania kell az adatok törlését, kivéve, ha másik jogalap lehetővé teszi ezeknek az adatoknak a kezelését (pl. tárolási követelmények vagy szerződés teljesítésének szükségessége). Amennyiben az adatkezelés több célból történt, az adatkezelő nem használhatja a személyes adatokat azon célból, amelyre vonatkozóan az érintett a hozzájárulást visszavonta."
+    },
+    {
+     "type": "p",
+     "text": "2. Jogi kötelezettség teljesítésén alapuló adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "2.1. A jogi kötelezettségen alapuló adatkezelés esetén a kezelhető adatok körére, az adatkezelés céljára, az adatok tárolásának időtartamára, a címzettekre az alapul szolgáló jogszabály rendelkezései irányadók."
+    },
+    {
+     "type": "p",
+     "text": "2.2 A jogi kötelezettség teljesítése jogcímén alapuló adatkezelés az érintett hozzájárulásától független, mivel az adatkezelést jogszabály határozza meg. Az érintettel az adatkezelés megkezdése előtt ezesetben közölni kell, hogy az adatkezelés kötelező, továbbá az érintettet az adatkezelés megkezdése előtt egyértelműen és részletesen tájékoztatni kell az adatai kezelésével kapcsolatos minden tényről, így különösen az adatkezelés céljáról és jogalapjáról, az adatkezelésre és az adatfeldolgozásra jogosult személyéről, az adatkezelés időtartamáról, arról, ha az érintett személyes adatait az adatkezelő a rá vonatkozó jogi kötelezettség alapján kezeli, illetve arról, hogy kik ismerhetik meg az adatokat. A tájékoztatásnak ki kell terjednie az érintett adatkezeléssel kapcsolatos jogaira és jogorvoslati lehetőségeire is. Kötelező adatkezelés esetén a tájékoztatás megtörténhet az előbbi információkat tartalmazó jogszabályi rendelkezésekre való utalás nyilvánosságra hozatalával is."
+    },
+    {
+     "type": "p",
+     "text": "3. Jogos érdeken alapuló adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "3.1. A Társaság vagy valamely harmadik fél jogos érdeke jogalapot teremthet az adatkezelésre, feltéve, hogy az érintett érdekei, alapvető jogai és szabadságai nem élveznek elsőbbséget. Figyelembe kell venni az érintett adatkezelővel való kapcsolata alapján észszerű elvárásait, így a személyes adatok kapcsolattartási, akár közvetlen üzletszerzési célú kezelése is jogos érdeken alapulónak tekinthető."
+    },
+    {
+     "type": "p",
+     "text": "3.2. A jogos érdeken alapuló adatkezeléshez érdekmérlegelési teszt szükséges, melynek során a Társaság mindig figyelembe veszi az aktuális körülményeket, valamint az adatkezelő és érintettek helyzetét. A Társaság érdekében történő adatkezelések vonatkozásában a külön-külön elvégzett érdekmérlegelési tesztek az alábbi eredménnyel zárultak: Az érdekmérlegelési teszt során a Társaság az adott adatkezelésnél leírt feltételeket figyelembevéve arra jutott, hogy az adatkezelés indokolt a megfelelő – jelen szabályzatba foglalt – biztosítékok mellett, hiszen anélkül nem tudna a Társaság versenyképesen működni. Ennek tükrében az érintettekre vonatkozó érzelmi hatás, valamint a magánszférához való jog sérelme arányosnak tekinthető."
+    },
+    {
+     "type": "p",
+     "text": "4. Az érintett vagy más természetes személy létfontosságú érdekeinek védelme miatti adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "4.1. Az érintett vagy egy másik természetes személy létfontosságú érdekeinek védelme szintén jogalapot teremthet az adatkezelésre, tekintettel arra, hogy az adatvédelemhez való jog alapvető, de nem kizárólagos, élet-halál kérdésében a személyes adatok védelméhez való jogot természetesen felülbírálja az élethez való jog."
+    },
+    {
+     "type": "p",
+     "text": "5. Szerződéses érdeken alapuló adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "5.1. Szerződéses érdeken is alapulhat adatkezelés amennyiben az olyan szerződés teljesítéséhez szükséges, amelyben az érintett az egyik fél, vagy az a szerződés megkötését megelőzően az érintett kérésére történő lépések megtételéhez szükséges."
+    },
+    {
+     "type": "p",
+     "text": "6. Az érintett jogainak elősegítése"
+    },
+    {
+     "type": "p",
+     "text": "6.1. A Társaság valamennyi adatkezelése során köteles biztosítani az érintett jogainak gyakorlását."
+    },
+    {
+     "type": "p",
+     "text": "7. Adatkezelésünk elvei, technikai és szervezési intézkedései:"
+    },
+    {
+     "type": "p",
+     "text": "7.1. Adatkezelésünk minden esetben megfelel az alábbi elveknek:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "A személyes adatokat a jelen Adatkezelési Tájékoztatóban, vagy az adatok gyűjtésekor nyújtott egyéb tájékoztatásban megjelölt valós, indokolt és jogszerű célra vagy célokra használhatjuk fel. Az általunk kezelt személyes adatok kizárólag arra a célra használjuk fel, amelyről az Érintettet az adatgyűjtéskor tájékoztattuk, vagy amely az adatgyűjtés körülményeiből egyébként számára nyilvánvaló volt és arra joggal számíthatott.",
+      "Az adatok kezelését jogszerűen és tisztességen, az Érintett számára átlátható módon végezzük.",
+      "Csakis az adatkezelés céljából elengedhetetlenül szükséges adatokat kezeljük.",
+      "Biztosítjuk az általunk kezelt adatok pontosságát és naprakészségét, és minden ésszerű intézkedést megteszünk annak érdekében, hogy a pontatlan adatok haladéktalanul törlésre és helyesbítésre kerüljenek. E körben kérjük az Ön közreműködését is, hiszen egyes esetekben csak akkor tudjuk a naprakészséget biztosítani, ha a megváltozott adatot Ön a részünkre jelzi.",
+      "Az integritás és a bizalmas jelleg elvének megfelelve az adatkezelést olyan módon végezzük, hogy megfelelő technikai és szervezési intézkedések alkalmazásával biztosítva legyen a személyes adatok megfelelő biztonsága."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "7.2. Az alkalmazott technikai és szervezési intézkedések:"
+    },
+    {
+     "type": "p",
+     "text": "A Think AI Kft. a személyes adatok védelme érdekében az adatkezelések jellegéhez és kockázataihoz igazodó technikai és szervezési intézkedéseket alkalmaz."
+    },
+    {
+     "type": "p",
+     "text": "Az ügyfél által a szolgáltatásba feltöltött dokumentumok, adatállományok és egyéb bizalmas tartalmak kezelése során a Think AI Kft. a beépített és alapértelmezett adatvédelem (privacy by design és privacy by default) elvei alapján olyan műszaki kialakításra törekszik, amelyben a tárolási rétegben kizárólag titkosított adatállomány található, és az adatok olvasható tartalma a Társaság munkavállalói számára a szolgáltatás rendeltetésszerű működése során nem hozzáférhető. Amennyiben az adott funkció műszakilag lehetővé teszi, a titkosítás kliensoldalon vagy az ügyfélhez rendelt elkülönített környezetben történik, és a visszafejtéshez szükséges kulcs nem kerül olyan formában a Think AI Kft. birtokába, amely az adatok önálló megismerését lehetővé tenné. Ha az MI- vagy más automatizált feldolgozás miatt az adatok olvasható formában történő ideiglenes rendelkezésre állása szükséges, arra kizárólag technikailag elkülönített automatizált feldolgozási folyamat keretében, a feladat elvégzéséhez szükséges ideig és mértékben kerülhet sor."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "A biztonsági mentéseket elkülönített, hozzáférés-védett környezetben tárolja, és a hozzáférést kizárólag az arra feljogosított személyek számára biztosítja.",
+      "Az Adatkezelő rendszeresen felülvizsgálja az alkalmazott védelmi intézkedések megfelelőségét, és a kockázatok, a technológia, valamint az alkalmazott rendszerek változásához igazodva frissíti azokat.",
+      "Az adatokhoz való hozzáférést a feladatellátáshoz szükséges legkisebb jogosultság elve szerint korlátozza, és a hozzáféréseket rendszeresen felülvizsgálja.",
+      "Az Adatkezelő naplózási, sérülékenység-kezelési, incidenskezelési és biztonsági ellenőrzési eljárásokat alkalmaz annak érdekében, hogy a biztonsági eseményeket észszerű időn belül észlelje, kivizsgálja és kezelje."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "A technikai környezetet és a belső eljárásokat az Adatkezelő folyamatosan fejleszti; ugyanakkor egyetlen informatikai rendszer sem tekinthető teljesen kockázatmentesnek."
+    },
+    {
+     "type": "p",
+     "text": "7.3. Az adatkezelő a MI-rendszer alkalmazása során az alábbi szempontokat szem előtt tartva végzi tevékenységét:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Az igénybe vett MI-rendszer az felhasználókat szolgálja, e közben tiszteletben tartja az emberi méltóságot és a személyes autonómiát, valamint működése ember által megfelelő módon ellenőrizhető és felügyelhető.",
+      "Az MI-rendszer stabil, reziliens harmadik felek általi jogellenes felhasználás lehetővé tétele érdekében történő megváltoztatására irányuló kísérletekkel szemben, továbbá nem okozhat szándékosan kárt.",
+      "Az igénybe vett MI-rendszer továbbá teljes körűen tiszteletben tartja és érvényesíti adatvédelmi és magánélet védelmére vonatkozó előírásokat, és nyomon követhető, megmagyarázható, működése során tudatosítja a felhasználókban, hogy MI-rendszerrel kommunikálnak.",
+      "Az igénybe vett MI-rendszer továbbá nem diszkriminatív, egyenlően hozzáférhető bármely érintett számára, egyidejűleg fenntartható és környezetbarát is."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "A fenti elveknek való megfelelésért, valamint annak igazolásáért az adatkezelő minden esetben felel."
+    }
+   ]
+  },
+  {
+   "id": "iv-fejezet",
+   "heading": "IV. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "TÁJÉKOZTATÁS A TÁRSASÁG ÁLTAL VÉGZETT"
+    },
+    {
+     "type": "h3",
+     "text": "ADATKEZELÉSRŐL"
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelővel szerződést kötő természetes személy (akár egyéni vállalkozó vagy számlát adó magánszemély) adatainak kezelése"
+    },
+    {
+     "type": "p",
+     "text": "(1) A Társaság szerződés teljesítése jogcímén a szerződés előkészítése, megkötése, teljesítése, megszűnése, szerződési kedvezmény nyújtása – összefoglalva a közös érdekkörben felmerülő gazdasági folyamatok támogatása – céljából kezelheti a vele szerződéses viszonyban álló természetes személy nevét, születési nevét, születési idejét, anyja nevét, lakcímét, adóazonosító jelét, adószámát, nyilvántartási számát, lakcímét, székhely, telephely címét, telefonszámát, e-mail címét, honlap-címét, bankszámlaszámát, vevőszámát (ügyfélszámát, rendelésszámát), online azonosítóját (vevők, szállítók listája, törzsvásárlási listák). Ezen adatkezelés jogszerűnek minősül akkor is, ha az adatkezelés a szerződés megkötését megelőzően az érintett kérésére történő lépések megtételéhez szükséges."
+    },
+    {
+     "type": "p",
+     "text": "(2) A személyes adatok tárolásának időtartama a Társaság hosszú távú üzleti kapcsolataira tekintettel a szerződés megszűnését követő 8 év."
+    },
+    {
+     "type": "p",
+     "text": "(3) A személyes adatok címzettjei: A személyes adatokba az Adatkezelő azon foglalkoztatottjai tekinthetnek be, akik a szerződés előkészítésében, végrehajtásába, tárolásában részt vesznek. A Társaság vezető tisztségviselője, ügyfélkiszolgálással kapcsolatos feladatokat ellátó munkavállalói, kapcsolattartói, Társaság adatfeldolgozói, különösen az üzletkötési feladatokat ellátó munkavállalói, és adatfeldolgozói. Továbbá a jogszabályban meghatározott azon szervek, melyeket jogszabály ellenőrzésre feljogosít."
+    },
+    {
+     "type": "p",
+     "text": "(4) A személyes adatok adatfeldolgozásra átadásra kerülhetnek postázás szállítás céljából a Magyar Postának, illetve a megbízott futárszolgálatnak, vagyonvédelem céljából az adatkezelő vagyonvédelmi megbízottjának, az adatkezelő adatfeldolgozóinak."
+    },
+    {
+     "type": "p",
+     "text": "(5) Az adatkezelés jogszerűnek minősül, ha arra valamely szerződés vagy szerződéskötési szándék keretében van szükség (Preambulum 44.) ha az a szerződés megkötését megelőzően az érintett kérésére történő lépések megtételéhez szükséges (GDPR Rendelet 6 cikk (1) b./). Így szerződés teljesítése jogcímén az e pontban írtak szerint kezelhetők a szerződési ajánlatok keretében gyűjtött személyes adatok is. Ajánlattételkor, illetve fogadáskor erről a Társaság köteles az ajánlattevőt, illetve az ajánlat címzettjét tájékoztatni."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelő által megkötött szerződéshez kapcsolódó számla kiállításához, bizonylatok megőrzéséhez kapcsolódó adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "(1) Az adatkezelés célja: A szolgáltatás ellenértékének megfizetése érdekében az általános forgalmi adóról szóló 2007. évi CXXVII. törvény szerinti számla kiállítása és a számviteli bizonylat-megőrzési kötelezettség teljesítése"
+    },
+    {
+     "type": "p",
+     "text": "(2) Érintettek: Az Adatkezelővel szerződést kötő természetes személy, vagy az Adatkezelővel szerződést kötő személy képviselője."
+    },
+    {
+     "type": "p",
+     "text": "(3) A kezelhető személyes adatok köre: Az természetes neve, lakcíme. Egyéni vállalkozó neve, székhelye, adószáma. Jogi személy esetén adószáma."
+    },
+    {
+     "type": "p",
+     "text": "(4) Az adatkezelés jogalapja: az Adatkezelő jogi kötelezettségének teljesítéséhez szükséges. [GDPR 6. cikk (1) bek. c) pontja]"
+    },
+    {
+     "type": "p",
+     "text": "(5) A személyes adatok címzettjei, illetve a címzettek kategóriái: Társaság adatfeldolgozói, különösen a könyvelési, adózási feladatokat ellátó munkavállalói, és adatfeldolgozói, továbbá Nemzeti Adó- és Vámhivatal."
+    },
+    {
+     "type": "p",
+     "text": "(6) A személyes adatok tárolásának időtartama: A számvitelről szóló 2000. évi C. törvény 169. § (2) bekezdése alapján a számla kiállítását követő 8 évig."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelővel szerződő jogi személy képviseletében eljáró – a szerződést aláíró – természetes személy adatainak kezelése"
+    },
+    {
+     "type": "p",
+     "text": "(1) Az adatkezelés célja: Az adatkezelés célja szerződés létrehozása, a szerződésben foglalt jogosultságok gyakorlása és kötelezettségek teljesítése, a szerződések teljesítése során esetlegesen felmerülő polgári jogi igények érvényesítése, valamint az Adatkezelő által vállalt kötelezettségek nyilvántartása és teljesítése."
+    },
+    {
+     "type": "p",
+     "text": "(2) Érintettek: A szerződést aláíró természetes személyek"
+    },
+    {
+     "type": "p",
+     "text": "(3) A kezelhető személyes adatok köre: Az aláíró természetes személy:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "neve, beosztása (munkaköre)",
+      "e-mail címe",
+      "telefonszáma",
+      "levelezési címe",
+      "aláírás-minta"
+     ]
+    },
+    {
+     "type": "p",
+     "text": "(4) Az adatkezelés jogalapja: Az Adatkezelő jogos érdekeinek érvényesítése az alábbi érdekmérlegelési teszt alapján. [GDPR 6. cikk (1) bekezdés f) pont]."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő úgy értékeli, hogy a szerződést aláíró természetes személyek adatkezelésének jogalapja megfelel a GDPR 6. cikk (1) bekezdés f) pontjában foglalt jogos érdeknek, illetve az adatkezelés során nem sérülnek az Érintettek érdekei vagy alapvető jogai és szabadságai oly módon, hogy felülírnák az Adatkezelő jogos érdekét (az érdekkel szemben nem élveznek elsőbbséget az Érintett meghatározott érdekei vagy alapvető jogai és szabadságai)."
+    },
+    {
+     "type": "p",
+     "text": "A jogos érdek fennáll"
+    },
+    {
+     "type": "p",
+     "text": "A szerződés teljesítése körében szükséges termék átadás-átvétel/szolgáltatás nyújtás és annak igazolása olyan érdek, amely nem kizárólagosan az Adatkezelő érdeke, hanem a szerződő fél, mint harmadik személy érdeke is, és amely érdek egyúttal a kötelmi jogi kötelezettségek teljesítésére vezethető vissza."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelőnek jelentős érdeke fűződik ahhoz is, hogy szerződéses kötelezettségeit megfelelően, szerződésszerűen teljesítse, ezzel elkerülve az esetleges jogvitákat. Az Adatkezelő jogos üzleti érdeke, hogy szerződéses partnereiben elégedettséget váltson ki, és velük jó üzleti kapcsolatot tartson fenn."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés szükséges"
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés szükséges, mivel a nem természetes személyhez köthető képviselő személyes adatai nélkül a jogi személyek és az Adatkezelő nem tudnak kapcsolatot teremteni egymással, a képviselő személyes adatainak a hiányában rendkívül megnehezülne a szerződéses partnerekkel való kommunikáció, a szerződés teljesítése, melynek folytán a szerződések teljesítése elnehezülhet."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés arányos"
+    },
+    {
+     "type": "p",
+     "text": "korlátozást jelent az érintett"
+    },
+    {
+     "type": "p",
+     "text": "vonatkozásában"
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő az Érintett képviselő személyes adatnak minősülő adatait kizárólag a jogos üzletszerzési cél eléréséhez szükséges mértékben és/vagy a más külső szervvel való kapcsolatfelvételhez szükséges mértékben kezelik."
+    },
+    {
+     "type": "p",
+     "text": "A kezelt adatok nem tartoznak a személyes adat különleges kategóriájába, ez az adatkezelés megengedhetősége mellett szól. Az adatkezelés megvalósulásából nem származik hátránya az Érintett képviselőnek, az adatkezelés arányos korlátozást jelent számára, mivel Adatkezelő biztosítja számára annak jogát, hogy az Érintett személyes adatai törlésre kerüljenek az Adatkezelő nyilvántartásából az erre vonatkozó kérése, tiltakozása esetén."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő a személyes adatokhoz való hozzáférést korlátozza és leszűkíti saját munkavállalóira vonatkozóan. Emellett biztosítja az adatok védelme érdekében a megfelelő tűzfal- és vírusvédelmet, így az adatkezelés kockázatarányos védelmére vonatkozóan garanciát vállal."
+    },
+    {
+     "type": "p",
+     "text": "Az aláírás-minta kezelése az Adatkezelő jogi kötelezettségének teljesítéséhez szükséges. [GDPR 6. cikk (1) bek. c) pontja]. Az Adatkezelő a 2013. évi V. tv. 3:116 §. (1) bek alapján köteles a szerződő partner képviselőjének az aláírását kezelni."
+    },
+    {
+     "type": "p",
+     "text": "(5) A személyes adatok címzettjei, illetve a címzettek kategóriái: A személyes adatokba az Adatkezelő azon foglalkoztatottjai tekinthetnek be, akik a szerződés előkészítésében, végrehajtásába, tárolásában részt vesznek. A Társaság vezető tisztségviselője, ügyfélkiszolgálással kapcsolatos feladatokat ellátó munkavállalói, kapcsolattartói, Társaság üzletkötési feladatait ellátó munkavállalói. Továbbá a jogszabályban meghatározott azon szervek, melyeket jogszabály ellenőrzésre feljogosít."
+    },
+    {
+     "type": "p",
+     "text": "(6) A személyes adatok tárolásának időtartama: a szerződés megszűnését követő 5 év."
+    },
+    {
+     "type": "p",
+     "text": "A szerződésekben kapcsolattartóként megjelölt – nem aláíró – természetes személy adatainak kezelés"
+    },
+    {
+     "type": "p",
+     "text": "(1) Az adatkezelés célja: Az adott szerződés, dokumentum teljesítésével, a teljesítés elősegítésével, a szerződéses kapcsolat fenntartásával összefüggő kapcsolattartás biztosítása."
+    },
+    {
+     "type": "p",
+     "text": "(2) Érintettek: Kapcsolattartóként megjelölt – nem aláíró – természetes személyek"
+    },
+    {
+     "type": "p",
+     "text": "(3) A kezelhető személyes adatok köre: A kapcsolattartó természetes személy"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "neve, beosztása (munkaköre)",
+      "e-mail címe",
+      "telefonszáma",
+      "levelezési címe"
+     ]
+    },
+    {
+     "type": "p",
+     "text": "(4) Az adatkezelés jogalapja: Az Adatkezelő jogos érdekeinek érvényesítése az alábbi érdekmérlegelési teszt alapján. [GDPR 6. cikk (1) bekezdés f) pont]."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő úgy értékelik, hogy a külső partnerek kapcsolattartói adatkezelésének jogalapja megfelel a GDPR 6. cikk (1) bekezdés f) pontjában foglalt jogos érdeknek, illetve az adatkezelés során nem sérülnek az Érintettek érdekei vagy alapvető jogai és szabadságai oly módon, hogy felülírnák az Adatkezelő jogos érdekét (az érdekkel szemben nem élveznek elsőbbséget az Érintett meghatározott érdekei vagy alapvető jogai és szabadságai)."
+    },
+    {
+     "type": "p",
+     "text": "A jogos érdek fennáll"
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő jogos érdeke az általa kötött szerződésekkel összefüggő kapcsolattartatás, a kommunikáció biztosítása a szerződéses partnerrel, illetve ezek által a szerződések teljesítésének elősegítése."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő jogos érdeke a potenciális üzleti partnerek és/vagy más külső szervek kapcsolattartói személyes adatainak tárolása és azok használata a jövőbeni hivatalos kapcsolatfelvétellel és/vagy a szerződéskötés lehetőségével összefüggésben, amely összhangban van az Adatkezelő tevékenységeivel, üzletszerzési céljával."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés szükséges"
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés szükséges, mivel a kapcsolattartói adatok hiányában rendkívül megnehezülne a szerződéses partnerekkel való kommunikáció, melynek folytán a szerződések teljesítése elnehezülhet."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés arányos"
+    },
+    {
+     "type": "p",
+     "text": "korlátozást jelent az érintett"
+    },
+    {
+     "type": "p",
+     "text": "vonatkozásában"
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő az Érintett kapcsolattartó személyes adatnak minősülő adatait kizárólag a jogos üzletszerzési cél eléréséhez szükséges mértékben és/vagy a más külső szervvel való kapcsolatfelvételhez szükséges mértékben kezelik."
+    },
+    {
+     "type": "p",
+     "text": "A kezelt adatok nem tartoznak a személyes adat különleges kategóriájába, ez az adatkezelés megengedhetősége mellett szól. Az adatkezelés megvalósulásából nem származik hátránya az Érintett kapcsolattartóknak, az adatkezelés arányos korlátozást jelent számukra, mivel Adatkezelő biztosítja számukra annak jogát, hogy az Érintett személyes adatai törlésre kerüljenek az Adatkezelő nyilvántartásából az erre vonatkozó kérése, tiltakozása esetén."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő a személyes adatokhoz való hozzáférést korlátozza és leszűkíti saját munkavállalóira vonatkozóan. Emellett biztosítja az adatok védelme érdekében a megfelelő tűzfal- és vírusvédelmet, így az adatkezelés kockázatarányos védelmére vonatkozóan garanciát vállal."
+    },
+    {
+     "type": "p",
+     "text": "(5) A személyes adatok címzettjei, illetve a címzettek kategóriái: A személyes adatokba az Adatkezelő azon foglalkoztatottjai tekinthetnek be, akik a szerződés előkészítésében, végrehajtásába, tárolásában részt vesznek. A Társaság vezető tisztségviselője, ügyfélkiszolgálással kapcsolatos feladatokat ellátó munkavállalói, kapcsolattartói, Társaság üzletkötési feladatait ellátó munkavállalói. Továbbá a jogszabályban meghatározott azon szervek, melyeket jogszabály ellenőrzésre feljogosít."
+    },
+    {
+     "type": "p",
+     "text": "Telefonhívások rögzítésével kapcsolatos adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "(1) Az adatkezelés célja:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "a telefonos ügyfélszolgálati ügyintézés lebonyolítása, valamint a foglalással és az Adatkezelő által nyújtott szolgáltatásokkal kapcsolatos tájékoztatás biztosítása;",
+      "a fogyasztói és ügyfélpanaszok fogadása, kivizsgálása, dokumentálása és megválaszolása;",
+      "az ügyfélszolgálati tevékenység minőségének ellenőrzése és fejlesztése;",
+      "az ügyfélszolgálati munkatársak képzése és oktatása;",
+      "a telefonbeszélgetés során tett nyilatkozatok, közölt információk és megtett intézkedések utólagos igazolása; valamint",
+      "az Adatkezelő vagy harmadik személy jogi igényeinek előterjesztése, érvényesítése és védelme."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "(2) Az adatkezelés jogalapja: Az érintett önkéntes hozzájárulása [GDPR 6. cikk (1) bekezdés a) pont]."
+    },
+    {
+     "type": "p",
+     "text": "Az önkéntes hozzájárulás bármikor visszavonható. Tájékoztatjuk Önt, hogy a hozzájárulás visszavonása nem érinti a visszavonás előtti adatkezelés jogszerűségét. A törlési kérelemben a nevét, e-mail címét és telefonszámát kérjük megjelölni a beazonosítás érdekében."
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben az érintett nem kívánja, hogy a telefonbeszélgetés rögzítésre kerüljön, kérjük, szakítsa meg a hívást, és megkeresését elektronikus levélben juttassa el az Adatkezelő részére."
+    },
+    {
+     "type": "p",
+     "text": "(3) Érintettek: Az adatkezelővel telefonhívást folytatók"
+    },
+    {
+     "type": "p",
+     "text": "(6) Címzettek: A személyes adatokhoz kizárólag az Adatkezelő azon munkavállalói és vezető tisztségviselői férhetnek hozzá, akiknek ez az ügyfélszolgálati ügyintézés, a panaszkezelés, a minőségbiztosítás, az oktatás vagy a jogi igények kezelése érdekében feltétlenül szükséges."
+    },
+    {
+     "type": "p",
+     "text": "A személyes adatok címzettjei lehetnek továbbá a telefonhívások rögzítését, tárolását, informatikai üzemeltetését vagy technikai támogatását végző adatfeldolgozók."
+    },
+    {
+     "type": "p",
+     "text": "Az informatikai rendszerben fennálló adminisztrátori jogosultság önmagában nem jogosítja fel az adott személyt a hangfelvételek tartalmának megismerésére. A hozzáférés kizárólag feladatellátáshoz kötötten, a szükséges mértékben biztosítható."
+    },
+    {
+     "type": "p",
+     "text": "(7) A megadott adatok tárolásának időtartama: Az Adatkezelő a telefonbeszélgetések hangfelvételét és a hozzá kapcsolódó technikai adatokat a telefonhívás időpontjától számított hat hónapig őrzi meg."
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben a megőrzési idő alatt panasz, jogvita, hatósági vagy bírósági eljárás indul, illetve jogi igény érvényesítése válik szükségessé, az érintett hangfelvétel és a kapcsolódó adatok az eljárás vagy a jogi igény végleges lezárásáig tovább kezelhetők."
+    },
+    {
+     "type": "p",
+     "text": "Ha valamely telefonbeszélgetésre külön jogszabály kötelező megőrzési időt ír elő, az Adatkezelő az adatokat a jogszabályban meghatározott időtartamig őrzi meg."
+    },
+    {
+     "type": "p",
+     "text": "A megőrzési idő lejárta után a hangfelvételt és a kapcsolódó személyes adatokat az Adatkezelő törli."
+    },
+    {
+     "type": "p",
+     "text": "Üzenetküldés a Társaság honlapján (https://www.thinkai.hu/)"
+    },
+    {
+     "type": "p",
+     "text": "(1) A honlapon üzenetet küldő természetes személy az erre vonatkozó négyzet bejelölésével adhatja meg hozzájárulását személyes adatai kezeléséhez. Tilos a négyzet előre bejelölése."
+    },
+    {
+     "type": "p",
+     "text": "(2) A kezelhető személyes adatok köre: A természetes személy neve (vezetéknév, keresztnév), telefonszáma, e-mail címe, üzenet tartalma."
+    },
+    {
+     "type": "p",
+     "text": "(3) A személyes adatok kezelésének célja: információ kérés, ajánlat kérés, szolgáltatás igénybevétele"
+    },
+    {
+     "type": "p",
+     "text": "(4) Az adatkezelés jogalapja: Az érintett önkéntes hozzájárulása [GDPR 6. cikk (1) bekezdés a) pont]. Az önkéntes hozzájárulás bármikor visszavonható. Tájékoztatjuk Önt, hogy a hozzájárulás visszavonása nem érinti a visszavonás előtti adatkezelés jogszerűségét. A törlési kérelemben a nevét és az e-mail címét kérjük megjelölni a beazonosítás érdekében."
+    },
+    {
+     "type": "p",
+     "text": "(5) A személyes adatok címzettjei, illetve a címzettek kategóriái: a Társaság ügyfélszolgálattal, marketing tevékenységével kapcsolatos feladatokat ellátó munkavállalói, adatfeldolgozóként Társaság adatfeldolgozói, különösen a Társaság IT, Marketing szolgáltatója."
+    },
+    {
+     "type": "p",
+     "text": "(6) A személyes adatok tárolásának időtartama: 5 évig vagy az érintett hozzájárulása visszavonásáig (törlési kérelméig)."
+    },
+    {
+     "type": "p",
+     "text": "(7) Az érintett tudomásul veszi, hogy az adatszolgáltatás nem előfeltétele szerződéskötésnek, a személyes adatai megadására nem köteles. Az adatszolgáltatás elmaradásának lehetséges következménye a tájékoztatás, szerződéskötés elmaradása."
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelés a Think AI Kft. szolgáltatásai igénybevétele során"
+    },
+    {
+     "type": "p",
+     "text": "(1) A Think AI Kft. szolgáltatásai keretében szervezeti és informatikai folyamatokat elemezhet, mesterségesintelligencia-alapú megoldásokat tervezhet, fejleszthet, tesztelhet, integrálhat, üzemeltethet és támogathat. A konkrét rendszer, adatkör és szolgáltató az ügyféllel kötött szerződésben, adatfeldolgozási megállapodásban és műszaki dokumentációban kerül meghatározásra."
+    },
+    {
+     "type": "p",
+     "text": "(2) Az adatkezelés céljai:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "a szerződés szerinti szolgáltatás nyújtása és támogatása;",
+      "az ügyfél folyamataihoz illeszkedő, biztonságos és hatékony MI-megoldások kialakítása és működtetése;",
+      "hibakezelés, biztonsági monitorozás, karbantartás és a felhasználók támogatása."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "(3) Az adatkezelés jogalapja és szerepek: ha a Think AI Kft. természetes személy szerződő fél adatait saját célból kezeli, a jogalap főszabály szerint a szerződés teljesítése [GDPR 6. cikk (1) bekezdés b) pont]. Jogi személy ügyfél felhasználóinak, munkavállalóinak, ügyfeleinek vagy más érintettjeinek feltöltött adatai tekintetében a jogalapot és a célt az ügyfél, mint adatkezelő határozza meg, a Think AI Kft. pedig a GDPR rendelet 28. cikke szerinti adatfeldolgozóként jár el."
+    },
+    {
+     "type": "p",
+     "text": "(4) Érintettek: az ügyfél kapcsolattartói és felhasználói, továbbá az ügyfél által a szolgáltatásba bevont vagy az adatokban szereplő természetes személyek."
+    },
+    {
+     "type": "p",
+     "text": "(5) Az adatok köre a konkrét szolgáltatástól függően: fiók- és kapcsolattartási adatok, dokumentumok és adatbázisok tartalma, elektronikus levelek, képek, hanganyagok, chatüzenetek, utasítások és promptok, MI-kimenetek, rendszer- és hozzáférési naplók, támogatási adatok, valamint a fejlesztések és konfigurációk adatai."
+    },
+    {
+     "type": "p",
+     "text": "A Think AI Kft. adatfeldolgozóként kizárólag az ügyfél dokumentált utasításai, az adatfeldolgozási megállapodás és az alkalmazandó jogszabályok alapján jár el. Ha a Think AI Kft. valamely adatkezelés célját és lényeges eszközeit maga határozza meg, e művelet tekintetében adatkezelőként köteles külön jogalapot és tájékoztatást biztosítani."
+    },
+    {
+     "type": "p",
+     "text": "A feltöltött tartalmakat az informatikai és MI-rendszerek automatizáltan dolgozzák fel. A Think AI Kft. munkatársai a szolgáltatás rendeltetésszerű működése során nem rendelkeznek hozzáféréssel az ügyfél által feltöltött tartalmak olvasható változatához. Az emberi hozzáférés alapértelmezetten technikailag tiltott; kivételes hozzáférésre csak dokumentált támogatási, biztonsági, hibakezelési vagy jogi feladat miatt, időben korlátozott, szerepköralapú jogosultsággal, naplózott módon és kizárólag a szükséges mértékben kerülhet sor. Amennyiben a körülmények lehetővé teszik, az ilyen hozzáférés az ügyfél előzetes jóváhagyásához kötött."
+    },
+    {
+     "type": "p",
+     "text": "Az ügyféladat, személyes adat vagy bizalmas tartalom általános modelltréningre, szolgáltató saját célú modellfejlesztésére vagy más ügyfelek javára történő felhasználása alapértelmezetten tilos. Ettől eltérés csak külön, dokumentált szerződéses rendelkezés, megfelelő jogalap, előzetes tájékoztatás és szükséges engedélyek alapján lehetséges."
+    },
+    {
+     "type": "p",
+     "text": "(6) Címzettek: kizárólag az adott projekthez ténylegesen igénybe vett tárhely-, adatbázis-, kommunikációs, biztonsági és MI-szolgáltatók, megfelelő adatfeldolgozási és al-adatfeldolgozási szerződések alapján. Az adatkezelő munkavállalói az ügyfél által feltöltött tartalom tekintetében csak a fenti kivételes, dokumentált hozzáférési esetben, az ott meghatározott korlátok között jogosultak a tartalom megismerésére."
+    },
+    {
+     "type": "p",
+     "text": "Az ügyfél által feltöltött tartalom nem továbbítható marketing-, hírlevél-, számlázási vagy más, a szolgáltatás technikai teljesítéséhez nem szükséges szolgáltató részére."
+    },
+    {
+     "type": "p",
+     "text": "(7) Megőrzési idő: az ügyféladatokat a szerződés és az adatfeldolgozási megállapodás szerinti időtartamig, majd az ügyfél választása szerint törlésig vagy visszaadásig kezeli az Adatkezelő. A biztonsági és hozzáférési naplókat előre meghatározott, kockázatarányos ideig őrzi meg. Folyamatban lévő incidens, jogvita vagy hatósági eljárás esetén a releváns adat az ügy lezárásáig tovább kezelhető."
+    },
+    {
+     "type": "p",
+     "text": "Hírlevél szolgáltatáshoz kapcsolódó adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "(1) A honlapon a hírlevél szolgáltatásra regisztráló, természetes személy vagy jogi személy képviseletében eljáró természetes személy az erre vonatkozó négyzet bejelölésével tudomásul veszi, hogy hírlevélküldés, marketing célú megkeresés, tájékoztató anyagok küldése céljából a Társaság az érintett hozzájárulása alapján a szolgáltatás aktív fennállásáig, vagy az arra vonatkozó törlési kérelem (emailben megküldött leiratkozási kérelem) beérkezéséig kezeli adatait. Tilos a négyzet előre bejelölése. A feliratkozás során a jelen Adatkezelési tájékoztatót egy linkkel elérhetővé kell tenni. A hírlevéről az érintett írásban vagy e-mailben tett nyilatkozattal bármikor leiratkozhat. Ilyen esetben a tiltakozó minden adatát haladéktalanul törölni kell."
+    },
+    {
+     "type": "p",
+     "text": "(2) A kezelhető személyes adatok köre: a természetes személy neve (vezetéknév, keresztnév), e-mail cím, telefonszáma."
+    },
+    {
+     "type": "p",
+     "text": "(3) Érintettek köre: A hírlevélre feliratkozok."
+    },
+    {
+     "type": "p",
+     "text": "(4) A személyes adatok kezelésének célja:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Hírlevél küldése a Társaság szolgáltatásai tárgyában",
+      "Reklámanyag, tájékoztató anyag küldése"
+     ]
+    },
+    {
+     "type": "p",
+     "text": "(5) Az adatkezelés jogalapja: Az érintett önkéntes hozzájárulása. [GDPR 6. cikk (1) bekezdés a) pont]. Az önkéntes hozzájárulás bármikor visszavonható. Tájékoztatjuk Önt, hogy a hozzájárulásának visszavonása nem érinti a visszavonás előtti adatkezelés jogszerűségét. A törlési kérelemben az érintettnek a nevét és az e-mail címét kell feltüntetni a beazonosíthatóság érdekében."
+    },
+    {
+     "type": "p",
+     "text": "A hozzájárulás elmaradásának jogkövetkezménye: a szolgáltatás nem jön létre."
+    },
+    {
+     "type": "p",
+     "text": "(6) A személyes adatok címzettjei, illetve a címzettek kategóriái: a Társaság ügyfélszolgálattal, marketing tevékenységével kapcsolatos feladatokat ellátó munkavállalói, adatfeldolgozóként a Társaság adatfeldolgozó különösen, a hírlevélküldő, Marketing és IT szolgáltatója munkavállalói a tárhelyszolgáltatás teljesítése céljából."
+    },
+    {
+     "type": "p",
+     "text": "(7) A személyes adatok tárolásának időtartama: Hírlevél esetében az Adatkezelő mindaddig kezeli az érintett hírlevél feliratkozása során megadott adatait, ameddig az érintett a hírlevélről le nem iratkozik a feliratkozók listájáról, a hírlevél alján található „Leiratkozás” gombra kattintva. Leiratkozás esetén Adatkezelő a továbbiakban a hírlevéllel nem keresi meg az érintettet. Az érintett bármikor ingyenesen leiratkozhat a hírlevélről és hozzájárulását visszavonhatja."
+    },
+    {
+     "type": "p",
+     "text": "(8) Az érintett tudomásul veszi, hogy az adatszolgáltatás nem előfeltétele szerződéskötésnek, a személyes adatai megadására nem köteles. Az adatszolgáltatás elmaradásának lehetséges következménye a hírlevél szolgáltatás elmaradása."
+    },
+    {
+     "type": "p",
+     "text": "Direkt marketing célú adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "(1) Ha külön törvény eltérően nem rendelkezik, reklám természetes személynek, mint reklám címzettjének közvetlen megkeresése módszerével (közvetlen üzletszerzés), így különösen elektronikus levelezés vagy azzal egyenértékű más egyéni kommunikációs eszköz útján - a 2008. évi XLVIII. törvényben meghatározott kivétellel - kizárólag akkor közölhető, ha ahhoz a reklám címzettje előzetesen egyértelműen és kifejezetten hozzájárult. A GDPR Preambulum 47. bekezdése szerint a személyes adatok közvetlen üzletszerzési célú kezelése szintén jogos érdeken alapulónak tekinthető."
+    },
+    {
+     "type": "p",
+     "text": "(2) A Társaság által reklám-címzetti megkeresés céljára kezelhető személyes adatok köre: a természetes személy neve, címe, telefonszáma, e-mail címe, online azonosító."
+    },
+    {
+     "type": "p",
+     "text": "(3) A személyes adatok kezelésének célja a Társaság tevékenységéhez kapcsolódó direkt marketing tevékenység folytatása, azaz reklámkiadványok, hírlevelek, aktuális ajánlatok nyomtatott (postai) vagy elektronikus formában (e-mail) történő rendszeres vagy időszakonkénti megküldése a regisztrációkor megadott elérhetőségekre."
+    },
+    {
+     "type": "ul",
+     "items": [
+      "email üzenetben meghívni Önt az Ön számára releváns, általunk szervezett eseményekre,",
+      "email üzenetben figyelmébe ajánlani az Ön számára releváns tartalmakat,",
+      "technológia, agilitás, képzések, webináriumok, szakmai előadások, események témájú és tárgyú hírlevelet küldünk Önnek email üzenetben,",
+      "direkt ajánlattal megkeresni Önt e-mailben,",
+      "email üzenetben célzott hirdetést megjeleníteni az Ön számára."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "A perszonalizált (személyre szabott) marketing üzenetek általános célja, hogy növelje a mi, mint Adatkezelő, illetve annak termékei, szolgáltatásai ismertségét azon személyek körében, akik ez iránt érdeklődnek. Ezt akként kívánjuk elérni, hogy csak az Ön számára releváns információkat küldünk Önnek, ha Ön ehhez előzetesen a hozzájárulását adta."
+    },
+    {
+     "type": "p",
+     "text": "(4) Az adatkezelés jogalapja: Az érintett önkéntes hozzájárulása [GDPR 6. cikk (1) bekezdés a) pont]."
+    },
+    {
+     "type": "p",
+     "text": "Az önkéntes hozzájárulás bármikor visszavonható. Tájékoztatjuk Önt, hogy a hozzájárulás visszavonása nem érinti a visszavonás előtti adatkezelés jogszerűségét. A törlési kérelemben a nevét és az e-mail címét kérjük megjelölni a beazonosítás érdekében."
+    },
+    {
+     "type": "p",
+     "text": "(5) A személyes adatok címzettjei, illetve a címzettek kategóriái: a Társaság ügyfélszolgálattal kapcsolatos feladatokat ellátó munkavállalói, adatfeldolgozóként Társaság adatfeldolgozói, különösen a Társaság IT, Marketing, Hírlevél szolgáltatója, postai kézbesítés esetén a Posta munkavállalói."
+    },
+    {
+     "type": "p",
+     "text": "(6) A személyes adatok tárolásának időtartama: az érintett hozzájárulása visszavonásáig (törlési kérelméig)."
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelés szociális média (Facebook, Instagram) vonatkozásában"
+    },
+    {
+     "type": "p",
+     "text": "(1) A közösségi média felületet üzemeltetők adatkezelésére Társaságunknak csak korlátozottan van befolyása. Azokon a helyeken, ahol befolyásolhatjuk és paraméterezhetjük azt, a rendelkezésünkre álló lehetőségek körében elősegítjük az adatvédelmi szempontból megfelelő adatkezelését. A legtöbb esetben azonban nem tudjuk befolyásolni az üzemeltető tevékenységét, így nincsenek információink arról, hogy mely adatokat kezelnek pontosan."
+    },
+    {
+     "type": "p",
+     "text": "Facebook adatkezelési szabályzata a következő oldalon található meg: https://www.facebook.com/privacy/explanation/"
+    },
+    {
+     "type": "p",
+     "text": "Instagram adatkezelési szabályzata a következő oldalon található meg: https://help.instagram.com/519522125107875"
+    },
+    {
+     "type": "p",
+     "text": "(2) Az Adatkezelő saját oldalát kezeli a Facebookon. A facebook oldal üzenőfalán közzétett hírfolyamokra az oldalakon található „like” vagy „tetszik” linkre kattintva iratkozhat fel az érintett. Ahhoz, hogy a Facebookon keresztül kapcsolatba tudjon lépni az Adatkezelővel, be kell jelentkeznie. Ehhez a Facebook szintén személyes adatokat kér, illetve tárolja és feldolgozza azokat. Az adatkezelőnek nincs befolyása ezeknek az adatoknak a fajtájára, terjedelmére és feldolgozására, nem kap személyes adatokat a Facebook üzemeltetőjétől. A Facebook oldalakon a követők személyes adatait az Adatkezelő a követők önkéntes hozzájárulásuk értelmében kezeli, a hozzájárulást megadottnak tekinti azzal, hogy az adott személy kedveli, követi oldalát, bejegyzéseit, illetve kommentet ír azokhoz. Az érintett az adatkezelő Facebook oldalán történő szolgáltatás igényléssel kapcsolatban akként nyilatkozik, hogy 16. életévét betöltötte. 16 éven aluli a GDPR 8. cikk (1) bekezdése alapján az adatkezeléshez történő hozzájárulását tartalmazó jognyilatkozatának érvényességéhez törvényes képviselőjének engedélye szükséges. Az adatkezelőnek nem áll módjában a hozzájáruló személy életkorát és jogosultságát ellenőrizni, így az érintett szavatol azért, hogy a megadott adatai valósak"
+    },
+    {
+     "type": "p",
+     "text": "(3) Érintettek: az igénybe vevő természetes személy"
+    },
+    {
+     "type": "p",
+     "text": "(4) Adatkezelés célja: tájékoztatás az aktuális információkról, az Adatkezelőt érintő hírekről, közösségi média felületen történő reklámozás, szolgáltatások bemutatása és népszerűsítése. A Facebook oldalt az Adatkezelő marketing célokra használja annak érdekében, hogy az érdeklődők megismerjék szolgáltatásait és hogy kapcsolatba léphessenek az Adatkezelővel."
+    },
+    {
+     "type": "p",
+     "text": "(5) Adatkezelés jogalapja: az érintett önkéntes hozzájárulása (Facebook, Instagram) adatkezelési szabályzatával összhangban)"
+    },
+    {
+     "type": "p",
+     "text": "(6) Adatkezeléssel érintett adatok köre: az érintett neve; érintettek: a szociális média platform felhasználói"
+    },
+    {
+     "type": "p",
+     "text": "(7) Adatkezelés időtartama: Az érintett a „dislike” vagy ”nem tetszik” gombra kattintva iratkozhat le az Adatkezelő Facebook oldalának a követéséről, vagy az üzenőfal beállításai segítségével törölheti a nem kívánt tartalmakat. A szolgáltatás aktív fennállásáig."
+    },
+    {
+     "type": "p",
+     "text": "(8) Címzettek: Az adatkezelő ügyfélszolgálattal, marketinggel kapcsolatos feladatokat ellátó munkavállalói, adatfeldolgozóként Társaság adatfeldolgozói, különösen a Társaság IT szolgáltatója."
+    },
+    {
+     "type": "p",
+     "text": "Felvételre jelentkező munkavállalók adatainak kezelése, pályázatok, önéletrajzok"
+    },
+    {
+     "type": "p",
+     "text": "(1) A kezelhető személyes adatok köre: a természetes személy neve, születési ideje, helye, anyja neve, lakcím, fénykép, telefonszám, e-mail cím, szakmai előéletre, gyakorlatra, képzettségre, végzettségre vonatkozó adatok."
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben az érintett jelentkezését követően sor kerül az érintett személyes meghallgatására, arról az Adatkezelő feljegyzést készít, melynek tartalma szintén személyes adatnak minősül."
+    },
+    {
+     "type": "p",
+     "text": "(2) A személyes adatok kezelésének célja:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "az érintett azonosítása,",
+      "az érintett Adatkezelőhöz benyújtott álláspályázatának Adatkezelő részéről történő elbírálása,",
+      "az érintett kiválasztási eljárásban történő részvétele,",
+      "a megfelelő készségekkel, szakmai tapasztalattal rendelkező érintett kiválasztása az Adatkezelő által meghirdetett pozícióra,",
+      "az érintettel történő kapcsolatfelvétel, valamint kapcsolattartás a kiválasztási folyamat során,",
+      "későbbi álláslehetőség felajánlása az érintett részére, amennyiben az érintett az Adatkezelő részéről nem kerül kiválasztásra a meghirdetett álláspozícióra és az érintett pályázati anyaga e célból történő megőrzéséhez – a kiválasztási eljárást követően - kifejezetten hozzájárult."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "(3) Az adatkezelés jogalapja: A Társaság munkáltatói jogos érdekeinek érvényesítése (GDPR 6. cikk (1) albekezdése f) pontja) valamint különleges személyes adat esetén GDPR 9. cikk (2) bekezdés f) pont egyidejűleg) jogcímén kezeli, kivéve a későbbi álláslehetőség felajánlásának lehetőséget. Ez utóbbi esetben a pályázó - a felvételi eljárás lezárását követően - nyilatkoztathat akként, hogy pályázati anyagának további kezeléséhez későbbi sikeres felvétel céljából kifejezetten hozzájárul. Ebben az esetben a további adatkezelés jogalapja: Az érintett önkéntes hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont)."
+    },
+    {
+     "type": "p",
+     "text": "(4) A személyes adatok címzettjei, illetve a címzettek kategóriái: a Társaságnál munkáltatói jogok gyakorlására jogosult vezető, munkaügyi feladatokat ellátó munkavállalók."
+    },
+    {
+     "type": "p",
+     "text": "(5) A személyes adatok tárolásának időtartama: Az Adatkezelő az érintett személyes adatait nyertes pályázat esetén a munkaviszony megszűnéséig, ellenkező esetben az álláspályázat elbírálásáig tárolja, azt követően törli, kivéve, ha az érintett kifejezetten kérte annak további álláslehetőség céljából való megőrzését. Ekkor az adatkezelő a pályázatot a hozzájárulást követő 1 évig vagy érintett hozzájárulásának visszavonásáig kezeli."
+    },
+    {
+     "type": "p",
+     "text": "(6) Az Adatkezelő az érintett által beküldött dokumentumokat az érintett kérelmére haladéktalanul törli. Amennyiben az érintett a személyes adatainak törlését a kiválasztási folyamat lezárását megelőzően kéri, abban az esetben az érintett a kiválasztási folyamatban nem tud részt venni."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő pályázat elbírálásakor a közösségi oldalakon (Facebook, LinkedIn, Instagram, X (Twitter) stb.) nyilvánosan elérhetőn információkat is megtekinti. Ezeket kizárólag megismerés céllal kezeli, nem másolja, nem nyomtatja, semmilyen módon nem rögzíti."
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelés adó- és számviteli kötelezettségek teljesítése céljából"
+    },
+    {
+     "type": "p",
+     "text": "(1) A Társaság jogi kötelezettség teljesítése jogcímén, törvényben előírt adó és számviteli kötelezettségek teljesítése (könyvelés, adózás) céljából kezeli a vele kapcsolatba lépő természetes személyek törvényben meghatározott adatait. A kezelt adatok az általános forgalmi adóról szóló 2017. évi CXXVII. tv. 169.§, és 202.§-a alapján különösen: adószám, név, cím, adózási státusz, a számvitelről szóló 2000. évi C. törvény 167.§-a alapján: név, cím, a gazdasági műveletet elrendelő személy vagy szervezet megjelölése, az utalványozó és a rendelkezés végrehajtását igazoló személy, valamint a szervezettől függően az ellenőr aláírása; a készletmozgások bizonylatain és a pénzkezelési bizonylatokon az átvevő, az ellennyugtákon a befizető aláírása, a személyi jövedelemadóról szóló 1995. évi CXVII. törvény alapján: adóazonosító jel."
+    },
+    {
+     "type": "p",
+     "text": "(2) Útnyilvántartás, menetlevél vezetéséhez kapcsolódó adatkezelés (több jogosult által is használható gépjármű vonatkozásában): a Társaság jogi kötelezettség jogcímén, költségelszámolás, bizonylatolás, adóalapok megállapítása, üzemanyagmegtakarítás elszámolása céljából kezeli a céges és a foglalkoztatott hivatali, üzleti célra használt saját gépjárműhasználatának törvényben meghatározott adatait (gépkocsivezető neve, a gépjármű típusa, rendszáma, utazás időpontja, célja, megtett útvonal, felkeresett üzleti partner neve). A vonatkozó jogszabály 1995. CXVII. tv. (Szja tv.) 27.§/2/, 3. Melléklet 6. és 5. Melléklet 7. pont."
+    },
+    {
+     "type": "p",
+     "text": "(3) A személyes adatok tárolásának időtartama a jogalapot adó jogviszony megszűnését követő 8 év."
+    },
+    {
+     "type": "p",
+     "text": "(4) A személyes adatok címzettjei: a Társaság adózási, könyvviteli, bérszámfejtési, társadalombiztosítási feladatait ellátó munkavállalói és adatfeldolgozói."
+    },
+    {
+     "type": "p",
+     "text": "Kifizetői adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "(1) A Társaság jogi kötelezettség teljesítése jogcímén, törvényben előírt adó és járulékkötelezettségek teljesítése (adó-, adóelőleg, járulékok megállapítása, bérszámfejtés, társadalombiztosítási, nyugdíj ügyintézés) céljából kezeli azon érintettek – munkavállalók, családtagjaik, foglalkoztatottak, egyéb juttatásban részesülők – adótörvényekben előírt személyes adatait, akikkel kifizetői (2017:CL. törvény az adózás rendjéről (Art.) 7.§ 31.) kapcsolatban áll. A kezelt adatok körét az Art. 50.§-a határozza meg, külön is kiemelve ebből: a természetes személy természetes személyazonosító adatait (ideértve az előző nevet és a titulust is), nemét, állampolgárságát, a természetes személy adóazonosító jelét, társadalombiztosítási azonosító jelét (TAJ szám). Amennyiben az adótörvények ehhez jogkövetkezményt fűznek, a Társaság kezelheti a munkavállalók egészségügyi (Szja tv. 40.§) és szakszervezeti (Szja 47.§(2) b./) tagságra vonatkozó adatokat adó és járulékkötelezettségek teljesítés (bérszámfejtés, társadalombiztosítási ügyintézés) céljából."
+    },
+    {
+     "type": "p",
+     "text": "(2) A személyes adatok tárolásának időtartama a jogalapot adó jogviszony megszűnését követő 8 év."
+    },
+    {
+     "type": "p",
+     "text": "(3) A személyes adatok címzettjei: a Társaság adózási, bérszámfejtési, társadalombiztosítási (kifizetői) feladatait ellátó munkavállalói és adatfeldolgozói."
+    },
+    {
+     "type": "p",
+     "text": "A Levéltári törvény szerint maradandó értékű iratokra vonatkozó adatkezelés"
+    },
+    {
+     "type": "p",
+     "text": "(1) A Társaság jogi kötelezettsége teljesítése jogcímén kezeli a köziratokról, a közlevéltárakról és a magánlevéltári anyag védelméről szóló 1995. évi LXVI. törvény (Levéltári törvény) szerint maradandó értékűnek minősülő iratait abból a célból, hogy a Társaság irattári anyagának maradandó értékű része épségben és használható állapotban a jövő nemzedékei számára is fennmaradjon. Az adattárolás ideje: a közlevéltár részére történő átadásig."
+    },
+    {
+     "type": "p",
+     "text": "(2) A személyes adatok címzettjei: a Társaság vezetője, iratkezelést, irattározást végző munkavállalója, a közlevéltár munkatársa."
+    }
+   ]
+  },
+  {
+   "id": "v-fejezet",
+   "heading": "V. FEJEZET",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "LÁTOGATÓI ADATKEZELÉS A TÁRSASÁG HONLAPJÁN - TÁJÉKOZTATÁS SÜTIK (COOKIE) ALKALMAZÁSÁRÓL"
+    },
+    {
+     "type": "p",
+     "text": "1. A honlapra látogatót a honlapon tájékoztatni kell a sütik alkalmazásáról, és ehhez – a technikailag elengedhetetlenül szükséges munkamenet (session) sütik kivételével – a hozzájárulását kell kérni."
+    },
+    {
+     "type": "p",
+     "text": "A cookie (süti) egy olyan kisméretű szöveges fájl, amely az érintett számítógépe vagy a mobil eszköze hosszú távú adattárolójában (HDD, SSD) rögzül a cookie-ban beállított lejárati ideig, és a későbbi látogatásokkor újra aktiválódik. Célja, hogy rögzítse a látogatással kapcsolatos adatokat, illetve a személyes beállításokat, ezek azonban a látogató személyével kapcsolatba nem hozható adatok. Segít a felhasználóbarát weboldal kialakításában, valamint az Érintett online élményének fokozása érdekében. Ha az Érintett nem egyezik bele, hogy az Adatfeldolgozó cookie-kat használjon, akkor a weboldal használatát meg kell szakítania."
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelés célja:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "Az Ön beállításainak, használati szokásainak rögzítésével az oldalon való navigáció és ezáltal a honlap használatának megkönnyítése.",
+      "A felhasználói élmény javítása, azáltal, hogy információt gyűjtünk arról, hogy Ön hogyan használja a weboldalt, mely oldalait látogatja, vagy használja leggyakrabban, így megtudhatjuk, hogyan biztosítsunk még jobb felhasználói élményt, ha ismét meglátogatja weboldalunkat.",
+      "Statisztikák gyűjtése, melyek elemzése segíti megérteni azt, hogy Ön hogyan használja a weboldal mellett a további online szolgáltatásokat, amelyeket ezáltal tovább fejleszthetünk.",
+      "A weboldal továbbfejlesztése, majd finomhangolása az Ön igényeknek megfelelően.",
+      "Esetleges rosszindulatú informatikai műveletek beazonosítása."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelés jogalapja: A webes felület helyes működéséhez nélkülözhetetlen cookie-k esetén az adatkezelő jogos érdeke [GDPR 6. cikk (1) bekezdés f) pont]."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelőnek jogos érdeke a weboldala biztonságos működésének biztosítása."
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben az adatkezelés jogalapja az Adatkezelő által érvényesíteni kívánt jogos érdek Ön, mint Érintett (vagyis az, aki a weboldalt használja, felkeresi) jogosult arra, hogy a saját helyzetével kapcsolatos okokból bármikor tiltakozzon személyes adatainak az ilyen jogcímen alapuló kezelése ellen. Ilyen esetekben az Adatkezelő kötelessége, hogy az érintett által előterjesztett tiltakozást érdemben megvizsgálja, és az általa lefolytatott un. érdekmérlegelés (az adatkezelői és az érintetti érdekek összevetése) alapján döntsön az adatkezelés tovább folytatását, esetleges korlátozását vagy megszüntetését illetően. Az Adatkezelő a jogos érdekeinek igazolása érdekében úgynevezett érdekmérlegelési tesztet készített."
+    },
+    {
+     "type": "p",
+     "text": "Az egyéb cookie-k kezelésének jogalapja az érintett önkéntes hozzájárulása [GDPR 6. cikk (1) bekezdés a) pont]. Az önkéntes hozzájárulás bármikor visszavonható. Tájékoztatjuk Önt, hogy a hozzájárulás visszavonása nem érinti a visszavonás előtti adatkezelés jogszerűségét. A törlési kérelemben a nevét és az e-mail címét kérjük megjelölni a beazonosítás érdekében."
+    },
+    {
+     "type": "p",
+     "text": "Adatkezeléssel érintett adatok köre: A cookie-k elhelyezésével, illetve azok visszaolvasásával a látogatóknak a weboldal használatával, illetve böngészésével kapcsolatos adatait és az azokhoz kapcsolódó információkat kezeljük az adatkezelési céloknak megfelelően."
+    },
+    {
+     "type": "p",
+     "text": "Adatkezelés időtartama: Megkülönböztetünk az adott munkamenet végéig tárolt, illetve meghatározott, hosszabb ideig kezelt cookie-kat. A különböző cookie-k a cél elérése érdekében meghatározott ideig tárolódnak csak. Az érintett a böngészője beállításain keresztül bármikor törölheti a számítógépén vagy mobiltelefonján eltárolt sütiket."
+    },
+    {
+     "type": "p",
+     "text": "2. Részletes tájékoztatás a sütikről"
+    },
+    {
+     "type": "p",
+     "text": "2.1. A süti (angolul „cookie”) egy olyan adat, amit a meglátogatott weboldal küld a látogató böngészőjének (változónév-érték formában), hogy az eltárolja és később ugyanaz a weboldal be is tudja tölteni a tartalmát. A sütinek lehet érvényessége, érvényes lehet a böngésző bezárásáig, de korlátlan ideig is.  A későbbiekben minden HTTP(S) kérésnél ezeket az adatokat is elküldi a böngésző a szervernek. Ezáltal a felhasználó gépén lévő adatokat módosítja."
+    },
+    {
+     "type": "p",
+     "text": "2.2. A modern weboldalszolgáltatások természeténél fogva szükség van sütikre, melynek funkciója, hogy egy felhasználót megjelöljön (például, hogy belépett az oldalra) és annak megfelelően tudja a következőkben kezelni, akár későbbi visszatérésekor azonosítani. A veszélye abban rejlik, hogy erről a felhasználónak nem minden esetben van tudomása és alkalmas lehet arra, hogy felhasználót kövesse a weboldal üzemeltetője vagy más szolgáltató, akinek a tartalma be van építve az oldalban (pl. Facebook, Google Analytics), ezáltal profil jön létre róla, ebben az esetben pedig a süti tartalma személyes adatnak tekinthető."
+    },
+    {
+     "type": "p",
+     "text": "2.3. A sütik fajtái:"
+    },
+    {
+     "type": "p",
+     "text": "2.3.1. Technikailag elengedhetetlenül szükséges munkamenet (session) sütik: amelyek nélkül az oldal egyszerűen nem működne funkcionálisan, ezek a felhasználó azonosításához, pl. annak kezeléséhez szükséges, hogy belépett-e, mit tett a kosárba stb. Ez jellemzően egy session-id letárolása, a többi adat a szerveren kerül tárolásra, ami így biztonságosabb. Van biztonsági vonatkozása, ha a session süti értéke nem jól van generálva, akkor session-hijacking támadás veszélye fennáll, ezért feltétlenül szükséges, hogy megfelelően legyenek ezek az értékek generálva. Más terminológiák session cookie-nak hívnak minden sütit, amik a böngészőből való kilépéskor törlődnek (egy session egy böngészőhasználat az elindítástól a kilépésig)."
+    },
+    {
+     "type": "p",
+     "text": "2.3.2. Használatot elősegítő sütik: így azokat a sütiket szoktál nevezni, amelyek megjegyzik a felhasználó választásait, például milyen formában szeretné a felhasználó az oldalt látni. Ezek a fajta sütik lényegében a sütiben tárolt beállítási adatokat jelentik."
+    },
+    {
+     "type": "p",
+     "text": "2.3.3. Teljesítményt biztosító sütik: bár nem sok közük van a \"teljesítmény\"-hez, általában így nevezik azokat a sütiket, amelyek információkat gyűjtenek a felhasználónak a meglátogatott weboldalon belüli viselkedéséről, eltöltött idejéről, kattintásairól. Ezek jellemzően harmadik fél alkalmazásai (pl. Google Analytics, AdWords, vagy Yandex.ru sütik). Ezek a látogatóról profilalkotás készítésére alkalmasak."
+    },
+    {
+     "type": "p",
+     "text": "A Google Analytics sütikről itt tájékozódhat:"
+    },
+    {
+     "type": "p",
+     "text": "https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage"
+    },
+    {
+     "type": "p",
+     "text": "A Google AdWords sütikről itt tájékozódhat:"
+    },
+    {
+     "type": "p",
+     "text": "https://support.google.com/adwords/answer/2407785?hl=hu"
+    },
+    {
+     "type": "p",
+     "text": "2.3.4. Marketing sütik: A marketing sütik hirdetésekhez használt sütik. Ezek a sütik arra alkalmasak, hogy az őket elhelyező weboldalak nyomon követhessék a felhasználó online viselkedését és ez alapján személyre szabott hirdetéseket jeleníthessenek meg számára. Ezek a sütik tehát – külön beleegyezés alapján - a felhasználó böngészési szokásait rögzítik."
+    },
+    {
+     "type": "p",
+     "text": "2.4. A sütik használatát elfogadni, azokat engedélyezni nem kötelező.  Visszaállíthatja böngészője beállításait, hogy az utasítsa el az összes cookie-t, vagy hogy jelezze, ha a rendszer éppen egy cookie-t küld. A legtöbb böngésző ugyan alapértelmezettként automatikusan elfogadja a sütiket, de ezek általában megváltoztathatóak annak érdekében, hogy megakadályozható legyen az automatikus elfogadás."
+    },
+    {
+     "type": "p",
+     "text": "A legnépszerűbb böngészők süti beállításairól az alábbi linkeken tájékozódhat• Google Chrome: https://support.google.com/accounts/answer/61416?hl=hu• Firefox: https://support.mozilla.org/hu/kb/sutik-engedelyezese-es-tiltasa-amit-weboldak-haszn• Microsoft Internet Explorer 11: http://windows.microsoft.com/hu-hu/internet-explorer/delete-manage-cookies#ie=ie-11• Microsoft Internet Explorer 10: http://windows.microsoft.com/hu-hu/internet-explorer/delete-manage-cookies#ie=ie-10-win-7• Microsoft Internet Explorer 9: http://windows.microsoft.com/hu-hu/internet-explorer/delete-manage-cookies#ie=ie-9• Microsoft Internet Explorer 8: http://windows.microsoft.com/hu-hu/internet-explorer/delete-manage-cookies#ie=ie-8• Microsoft Edge: http://windows.microsoft.com/hu-hu/windows-10/edge-privacy-faq• Safari: https://support.apple.com/hu-hu/HT201265"
+    },
+    {
+     "type": "p",
+     "text": "Mindezek mellett azonban felhívjuk a figyelmet arra, hogy előfordulhat, hogy bizonyos webhelyfunkciók vagy -szolgáltatások nem fognak megfelelően működni cookie-k nélkül."
+    },
+    {
+     "type": "p",
+     "text": "3. Tájékoztatás a Társaság honlapján alkalmazott sütikről, illetve a látogatás során létrejövő adatokról"
+    },
+    {
+     "type": "p",
+     "text": "3.1. A látogatás során kezelt adatkör: Társaságunk honlapja a weboldal használata során a látogatóról, illetve az általa böngészésre használt eszközről az alábbi adatokat rögzítheti és kezelheti:• az látogató által használt IP cím,• a böngésző típusa,• a böngészésre használt eszköz operációs rendszerének jellemzői (beállított nyelv),• látogatás időpontja,• a meglátogatott (al)oldal, funkció vagy szolgáltatás."
+    },
+    {
+     "type": "p",
+     "text": "• kattintás."
+    },
+    {
+     "type": "p",
+     "text": "Ezeket az adatokat maximum 90 napig őrizzük meg és elsősorban biztonsági incidensek vizsgálatához használhatjuk."
+    },
+    {
+     "type": "p",
+     "text": "3.2. A honlapon alkalmazott sütik"
+    },
+    {
+     "type": "p",
+     "text": "3.2.1. Technikailag elengedhetetlenül szükséges munkamenet (session) sütik"
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés célja: a honlap megfelelő működésének biztosítása. Ezek a sütik ahhoz szükségesek, hogy a látogatók böngészhessék a weboldalt, zökkenőmentesen és teljes körűen használhassák annak funkcióit, a weboldalon keresztül elérhető szolgáltatásokat, így - többek között- különösen a látogató által az adott oldalakon végzett műveletek megjegyzését vagy a bejelentkezett felhasználó azonosítását egy látogatás során. Ezen sütik adatkezelésének időtartama kizárólag a látogató aktuális látogatására vonatkozik, a munkamenet végeztével, illetve a böngésző bezárásával a sütik e fajtája automatikusan törlődik a számítógépéről."
+    },
+    {
+     "type": "p",
+     "text": "Ezen adatkezelés jogalapja az elektronikus kereskedelmi szolgáltatások, valamint az információs társadalmi szolgáltatások egyes kérdéseiről szóló 2001. CVIII. törvény (Elkertv.) 13/A. § (3) bekezdése, amely szerint a szolgáltató a szolgáltatás nyújtása céljából kezelheti azon személyes adatokat, amelyek a szolgáltatás nyújtásához technikailag elengedhetetlenül szükségesek. A szolgáltatónak az egyéb feltételek azonossága esetén úgy kell megválasztania és minden esetben oly módon kell üzemeltetnie az információs társadalommal összefüggő szolgáltatás nyújtása során alkalmazott eszközöket, hogy személyes adatok kezelésére csak akkor kerüljön sor, ha ez a szolgáltatás nyújtásához és az e törvényben meghatározott egyéb célok teljesüléséhez feltétlenül szükséges, azonban ebben az esetben is csak a szükséges mértékben és ideig."
+    },
+    {
+     "type": "p",
+     "text": "3.2.2. Használatot elősegítő sütik:"
+    },
+    {
+     "type": "p",
+     "text": "Ezek megjegyzik a felhasználó választásait, például milyen formában szeretné a felhasználó az oldalt látni. Ezek a fajta sütik lényegében a sütiben tárolt beállítási adatokat jelentik."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés jogalapja a látogató hozzájárulása."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés célja: A szolgáltatás hatékonyságának növelése, felhasználói élmény növelése, a honlap használatának kényelmesebbé tétele."
+    },
+    {
+     "type": "p",
+     "text": "Ez az adat jellemzően a felhasználó gépén van, a weboldal csak hozzáfér és felismer(het)i általa a látogatót."
+    },
+    {
+     "type": "p",
+     "text": "3.2.3. Teljesítményt biztosító sütik:"
+    },
+    {
+     "type": "p",
+     "text": "Információkat gyűjtenek a felhasználónak a meglátogatott weboldalon belüli viselkedéséről, eltöltött idejéről, kattintásairól."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés jogalapja: az érintett hozzájárulása."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés célja: a honlap elemzése, reklámajánlatok küldése."
+    },
+    {
+     "type": "p",
+     "text": "3.2.4. Marketing sütik:"
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelő működése során igénybe veheti a legújabb online marketing megoldásokat, így a Google AdWords és a Facebook hirdetéseket. Ezek a marketing megoldások sütiket használnak, amelyek a felhasználók internetes szokásairól gyűjtenek információkat, így téve lehetővé az alkalmazó részére, hogy később, más webhelyeken is személyre szabott hirdetéseket jelenítsenek meg a számára."
+    },
+    {
+     "type": "p",
+     "text": "A települt sütik nem továbbítanak személyes adatokat - kivéve amennyiben a felhasználó a weboldal használata során személyes adatait megadja - az alkalmazó számára, csupán elősegítik, hogy honlap látogatója számára a Szolgáltató termékeivel és szolgáltatásaival kapcsolatos hirdetések jelenjenek meg a Google-höz tartozó weboldalakon, valamint a Facebook-on."
+    },
+    {
+     "type": "p",
+     "text": "A marketing sütiket a látogatóknak minden esetben engedélyezniük kell a honlap meglátogatása során. A Facebook felhasználói fiók adatvédelmi beállításai a Beállítások menüpont alatt az Adatvédelemmel és a hirdetésekkel kapcsolatos beállítási fül alatt érhető el: https://myaccount.google.com/privacy. A felhasználó itt tudja a hirdetésekhez kapcsolódó automatikus Facebook beállításokat felülbírálni."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés jogalapja: az érintett hozzájárulása."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezelés célja: a honlap elemzése, reklámajánlatok küldése, személyre szabott hirdetések megjelenítése a weboldal látogatói számára más weboldalak (pl. Facebook) meglátogatása során."
+    }
+   ]
+  },
+  {
+   "id": "vi-fejezet",
+   "heading": "VI. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "TÁJÉKOZTATÁS AZ ÉRINTETT SZEMÉLY JOGAIRÓL"
+    },
+    {
+     "type": "p",
+     "text": "I. Az Ön jogai röviden összefoglalva:"
+    },
+    {
+     "type": "p",
+     "text": "Ön kérelmezheti az Adatkezelőnél az alábbiakat:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "tájékoztatását személyes adatai kezeléséről (az adatkezelés megkezdését megelőzően, illetve az adatkezelés során). Az Ön tájékoztatáshoz való jogát jelen Adatkezelési tájékoztató elkészítésével és közzétételével biztosítjuk.",
+      "hozzáférést személyes adataihoz (személyes adatai adatkezelő általi rendelkezésére bocsátását),",
+      "személyes adatainak helyesbítését, kiegészítését,",
+      "személyes adatainak – a kötelező adatkezelés kivételével – törlését vagy korlátozását (zárolását),",
+      "joga van az adathordozhatósághoz,",
+      "tiltakozhat személyes adatai kezelése ellen,",
+      "jogosult arra, hogy ne terjedjen ki Önre olyan, kizárólag automatizált adatkezelésen – ideértve a profilalkotást is – alapuló döntés hatálya, amely Önre nézve joghatással járna vagy Önt hasonlóképpen jelentős mértékben érintené,",
+      "joga van a jogorvoslathoz."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Ön az adatkezeléssel kapcsolatos jogérvényesítés, jogorvoslati lehetőségek fejezet szerint, írásban nyújthatja be érintetti kérelmét az Adatkezelő részére. Az Adatkezelő az Ön jogszerű kérelmét legfeljebb 30 napon belül teljesíti, és erről az általa megadott elérhetőségre küldött levélben értesíti."
+    },
+    {
+     "type": "p",
+     "text": "II. Az Ön jogai részletesen:"
+    },
+    {
+     "type": "p",
+     "text": "A tájékoztatás kéréshez való jog (GDPR rendelet 13-14. cikkeiben rögzített adatkezelői kötelezettségek alapján)"
+    },
+    {
+     "type": "p",
+     "text": "Ön az adatkezeléssel kapcsolatos jogérvényesítés, jogorvoslati lehetőségek fejezet szerint írásban tájékoztatást kérhet az Adatkezelőtől arról, hogy"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "milyen személyes adatait,",
+      "milyen jogalapon,",
+      "milyen adatkezelési cél miatt,",
+      "milyen forrásból,",
+      "mennyi ideig kezeli,",
+      "alkalmaz-e adatfeldolgozót, ha igen, az esetleges adatfeldolgozó nevéről, címéről és az adatkezeléssel összefüggő tevékenységéről,",
+      "az Adatkezelő kinek, mikor, milyen jogszabály alapján, mely személyes adataihoz biztosított hozzáférést vagy kinek továbbította a személyes adatait,",
+      "az esetleges adatvédelmi incidens körülményeiről, hatásairól és az elhárítására megtett intézkedésekről."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "A hozzáféréshez való jog (GDPR rendelet 15. cikke alapján)"
+    },
+    {
+     "type": "p",
+     "text": "Ön jogosult arra, hogy az Adatkezelőtől visszajelzést kapjon arra vonatkozóan, hogy személyes adatainak kezelése folyamatban van-e, és ha ilyen adatkezelés folyamatban van, jogosult arra, hogy a kezelt személyes adataihoz hozzáférést kapjon, és ezt az Adatkezelőtől az adatkezeléssel kapcsolatos jogérvényesítés, jogorvoslati lehetőségek fejezet szerint írásban kérheti."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő az adatkezelés tárgyát képező személyes adatok másolatát – ha ez nem ütközik más jogszabályi akadályba - az Ön rendelkezésére bocsátja. Ha Ön elektronikus úton nyújtotta be a kérelmet, az információkat széles körben használt elektronikus formátumban kell rendelkezésre bocsátani, kivéve, ha Ön másként kéri."
+    },
+    {
+     "type": "p",
+     "text": "A helyesbítéshez, kiegészítéshez való jog (GDPR rendelet 16. cikke alapján)"
+    },
+    {
+     "type": "p",
+     "text": "Ön az adatkezeléssel kapcsolatos jogérvényesítés, jogorvoslati lehetőségek fejezet szerint írásban kérheti, hogy az Adatkezelő módosítsa valamely személyes adatát (például bármikor megváltoztathatja az e-mail címét vagy postai elérhetőségét vagy kérheti, hogy az Adatkezelő által kezelt bármely pontatlan személyes adatát az Adatkezelő helyesbítse)."
+    },
+    {
+     "type": "p",
+     "text": "Figyelembe véve az adatkezelés célját, Ön jogosult arra, hogy kérje az Adatkezelő által kezelt hiányos személyes adatai megfelelő kiegészítését."
+    },
+    {
+     "type": "p",
+     "text": "A törléshez való jog (GDPR rendelet 17. cikke alapján)"
+    },
+    {
+     "type": "p",
+     "text": "A személyes adatok törlése alapvetően akkor kérhető, ha adatkezelésünk az Ön önkéntes hozzájárulásán alapul, pl. hozzájárulását adta ahhoz, hogy adatait (telefonszám, e-mail cím) kezeljük. Ilyen esetben személyes adatait töröljük."
+    },
+    {
+     "type": "p",
+     "text": "Az önkéntes hozzájárulása bármikor visszavonható. Tájékoztatjuk Önt, hogy a hozzájárulás visszavonása nem érinti a visszavonás előtti adatkezelés jogszerűségét. A törlési kérelemben a nevét és az e-mail címét kérjük megjelölni a beazonosítás érdekében."
+    },
+    {
+     "type": "p",
+     "text": "A zároláshoz (adatkezelés korlátozásához) való jog (GDPR rendelet 18. cikke alapján)"
+    },
+    {
+     "type": "p",
+     "text": "Ön az adatkezeléssel kapcsolatos jogérvényesítés, jogorvoslati lehetőségek fejezet szerint írásban kérheti, hogy a személyes adatait az Adatkezelő zárolja (az adatkezelés korlátozott jellegének egyértelmű jelölésével és az egyéb adatoktól elkülönített kezelés biztosításával)."
+    },
+    {
+     "type": "p",
+     "text": "A zárolás addig tart, amíg az Ön által megjelölt indok szükségessé teszi az adatok tárolását. Az adat zárolását kérheti Ön például abban az esetben, ha úgy gondolja, hogy a beadványát az Adatkezelő jogellenesen kezelte, azonban az általa kezdeményezett hatósági vagy bírósági eljárás érdekében szükséges az, hogy a beadványt az Adatkezelő ne törölje."
+    },
+    {
+     "type": "p",
+     "text": "Ebben az esetben a hatóság vagy a bíróság megkereséséig az Adatkezelő tovább tárolja a személyes adatot (például az adott beadványt), ezt követően törli az adatokat."
+    },
+    {
+     "type": "p",
+     "text": "Adathordozhatósághoz való jog (GDPR rendelet 20. cikke alapján)"
+    },
+    {
+     "type": "p",
+     "text": "Ön az adatkezeléssel kapcsolatos jogérvényesítés, jogorvoslati lehetőségek szerint írásban kérheti, hogy a rá vonatkozó, általa az Adatkezelő rendelkezésére bocsátott személyes adatokat tagolt, széles körben használt, géppel olvasható formátumban megkapja, továbbá jogosult arra, hogy ezeket az adatokat egy másik adatkezelőnek továbbítsa anélkül, hogy ezt akadályozná az Adatkezelő, ha:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "az adatkezelés a GDPR rendelet 6. cikk (1) bekezdésének a) pontja vagy a 9. cikk (2) bekezdésének a) pontja szerinti hozzájáruláson, vagy",
+      "a 6. cikk (1) bekezdésének b) pontja szerinti szerződésen alapul; és",
+      "az adatkezelés automatizált módon történik"
+     ]
+    },
+    {
+     "type": "p",
+     "text": "A tiltakozáshoz való jog (GDPR rendelet 21. cikke alapján)"
+    },
+    {
+     "type": "p",
+     "text": "Ön az adatkezeléssel kapcsolatos jogérvényesítés, jogorvoslati lehetőségek fejezetben megadott elérhetőségeken keresztül, írásban tiltakozhat személyes adatainak az Általános Adatvédelmi Rendelet a 6. cikk (1) bekezdésének f) pontja szerinti, az Adatkezelő vagy egy harmadik fél jogos érdekeinek érvényesítéséhez szükséges kezelése ellen, ideértve az említett rendelkezéseken alapuló profilalkotást is."
+    },
+    {
+     "type": "p",
+     "text": "Ebben az esetben az Adatkezelő a személyes adatokat nem kezeli tovább, kivéve, ha az Adatkezelő bizonyítja, hogy az adatkezelést olyan kényszerítő erejű jogos okok indokolják, amelyek elsőbbséget élveznek az érintett érdekeivel, jogaival és szabadságaival szemben, vagy amelyek jogi igények előterjesztéséhez, érvényesítéséhez vagy védelméhez kapcsolódnak."
+    },
+    {
+     "type": "p",
+     "text": "Automatizált döntéshozatal egyedi ügyekben, beleértve a profilalkotást (GDPR rendelet 22. cikke alapján)"
+    },
+    {
+     "type": "p",
+     "text": "Ön jogosult arra, hogy ne terjedjen ki Önre olyan, kizárólag automatizált adatkezelésen – ideértve a profilalkotást is – alapuló döntés hatálya, amely Önre nézve joghatással járna vagy Önt hasonlóképpen jelentős mértékben érintené."
+    },
+    {
+     "type": "p",
+     "text": "Ez a jogosultság nem alkalmazandó abban az esetben, ha a döntés:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "az Ön és az adatkezelő közötti szerződés megkötése vagy teljesítése érdekében szükséges;",
+      "meghozatalát az adatkezelőre alkalmazandó olyan uniós vagy tagállami jog teszi lehetővé, amely az érintett jogainak és szabadságainak, valamint jogos érdekeinek védelmét szolgáló megfelelő intézkedéseket is megállapít; vagy",
+      "az Ön kifejezett hozzájárulásán alapul."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Az előbbi a) és c) pontjában említett esetekben az adatkezelő köteles megfelelő intézkedéseket tenni az Ön jogainak, szabadságainak és jogos érdekeinek védelme érdekében, ideértve Önnek legalább azt a jogát, hogy az adatkezelő részéről emberi beavatkozást kérjen, álláspontját kifejezze, és a döntéssel szemben kifogást nyújtson be."
+    }
+   ]
+  },
+  {
+   "id": "vii-fejezet",
+   "heading": "VII. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "AZ ADATKEZELÉSSEL KAPCSOLATOS JOGÉRVÉNYESÍTÉS, JOGORVOSLATI LEHETŐSÉGEK"
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő megkeresése"
+    },
+    {
+     "type": "p",
+     "text": "Javasoljuk, hogy a bírósági vagy hatósági eljárás kezdeményezése előtt az Adatkezelőnek legyen szíves elküldeni a személyes adatai kezelésével kapcsolatos megkeresését, panaszát, hogy azt kivizsgálhassuk és megnyugtatóan orvosolhassuk, illetve a tájékoztatás az érintett személy jogairól fejezet szerinti valamely kérelmét, igényét – annak megalapozottsága esetén - teljesíthessük."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő az Ön a tájékoztatás az érintett személy jogairól fejezet szerinti valamely adatkezeléssel kapcsolatos jogának érvényesítése, adatkezeléssel kapcsolatos tájékoztatás kérése, illetve adatkezeléssel kapcsolatos tiltakozása és panasza esetén indokolatlan késedelem nélkül, a mindenkori jogszabályokban által előírt időn belül vizsgálja ki az ügyet, intézkedik a megkereséssel kapcsolatban és nyújt tájékoztatást az ügyben az Ön részére. Szükség esetén, figyelembe véve a megkeresés összetettségét és a megkeresések számát, ez a határidő a jogszabályban írtak szerint meghosszabbítható."
+    },
+    {
+     "type": "p",
+     "text": "Amennyiben Ön elektronikus úton nyújtotta be a megkeresést, a tájékoztatást lehetőség szerint elektronikus úton adjuk meg, kivéve, ha Ön azt másként kéri. Amennyiben az Adatkezelő nem tesz intézkedést az Ön megkeresése alapján késedelem nélkül, de legkésőbb a jogszabályban meghatározott határidőben, tájékoztatja Önt az intézkedés elmaradásának, a kérelem teljesítése megtagadásának okairól, valamint arról, hogy Ön az alábbiak szerint bírósági vagy hatósági eljárást kezdeményezhet ügyében."
+    },
+    {
+     "type": "p",
+     "text": "Az adatkezeléssel kapcsolatos jogai érvényesítése érdekében vagy amennyiben az Adatkezelő által kezelt adataival kapcsolatban bármilyen kérdése, kételye van, illetve adataival kapcsolatban felvilágosítást kér, panaszt kíván előterjeszteni vagy a tájékoztatás az érintett személy jogairól fejezet szerinti valamely jogával kíván élni, ezt megteheti ún. érintetti kérelemként írásban hagyományos levélben, e-mailben az Adatkezelő elérhetőségein keresztül:"
+    },
+    {
+     "type": "h3",
+     "text": "Adatkezelő: Think AI Korlátolt Felelősségű Társaság"
+    },
+    {
+     "type": "p",
+     "text": "Székhely: 1111 Budapest, Lágymányosi utca 12. Fsz. 2. ajtó"
+    },
+    {
+     "type": "p",
+     "text": "Elektronikus levélcím: hello@thinkai.hu"
+    },
+    {
+     "type": "p",
+     "text": "Hatósági eljárás kezdeményezése"
+    },
+    {
+     "type": "p",
+     "text": "Ön jogosult arra, hogy egy felügyeleti hatóságnál – különösen a szokásos tartózkodási helye, a munkahelye vagy a feltételezett jogsértés helye szerinti tagállamban –, ha megítélése szerint az rá vonatkozó személyes adatok kezelése megsérti a GDPR rendelkezéseit. Az EU-n belül az egyes felügyeleti (adatvédelmi) hatóságok elérhetőségeihez lásd: https://edpb.europa.eu/about-edpb/board/members_hu. Ön Magyarországon a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (1055 Budapest, Falk Miksa u. 9-11., honlap: http://naih.hu, postacím: 1363 Budapest, Pf.: 9.; telefon: +36-1-391-1400; fax: +36-1-391-1410; e-mail: ugyfelszolgalat@naih.hu) jogainak érvényesítése érdekében vizsgálatot, illetve hatósági eljárás lefolytatását kezdeményezhet arra hivatkozással, hogy a személyes adatai kezelésével kapcsolatban jogsérelem következett be, vagy annak közvetlen veszélye fennáll, így különösen,"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "ha véleménye szerint az Adatkezelő a tájékoztatás az érintett személy jogairól fejezetben meghatározott érintetti jogainak érvényesítését korlátozza vagy ezen jogainak érvényesítésére irányuló kérelmét elutasítja (vizsgálat kezdeményezése), valamint",
+      "ha megítélése szerint személyes adatainak kezelése során az Adatkezelő, illetve az általa megbízott vagy rendelkezése alapján eljáró adatfeldolgozó megsérti a személyes adatok kezelésére vonatkozó, jogszabályban vagy az Európai Unió kötelező jogi aktusában meghatározott előírásokat (hatósági eljárás lefolytatásának kérelmezése)."
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Bírósági eljárás kezdeményezése"
+    },
+    {
+     "type": "p",
+     "text": "Ön bírósághoz fordulhat, ha megítélése szerint az Adatkezelő a személyes adatokat a személyes adatok kezelésére vonatkozó, jogszabályban vagy az Európai Unió kötelező jogi aktusában meghatározott előírások megsértésével kezeli. Az ilyen eljárás megindítható az érintett szokásos tartózkodási helye szerinti tagállam bírósága előtt is. Az ilyen per Magyarországon a Törvényszék hatáskörébe tartozik. A pert az érintett - választása szerint - a lakóhelye vagy tartózkodási helye szerint illetékes törvényszék előtt is megindíthatja. A bíróság (törvényszék) illetékességéről és elérhetőségeiről az alábbi honlapon tájékozódhat: https://birosag.hu/."
+    }
+   ]
+  },
+  {
+   "id": "viii-fejezet",
+   "heading": "VIII. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "ADATBIZTONSÁG"
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő kötelezi magát arra, hogy gondoskodik az általa kezelt személyes adatok biztonságáról. A tudomány és technológia állása és a megvalósítás költségei, továbbá az adatkezelések jellege, hatóköre, körülményei és céljai, valamint a természetes személyek jogaira és szabadságaira jelentett, változó valószínűségű és súlyosságú kockázat figyelembevételével megteszi azokat a technikai és szervezési intézkedéseket, és kialakítja azokat az eljárási szabályokat, amelyek biztosítják, hogy a felvett, tárolt, illetve kezelt adatok védettek legyenek, illetőleg megakadályozza azok megsemmisülését, jogosulatlan felhasználását és jogosulatlan megváltoztatását"
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő kötelezi magát arra is, hogy minden olyan harmadik felet, akiknek az adatokat bármilyen jogalappal továbbítja vagy átadja, felhívja, hogy tegyenek eleget az adatbiztonság követelményének. Az Adatkezelő gondoskodik arról, hogy a kezelt adatokhoz illetéktelen személy ne férhessen hozzá, ne hozhassa nyilvánosságra, ne továbbíthassa, valamint azokat ne módosíthassa, törölhesse."
+    },
+    {
+     "type": "p",
+     "text": "A kezelt adatokat kizárólag az Adatkezelő, valamint alkalmazottai, illetve az Adatkezelő által igénybe vett adatfeldolgozó(k) és címzettek ismerhetik meg jogosultsági szintek szerint. Azokat az Adatkezelő harmadik, az adat megismerésére jogosultsággal nem rendelkező személynek nem adja át. Az Adatkezelő és Adatfeldolgozó által meghatározott munkakörökhöz rendelten, meghatározott módon, jogosultsági szintek szerint férhetnek hozzá az Adatkezelő, illetve az Adatfeldolgozó munkavállalói a személyes adatokhoz."
+    },
+    {
+     "type": "p",
+     "text": "Az ügyfél által a szolgáltatásba feltöltött dokumentumok, adatállományok és egyéb bizalmas tartalmak tekintetében az előző bekezdésben foglalt általános hozzáférési szabályoktól eltérően a Társaság a rendszert úgy alakítja ki, hogy a tartalom olvasható változata a szolgáltatás rendeltetésszerű működése során munkavállalói számára technikailag se legyen hozzáférhető. Az adatokat tárolás és továbbítás során titkosítani kell; a kulcskezelést az adatoktól elkülönítve, hozzáférés-védetten és naplózott módon kell megvalósítani. Ahol műszakilag lehetséges, ügyfél- vagy tenant-szintű kulcselkülönítés, illetve olyan kliensoldali vagy elkülönített környezetben végzett titkosítás alkalmazandó, amely mellett a Társaság az ügyféladatot önállóan nem képes visszafejteni."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő az informatikai rendszerek biztonsága érdekében az informatikai rendszereket tűzfallal védi, valamint a külső- és belső adatvesztések megelőzése érdekében víruskereső és vírusirtó programot használ. Az Adatkezelő gondoskodott továbbá arról, hogy a visszaélések megelőzése érdekében bármely formában történő bejövő és kimenő kommunikációt megfelelően ellenőrizze."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő, illetve az Adatfeldolgozó a személyes adatokat bizalmas adatként minősíti és kezeli. Az Adatkezelő a különböző nyilvántartásokban elektronikusan kezelt adatállományok védelme érdekében biztosítja, hogy a nyilvántartásokban tárolt adatok – törvényben meghatározott kivételekkel – közvetlenül ne legyenek összekapcsolhatók és az Érintetthez rendelhetők."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő a kockázat mértékének megfelelő szintű adatbiztonságot garantálja, ideértve, többek között, adott esetben:"
+    },
+    {
+     "type": "ul",
+     "items": [
+      "a személyes adatok álnevesítését és titkosítását,",
+      "a személyes adatok kezelésére használt rendszerek és szolgáltatások folyamatos bizalmas jellegének biztosítását, integritását, rendelkezésre állását és ellenálló képességét (üzemeltetés- és fejlesztésbiztonság, behatolás elleni védelem és felderítés, a jogosulatlan hozzáférés megelőzése)",
+      "fizikai vagy műszaki incidens esetén az arra való képességet, hogy a személyes adatokhoz való hozzáférést és az adatok rendelkezésre állását kellő időben vissza lehet állítani (az adatszivárgás megelőzése; a sérülékenység- és incidenskezelés)",
+      "az adatkezelés biztonságának garantálására hozott technikai és szervezési intézkedések hatékonyságának rendszeres tesztelésére, felmérésére és értékelésére szolgáló eljárást (az üzletfolytonosság fenntartása, kártékony kódok elleni védelme, az adatok biztonságos tárolása, továbbítása, feldolgozása, munkavállalóink biztonsági képzése)"
+     ]
+    },
+    {
+     "type": "p",
+     "text": "A biztonság megfelelő szintjének meghatározásakor kifejezetten figyelembe kell venni az adatkezelésből eredő olyan kockázatokat, amelyek különösen a továbbított, tárolt vagy más módon kezelt személyes adatok véletlen vagy jogellenes megsemmisítéséből, elvesztéséből, megváltoztatásából, jogosulatlan nyilvánosságra hozatalából vagy az azokhoz való jogosulatlan hozzáférésből erednek."
+    },
+    {
+     "type": "p",
+     "text": "Tájékoztatjuk, hogy az adatbiztonságról további részletes információkat az Adatkezelőtől (elektronikus levélcím: hello@thinkai.hu) igényelhet."
+    }
+   ]
+  },
+  {
+   "id": "ix-fejezet",
+   "heading": "IX. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "HARMADIK ORSZÁGBA VAGY NEMZETKÖZI SZERVEZETHEZ TÖRTÉNŐ ADATTOVÁBBÍTÁS"
+    },
+    {
+     "type": "p",
+     "text": "1.) Megfelelőségi határozat alapján (GDPR rendelet 45. cikk)"
+    },
+    {
+     "type": "p",
+     "text": "A GDPR rendelt 45. cikke alapján személyes adatok harmadik országba vagy nemzetközi szervezet részére történő továbbítására sor kerülhet akkor, ha az Európai Bizottság határozatában megállapította, hogy a harmadik ország, vagy annak valamely területe, vagy egy vagy több ágazata, illetve a szóban forgó nemzetközi szervezet az uniós adatvédelmi szintnek megfelelő védelmi szintet biztosít. A GDPR 45. cikk (2) bekezdése meghatározza azokat az általános szempontokat, amelyeket a Bizottság a védelmi szint megfelelőségének értékelése során figyelembe vesz. A Bizottság időszakosan, rendszeresen figyelemmel kíséri a védelmi szint megfelelőségét azokban az országokban (annak valamely területén, valamely ágazatban, nemzetközi szervezeteknél), amelyek vonatkozásában korábban megfelelőségi határozatot hozott, és amennyiben azt állapítja meg, hogy a megfelelő védelmi szint már nem biztosított, határozatát hatályon kívül helyezi, módosítja vagy felfüggeszti."
+    },
+    {
+     "type": "h3",
+     "text": "2.) Transz-Atlanti Megfelelőségi Kerethatározat (Data Privacy Framework)"
+    },
+    {
+     "type": "p",
+     "text": "Az Európai Bizottság 2023. július 10-én megfelelőségi határozatot fogadott el az új EU-USA adatvédelmi keretre vonatkozóan, amelyben megállapítja, hogy a személyes adatok az Európai Unióból biztonságosan továbbíthatók az új keretben részt vevő amerikai vállalatokhoz, az Egyesült Államok megfelelő védelmi szintet biztosít az EU-ból a résztvevő amerikai vállalatoknak továbbított személyes adatok tekintetében. Az Transz-Atlanti Megfelelőségi Kerethatározathoz történő csatlakozás alapfeltétele, hogy az amerikai vállalatok adatkezelőként kötelezettséget vállalnak a GDPR-nak megfelelő adatvédelmi intézkedések bevezetéséről."
+    },
+    {
+     "type": "p",
+     "text": "3.) Megfelelő garanciák alapján történő adattovábbítások (GDPR rendelet 46. cikk)"
+    },
+    {
+     "type": "p",
+     "text": "A GDPR 45. cikke szerinti megfelelőségi határozat hiányában az adatkezelő vagy az adatfeldolgozó csak abban az esetben továbbíthat személyes adatokat harmadik országba vagy nemzetközi szervezet részére, ha az adattovábbítás megfelelőségét illetően ún. megfelelő garanciákat nyújtott, valamint, ha az érintettek számára érvényesíthető adatvédelmi jogok és jogorvoslati lehetőségek állnak rendelkezésre."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő tájékoztatja Önt, hogy egyes szolgáltatások nyújtása során az adatkezelő olyan adatfeldolgozókat is igénybe vesz (különösen az OpenAI, Inc., az Anthropic, PBC, a Supabase Pte. Ltd.) amelyek székhelye az Európai Unión (EU) és az Európai Gazdasági Térségen (EGT) kívül található. Ennek megfelelően bizonyos esetekben személyes adatok harmadik országba továbbítására kerülhet sor."
+    },
+    {
+     "type": "p",
+     "text": "Az adattovábbítás minden esetben a GDPR rendelet V. fejezetének megfelelően történik. Amennyiben az adott harmadik ország tekintetében az Európai Bizottság nem fogadott el megfelelőségi határozatot, az Adatkezelő az adattovábbítást a GDPR rendelet 46. cikke szerinti megfelelő garanciák – különösen az Európai Bizottság által elfogadott általános szerződési feltételek alkalmazásával, valamint az érintett szolgáltatók által alkalmazott további technikai és szervezési intézkedések – mellett történik."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő minden esetben törekszik arra, hogy a személyes adatok védelme az Európai Unión belül biztosított védelem szintjével azonos szintű legyen. Az alkalmazott garanciákról az érintett az Adatkezelő elérhetőségein keresztül további tájékoztatást kérhet, illetve azok másolatát – amennyiben ez jogszabály alapján lehetséges – megismerheti."
+    }
+   ]
+  },
+  {
+   "id": "x-fejezet",
+   "heading": "X. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "MESTERSÉGES INTELLIGENCIA SZOLGÁLTATÁSOK IGÉNYBEVÉTELE"
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő tevékenysége keretében mesterségesintelligencia-alapú megoldásokat tervezhet, fejleszthet, tesztelhet, integrálhat, üzemeltethet és támogathat, saját belső folyamataiban, illetve ügyfelei részére. Az alkalmazott rendszer rendeltetését, adatkörét, szolgáltatóját, konfigurációját és felelősségi viszonyait rendszer- és projektszinten kell meghatározni."
+    },
+    {
+     "type": "p",
+     "text": "MI-megoldás alkalmazható különösen dokumentumok, adatbázisok, elektronikus levelek, képek, hanganyagok és üzenetek elemzésére; adatok felismerésére, kinyerésére és osztályozására; összefoglalók, tervezetek és válaszok készítésére; ügyfélszolgálati és üzleti folyamatok támogatására; riportálásra, elemzésre és döntéstámogatásra. A konkrét cél és jogalap mindig abból az alapfolyamatból következik, amelyben az MI-rendszer működik."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő kizárólag előzetesen értékelt, az adott feladatra jóváhagyott szolgáltatást és termékkonstrukciót alkalmaz. A szolgáltató neve önmagában nem elegendő: dokumentálni kell a konkrét terméket, szerződő jogi személyt, régiót, adatmegőrzést, al-adatfeldolgozókat, modellfejlesztési felhasználást és adattovábbítási mechanizmust."
+    },
+    {
+     "type": "p",
+     "text": "Az MI-rendszer használata önmagában nem teremt új adatkezelési célt vagy jogalapot. A személyes adatok célját, jogalapját, terjedelmét, érintettjeit, címzettjeit és megőrzését az alapul szolgáló ügyfél-, munkafolyamat-, támogatási vagy szerződéses adatkezelés határozza meg."
+    },
+    {
+     "type": "p",
+     "text": "A GDPR szerinti adatkezelői és adatfeldolgozói szerepeket, továbbá az AI Act szerinti szolgáltatói, alkalmazói, downstream szolgáltatói, importőri vagy forgalmazói szerepeket rendszerenként külön kell meghatározni. A két szabályozás szerepei nem azonosak, és egy szervezet egyidejűleg több szerepet is betölthet."
+    },
+    {
+     "type": "p",
+     "text": "Fejlesztéshez és teszteléshez elsődlegesen szintetikus, megfelelően anonimizált vagy álnevesített adatot kell használni. Éles személyes adat csak akkor használható, ha az a feladat elvégzéséhez szükséges, az adatkezelés megfelelő jogalapon vagy ügyfélutasításon alapul, és az adatkör nem csökkenthető tovább."
+    },
+    {
+     "type": "p",
+     "text": "Személyes vagy bizalmas adatot tartalmazó feladatnál az Adatkezelő olyan üzleti vagy API-konstrukciót alkalmaz, amelynek adatfeldolgozási feltételeit, megőrzését, hozzáférési szabályait, régióját, al-adatfeldolgozóit és modellfejlesztési célú felhasználását előzetesen ellenőrizte és megfelelően beállította."
+    },
+    {
+     "type": "p",
+     "text": "Az ügyféladatok és személyes adatok általános modelltréningre, szolgáltató saját célú fejlesztésére vagy más ügyfelek javára történő felhasználása alapértelmezetten kizárt. Ettől eltérni csak külön, dokumentált jogalap, tájékoztatás, szerződéses rendelkezés és – adatfeldolgozás esetén – az adatkezelő ügyfél megfelelő utasítása alapján lehet."
+    },
+    {
+     "type": "p",
+     "text": "A bemeneteket, kimeneteket és köztes állományokat az informatikai rendszer automatizáltan kezeli. Személyes vagy bizalmas ügyféladatot tartalmazó folyamatban az Adatkezelő munkatársai a tartalom olvasható változatához a szolgáltatás rendeltetésszerű működése során nem férhetnek hozzá. Emberi hozzáférés csak kivételesen, dokumentált támogatási, biztonsági, hibakezelési vagy jogi feladat miatt, időben korlátozott, szerepköralapú jogosultsággal, naplózott módon és a szükséges mértékben biztosítható; amennyiben a körülmények lehetővé teszik, az ügyfél előzetes jóváhagyásával. Minőségellenőrzéshez elsődlegesen szintetikus, anonimizált, álnevesített vagy az ügyfél által erre kifejezetten kijelölt adatot kell használni."
+    },
+    {
+     "type": "p",
+     "text": "Az automatizált műveletekhez a rendszer céljához és kockázataihoz igazodó emberi felügyelet, előzetes tesztelés, monitorozás, naplózás, mintavételes minőségellenőrzés, hibakezelés és eszkaláció tartozik. A felügyeletnek ténylegesen alkalmasnak kell lennie a kimenet megértésére, felülbírálására vagy a folyamat leállítására."
+    },
+    {
+     "type": "p",
+     "text": "MI-kimenet önmagában nem szolgálhat az érintettre nézve joghatással vagy hasonlóan jelentős hatással járó, kizárólag automatizált döntés alapjául, kivéve, ha a GDPR 22. cikkének feltételei teljesülnek, az érintett megfelelő tájékoztatást kap, és biztosított az emberi beavatkozás, az álláspont kifejtése és a döntés vitatása."
+    },
+    {
+     "type": "p",
+     "text": "Ha az érintett közvetlenül chatbottal, hangasszisztenssel vagy más MI-rendszerrel kommunikál, erről legkésőbb az interakció kezdetén egyértelmű tájékoztatást kap, kivéve, ha ez a körülményekből nyilvánvaló. A rendszer jellegéhez igazodóan biztosítani kell az emberi ügyintézőhöz történő kapcsolást vagy az emberi felülvizsgálat kérését."
+    },
+    {
+     "type": "p",
+     "text": "Mesterségesen előállított vagy manipulált kép-, hang-, videó- vagy szövegtartalom esetén az Adatkezelő az alkalmazandó jogszabályok szerint gondoskodik a géppel olvasható és az érintett számára érzékelhető jelölésről, különösen deepfake vagy közérdekű tájékoztatás céljából közzétett tartalom esetén."
+    },
+    {
+     "type": "p",
+     "text": "Toborzási, munkavállalói, hitelképességi, alapvető szolgáltatáshoz hozzáférési vagy más, magas kockázatú felhasználás esetén az Adatkezelő a rendszer bevezetése előtt külön AI Act-besorolást, szükségességi vizsgálatot, adatvédelmi hatásvizsgálatot és – ha alkalmazandó – alapjogi hatásvizsgálatot végez, továbbá dokumentálja az emberi felügyeletet és a diszkriminációs kockázatok kezelését."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő a rendszer pontosságát, megbízhatóságát, torzításait, adatminőségét, biztonságát és rendeltetésszerű használatát rendszeresen teszteli és monitorozza. A felhasználókat tájékoztatja a rendszer lényeges korlátairól, a téves vagy „hallucinált” kimenetek kockázatáról és a szükséges ellenőrzési lépésekről."
+    },
+    {
+     "type": "p",
+     "text": "Az MI-rendszerek használata során szerepköralapú jogosultságkezelés, erős hitelesítés, titkosítás, az adatoktól elkülönített és biztonságos kulcskezelés, hozzáférés- és eseménynaplózás, prompt-injection és adatszivárgási kockázatok kezelése, incidenskezelés és rendszeres felülvizsgálat alkalmazandó. Ahol az adott MI-funkció műszakilag lehetővé teszi, kliensoldali titkosítást vagy olyan elkülönített feldolgozási környezetet kell alkalmazni, amelyben a visszafejtési kulcs nem áll az Adatkezelő rendelkezésére az ügyféladat önálló megismerését lehetővé tevő formában. Ha az MI-feldolgozáshoz olvasható adat szükséges, annak hozzáférhetőségét a technikailag elkülönített automatizált folyamatra, a szükséges adatkörre és időtartamra kell korlátozni. A bemenetek, kimenetek, naplók és köztes állományok megőrzési idejét rendszer- és célalapon előre meg kell határozni."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő az MI-rendszereket használó vagy felügyelő személyek számára feladat- és kockázatalapú MI-műveltségi képzést biztosít, rendszeresen felülvizsgálja a szolgáltatókat, modelleket, integrációkat és konfigurációkat, és lényeges változás esetén frissíti a nyilvántartásokat, szerződéseket, hatásvizsgálatokat és érintetti tájékoztatást."
+    }
+   ]
+  },
+  {
+   "id": "xi-fejezet",
+   "heading": "XI. FEJEZET",
+   "blocks": [
+    {
+     "type": "h3",
+     "text": "EGYEBEK"
+    },
+    {
+     "type": "p",
+     "text": "A jelen Tájékoztatóban ismertetett adatkezelések során profilalkotás kizárólag ott történhet, ahol azt a Tájékoztató kifejezetten megjelöli, így különösen személyre szabott marketing vagy marketing sütik alkalmazása esetén. Az Adatkezelő kizárólag automatizált, joghatással vagy hasonlóan jelentős hatással járó döntést csak külön jogalap, előzetes tájékoztatás és a GDPR rendelet 22. cikke szerinti garanciák mellett alkalmaz."
+    },
+    {
+     "type": "p",
+     "text": "Az Adatkezelő a Tájékoztatót a jövőre nézve módosíthatja. A mindenkor hatályos változat a honlapon érhető el. Lényeges, az érintettek jogait vagy az adatkezelés célját, jogalapját, címzettjeit, adattovábbítását vagy automatizált jellegét érintő változásról az Adatkezelő az adott körülményekhez igazodó, közvetlen vagy kiemelt tájékoztatást biztosít."
+    },
+    {
+     "type": "h3",
+     "text": "Think AI Korlátolt Felelősségű Társaság"
+    },
+    {
+     "type": "p",
+     "text": "Képviseli: Benke Viktor ügyvezető"
+    }
+   ]
+  }
+ ]
+}
