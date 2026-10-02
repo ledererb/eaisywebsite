@@ -1,14 +1,7 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
 import { Phone, Mail, Calendar, UserX, Clock, BarChart3, Briefcase, Users, Headphones, Headset, Megaphone, MessagesSquare, Mic, CalendarCheck, Tags, CheckCircle2, Inbox, Heart, ArrowUpRight, Wand2, Monitor, MessageCircle, Instagram, Globe, Zap, ChevronLeft, ChevronRight, BookOpen, UserCheck, History, MoveHorizontal, ListChecks, Plus, Minus } from "lucide-react";
-import imgBigCard from "@/imports/EaisyDesk/big-card.webp";
+import imgBigCard from "@/imports/EaisyDesk/big-square-hero.png";
 import imgSmallCard from "@/imports/EaisyDesk/small-card.png";
-import iconPhone from "@/imports/EaisyDesk/icon-phone.png";
-import iconMail from "@/imports/EaisyDesk/icon-mail.png";
-import iconMessenger from "@/imports/EaisyDesk/icon-messenger.png";
-import iconWhatsapp from "@/imports/EaisyDesk/icon-whatsapp.png";
-import iconInstagram from "@/imports/EaisyDesk/icon-instagram.png";
-
-const CHANNEL_ICONS = [iconPhone, iconMail, iconMessenger, iconWhatsapp, iconInstagram];
 import { SectionEyebrow, SectionHeader } from "@/app/components/Section";
 import { useInView } from "@/app/components/useInView";
 import { openDemoModal } from "@/app/Root";
@@ -138,7 +131,7 @@ const FAQS = [
 
 function Hero() {
   return (
-    <section id="hero" className="relative w-full overflow-hidden bg-white pt-36 pb-14 lg:pt-44 lg:pb-20">
+    <section id="hero" className="relative w-full overflow-hidden bg-white pt-[122px] pb-14 lg:pb-20">
       {/* centered 1615px gradient frame — top edge runs below the navbar, rounded corners */}
       <div className="absolute top-24 bottom-0 lg:top-[110px] left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-[40px]">
         {/* light cyan→pink gradient + dense dots (CSS, like the other product pages) */}
@@ -149,44 +142,50 @@ function Hero() {
       </div>
 
       <div className={`relative ${INNER} flex flex-col items-center`}>
-        {/* brand title */}
-        <p className={`${FONT_CARD} font-extrabold text-5xl lg:text-[64px] leading-none`} style={{ color: C.main }}>
+        {/* brand logo — rounded pill frame in the main color */}
+        <p
+          className={`${FONT_CARD} inline-flex items-center rounded-full px-8 py-3 lg:px-10 lg:py-4 font-extrabold text-3xl lg:text-4xl leading-none`}
+          style={{ border: `1px solid ${C.main}`, color: C.main }}
+        >
           eaisyDesk
         </p>
 
         {/* main title */}
         <h1
-          className={`${FONT_MAIN} mt-6 font-medium text-4xl lg:text-[60px] leading-[1.1] tracking-tight text-center`}
+          className={`${FONT_MAIN} mt-[50px] font-medium text-4xl lg:text-[40px] leading-[1.15] tracking-tight text-center`}
           style={{ color: C.ink }}
         >
-          Ügyfélszolgálat, ami nem áll meg
-          <br className="hidden lg:block" /> a hívások fogadásánál.
+          Ügyfélszolgálat, ami nem áll meg a hívások fogadásánál.
         </h1>
 
+        {/* subtitle — carries on the H1 sentence */}
+        <p className={`${FONT_MAIN} mt-4 lg:mt-5 font-light text-base lg:text-lg leading-relaxed text-center text-black`}>
+          az eaisyDesk AI támogatott omnichannel ügyfélkommunikációs platformmal
+        </p>
+
         {/* CTAs */}
-        <div className="mt-12 lg:mt-16 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-[30px] flex flex-wrap items-center justify-center gap-4">
           <a
             href="#problemak"
-            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full bg-white font-medium text-xl tracking-[0.2em] transition-opacity hover:opacity-80`}
-            style={{ border: `1px solid ${C.ink}`, color: C.ink }}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-[#030213] font-normal text-base text-white transition-colors hover:bg-[#186D98]`}
           >
             Fedezd fel
           </a>
           <button
             onClick={openDemoModal}
-            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
-            style={{ backgroundColor: C.magenta }}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-white font-normal text-base text-black transition-colors hover:bg-black/5`}
+            style={{ border: "1px solid rgba(0,0,0,0.2)" }}
           >
             Kérj demot
           </button>
         </div>
 
         {/* ── teaser grid: 5-col — dark kampány square, csatorna landscape, dark 360 square, egy felületen, érdeklődőkezelés ── */}
-        <div className="mt-14 lg:mt-20 w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
+        <div className="mt-[50px] w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-2.5">
-            {/* kampányvarázsló — dark square */}
+            {/* újgenerációs voice agent — dark square */}
             <div
-              className="relative overflow-hidden rounded-2xl p-6 flex flex-col items-start gap-4"
+              className="relative overflow-hidden rounded-2xl p-6 flex flex-col lg:aspect-square"
               style={{ backgroundColor: C.dark }}
             >
               <img
@@ -196,45 +195,45 @@ function Hero() {
                 decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
-              <div className="relative flex flex-col gap-4">
-                <div
-                  className="w-11 h-11 rounded-[10px] flex items-center justify-center"
-                  style={{ backgroundColor: "#F7E3EF" }}
-                >
-                  <Wand2 className="w-5 h-5" strokeWidth={1.5} style={{ color: C.magenta }} />
+              <div className="relative flex-1 flex flex-col items-center justify-center gap-4 text-center">
+                <div className="w-20 h-20 rounded-full border border-white/60 flex items-center justify-center">
+                  <Mic className="w-8 h-8" strokeWidth={1.5} style={{ color: "white" }} />
                 </div>
-                <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug text-white`}>
-                  Kampányvarázsló funkció
+                <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug text-white`}>
+                  Újgenerációs
+                  <br />
+                  voice agent
                 </h3>
-                <p className={`${FONT_CARD} text-[13px] leading-relaxed text-white/75`}>
-                  Célzott üzenetek pár kattintással - ajánlatkövetés, kedvezmények, vagy meglévő
-                  ügyfelek reaktiválása.
-                </p>
+                <button
+                  onClick={openDemoModal}
+                  className={`${FONT_MAIN} inline-flex items-center justify-center px-6 h-[44px] rounded-full font-medium text-sm transition-opacity hover:opacity-90`}
+                  style={{ backgroundColor: C.cyan, color: C.dark }}
+                >
+                  Kipróbálom
+                </button>
               </div>
             </div>
 
             {/* 5+3 csatorna — light landscape */}
             <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 p-6 flex flex-col gap-5`}>
-              <div className="inline-flex items-center gap-2 self-start rounded-full bg-black/[0.04] px-3.5 py-2">
-                {CHANNEL_ICONS.map((src, i) => (
-                  <img
+              <div className="inline-flex items-center gap-2 self-start">
+                {[Phone, Mail, MessagesSquare, MessageCircle, Instagram].map((Icon, i) => (
+                  <span
                     key={i}
-                    src={src}
-                    alt=""
-                    className="w-9 h-9 rounded-full shrink-0"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                    className="w-9 h-9 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: C.dark }}
+                  >
+                    <Icon className="w-4 h-4" strokeWidth={1.5} style={{ color: "white" }} />
+                  </span>
                 ))}
               </div>
               <div className="flex flex-col gap-2">
-                <h3 className={`${FONT_CARD} font-semibold text-xl leading-snug`} style={{ color: C.ink }}>
+                <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
                   5 bejövő és 3 kimenő csatorna
                 </h3>
-                <p className={`${FONT_CARD} text-sm leading-relaxed`} style={{ color: C.bodyText }}>
-                  Az eaisyDesk 5 csatornán fogad és válaszol meg ügyfélmegkereséseket a nap 24
-                  órájában. Emellett 3 csatornán kimenő kommunikáció is indítható: e-mailben,
-                  telefonon és SMS-ben.
+                <p className={`${FONT_MAIN} text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+                  Nincs több szétszórt kommunikáció - az eaisyDesk egy felületen kezeli az összes
+                  beérkező és kimenő kommunikációt.
                 </p>
               </div>
             </div>
@@ -257,38 +256,34 @@ function Hero() {
                 <div className="ml-auto w-11 h-11 rounded-[10px] bg-white/90 flex items-center justify-center transition-transform duration-300 hover:scale-110">
                   <ArrowUpRight className="w-5 h-5" strokeWidth={2} style={{ color: C.dark }} />
                 </div>
-                <p className={`${FONT_CARD} font-extrabold text-6xl lg:text-[84px] leading-none tracking-tight text-white`}>
-                  360°
+                <p className={`${FONT_MAIN} leading-none tracking-tight text-white`}>
+                  <span className="font-extrabold text-6xl lg:text-[84px]">14</span>
+                  <span className="ml-3 font-bold text-4xl lg:text-[56px]">funkció</span>
                 </p>
-                <p className={`${FONT_CARD} font-semibold text-2xl lg:text-[28px] leading-snug text-white`}>
-                  AI-támogatott,
-                  <br />
-                  többcsatornás
-                  <br />
-                  ügyfélszolgálat
+                <p className={`${FONT_MAIN} font-medium text-2xl lg:text-[28px] leading-snug text-white/90`}>
+                  amely új szintre emeli az ügyfélszolgálatot.
                 </p>
                 <a
-                  href="#problemak"
-                  className={`${FONT_CARD} mt-2 inline-flex items-center gap-2 self-start px-6 h-[44px] rounded-full font-semibold text-sm tracking-wider transition-opacity hover:opacity-90`}
-                  style={{ backgroundColor: C.cyan, color: C.dark }}
+                  href="#funkciok"
+                  className={`${FONT_MAIN} mt-2 inline-flex items-center gap-2 self-start px-8 h-[46px] rounded-full font-medium text-base tracking-wider text-white transition-opacity hover:opacity-90`}
+                  style={{ backgroundColor: C.magenta }}
                 >
-                  <Phone className="w-4 h-4" strokeWidth={2} />
-                  PRÓBÁLD KI
+                  Megnézem
                 </a>
               </div>
             </div>
 
-            {/* egy felületen — light landscape (row 2) */}
-            <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 lg:h-full p-6 flex flex-col gap-3.5`}>
+            {/* intelligens ügykezelés — light landscape (row 2) */}
+            <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 lg:h-full p-6 flex flex-col gap-3`}>
               <div className="flex items-center gap-3">
                 <div
                   className="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0"
                   style={{ backgroundColor: C.lightBg }}
                 >
-                  <Monitor className="w-5 h-5" strokeWidth={1.5} style={{ color: C.main }} />
+                  <ListChecks className="w-5 h-5" strokeWidth={1.5} style={{ color: C.main }} />
                 </div>
-                <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug`} style={{ color: C.ink }}>
-                  A teljes ügyfélkommunikáció egy felületen
+                <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                  Intelligens ügykezelés
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -299,7 +294,7 @@ function Hero() {
                 ].map(({ n, label, dot }) => (
                   <span
                     key={label}
-                    className={`${FONT_CARD} inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-black/10 text-xs`}
+                    className={`${FONT_MAIN} inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-black/10 text-xs`}
                     style={{ color: C.ink }}
                   >
                     <span className="font-semibold">{n}</span>
@@ -314,38 +309,37 @@ function Hero() {
                   { icon: MessagesSquare, ch: "WhatsApp", topic: "Egyéb", status: "Válasz előkészítve", pill: "Sürgős", pillBg: "#FDEAEA", pillColor: "#E5484D", note: "Azonnali beavatkozás szükséges" },
                   { icon: Mail, ch: "Email", topic: "Kérés", status: "Ajánlat elküldve", pill: "Nyitott", pillBg: "#FDF4DC", pillColor: "#B7791F", note: "Válasz jóváhagyása szükséges" },
                 ].map((r) => (
-                  <div key={r.ch} className="grid grid-cols-[16px_70px_60px_120px_56px_1fr] items-center gap-x-2 py-1.5 text-[11px]">
+                  <div key={r.ch} className="grid grid-cols-[16px_70px_60px_120px_56px_1fr] items-center gap-x-2 py-1 text-[11px]">
                     <r.icon className="w-3.5 h-3.5 justify-self-center" style={{ color: C.main }} strokeWidth={1.5} />
-                    <span className={`${FONT_CARD} font-semibold`} style={{ color: C.ink }}>{r.ch}</span>
-                    <span className={`${FONT_CARD} text-black/45`}>{r.topic}</span>
-                    <span className={`${FONT_CARD} text-black/45`}>{r.status}</span>
+                    <span className={`${FONT_MAIN} font-semibold`} style={{ color: C.ink }}>{r.ch}</span>
+                    <span className={`${FONT_MAIN} text-black/45`}>{r.topic}</span>
+                    <span className={`${FONT_MAIN} text-black/45`}>{r.status}</span>
                     <span
-                      className={`${FONT_CARD} px-2 py-0.5 rounded-full font-semibold text-[10px] text-center whitespace-nowrap`}
+                      className={`${FONT_MAIN} px-2 py-0.5 rounded-full font-semibold text-[10px] text-center whitespace-nowrap`}
                       style={{ backgroundColor: r.pillBg, color: r.pillColor }}
                     >
                       {r.pill}
                     </span>
-                    <span className={`${FONT_CARD} text-black/40 hidden xl:inline`}>{r.note}</span>
+                    <span className={`${FONT_MAIN} text-black/40 hidden xl:inline`}>{r.note}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* érdeklődőkezelés — light square (row 2) */}
-            <div className={`${TEASER_CARD} bg-white p-6 flex flex-col gap-3`}>
+            {/* kampányvarázsló — light square (row 2) */}
+            <div className={`${TEASER_CARD} bg-white p-6 flex flex-col gap-3 lg:aspect-square`}>
               <div
                 className="w-11 h-11 rounded-[10px] flex items-center justify-center"
                 style={{ backgroundColor: "#F7E3EF" }}
               >
-                <Users className="w-5 h-5" strokeWidth={1.5} style={{ color: C.magenta }} />
+                <Wand2 className="w-5 h-5" strokeWidth={1.5} style={{ color: C.magenta }} />
               </div>
-              <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug`} style={{ color: C.ink }}>
-                Érdeklődőkezelés
+              <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                Kampányvarázsló funkció
               </h3>
-              <p className={`${FONT_CARD} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
-                Automatikusan felismeri és címkézi az érdeklődőket és ügyfeleket, így mindig
-                látszik, kivel érdemes foglalkozni, kit kell utánkövetni, és hol van még üzleti
-                lehetőség.
+              <p className={`${FONT_MAIN} text-[13px] leading-snug`} style={{ color: C.bodyText }}>
+                Pár kattintással ügyfélszegmentálás és célzott akciós, reaktiváló vagy utánkövető
+                üzenetek készítése és küldése.
               </p>
             </div>
           </div>
