@@ -308,9 +308,31 @@ const ROLES: {
   },
 ];
 
+function Donut90() {
+  const R = 50;
+  const CIRC = 2 * Math.PI * R;
+  return (
+    <div className="relative">
+      <svg viewBox="0 0 120 120" className="w-24 h-24 lg:w-[110px] lg:h-[110px]">
+        <circle cx="60" cy="60" r={R} fill="none" stroke="rgba(229,143,14,0.28)" strokeWidth="15" />
+        <circle
+          cx="60" cy="60" r={R} fill="none" stroke={C.p600} strokeWidth="15" strokeLinecap="round"
+          strokeDasharray={`${CIRC * 0.9} ${CIRC}`} transform="rotate(-108 60 60)"
+        />
+      </svg>
+      <p
+        className={`${FONT_MAIN} absolute inset-0 flex items-center justify-center font-extrabold text-2xl`}
+        style={{ color: C.p600 }}
+      >
+        90<span className="text-sm font-bold align-top">%</span>
+      </p>
+    </div>
+  );
+}
+
 function Hero() {
   return (
-    <section id="hero" className="relative w-full overflow-hidden bg-white pt-36 pb-14 lg:pt-44 lg:pb-20">
+    <section id="hero" className="relative w-full overflow-hidden bg-white pt-[122px] pb-14 lg:pb-20">
       {/* centered 1615px gradient frame — top edge runs below the navbar, not off-screen */}
       <div className="absolute top-24 bottom-0 lg:top-[110px] left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-[40px]">
         <img
@@ -325,47 +347,50 @@ function Hero() {
       </div>
 
       <div className={`relative ${INNER} flex flex-col items-center`}>
-        {/* brand title */}
+        {/* brand logo — rounded pill frame in the main color */}
         <p
-          className={`${FONT_CARD} font-extrabold text-4xl lg:text-[64px] leading-none`}
-          style={{ color: C.a500 }}
+          className={`${FONT_CARD} inline-flex items-center rounded-full px-8 py-3 lg:px-10 lg:py-4 font-extrabold text-3xl lg:text-4xl leading-none`}
+          style={{ border: `1px solid ${C.p600}`, color: C.p600 }}
         >
           eaisyBooks
         </p>
 
         {/* main title */}
         <h1
-          className={`${FONT_MAIN} mt-6 font-medium text-4xl lg:text-[60px] leading-[1.1] tracking-tight text-center`}
+          className={`${FONT_MAIN} mt-[50px] font-medium text-4xl lg:text-[40px] leading-[1.15] tracking-tight text-center`}
           style={{ color: C.dark }}
         >
-          Sokszorozd meg könyvelőirodád
-          <br className="hidden lg:block" /> kapacitását AI-val
+          Sokszorozd meg könyvelőirodád kapacitását AI-val
         </h1>
 
+        {/* subtitle — carries on the H1 sentence */}
+        <p className={`${FONT_MAIN} mt-4 lg:mt-5 font-light text-base lg:text-lg leading-relaxed text-center text-black`}>
+          az eaisyBooks AI támogatott platformmal könyvelőirodáknak
+        </p>
+
         {/* CTAs */}
-        <div className="mt-12 lg:mt-16 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-[30px] flex flex-wrap items-center justify-center gap-4">
           <a
             href="#problemak"
-            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full bg-white font-medium text-xl tracking-[0.2em] transition-opacity hover:opacity-80`}
-            style={{ border: `1px solid ${C.dark}`, color: C.dark }}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-[#030213] font-normal text-base text-white transition-colors hover:bg-[#186D98]`}
           >
             Fedezd fel
           </a>
           <button
             onClick={openDemoModal}
-            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
-            style={{ backgroundColor: C.a500 }}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-white font-normal text-base text-black transition-colors hover:bg-black/5`}
+            style={{ border: "1px solid rgba(0,0,0,0.2)" }}
           >
             Kérj demot
           </button>
         </div>
 
         {/* ── teaser bento grid — fixed geometry: 1:1 squares, 1 portrait, 2 landscape, 10px gaps ── */}
-        <div className="mt-14 lg:mt-20 w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-10 gap-4 lg:gap-2.5">
+        <div className="mt-[50px] w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-2.5">
             {/* left column: two squares as direct grid children — their aspect-square drives equal row heights */}
             <div
-              className={`${TEASER_CARD} bg-white px-5 py-5 sm:col-span-1 lg:col-span-2 lg:row-start-1 lg:aspect-square flex flex-col items-start gap-5`}
+              className={`${TEASER_CARD} bg-white px-5 py-5 sm:col-span-1 lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:aspect-square flex flex-col items-start gap-5`}
               
             >
                 <div
@@ -374,17 +399,17 @@ function Hero() {
                 >
                   <Wand2 className="w-5 h-5" strokeWidth={1.5} style={{ color: C.violet }} />
                 </div>
-                <h3 className={`${FONT_CARD} font-medium text-lg`} style={{ color: C.dark }}>
+                <h3 className={`${FONT_MAIN} font-medium text-lg`} style={{ color: C.dark }}>
                   AI asszisztens
                 </h3>
-                <p className={`${FONT_CARD} text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+                <p className={`${FONT_MAIN} text-sm leading-relaxed`} style={{ color: C.bodyText }}>
                   Kérdezz a jogszabályokról, kedvezményekről, vagy kérj elemzést a bérszámfejtési
                   adatokról.
                 </p>
               </div>
 
               <div
-                className={`${TEASER_CARD} px-5 py-5 sm:col-span-1 lg:col-span-2 lg:row-start-2 lg:aspect-square flex flex-col`}
+                className={`${TEASER_CARD} px-5 py-5 sm:col-span-1 lg:col-span-1 lg:col-start-1 lg:row-start-2 lg:aspect-square flex flex-col`}
                 style={{ background: "linear-gradient(180deg, #FFF3DE 0%, #F7DCA8 100%)" }}
               >
                 {/* icon pinned to the top-left corner */}
@@ -396,10 +421,10 @@ function Hero() {
                 </div>
                 {/* text unit: vertically centered, lines kept tight together */}
                 <div className="flex-1 flex flex-col items-start justify-center">
-                  <p className={`${FONT_CARD} font-bold text-3xl leading-none`} style={{ color: C.dark }}>
+                  <p className={`${FONT_MAIN} font-bold text-3xl leading-none`} style={{ color: C.dark }}>
                     360°
                   </p>
-                  <p className={`${FONT_CARD} mt-1 font-medium text-lg leading-tight`} style={{ color: C.dark }}>
+                  <p className={`${FONT_MAIN} mt-1 font-medium text-lg leading-tight`} style={{ color: C.dark }}>
                     valós idejű áttekintés
                   </p>
                 </div>
@@ -408,7 +433,7 @@ function Hero() {
             {/* tall center card: 18+ funkció → feature list anchor */}
             <a
               href="#funkciok"
-              className={`${TEASER_CARD} group relative overflow-hidden sm:col-span-1 lg:col-span-2 lg:row-span-2 min-h-[280px] lg:min-h-0 block`}
+              className={`${TEASER_CARD} group relative overflow-hidden sm:col-span-1 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:row-span-2 min-h-[280px] lg:min-h-0 block`}
             >
               <img
                 src={imgFunkcioKarta}
@@ -428,39 +453,41 @@ function Hero() {
                 </div>
                 <div>
                   <p
-                    className={`${FONT_CARD} font-extrabold text-6xl lg:text-[76px] leading-none tracking-tight`}
+                    className={`${FONT_MAIN} font-extrabold text-6xl lg:text-[76px] leading-none tracking-tight`}
                     style={{ color: C.dark }}
                   >
                     18
                   </p>
                   <p
-                    className={`${FONT_CARD} font-bold text-4xl lg:text-5xl leading-none tracking-tight`}
+                    className={`${FONT_MAIN} font-bold text-4xl lg:text-5xl leading-none tracking-tight`}
                     style={{ color: C.dark }}
                   >
                     funkció
                   </p>
                 </div>
-                <p className={`${FONT_CARD} font-medium text-[30px] leading-snug`} style={{ color: C.dark }}>
+                <p className={`${FONT_MAIN} font-medium text-[30px] leading-snug`} style={{ color: C.dark }}>
                   ami lefedi az iroda teljes működését.
                 </p>
               </div>
             </a>
 
-            {/* 90% időfelszabadítás */}
+            {/* donut card: 90% időfelszabadítás (Bill minta: körben elhelyezett kisebb szám) */}
             <div
-              className={`${TEASER_CARD} sm:col-span-1 lg:col-span-3 px-5 py-5 flex flex-col justify-center`}
-              style={{ background: `linear-gradient(135deg, ${C.a300} 0%, ${C.p400} 100%)` }}
+              className={`${TEASER_CARD} sm:col-span-1 lg:col-span-1 lg:col-start-5 lg:row-start-1 lg:aspect-square px-5 py-5 flex flex-col items-center justify-center gap-3`}
+              style={{ background: "linear-gradient(160deg, #FFF0D9 0%, #FDF6EA 100%)" }}
             >
-              <p className={`${FONT_CARD} font-medium text-lg text-white/90`}>Akár</p>
-              <p className={`${FONT_CARD} font-extrabold text-6xl lg:text-[72px] leading-none text-white tracking-tight`}>
-                90%
+              <p className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.dark }}>
+                Akár
               </p>
-              <p className={`${FONT_CARD} mt-1 font-medium text-xl text-white/90`}>időfelszabadítás</p>
+              <Donut90 />
+              <p className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.dark }}>
+                időfelszabadítás
+              </p>
             </div>
 
             {/* AI-támogatott compliance */}
             <div
-              className={`${TEASER_CARD} bg-white sm:col-span-1 lg:col-span-3 px-5 py-5 flex flex-col items-start gap-5`}
+              className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 lg:col-start-3 lg:row-start-1 px-5 py-5 flex flex-col items-start gap-5`}
               
             >
               <div className="inline-flex items-center gap-2.5 rounded-full bg-black/[0.05] px-3.5 py-2">
@@ -468,10 +495,10 @@ function Hero() {
                 <img src={imgBadgeNav} alt="NAV" className="h-8 w-8" loading="lazy" decoding="async" />
                 <img src={imgBadgeGdpr} alt="GDPR" className="h-8 w-8" loading="lazy" decoding="async" />
               </div>
-              <h3 className={`${FONT_CARD} font-medium text-lg leading-tight`} style={{ color: C.dark }}>
+              <h3 className={`${FONT_MAIN} font-medium text-lg leading-tight`} style={{ color: C.dark }}>
                 AI-támogatott compliance
               </h3>
-              <p className={`${FONT_CARD} text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+              <p className={`${FONT_MAIN} text-sm leading-relaxed`} style={{ color: C.bodyText }}>
                 Anomália-detektálás, adóoptimalizálási javaslatok, jogszabálykövetés, automatikus
                 határidő-figyelmeztetés
               </p>
@@ -481,7 +508,7 @@ function Hero() {
             {BOTTOM_CARDS.map(({ icon: Icon, chipBg, chipColor, title, desc }) => (
               <div
                 key={title}
-                className={`${TEASER_CARD} bg-white sm:col-span-1 lg:col-span-2 lg:aspect-square px-5 py-5 flex flex-col items-center text-center gap-5`}
+                className={`${TEASER_CARD} bg-white sm:col-span-1 lg:col-span-1 lg:aspect-square px-5 py-5 flex flex-col items-center text-center gap-5`}
                 
               >
                 <div
@@ -490,10 +517,10 @@ function Hero() {
                 >
                   <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: chipColor }} />
                 </div>
-                <h3 className={`${FONT_CARD} font-medium text-base`} style={{ color: C.dark }}>
+                <h3 className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.dark }}>
                   {title}
                 </h3>
-                <p className={`${FONT_CARD} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
+                <p className={`${FONT_MAIN} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
                   {desc}
                 </p>
               </div>
