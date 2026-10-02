@@ -164,7 +164,7 @@ function Donut90() {
         />
       </svg>
       <p
-        className={`${FONT_CARD} absolute inset-0 flex items-center justify-center font-extrabold text-2xl`}
+        className={`${FONT_MAIN} absolute inset-0 flex items-center justify-center font-extrabold text-2xl`}
         style={{ color: C.teal }}
       >
         90<span className="text-sm font-bold align-top">%</span>
@@ -175,7 +175,7 @@ function Donut90() {
 
 function Hero() {
   return (
-    <section id="hero" className="relative w-full overflow-hidden bg-white pt-36 pb-14 lg:pt-44 lg:pb-20">
+    <section id="hero" className="relative w-full overflow-hidden bg-white pt-[122px] pb-14 lg:pb-20">
       {/* centered 1615px gradient frame (mirrored) — top edge runs below the navbar */}
       <div className="absolute top-24 bottom-0 lg:top-[110px] left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-[40px]">
         <img
@@ -190,40 +190,46 @@ function Hero() {
       </div>
 
       <div className={`relative ${INNER} flex flex-col items-center`}>
-        {/* brand title */}
-        <p className={`${FONT_CARD} font-extrabold text-5xl lg:text-[64px] leading-none`} style={{ color: C.teal }}>
+        {/* brand logo — rounded pill frame in the main color */}
+        <p
+          className={`${FONT_CARD} inline-flex items-center rounded-full px-8 py-3 lg:px-10 lg:py-4 font-extrabold text-3xl lg:text-4xl leading-none`}
+          style={{ border: `1px solid ${C.main}`, color: C.main }}
+        >
           eaisyBill
         </p>
 
         {/* main title */}
         <h1
-          className={`${FONT_MAIN} mt-6 font-medium text-4xl lg:text-[60px] leading-[1.1] tracking-tight text-center`}
+          className={`${FONT_MAIN} mt-[50px] font-medium text-4xl lg:text-[40px] leading-[1.15] tracking-tight text-center`}
           style={{ color: C.ink }}
         >
-          Tartsd kézben vállalkozásod
-          <br className="hidden lg:block" /> pénzügyeit
+          Tartsd kézben vállalkozásod pénzügyeit
         </h1>
 
+        {/* subtitle — carries on the H1 sentence */}
+        <p className={`${FONT_MAIN} mt-4 lg:mt-5 font-light text-base lg:text-lg leading-relaxed text-center text-black`}>
+          az eaisyBill AI támogatott pénzügyi és kontrolling platformmal
+        </p>
+
         {/* CTAs */}
-        <div className="mt-12 lg:mt-16 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-[30px] flex flex-wrap items-center justify-center gap-4">
           <a
             href="#problemak"
-            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full bg-white font-medium text-xl tracking-[0.2em] transition-opacity hover:opacity-80`}
-            style={{ border: `1px solid ${C.teal}`, color: C.teal }}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-[#030213] font-normal text-base text-white transition-colors hover:bg-[#186D98]`}
           >
             Fedezd fel
           </a>
           <button
             onClick={openDemoModal}
-            className={`${FONT_CARD} inline-flex items-center justify-center px-10 h-[54px] rounded-full font-medium text-xl tracking-[0.2em] text-white transition-opacity hover:opacity-90`}
-            style={{ backgroundColor: C.coral }}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-white font-normal text-base text-black transition-colors hover:bg-black/5`}
+            style={{ border: "1px solid rgba(0,0,0,0.2)" }}
           >
             Kérj demot
           </button>
         </div>
 
         {/* ── teaser grid: 5-col — tall 2×2 card, graph landscape, donut square, 3 squares ── */}
-        <div className="mt-14 lg:mt-20 w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
+        <div className="mt-[50px] w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-2.5">
             {/* tall card: 18 funkció on dotty dark teal bg */}
             <div className={`${TEASER_CARD} group relative overflow-hidden sm:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[320px] lg:min-h-0 flex flex-col`}>
@@ -246,16 +252,16 @@ function Hero() {
                 </a>
                 {/* title – desc – CTA: uniform gaps, vertically centered group */}
                 <div className="flex-1 flex flex-col items-start justify-center gap-10">
-                  <p className={`${FONT_CARD} text-white leading-none tracking-tight`}>
-                    <span className="font-semibold text-6xl lg:text-[96px]">18</span>
-                    <span className="ml-3 font-semibold text-4xl lg:text-[64px]">funkció</span>
+                  <p className={`${FONT_MAIN} text-white leading-none tracking-tight`}>
+                    <span className="font-extrabold text-6xl lg:text-[96px]">18</span>
+                    <span className="ml-3 font-bold text-4xl lg:text-[64px]">funkció</span>
                   </p>
-                  <p className={`${FONT_CARD} font-semibold text-2xl lg:text-[32px] leading-snug text-white/90`}>
+                  <p className={`${FONT_MAIN} font-medium text-2xl lg:text-[32px] leading-snug text-white/90`}>
                     ami lefedi a vállalkozásod teljes pénzügyi működését.
                   </p>
                   <a
                     href="#funkciok"
-                    className={`${FONT_CARD} self-start inline-flex items-center justify-center px-8 h-[46px] rounded-full font-medium text-base tracking-wider text-white transition-opacity hover:opacity-90`}
+                    className={`${FONT_MAIN} self-start inline-flex items-center justify-center px-8 h-[46px] rounded-full font-medium text-base tracking-wider text-white transition-opacity hover:opacity-90`}
                     style={{ backgroundColor: C.coral }}
                   >
                     Megnézem
@@ -277,14 +283,14 @@ function Hero() {
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[rgba(13,148,136,0.3)] pointer-events-none" />
               {/* crisp HTML report overlay covering the blurry baked tooltip */}
               <div className="absolute right-[2px] top-[10%] rounded-xl border border-[#CFE7E2] bg-white px-3 py-2.5 shadow-[0_4px_14px_rgba(3,45,50,0.10)]">
-                <p className={`${FONT_CARD} font-semibold text-xs leading-tight`} style={{ color: C.ink }}>
+                <p className={`${FONT_MAIN} font-semibold text-xs leading-tight`} style={{ color: C.ink }}>
                   augusztus
                 </p>
                 <div className="mt-1.5 flex flex-col">
                   {GRAPH_REPORT.map(({ label, value, color }) => (
                     <p
                       key={label}
-                      className={`${FONT_CARD} font-medium text-[11px] leading-[1.65] whitespace-nowrap`}
+                      className={`${FONT_MAIN} font-medium text-[11px] leading-[1.65] whitespace-nowrap`}
                       style={{ color }}
                     >
                       {label}: {value}
@@ -299,7 +305,7 @@ function Hero() {
                 >
                   <Database className="w-5 h-5" strokeWidth={1.5} style={{ color: C.coral }} />
                 </div>
-                <h3 className={`${FONT_CARD} font-semibold text-lg leading-snug max-w-[250px]`} style={{ color: C.ink }}>
+                <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug max-w-[250px]`} style={{ color: C.ink }}>
                   A pénzügyeid végre egy helyen. Automatikusan. Valós időben.
                 </h3>
               </div>
@@ -310,11 +316,11 @@ function Hero() {
               className={`${TEASER_CARD} sm:col-span-1 lg:aspect-square px-5 py-5 flex flex-col items-center justify-center gap-3`}
               style={{ background: "linear-gradient(160deg, #FBE9E3 0%, #FDF3EC 100%)" }}
             >
-              <p className={`${FONT_CARD} font-medium text-base`} style={{ color: C.ink }}>
+              <p className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.ink }}>
                 Akár
               </p>
               <Donut90 />
-              <p className={`${FONT_CARD} font-medium text-base`} style={{ color: C.ink }}>
+              <p className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.ink }}>
                 időfelszabadítás
               </p>
             </div>
@@ -331,10 +337,10 @@ function Hero() {
                 >
                   <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: C.coral }} />
                 </div>
-                <h3 className={`${FONT_CARD} font-semibold text-base`} style={{ color: C.ink }}>
+                <h3 className={`${FONT_MAIN} font-medium text-base`} style={{ color: C.ink }}>
                   {title}
                 </h3>
-                <p className={`${FONT_CARD} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
+                <p className={`${FONT_MAIN} text-[13px] leading-relaxed`} style={{ color: C.bodyText }}>
                   {desc}
                 </p>
               </div>
