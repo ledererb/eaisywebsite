@@ -136,7 +136,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
         {/* header */}
         <div className="flex items-start justify-between gap-4 px-8 pt-8 pb-6 border-b border-black/6 shrink-0">
           <div className="flex flex-col gap-1">
-            <h2 className="font-['Inter',sans-serif] font-bold text-2xl text-black tracking-tight">
+            <h2 className="font-['Montserrat',sans-serif] font-bold text-2xl text-black tracking-tight">
               Melyik eaisy megoldás érdekel?
             </h2>
           </div>
@@ -152,7 +152,7 @@ function ContactModal({ onClose }: { onClose: () => void }) {
 
           {/* product cards — icon + name + short description, like the nav dropdown */}
           <div className="flex flex-col gap-4">
-            <p className="font-['Inter',sans-serif] font-medium text-sm text-black/50">
+            <p className="font-['Montserrat',sans-serif] font-medium text-sm text-black/50">
               Jelöld meg, mely szoftverek érdekelnek:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -180,10 +180,10 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                       <Icon className="w-4.5 h-4.5" strokeWidth={1.5} />
                     </span>
                     <span className="flex flex-col gap-0.5 min-w-0 flex-1">
-                      <span className={`font-['Inter',sans-serif] text-sm ${checked ? "font-bold text-black" : "font-semibold text-black"}`}>
+                      <span className={`font-['Montserrat',sans-serif] text-sm ${checked ? "font-bold text-black" : "font-semibold text-black"}`}>
                         {p}
                       </span>
-                      <span className="font-['Inter',sans-serif] font-normal text-xs text-black/55 leading-snug">
+                      <span className="font-['Montserrat',sans-serif] font-normal text-xs text-black/55 leading-snug">
                         {meta.desc}
                       </span>
                     </span>
@@ -215,37 +215,37 @@ function ContactModal({ onClose }: { onClose: () => void }) {
                 placeholder={placeholder}
                 value={form[key as keyof typeof form]}
                 onChange={(e) => setForm((f) => ({ ...f, [key]: e.target.value }))}
-                className="w-full px-5 py-3.5 rounded-xl border border-black/12 bg-[#f8f8f8] font-['Inter',sans-serif] text-sm text-black placeholder:text-black/35 focus:outline-none focus:border-black/30 focus:bg-white transition-colors"
+                className="w-full px-5 py-3.5 rounded-xl border border-black/12 bg-[#f8f8f8] font-['Montserrat',sans-serif] text-sm text-black placeholder:text-black/35 focus:outline-none focus:border-black/30 focus:bg-white transition-colors"
               />
             ))}
           </div>
 
           {/* submit — same turquoise hover as the hero CTAs */}
           {status === "success" ? (
-            <div className="w-full py-4 bg-[#1CEEE0]/20 border border-[#1CEEE0] text-black rounded-full font-['Inter',sans-serif] font-bold text-sm tracking-wide text-center">
+            <div className="w-full py-4 bg-[#1CEEE0]/20 border border-[#1CEEE0] text-black rounded-full font-['Montserrat',sans-serif] font-bold text-sm tracking-wide text-center">
               KÖSZÖNJÜK! HAMAROSAN JELENTKEZÜNK.
             </div>
           ) : (
             <button
               onClick={submit}
               disabled={status === "sending"}
-              className="w-full py-4 bg-black border border-black text-white rounded-full font-['Inter',sans-serif] font-light text-sm tracking-wide hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black hover:font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full py-4 bg-black border border-black text-white rounded-full font-['Montserrat',sans-serif] font-light text-sm tracking-wide hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black hover:font-bold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {status === "sending" ? "KÜLDÉS..." : "KÉRJ DEMOT"}
             </button>
           )}
           {errorMsg && (
-            <p className="font-['Inter',sans-serif] text-xs text-[#F26B77] text-center -mt-2">
+            <p className="font-['Montserrat',sans-serif] text-xs text-[#F26B77] text-center -mt-2">
               {errorMsg}
             </p>
           )}
 
           {/* fine print */}
           <div className="flex flex-col gap-3 pt-1 border-t border-black/6">
-            <p className="font-['Inter',sans-serif] font-normal text-xs text-black/40 leading-relaxed">
+            <p className="font-['Montserrat',sans-serif] font-normal text-xs text-black/40 leading-relaxed">
               Elég csak azt az elérhetőségedet megadni, amelyiken szeretnéd, hogy megkeressünk.
             </p>
-            <p className="font-['Inter',sans-serif] font-normal text-xs text-black/40 leading-relaxed">
+            <p className="font-['Montserrat',sans-serif] font-normal text-xs text-black/40 leading-relaxed">
               <span className="font-semibold text-black/55">Demo tudnivalók:</span> egy eaisy megoldás bemutatása körülbelül fél–egy órás Google Meet megbeszélést vesz igénybe: ez idő alatt bemutatjuk a szoftver működését és felteheted a kérdéseidet is.
             </p>
           </div>
@@ -442,7 +442,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
               `}</style>
 
               <div className="px-3 pt-2 pb-3 mb-1 border-b border-black/5">
-                <p className="text-[10px] font-['Inter',sans-serif] font-medium text-black/40 tracking-widest uppercase">
+                <p className="text-[10px] font-['Montserrat',sans-serif] font-medium text-black/40 tracking-widest uppercase">
                   Termékek
                 </p>
               </div>
@@ -464,10 +464,10 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
                         <Icon className="w-5 h-5" strokeWidth={1.5} />
                       </span>
                       <span className="flex flex-col gap-0.5 min-w-0">
-                        <span className="font-['Inter',sans-serif] font-semibold text-sm text-black">
+                        <span className="font-['Montserrat',sans-serif] font-semibold text-sm text-black">
                           {p.name}
                         </span>
-                        <span className="font-['Inter',sans-serif] font-normal text-xs text-black/55 leading-snug">
+                        <span className="font-['Montserrat',sans-serif] font-normal text-xs text-black/55 leading-snug">
                           {p.desc}
                         </span>
                       </span>
@@ -483,7 +483,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
               <div className="pt-3 mt-1 border-t border-black/5">
                 <button
                   onClick={() => { setMenuOpen(false); onDemoOpen(); }}
-                  className="block w-full text-center py-3 bg-black border border-black text-white rounded-full font-['Inter',sans-serif] font-medium text-xs tracking-widest hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black hover:font-bold transition-colors"
+                  className="block w-full text-center py-3 bg-black border border-black text-white rounded-full font-['Montserrat',sans-serif] font-medium text-xs tracking-widest hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black hover:font-bold transition-colors"
                 >
                   KÉRJ DEMOT
                 </button>
@@ -600,9 +600,15 @@ const BOOKS_FOOTER_DOCS = [
   { label: "eaisyBooks Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
 ];
 
-function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path: string }[] }) {
+// desk documentation is intentionally not linked yet
+const DESK_FOOTER_DOCS = [
+  { label: "eaisyDesk ÁSZF" },
+  { label: "eaisyDesk Adatkezelési tájékoztató" },
+];
+
+function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path?: string }[] }) {
   const colHeadingCls =
-    "font-['Montserrat',sans-serif] font-medium text-2xl lg:text-[28px] uppercase tracking-wide text-[#59BEB2]";
+    "w-full pb-4 border-b border-white/15 font-['Montserrat',sans-serif] font-medium text-base lg:text-lg uppercase tracking-wide text-[#59BEB2]";
   return (
     <footer className="text-white" style={{ backgroundColor: bg }}>
       <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 pt-16 pb-8 flex flex-col gap-16">
@@ -641,19 +647,29 @@ function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path: 
           <div className="flex flex-col items-start gap-5">
             <h3 className={colHeadingCls}>Dokumentáció</h3>
             <nav className="flex flex-col gap-3">
-              {docs.map((d) => (
-                <Link
-                  key={d.path}
-                  to={d.path}
-                  className="group inline-flex items-center gap-2 font-['Montserrat',sans-serif] font-light text-sm lg:text-base text-white/85 hover:text-white transition-colors"
-                >
-                  {d.label}
-                  <ArrowUpRight
-                    className="w-4 h-4 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
-                    strokeWidth={1.5}
-                  />
-                </Link>
-              ))}
+              {docs.map((d) =>
+                d.path ? (
+                  <Link
+                    key={d.path}
+                    to={d.path}
+                    className="group inline-flex items-center gap-2 font-['Montserrat',sans-serif] font-light text-sm lg:text-base text-white/85 hover:text-white transition-colors"
+                  >
+                    {d.label}
+                    <ArrowUpRight
+                      className="w-4 h-4 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                      strokeWidth={1.5}
+                    />
+                  </Link>
+                ) : (
+                  <span
+                    key={d.label}
+                    className="inline-flex items-center gap-2 font-['Montserrat',sans-serif] font-light text-sm lg:text-base text-white/85"
+                  >
+                    {d.label}
+                    <ArrowUpRight className="w-4 h-4 shrink-0 opacity-70" strokeWidth={1.5} />
+                  </span>
+                )
+              )}
             </nav>
           </div>
 
@@ -700,9 +716,10 @@ function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path: 
 const NO_FOOTER_PATHS = new Set([ASZF_PATH, ADATKEZELES_PATH]);
 
 // product-specific footers: same structure, per-product background and document labels
-const PRODUCT_FOOTERS: Record<string, { bg: string; docs: { label: string; path: string }[] }> = {
-  "/eaisy-bill": { bg: "#235556", docs: BILL_FOOTER_DOCS },
-  "/eaisy-books": { bg: "#032A32", docs: BOOKS_FOOTER_DOCS },
+const PRODUCT_FOOTERS: Record<string, { bg: string; docs: { label: string; path?: string }[] }> = {
+  "/eaisy-bill": { bg: "#102C31", docs: BILL_FOOTER_DOCS },
+  "/eaisy-books": { bg: "#0F2931", docs: BOOKS_FOOTER_DOCS },
+  "/eaisy-desk": { bg: "#102330", docs: DESK_FOOTER_DOCS },
 };
 
 export default function Root() {
