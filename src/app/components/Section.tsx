@@ -31,18 +31,20 @@ export function SectionHeader({
   subtitle,
   eyebrowColor,
   dark = "#264350",
+  titleClass = "text-4xl lg:text-[50px]",
 }: {
   eyebrow: string;
   title: ReactNode;
   subtitle?: string;
   eyebrowColor?: string;
   dark?: string;
+  titleClass?: string;
 }) {
   return (
     <div className="flex flex-col items-center text-center">
       <SectionEyebrow color={eyebrowColor}>{eyebrow}</SectionEyebrow>
       <h2
-        className={`${FONT_MAIN} mt-5 font-medium text-4xl lg:text-[50px] leading-tight tracking-tight`}
+        className={`${FONT_MAIN} mt-5 font-medium ${titleClass} leading-tight tracking-tight`}
         style={{ color: dark }}
       >
         {title}
