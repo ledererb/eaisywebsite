@@ -10,6 +10,8 @@ import EaisyBillAdatkezeles from "./pages/EaisyBillAdatkezeles";
 import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy";
 import EaisyDeskPrivacy from "./pages/EaisyDeskPrivacy";
+import { KnowledgeBaseHub } from "./pages/KnowledgeBaseHub";
+import { KnowledgeBaseProduct } from "./pages/KnowledgeBaseProduct";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +27,9 @@ export const router = createBrowserRouter([
       { path: "eaisy-desk", Component: EaisyDesk },
       { path: "eaisy-boost", Component: EaisyBoost },
       { path: "eaisy-books", Component: EaisyBooks },
+      { path: "tudasbazis", Component: KnowledgeBaseHub },
+      { path: "tudasbazis/:productSlug", Component: KnowledgeBaseProduct },
+      { path: "tudasbazis/:productSlug/:articleSlug", Component: KnowledgeBaseProduct },
       { path: "privacy", Component: Privacy },
       { path: "eaisydesk/privacy", Component: EaisyDeskPrivacy },
       { path: "*", Component: NotFound },

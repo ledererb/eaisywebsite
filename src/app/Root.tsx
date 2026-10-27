@@ -377,7 +377,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
             <EaisyLogo />
           </Link>
 
-          {/* Nav — home vs product page */}
+              {/* Nav — home vs product page */}
           {isProductPage ? (
             <nav className="hidden md:flex items-center justify-center gap-1">
               <Link
@@ -398,19 +398,31 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
                   {label}
                 </a>
               ))}
+              <Link
+                to={`/tudasbazis${location.pathname}`}
+                className={navLinkCls("/tudasbazis")}
+              >
+                Tudásbázis
+              </Link>
             </nav>
           ) : (
             <nav className="hidden md:flex items-center justify-center gap-1">
               {UMBRELLA_NAV_ITEMS.map(({ label, href }) => (
                 <a
                   key={label}
-                  href={href}
+                  href={location.pathname === "/" ? href : `/${href}`}
                   onClick={() => setActiveHref(href)}
                   className={navLinkCls(href)}
                 >
                   {label}
                 </a>
               ))}
+              <Link
+                to="/tudasbazis"
+                className={navLinkCls("/tudasbazis")}
+              >
+                Tudásbázis
+              </Link>
             </nav>
           )}
 
@@ -591,31 +603,36 @@ const ASZF_PATH = "/aszf";
 const ADATKEZELES_PATH = "/adatkezelesi-tajekoztato";
 
 const BILL_FOOTER_DOCS = [
+  { label: "eaisyBill Tudásbázis", path: "/tudasbazis/eaisy-bill" },
   { label: "eaisyBill ÁSZF", path: ASZF_PATH },
   { label: "eaisyBill Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
 ];
 
 const BOOKS_FOOTER_DOCS = [
+  { label: "eaisyBooks Tudásbázis", path: "/tudasbazis/eaisy-books" },
   { label: "eaisyBooks ÁSZF", path: ASZF_PATH },
   { label: "eaisyBooks Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
 ];
 
-// desk documentation is intentionally not linked yet
+// desk documentation
 const DESK_FOOTER_DOCS = [
+  { label: "eaisyDesk Tudásbázis", path: "/tudasbazis/eaisy-desk" },
   { label: "eaisyDesk ÁSZF" },
-  { label: "eaisyDesk Adatkezelési tájékoztató" },
+  { label: "eaisyDesk Adatkezelési tájékoztató", path: "/eaisydesk/privacy" },
 ];
 
-// boost documentation is intentionally not linked yet
+// boost documentation
 const BOOST_FOOTER_DOCS = [
+  { label: "eaisyBoost Tudásbázis", path: "/tudasbazis/eaisy-boost" },
   { label: "eaisyBoost ÁSZF" },
   { label: "eaisyBoost Adatkezelési tájékoztató" },
 ];
 
-// home (umbrella) documentation is intentionally not linked yet
+// home (umbrella) documentation
 const HOME_FOOTER_DOCS = [
-  { label: "eaisy ÁSZF" },
-  { label: "eaisy Adatkezelési tájékoztató" },
+  { label: "eaisy Tudásbázis", path: "/tudasbazis" },
+  { label: "eaisy ÁSZF", path: ASZF_PATH },
+  { label: "eaisy Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
 ];
 
 function ProductFooter({ bg, accent, id, docs }: { bg: string; accent?: string; id?: string; docs: { label: string; path?: string }[] }) {
