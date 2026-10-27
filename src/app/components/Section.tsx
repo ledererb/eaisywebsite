@@ -50,7 +50,7 @@ export function SectionHeader({
         {title}
       </h2>
       {subtitle && (
-        <p className={`${FONT_MAIN} mt-5 font-light text-base leading-relaxed max-w-[720px]`} style={{ color: dark }}>
+        <p className={`${FONT_MAIN} mt-5 font-light text-lg leading-relaxed max-w-[720px]`} style={{ color: dark }}>
           {subtitle}
         </p>
       )}

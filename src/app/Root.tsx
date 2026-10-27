@@ -606,11 +606,23 @@ const DESK_FOOTER_DOCS = [
   { label: "eaisyDesk Adatkezelési tájékoztató" },
 ];
 
-function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path?: string }[] }) {
+// boost documentation is intentionally not linked yet
+const BOOST_FOOTER_DOCS = [
+  { label: "eaisyBoost ÁSZF" },
+  { label: "eaisyBoost Adatkezelési tájékoztató" },
+];
+
+// home (umbrella) documentation is intentionally not linked yet
+const HOME_FOOTER_DOCS = [
+  { label: "eaisy ÁSZF" },
+  { label: "eaisy Adatkezelési tájékoztató" },
+];
+
+function ProductFooter({ bg, accent, id, docs }: { bg: string; accent?: string; id?: string; docs: { label: string; path?: string }[] }) {
   const colHeadingCls =
-    "w-full pb-4 border-b border-white/15 font-['Montserrat',sans-serif] font-medium text-base lg:text-lg uppercase tracking-wide text-[#59BEB2]";
+    "w-full pb-4 border-b border-white/15 font-['Montserrat',sans-serif] font-medium text-base lg:text-lg uppercase tracking-wide";
   return (
-    <footer className="text-white" style={{ backgroundColor: bg }}>
+    <footer id={id} className="text-white" style={{ backgroundColor: bg }}>
       <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 pt-16 pb-8 flex flex-col gap-16">
 
         {/* top: logo — thin divider — slogan */}
@@ -629,7 +641,7 @@ function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path?:
 
           {/* Kapcsolat */}
           <div className="flex flex-col items-start gap-5">
-            <h3 className={colHeadingCls}>Kapcsolat</h3>
+            <h3 className={colHeadingCls} style={{ color: accent ?? "#59BEB2" }}>Kapcsolat</h3>
             <p className="font-['Montserrat',sans-serif] font-light text-sm lg:text-base text-white/85 leading-relaxed">
               Kérdésed van az eaisy termékekkel kapcsolatban?
               <br />
@@ -645,7 +657,7 @@ function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path?:
 
           {/* Dokumentáció */}
           <div className="flex flex-col items-start gap-5">
-            <h3 className={colHeadingCls}>Dokumentáció</h3>
+            <h3 className={colHeadingCls} style={{ color: accent ?? "#59BEB2" }}>Dokumentáció</h3>
             <nav className="flex flex-col gap-3">
               {docs.map((d) =>
                 d.path ? (
@@ -675,7 +687,7 @@ function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path?:
 
           {/* Termékek */}
           <div className="flex flex-col items-start gap-5">
-            <h3 className={colHeadingCls}>Termékek</h3>
+            <h3 className={colHeadingCls} style={{ color: accent ?? "#59BEB2" }}>Termékek</h3>
             <nav className="flex flex-col gap-2.5">
               {FOOTER_PRODUCTS.map((p) => (
                 <Link
@@ -716,10 +728,12 @@ function ProductFooter({ bg, docs }: { bg: string; docs: { label: string; path?:
 const NO_FOOTER_PATHS = new Set([ASZF_PATH, ADATKEZELES_PATH]);
 
 // product-specific footers: same structure, per-product background and document labels
-const PRODUCT_FOOTERS: Record<string, { bg: string; docs: { label: string; path?: string }[] }> = {
+const PRODUCT_FOOTERS: Record<string, { bg: string; accent?: string; id?: string; docs: { label: string; path?: string }[] }> = {
   "/eaisy-bill": { bg: "#102C31", docs: BILL_FOOTER_DOCS },
   "/eaisy-books": { bg: "#0F2931", docs: BOOKS_FOOTER_DOCS },
   "/eaisy-desk": { bg: "#102330", docs: DESK_FOOTER_DOCS },
+  "/eaisy-boost": { bg: "#3B0764", accent: "#D8B4FE", docs: BOOST_FOOTER_DOCS },
+  "/": { bg: "#10333A", accent: "#22C5C8", id: "kapcsolat", docs: HOME_FOOTER_DOCS },
 };
 
 export default function Root() {
@@ -753,6 +767,8 @@ export default function Root() {
       {PRODUCT_FOOTERS[location.pathname] ? (
         <ProductFooter
           bg={PRODUCT_FOOTERS[location.pathname].bg}
+          accent={PRODUCT_FOOTERS[location.pathname].accent}
+          id={PRODUCT_FOOTERS[location.pathname].id}
           docs={PRODUCT_FOOTERS[location.pathname].docs}
         />
       ) : NO_FOOTER_PATHS.has(location.pathname) ? null : (

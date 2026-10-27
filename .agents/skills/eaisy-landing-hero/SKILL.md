@@ -52,5 +52,6 @@ Below the CTAs (`mt-14 lg:mt-20`):
 - Percentages in `grid-template-rows` don't resolve the way you'd expect here — drive row heights with `aspect-square` squares as **direct grid children** instead.
 - Tailwind arbitrary values with `calc()` need underscores (`basis-[calc((100%_-_72px)/_4)]`).
 - Keep the whole-page rules: Montserrat titles (medium) / light body, `#264350` text; inside the hero the teaser cards use Montserrat too — Inter only on the brand logo pill (and in section eyebrows).
+- **Subtitles everywhere are 18px**: the hero subtitle AND every section subtitle (szekció alcím) use Montserrat light `text-base lg:text-lg leading-relaxed` — never introduce a larger section-subtitle size.
 
 After building, verify with the dev server (`npm run dev`, port 5175) + screenshot at 1728px, then `npm run build`.

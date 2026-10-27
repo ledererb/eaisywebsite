@@ -168,7 +168,7 @@ function Hero() {
         <div className="mt-[30px] flex flex-wrap items-center justify-center gap-4">
           <a
             href="#problemak"
-            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-[#030213] font-normal text-base text-white transition-colors hover:bg-[#186D98]`}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-[#030213] font-normal text-base text-white transition-colors hover:bg-[#374151]`}
           >
             Fedezd fel
           </a>
@@ -253,20 +253,27 @@ function Hero() {
               />
               {/* inset ring above the image */}
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[rgba(24,109,152,0.25)] pointer-events-none" />
-              <div className="relative flex flex-col gap-4 px-5 py-5 lg:px-7 lg:py-7">
-                <div className="ml-auto w-11 h-11 rounded-[10px] bg-white/90 flex items-center justify-center transition-transform duration-300 hover:scale-110">
-                  <ArrowUpRight className="w-5 h-5" strokeWidth={2} style={{ color: C.dark }} />
-                </div>
-                <p className={`${FONT_MAIN} leading-none tracking-tight text-white`}>
-                  <span className="font-extrabold text-6xl lg:text-[84px]">14</span>
-                  <span className="ml-3 font-bold text-4xl lg:text-[56px]">funkció</span>
-                </p>
-                <p className={`${FONT_MAIN} font-medium text-2xl lg:text-[28px] leading-snug text-white/90`}>
-                  amely új szintre emeli az ügyfélszolgálatot.
-                </p>
+              <div className="relative h-full flex flex-col px-5 py-5 lg:px-7 lg:py-7">
                 <a
                   href="#funkciok"
-                  className={`${FONT_MAIN} mt-2 inline-flex items-center gap-2 self-start px-8 h-[46px] rounded-full font-medium text-base tracking-wider text-white transition-opacity hover:opacity-90`}
+                  aria-label="Funkciók"
+                  className="ml-auto w-11 h-11 rounded-[10px] bg-white/90 flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                >
+                  <ArrowUpRight className="w-5 h-5" strokeWidth={2} style={{ color: C.dark }} />
+                </a>
+                {/* title + desc centered between the chip and the bottom-anchored CTA */}
+                <div className="flex-1 flex flex-col items-start justify-center gap-9">
+                  <p className={`${FONT_MAIN} leading-none tracking-tight text-white`}>
+                    <span className="font-semibold text-6xl lg:text-[64px]">14</span>
+                    <span className="ml-3 font-semibold text-4xl lg:text-[48px]">funkció</span>
+                  </p>
+                  <p className={`${FONT_MAIN} font-medium text-2xl lg:text-[28px] leading-snug text-white/90`}>
+                    ami új szintre emeli az ügyfélkommunikációt.
+                  </p>
+                </div>
+                <a
+                  href="#funkciok"
+                  className={`${FONT_MAIN} self-start mb-10 lg:mb-24 inline-flex items-center gap-2 px-8 h-[46px] rounded-full font-medium text-base tracking-wider text-white transition-opacity hover:opacity-90`}
                   style={{ backgroundColor: C.magenta }}
                 >
                   Megnézem
@@ -515,7 +522,7 @@ function ProblemsSection() {
           >
             Túlterhelt munkatársak, elszalasztott lehetőségek.
           </h2>
-          <p className={`${FONT_MAIN} mt-5 font-light text-base lg:text-lg leading-relaxed max-w-[720px]`} style={{ color: C.ink }}>
+          <p className={`${FONT_MAIN} mt-5 font-light text-lg leading-relaxed max-w-[720px]`} style={{ color: C.ink }}>
             Ma már az ügyfelek úgy és akkor veszik fel a kapcsolatot a szolgáltatókkal, ahogy nekik
             kényelmes: Telefonon, e-mailben, social media felületeken vagy WhatsAppon. Bármely
             napszakban, nyitvatartási időn kívül is.
@@ -1012,7 +1019,7 @@ function BenefitsSection() {
             <br className="hidden lg:block" />
             <span style={{ color: C.magenta }}> értékelni fogja</span>
           </h2>
-          <p className={`${FONT_MAIN} font-light text-base lg:text-lg leading-relaxed`} style={{ color: C.ink }}>
+          <p className={`${FONT_MAIN} font-light text-lg leading-relaxed`} style={{ color: C.ink }}>
             Ugyanaz a platform — más eredmény minden szerepkörben. Nézd meg, mit kap tőle a csapat,
             az ügyfeleid és a vezetés.
           </p>
@@ -1153,7 +1160,7 @@ function FaqSection() {
           >
             Amit meg szoktak <span style={{ color: C.magenta }}>kérdezni</span>
           </h2>
-          <p className={`${FONT_MAIN} font-light text-base lg:text-lg leading-relaxed`} style={{ color: C.ink }}>
+          <p className={`${FONT_MAIN} font-light text-lg leading-relaxed`} style={{ color: C.ink }}>
             Válaszok a leggyakrabban felmerülő kérdésekre — a csatornáktól és az AI-ügyintézéstől a biztonságig és az árazásig.
           </p>
         </div>
@@ -1233,7 +1240,7 @@ function CtaSection() {
               >
                 Kipróbálnád?
               </h2>
-              <p className={`${FONT_MAIN} font-light text-[15px] leading-relaxed text-white/80`}>
+              <p className={`${FONT_MAIN} font-light text-base leading-relaxed text-white/80`}>
                 Kérj demót, és megmutatjuk, hogyan kezeli az eaisyDesk a bejövő megkereséseket,
                 hogyan működnek az automatikus értesítések, és hogyan indíthatók célzott
                 ügyfélaktiváló kampányok — élőben, a saját folyamataidon.

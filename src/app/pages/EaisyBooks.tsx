@@ -344,7 +344,7 @@ function Hero() {
         <div className="mt-[30px] flex flex-wrap items-center justify-center gap-4">
           <a
             href="#problemak"
-            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-[#030213] font-normal text-base text-white transition-colors hover:bg-[#186D98]`}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-[#030213] font-normal text-base text-white transition-colors hover:bg-[#374151]`}
           >
             Fedezd fel
           </a>
@@ -425,19 +425,19 @@ function Hero() {
                 </div>
                 <div>
                   <p
-                    className={`${FONT_MAIN} font-extrabold text-6xl lg:text-[76px] leading-none tracking-tight`}
+                    className={`${FONT_MAIN} font-semibold text-6xl lg:text-[64px] leading-none tracking-tight`}
                     style={{ color: C.dark }}
                   >
                     18
                   </p>
                   <p
-                    className={`${FONT_MAIN} font-bold text-4xl lg:text-5xl leading-none tracking-tight`}
+                    className={`${FONT_MAIN} font-semibold text-4xl lg:text-[48px] leading-none tracking-tight`}
                     style={{ color: C.dark }}
                   >
                     funkció
                   </p>
                 </div>
-                <p className={`${FONT_MAIN} font-medium text-[30px] leading-snug`} style={{ color: C.dark }}>
+                <p className={`${FONT_MAIN} font-medium text-2xl lg:text-[28px] leading-snug`} style={{ color: C.dark }}>
                   ami lefedi az iroda teljes működését.
                 </p>
               </div>
@@ -523,7 +523,7 @@ function ProblemsSection() {
           >
             Amikor az adminisztráció szab határt a növekedésnek
           </h2>
-          <p className={`${FONT_MAIN} mt-5 font-light text-base lg:text-lg leading-relaxed max-w-[720px]`} style={{ color: C.dark }}>
+          <p className={`${FONT_MAIN} mt-5 font-light text-lg leading-relaxed max-w-[720px]`} style={{ color: C.dark }}>
             A legtöbb időt nem maga a könyvelés viszi el, hanem minden, ami körülötte történik.
             Mindennapos problémák, amelyek észrevétlenül fogják vissza az iroda működését.
           </p>
@@ -578,7 +578,7 @@ function SolutionSection() {
           <br />
           Több ügyfél. Kevesebb adminisztráció. Egy <span style={{ color: C.a500 }}>felület.</span>
         </h2>
-        <p className={`${FONT_MAIN} font-light text-base lg:text-lg leading-relaxed max-w-[960px]`} style={{ color: C.dark }}>
+        <p className={`${FONT_MAIN} font-light text-base leading-relaxed max-w-[960px]`} style={{ color: C.dark }}>
           Az eaisyBooks egy mesterséges intelligenciával támogatott könyvelőirodai platform. A
           teljes irodai munkafolyamatot — a számlakezeléstől a bérszámfejtésen át a bevallásokig
           és az ügyfélkommunikációig — egyetlen felületen kezeli. Szerepkör-alapú hozzáférés,
@@ -954,7 +954,7 @@ function BenefitsSection() {
             <br className="hidden lg:block" />
             <span style={{ color: C.a500 }}> értékelni fogja</span>
           </h2>
-          <p className={`${FONT_MAIN} font-light text-base lg:text-lg leading-relaxed`} style={{ color: C.dark }}>
+          <p className={`${FONT_MAIN} font-light text-lg leading-relaxed`} style={{ color: C.dark }}>
             Nem egyforma a munka, ha irodat vezetsz, ha könyvelsz, vagy ha a saját vállalkozásod
             pénzügyeit kell látnod. Az eaisyBooks mindhárom szereplőnek a saját feladatához igazított
             előnyöket ad.
@@ -1135,7 +1135,7 @@ function FaqSection() {
           >
             Amit meg szoktak <span style={{ color: C.a500 }}>kérdezni</span>
           </h2>
-          <p className={`${FONT_MAIN} font-light text-base lg:text-lg leading-relaxed`} style={{ color: C.dark }}>
+          <p className={`${FONT_MAIN} font-light text-lg leading-relaxed`} style={{ color: C.dark }}>
             Válaszok a leggyakrabban felmerülő kérdésekre — a bevezetéstől a NAV-megfelelésig és az árazásig.
           </p>
         </div>
@@ -1224,7 +1224,7 @@ function ContactSection() {
                 <br />
                 működés közben!
               </h2>
-              <p className={`${FONT_MAIN} font-light text-[15px] leading-relaxed text-white/80`}>
+              <p className={`${FONT_MAIN} font-light text-base leading-relaxed text-white/80`}>
                 Megmutatjuk, hogyan működik az eaisyBooks a te irodádban — a saját ügyfeleiden, a
                 saját folyamataidban.
               </p>

@@ -52,6 +52,7 @@ This document defines the brand architecture, visual identity, and UI tokens for
 - **H2 / Section Title**: `36px` (`2.25rem`), `Inter` Bold, line-height `1.2`
 - **H3 / Card Title**: `18px` (`1.125rem`), `Inter` Semibold, line-height `1.5`
 - **Eyebrow**: `14px` (`0.875rem`) or `18px` (`1.125rem`), `Montserrat` Medium, uppercase, tracking-wider
+- **Hero & Section Subtitle**: `18px` (`1.125rem`), `Montserrat` Light, relaxed line-height — one shared size for the hero subtitle and every section subtitle (szekció alcím) on the product landing pages; mobile: `16px`
 - **Caption**: `18px` (`1.125rem`), `Montserrat` Medium, line-height `1.5`
 - **Body**: `14px` (`0.875rem`) or `16px` (`1.0rem`), `Inter` Normal, line-height `1.5`
 - **Button, Badge**: `14px` (`0.875rem`), `Montserrat` Medium, uppercase

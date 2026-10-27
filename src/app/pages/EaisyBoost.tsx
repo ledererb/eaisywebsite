@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, type TransitionEvent, type PointerEvent } from "react";
-import { Layers, Timer, Shuffle, EyeOff, Palette, Users, ThumbsUp, TrendingUp, Sparkles, Mail, Fingerprint, CalendarDays, CalendarClock, BarChart3, Briefcase, Share2, Clock, ChevronDown, CheckCircle2, Megaphone } from "lucide-react";
-import imgHero from "@/imports/eaisy-boost-hero.webp";
-import imgFeaturesBg from "@/imports/eaisy-boost-features-bg.webp";
-import imgLogo from "@/imports/EaisyBoostNyito/eaisyboost.png";
+import { Layers, Palette, Users, TrendingUp, Sparkles, Mail, Fingerprint, CalendarDays, CalendarClock, BarChart3, Share2, Clock, ChevronDown, CheckCircle2, Megaphone, Facebook, Instagram, ArrowUpRight, Lightbulb, Upload, Crosshair, Tag, Search, MoveHorizontal, ChevronLeft, ChevronRight, Plus, Minus } from "lucide-react";
+import imgBigCard from "@/imports/EaisyBoost/big-square-hero.png";
+import imgDemo from "@/imports/demo-img.png";
 import { openDemoModal } from "@/app/Root";
+import { SectionHeader, SectionEyebrow } from "@/app/components/Section";
 import { Seo, organizationSchema, softwareAppSchema, faqSchema } from "@/app/components/Seo";
 
 const C = {
@@ -16,50 +16,61 @@ const C = {
   yellow: "#FACC15",      // Yellow 400 — CTA accent
   yellowLight: "#FEF08A", // Yellow 200 — icon/eyebrow accent on dark
   bodyText: "rgba(0,0,0,0.55)",
+  ink: "#264350",         // site-wide dark text
 };
 
-// shared eyebrow pill styles
-const eyebrowLight = { backgroundColor: "rgba(250,204,21,0.35)", color: C.deep };
-const eyebrowDark = { backgroundColor: "rgba(250,204,21,0.18)", color: C.yellowLight };
+// design-system shared bits (Bill/Books/Desk conventions)
+const FONT_MAIN = "font-['Montserrat',sans-serif]";
+const FONT_CARD = "font-['Inter',sans-serif]";
+const INNER = "w-full max-w-[1530px] mx-auto px-6 lg:px-10"; // → 1450px content
+const INNER_CARDS = "w-full max-w-[1434px] mx-auto px-6 lg:px-10"; // → 1354px content
+const TEASER_CARD =
+  "rounded-2xl ring-1 ring-inset ring-[rgba(126,34,206,0.22)] transition-all duration-300 hover:-translate-y-1";
 
 const PROBLEMS = [
-  { icon: Layers, title: "Szétszórt eszközök", desc: "Az e-mail kampányok, a social tartalmak, a vizuálok és a márkaanyagok külön felületeken készülnek, külön folyamatokkal." },
-  { icon: Timer, title: "Lassú tartalomgyártás", desc: "Egyetlen poszthoz is ötlet, szöveg, kép, formázás és jóváhagyás kell — minden alkalommal újra." },
-  { icon: Shuffle, title: "Következetlen márkahang", desc: "A szövegek és a vizuálok csatornánként eltérnek, mert nincs közös márkaprofil, amely minden tartalmat ugyanabba az irányba terel." },
-  { icon: CalendarClock, title: "Rendszertelen a kommunikáció", desc: "Tartalomnaptár nélkül a posztolás alkalomszerűvé válik, a fontos témák pedig könnyen kimaradnak." },
-  { icon: EyeOff, title: "Hiányos rálátás", desc: "Az e-mailes és social eredmények külön felületeken látszanak, ezért nehéz gyorsan megérteni, mi működik igazán." },
-  { icon: Megaphone, title: "A kampány csak néhány elszigetelt poszt", desc: "Egy akció vagy termékbevezetés gyakran nem épül fel egymásra épülő social media tartalmakból, ezért nem tud valódi kampányként működni." },
+  { icon: Layers, title: "Szétszórt eszközök", desc: "A posztszövegek, vizuálok és márkaanyagok különböző felületeken készülnek. Az eszközök közötti váltás lassítja és átláthatatlanná teszi a tartalomkészítést." },
+  { icon: CalendarClock, title: "Rendszertelen kommunikáció", desc: "Tartalomnaptár és előzetes tervezés nélkül a posztolás alkalmiszerűvé válik. Elmaradhatnak bejegyzések, a fontos témák pedig könnyen kimaradhatnak." },
+  { icon: Lightbulb, title: "Kreativitás- és ötlethiány", desc: "Nem könnyű folyamatosan új, érdekes és a márkához illő tartalmakat kitalálni. Sokszor már a következő poszt témájának megtalálása is nehézséget okoz." },
+  { icon: Fingerprint, title: "Következetlen márkahang", desc: "A szövegek és vizuálok csatornánként eltérhetnek. Közös márkaprofil nélkül nehéz minden tartalomban ugyanazt a hangvételt és megjelenést követni." },
+  { icon: Upload, title: "Körülményes kézi publikálás", desc: "Ugyanazt a tartalmat minden közösségi felületre külön kell feltölteni és beállítani. A kézi közzététel időigényes, a tervezett posztok pedig könnyen elmaradhatnak." },
+  { icon: Megaphone, title: "Időigényes hirdetéstervezés", desc: "Egy kampányhoz meg kell határozni a célt, a célközönséget, a költségkeretet és az üzenetet. A megfelelő beállítások összeállítása időt és szakértelmet igényel." },
 ];
 
 const FEATURES = [
-  { num: 1, title: "Weboldal- és márka-audit", desc: "Az eaisyBoost SEO-, marketing-, vizuális és kapcsolati szempontból elemzi a weboldaladat, majd pontszámokkal és fejlesztési javaslatokkal mutatja meg a legfontosabb teendőket." },
-  { num: 2, title: "Brand DNA profil", desc: "A rendszer rögzíti a márkád hangnemét, vizuális karakterét, tartalmi irányait és a posztsablonok fő stílusát. Minden új szöveg és vizuál erre a közös márkaalapra épül." },
-  { num: 3, title: "Márkaazonos Quick Post", desc: "Kép, posztszöveg, hashtag és cselekvésre ösztönző üzenet egyetlen gyors folyamatban, a márka saját stílusához igazítva. A saját márkastílusodon belül szöveges, promóciós, lifestyle- vagy fotóközpontú sablonok választhatók. Az AI segít a szöveg és a hozzá illő kép elkészítésében különböző képarányokban. Az eredmény publikálás előtt finomítható." },
-  { num: 4, title: "Social tervezés és publikálás", desc: "Tervezd meg a tartalmakat naptárnézetben, hagyd jóvá az elkészült posztokat, majd időzítsd vagy publikáld őket Facebookra és Instagramra. Az eredményeket közös analitikai felületen követheted." },
-  { num: 5, title: "AI-támogatott e-mail-kampányok", desc: "Egy rövid briefből készíts teljes, formázott e-mail-kampányt. A generált szöveget és a vizuális felépítést küldés előtt szabadon finomíthatod, kódolás nélkül." },
-  { num: 6, title: "Célzott küldés és kampánymérés", desc: "Kezeld a feliratkozókat és a célcsoportokat, küldd ki a kampányt azonnal vagy időzítve, majd A/B tesztekkel és részletes statisztikákkal mérd, melyik változat működik jobban." },
+  { num: 1, icon: Search, title: "Weboldal- és márka-audit", desc: "Az eaisyBoost SEO-, marketing-, vizuális és kapcsolati szempontból elemzi a weboldaladat, majd pontszámokkal és fejlesztési javaslatokkal mutatja meg a legfontosabb teendőket." },
+  { num: 2, icon: Fingerprint, title: "Brand DNA profil", desc: "A rendszer rögzíti a márkád hangnemét, vizuális karakterét, tartalmi irányait és a posztsablonok fő stílusát. Minden új szöveg és vizuál erre a közös márkaalapra épül." },
+  { num: 3, icon: Sparkles, title: "Márkaazonos Quick Post", desc: "Kép, posztszöveg, hashtag és cselekvésre ösztönző üzenet egyetlen gyors folyamatban, a márka saját stílusához igazítva. A saját márkastílusodon belül szöveges, promóciós, lifestyle- vagy fotóközpontú sablonok választhatók. Az AI segít a szöveg és a hozzá illő kép elkészítésében különböző képarányokban. Az eredmény publikálás előtt finomítható." },
+  { num: 4, icon: CalendarDays, title: "Social tervezés és publikálás", desc: "Tervezd meg a tartalmakat naptárnézetben, hagyd jóvá az elkészült posztokat, majd időzítsd vagy publikáld őket Facebookra és Instagramra. Az eredményeket közös analitikai felületen követheted." },
+  { num: 5, icon: Mail, title: "AI-támogatott e-mail-kampányok", desc: "Egy rövid briefből készíts teljes, formázott e-mail-kampányt. A generált szöveget és a vizuális felépítést küldés előtt szabadon finomíthatod, kódolás nélkül." },
+  { num: 6, icon: BarChart3, title: "Célzott küldés és kampánymérés", desc: "Kezeld a feliratkozókat és a célcsoportokat, küldd ki a kampányt azonnal vagy időzítve, majd A/B tesztekkel és részletes statisztikákkal mérd, melyik változat működik jobban." },
 ];
 
-const AUDIENCE_BENEFITS = [
+const BENEFIT_ROLES = [
   {
-    eyebrow: "Amiért a", role: "Marketingvezető", sub: "dönteni fog mellette", icon: Briefcase, gradient: `linear-gradient(135deg, #7E22CE 0%, #581C87 100%)`,
-    items: [
+    id: "marketingvezeto",
+    label: "A marketingvezető",
+    numColor: "#7E22CE",
+    benefits: [
       { title: "Egy platform, átláthatóbb működés", desc: "Az e-mail, a social media és a márka-audit közös rendszerbe kerül, így kevesebb eszközt és folyamatot kell összehangolni." },
       { title: "Gyorsabb kampányindítás", desc: "Az AI felgyorsítja a szöveg- és kreatívkészítést, ezért az ötletből rövidebb idő alatt lesz publikálható kampány." },
       { title: "Következetes márkahang", desc: "A közös márkaprofil minden csatornán ugyanahhoz a hangnemhez és vizuális karakterhez igazítja a tartalmat." },
     ],
   },
   {
-    eyebrow: "Amiért a", role: "Social media kezelő", sub: "szeretni fogja", icon: ThumbsUp, gradient: `linear-gradient(135deg, #581C87 0%, #3B0764 100%)`,
-    items: [
+    id: "tartalomkeszito",
+    label: "A tartalomkészítő",
+    numColor: "#7E22CE",
+    benefits: [
       { title: "Gyorsabb napi tartalomkészítés", desc: "A márka stílusához előre igazított Quick Post sablonokkal, az AI-szövegekkel és a generált képekkel grafikai előképzettség nélkül is gyorsan készülhetnek egységes, igényes posztok." },
       { title: "Tervezhető tartalomnaptár", desc: "Az előre elkészített és időzített posztokkal a folyamatos jelenlét nem napi kapkodáson múlik." },
       { title: "Egyszerű jóváhagyás", desc: "A generált tartalmak egy helyen ellenőrizhetők, szerkeszthetők és hagyhatók jóvá." },
     ],
   },
   {
-    eyebrow: "Amiért a", role: "Cégvezető", sub: "skálázhatja", icon: TrendingUp, gradient: `linear-gradient(135deg, #3B0764 0%, #1E0433 100%)`,
-    items: [
+    id: "cegvezeto",
+    label: "A cégvezető",
+    numColor: "#7E22CE",
+    benefits: [
       { title: "Egy dashboard, több csatorna", desc: "Az e-mailes és social teljesítmény egy helyen követhető, így gyorsabban látszik, mi hoz eredményt." },
       { title: "Több tartalom ugyanazzal a csapattal", desc: "Az automatizált előkészítés és publikálás csökkenti a manuális munkát, ezért a marketing nagyobb volumenben is kezelhető." },
       { title: "Gyorsabb piacra lépés", desc: "Az új ajánlatokhoz és kampányokhoz szükséges tartalmak napok helyett akár órák alatt előkészíthetők." },
@@ -86,14 +97,6 @@ const FAQS = [
   { q: "Mennyibe kerülnek az eaisy termékek?", a: "Az eaisy termékeket úgy alakítottuk ki, hogy a kisebb és nagyobb vállalkozások eltérő működéséhez, funkcionális igényeihez és adatmennyiségéhez is rugalmasan igazodjanak. Az egyes termékeken belül is csak azokat a modulokat és funkciókat szükséges igénybe venni, amelyekre valóban szükség van. Az árat a választott funkciók, a felhasználási volumen és az integrációs igények egyaránt befolyásolják, ezért minden ügyfelünk számára egyedi ajánlatot készítünk." },
 ];
 
-const BENEFITS = [
-  "Márkaazonos posztok",
-  "Heti és havi tartalomtervek",
-  "Social media kampányok",
-  "Grafikai tudás nélkül",
-  "Quick Post funkció",
-];
-
 const WHO_SHOULD = [
   "Aki rendszeresen szeretne posztolni, de nincs rá elég ideje vagy külön csapata",
   "Aki túl sok külön eszközben kezeli az e-mailes és social feladatokat",
@@ -104,66 +107,189 @@ const WHO_SHOULD = [
 
 function Hero() {
   return (
-    <section id="hero" className="relative w-full overflow-hidden pt-16 min-h-[800px]">
-      <style>{`
-        @keyframes hero-pill-in {
-          from { opacity: 0; transform: translateY(16px) scale(0.96); }
-          to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .hero-pill { animation: none !important; }
-        }
-      `}</style>
-      {/* hero photo — pre-composed banner (subject left, white space right), placed as-is */}
-      <img
-        src={imgHero}
-        alt=""
-        decoding="async"
-        fetchPriority="high"
-        className="absolute inset-0 w-full h-full object-cover object-left"
-      />
+    <section id="hero" className="relative w-full overflow-hidden bg-white pt-[122px] pb-14 lg:pb-20">
+      {/* centered 1615px gradient frame — top edge runs below the navbar, rounded corners */}
+      <div className="absolute top-24 bottom-0 lg:top-[110px] left-1/2 -translate-x-1/2 w-full max-w-[1615px] overflow-hidden rounded-[40px]">
+        {/* cream → white → light lilac gradient (Boost brand tint, like the other product pages) */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(45deg, #FFFBE6 0%, #FFFEFB 50%, #F1E8F9 100%)" }}
+        />
+      </div>
 
-      {/* mobile-only white veil to protect text readability (desktop: the photo's own white area) */}
-      <div className="absolute inset-0 bg-white/85 lg:bg-transparent" />
+      <div className={`relative ${INNER} flex flex-col items-center`}>
+        {/* brand logo — rounded pill frame in the brand color */}
+        <p
+          className={`${FONT_CARD} inline-flex items-center rounded-full px-8 py-3 lg:px-10 lg:py-4 font-extrabold text-3xl lg:text-4xl leading-none`}
+          style={{ border: `1px solid ${C.dark}`, color: C.dark }}
+        >
+          eaisyBoost
+        </p>
 
-      {/* content — aligned to the right on desktop, centered on mobile */}
-      <div className="relative w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 py-20 flex justify-center lg:justify-end">
-        <div className="flex flex-col gap-7 w-full max-w-[520px] pt-12 lg:pt-0">
+        {/* main title */}
+        <h1
+          className={`${FONT_MAIN} mt-[50px] font-medium text-4xl lg:text-[40px] leading-[1.15] tracking-tight text-center`}
+          style={{ color: C.ink }}
+        >
+          A profi social media kezelés többé nem idő és kreativitás kérdése
+        </h1>
 
-          <p className="font-['Inter',sans-serif] font-semibold text-xl lg:text-2xl leading-snug" style={{ color: C.main }}>
-            A profi jelenlét többé nem<br />idő- vagy kreativitás kérdése.
-          </p>
+        {/* subtitle — carries on the H1 sentence */}
+        <p className={`${FONT_MAIN} mt-4 lg:mt-5 font-light text-base lg:text-lg leading-relaxed text-center text-black`}>
+          az eaisyBoost AI támogatott social media és e-mail marketing platformmal
+        </p>
 
-          {/* logo — unified 100px height across product pages */}
-          <img src={imgLogo} alt="eaisyBoost" className="h-auto max-h-[100px] w-auto max-w-full object-contain self-start my-6" />
-
-          <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed text-black/55">
-            AI-támogatott tartalomkészítés, kampánykezelés és márka-audit egyetlen platformon.
-          </p>
-
-          <div className="flex flex-wrap gap-2.5">
-            {BENEFITS.map((b, i) => (
-              <div
-                key={b}
-                className="hero-pill inline-flex items-center px-4 py-2 rounded-full w-fit"
-                style={{
-                  border: `1.5px solid ${C.main}`,
-                  color: C.main,
-                  animation: `hero-pill-in 0.55s cubic-bezier(0.22,1,0.36,1) ${350 + i * 110}ms both`,
-                }}
-              >
-                <span className="font-['Inter',sans-serif] font-medium text-sm">{b}</span>
-              </div>
-            ))}
-          </div>
-
+        {/* CTAs */}
+        <div className="mt-[30px] flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="#problemak"
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-[#030213] font-normal text-base text-white transition-colors hover:bg-[#374151]`}
+          >
+            Fedezd fel
+          </a>
           <button
             onClick={openDemoModal}
-            className="self-start mt-10 px-8 py-3.5 rounded-full font-['Inter',sans-serif] font-extrabold text-sm tracking-widest hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: C.yellow, color: C.dark }}
+            className={`${FONT_MAIN} inline-flex items-center justify-center w-[130px] h-[45px] rounded-xl bg-white font-normal text-base text-black transition-colors hover:bg-black/5`}
+            style={{ border: "1px solid rgba(0,0,0,0.2)" }}
           >
-            KÉRJ DEMÓT
+            Kérj demot
           </button>
+        </div>
+
+        {/* ── teaser grid: 5-col — big 14 funkció square, automatizált landscape, Quick Post, 3 kis square ── */}
+        <div className="mt-[50px] w-full rounded-[32px] border border-white/60 bg-white/70 backdrop-blur-md p-4 lg:p-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-2.5">
+            {/* 6 funkció — big square with brand artwork, spans 2 rows */}
+            <div
+              className="relative overflow-hidden rounded-2xl sm:col-span-2 lg:col-span-2 lg:row-span-2 min-h-[320px] lg:min-h-0 flex flex-col"
+            >
+              <img
+                src={imgBigCard}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              {/* inset ring above the image */}
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[rgba(126,34,206,0.25)] pointer-events-none" />
+              <div className="relative h-full flex flex-col px-5 py-5 lg:px-7 lg:py-7">
+                <a
+                  href="#funkciok"
+                  aria-label="Funkciók"
+                  className="ml-auto w-11 h-11 rounded-[10px] bg-white/90 flex items-center justify-center transition-transform duration-300 hover:scale-110"
+                >
+                  <ArrowUpRight className="w-5 h-5" strokeWidth={2} style={{ color: C.dark }} />
+                </a>
+                {/* title + desc centered between the chip and the bottom-anchored CTA */}
+                <div className="flex-1 flex flex-col items-start justify-center gap-9">
+                  <p className={`${FONT_MAIN} leading-none tracking-tight text-white`}>
+                    <span className="font-semibold text-6xl lg:text-[64px]">6</span>
+                    <span className="ml-3 font-semibold text-4xl lg:text-[48px]">funkció</span>
+                  </p>
+                  <p className={`${FONT_MAIN} font-medium text-2xl lg:text-[28px] leading-snug text-white/90`}>
+                    amivel a közösségi média kezelése jelentősen leegyszerűsödik
+                  </p>
+                </div>
+                <a
+                  href="#funkciok"
+                  className={`${FONT_MAIN} self-start mb-10 lg:mb-24 inline-flex items-center gap-2 px-8 h-[46px] rounded-full font-medium text-base tracking-wider transition-opacity hover:opacity-90`}
+                  style={{ backgroundColor: "#F2D253", color: C.dark }}
+                >
+                  Megnézem
+                </a>
+              </div>
+            </div>
+
+            {/* teljesen automatizált — light landscape */}
+            <div className={`${TEASER_CARD} bg-white sm:col-span-2 lg:col-span-2 p-6 flex flex-col gap-5`}>
+              <div className="inline-flex items-center gap-2 self-start">
+                {[Facebook, Instagram].map((Icon, i) => (
+                  <span
+                    key={i}
+                    className="w-9 h-9 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: "#E3D2FB" }}
+                  >
+                    <Icon className="w-4 h-4" strokeWidth={1.5} style={{ color: "#7429C6" }} />
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                  Teljesen automatizált social media kezelés
+                </h3>
+                <p className={`${FONT_MAIN} text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+                  AI-támogatott szöveg- és képgenerálás, a márka vizuális stílusához igazodó Quick Post
+                  sablonok, időzítés, valamint Facebook- és Instagram-publikálás egyetlen felületről.
+                </p>
+              </div>
+            </div>
+
+            {/* Quick Post — light square */}
+            <div className={`${TEASER_CARD} bg-white p-6 flex flex-col gap-3 lg:aspect-square`}>
+              <div
+                className="w-11 h-11 rounded-[10px] flex items-center justify-center"
+                style={{ backgroundColor: "#F4D760" }}
+              >
+                <Sparkles className="w-5 h-5" strokeWidth={1.5} style={{ color: "#5C3A7F" }} />
+              </div>
+              <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                Quick Post funkció
+              </h3>
+              <p className={`${FONT_MAIN} text-[13px] leading-snug`} style={{ color: C.bodyText }}>
+                Három lépés az ötlettől a kész posztig: bármely szabványméretben, posztolással együtt.
+              </p>
+            </div>
+
+            {/* brandhű tartalmak — light square */}
+            <div className={`${TEASER_CARD} bg-white p-6 flex flex-col items-center text-center gap-3 lg:aspect-square`}>
+              <div
+                className="w-11 h-11 rounded-[10px] flex items-center justify-center"
+                style={{ backgroundColor: "#FEF08A" }}
+              >
+                <Palette className="w-5 h-5" strokeWidth={1.5} style={{ color: "#C08C30" }} />
+              </div>
+              <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                Brandhű tartalmak
+              </h3>
+              <p className={`${FONT_MAIN} text-[13px] leading-snug`} style={{ color: C.bodyText }}>
+                Az eaisyBoost megismeri a márkád stílusát, és ehhez igazítja a posztok hangvételét és
+                vizuális megjelenését.
+              </p>
+            </div>
+
+            {/* hirdetéstervezés — light square */}
+            <div className={`${TEASER_CARD} bg-white p-6 flex flex-col items-center text-center gap-3 lg:aspect-square`}>
+              <div
+                className="w-11 h-11 rounded-[10px] flex items-center justify-center"
+                style={{ backgroundColor: "#FEF08A" }}
+              >
+                <Megaphone className="w-5 h-5" strokeWidth={1.5} style={{ color: "#C08C30" }} />
+              </div>
+              <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                Hirdetéstervezés
+              </h3>
+              <p className={`${FONT_MAIN} text-[13px] leading-snug`} style={{ color: C.bodyText }}>
+                Készíts kampánytervet a céljaidhoz, célcsoportodhoz és költségkeretedhez igazítva.
+              </p>
+            </div>
+
+            {/* social media naptár — light square */}
+            <div className={`${TEASER_CARD} bg-white p-6 flex flex-col items-center text-center gap-3 lg:aspect-square`}>
+              <div
+                className="w-11 h-11 rounded-[10px] flex items-center justify-center"
+                style={{ backgroundColor: "#FEF08A" }}
+              >
+                <CalendarDays className="w-5 h-5" strokeWidth={1.5} style={{ color: "#C08C30" }} />
+              </div>
+              <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                Social media naptár
+              </h3>
+              <p className={`${FONT_MAIN} text-[13px] leading-snug`} style={{ color: C.bodyText }}>
+                Tervezd meg előre a tartalmaidat, és lásd egy helyen, mi készül, mi vár jóváhagyásra,
+                és mikor jelenik meg.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -279,7 +405,7 @@ function TeaserCarousel() {
   ];
 
   return (
-    <div className="relative w-full max-w-[520px] h-[440px] lg:h-[520px] overflow-hidden">
+    <div className="relative w-full h-[440px] lg:h-[520px] overflow-hidden">
       <style>{`
         @keyframes teaser-scroll {
           from { transform: translateY(0); }
@@ -311,92 +437,48 @@ function TeaserCarousel() {
 }
 
 function ProblemsSection() {
-  useEffect(() => {
-    function adjustHeights() {
-      const cards = document.querySelectorAll(".problem-card-item");
-      if (cards.length === 0) return;
-
-      // Reset heights first to measure natural height
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = "0px";
-      });
-
-      let maxHeight = 0;
-      cards.forEach((c) => {
-        const h = c.clientHeight;
-        if (h > maxHeight) maxHeight = h;
-      });
-
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = `${maxHeight}px`;
-      });
-    }
-
-    // Run on mount with a minor timeout to ensure content has rendered, and on resize
-    const timer = setTimeout(adjustHeights, 100);
-    window.addEventListener("resize", adjustHeights);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", adjustHeights);
-    };
-  }, []);
-
   return (
-    <section id="problemak" className="w-full py-20 lg:py-24" style={{ backgroundColor: "#F3F3F4" }}>
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-10">
+    <section id="problemak" className="relative w-full overflow-hidden bg-white py-20 lg:py-24">
+      {/* faint purple halo behind the cards (brand color) */}
+      <div
+        className="absolute left-1/2 top-[58%] w-[640px] h-[640px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(126,34,206,0.12), transparent 70%)" }}
+      />
 
-        {/* eyebrow pill + title */}
-        <div className="flex flex-col gap-5 w-full">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={eyebrowLight}>
-            Amikor a marketing túl sok eszköz között vész el
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl tracking-tight leading-tight text-black">
-            Ismerős helyzetek?
-          </h2>
-          <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed w-full text-black/55">
-            A rendszeres közösségi média-jelenléthez folyamatosan új ötletek, szövegek és vizuálok kellenek. Ha nincs külön marketinges vagy elegendő idő, a posztolás könnyen rendszertelenné válik – a márka pedig eltűnik a követők szeme elől.
-          </p>
-        </div>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        {/* header — identical rhythm on every product page */}
+        <SectionHeader
+          eyebrow="A probléma"
+          eyebrowColor={C.main}
+          title="Amikor a közösségi médiára nem jut idő"
+          titleClass="text-4xl lg:text-[40px]"
+          subtitle="A legtöbb vállalkozás nem azért marad le, mert nincs mondanivalója — hanem mert nincs ideje minden csatornán következetesen jelen lenni."
+        />
 
-        {/* 6 problem cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {PROBLEMS.map((p) => {
-            const Icon = p.icon;
-            return (
+        {/* 6 problem cards — fixed height = the tallest card across pages */}
+        <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full">
+          {PROBLEMS.map(({ icon: Icon, title, desc }) => (
+            <div
+              key={title}
+              className="bg-white rounded-2xl border border-black/5 p-6 lg:p-7 flex flex-col gap-4 lg:h-[272px]"
+            >
               <div
-                key={p.title}
-                className="problem-card-item bg-white rounded-2xl p-6 flex flex-row gap-5 shadow-sm border border-black/5 hover:-translate-y-1 hover:shadow-md hover:border-[#D8B4FE] transition-all duration-300 group cursor-pointer h-full"
+                className="w-11 h-11 rounded-[10px] flex items-center justify-center shrink-0"
+                style={{ backgroundColor: "#FEF08A" }}
               >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: C.dark }}
-                >
-                  <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: C.yellow }} />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">
-                    {p.title}
-                  </h3>
-                  <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-black/55">
-                    {p.desc}
-                  </p>
-                </div>
+                <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: C.dark }} />
               </div>
-            );
-          })}
+              <div className="flex flex-col gap-2.5">
+                <h3 className={`${FONT_MAIN} font-semibold text-2xl leading-snug`} style={{ color: C.ink }}>
+                  {title}
+                </h3>
+                <p className={`${FONT_MAIN} font-light text-xs leading-relaxed`} style={{ color: C.ink }}>
+                  {desc}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-
-        {/* highlighted pullquote — pill shape, yellow border */}
-        <div
-          className="rounded-full px-10 py-6"
-          style={{ backgroundColor: "rgba(250,204,21,0.15)", border: "2px solid rgba(250,204,21,0.6)" }}
-        >
-          <p className="font-['Inter',sans-serif] font-light text-lg lg:text-xl text-center" style={{ color: C.dark }}>
-            A legtöbb vállalkozás nem azért marad le, mert nincs ötlete — hanem mert{" "}
-            <span className="font-semibold">nincs ideje minden csatornán következetesen jelen lenni.</span>
-          </p>
-        </div>
-
       </div>
     </section>
   );
@@ -404,109 +486,113 @@ function ProblemsSection() {
 
 function SolutionSection() {
   return (
-    <section id="megoldas" className="w-full bg-white py-20 lg:py-24 relative overflow-hidden">
+    <section id="megoldas" className="relative w-full bg-white pt-14 lg:pt-20 pb-20 lg:pb-24 overflow-hidden">
+      {/* faint purple halo — below the eyebrow, at the title */}
+      <div
+        className="absolute left-[14%] top-[6%] w-[520px] h-[520px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(126,34,206,0.10), transparent 70%)" }}
+      />
 
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-16 relative z-10">
-
-        {/* Top block: text on left, teaser on right */}
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
-
-          {/* Left Column: Eyebrow, Logo, Paragraphs */}
-          <div className="flex-1 flex flex-col items-start gap-6 w-full lg:max-w-[620px]">
-
-            {/* Eyebrow badge */}
-            <div className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={eyebrowLight}>
-              A mi megoldásunk
-            </div>
-
-            {/* Logo */}
-            <img src={imgLogo} alt="eaisyBoost" className="w-full max-w-[220px] h-auto" />
-
-            {/* Paragraphs */}
-            <div className="flex flex-col gap-5 text-black/55">
-              <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed">
-                Az eaisyBoost egy AI-támogatott marketingplatform, amellyel egyedi posztokat, előre felépített heti vagy havi tartalomnaptárat, illetve egy konkrét cél köré szervezett teljes social media kampányt tervezhetsz. Az eaisyBoost először megismeri a márkádat: felismeri annak vizuális világát, kommunikációs stílusát és fő üzeneteit. Ezután minden elkészített social media tartalmat ezekhez igazít.
-              </p>
-
-              {/* Highlighted statement with left border */}
-              <div
-                className="pl-5 py-0.5 border-l-4"
-                style={{ borderLeftColor: C.main }}
-              >
-                <p className="font-['Inter',sans-serif] font-semibold text-base leading-relaxed" style={{ color: C.main }}>
-                  Egyetlen posztra van szükséged vagy egy teljes kampányra? Az eaisyBoost mindkettőt ugyanabban a következetes márkastílusban készíti el.
-                </p>
-              </div>
-            </div>
-
+      {/* same container as the problems section */}
+      <div className={INNER_CARDS}>
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-stretch">
+          {/* left: eyebrow, title, paragraphs, CTA */}
+          <div className="flex flex-col justify-center gap-7 lg:w-[46%]">
+            <SectionEyebrow color={C.main}>A mi megoldásunk</SectionEyebrow>
+            <h2
+              className={`${FONT_MAIN} font-medium text-4xl lg:text-[40px] leading-tight tracking-tight`}
+              style={{ color: C.ink }}
+            >
+              eaisyBoost:
+              <br />
+              Az ötlettől a publikálásig. Posztolás <span style={{ color: C.main }}>egyszerűen.</span>
+            </h2>
+            <p className={`${FONT_MAIN} font-light text-base leading-relaxed`} style={{ color: C.ink }}>
+              Az eaisyBoost egy AI-támogatott marketingplatform, amellyel egyedi posztokat, előre
+              felépített heti vagy havi tartalomnaptárat, illetve egy konkrét cél köré szervezett
+              teljes social media kampányt tervezhetsz. Az eaisyBoost először megismeri a márkádat:
+              felismeri annak vizuális világát, kommunikációs stílusát és fő üzeneteit, és minden
+              elkészített social media tartalmat ezekhez igazít.
+            </p>
+            <a
+              href="#funkciok"
+              className={`${FONT_MAIN} self-start inline-flex items-center justify-center px-8 h-[50px] rounded-full font-medium text-base transition-colors hover:bg-[#7E22CE]/10`}
+              style={{ border: `1px solid ${C.main}`, color: C.main }}
+            >
+              Teljes funkciólista
+            </a>
           </div>
 
-          {/* Right column: autoplay teaser (vertical loop, white fades) */}
-          <div className="flex-1 w-full flex justify-center lg:justify-end">
+          {/* right: the moving teaser — its light UI panels work on the white background */}
+          <div className="flex-1 min-w-0">
             <TeaserCarousel />
           </div>
-
         </div>
+      </div>
+    </section>
+  );
+}
 
-        {/* Bottom block: 3 colored pillar cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-
-          {/* Card 1 */}
-          <div
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#7E22CE" }}
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#FEF08A] group-hover:scale-110 transition-transform duration-300">
-              <Share2 className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                Social Media Kezelés
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                AI-támogatott szöveg- és képgenerálás, a márka vizuális stílusához igazodó Quick Post sablonok, időzítés, valamint Facebook- és Instagram-publikálás egyetlen felületről.
-              </p>
+function DemoCtaStrip() {
+  return (
+    <section className="w-full bg-white pb-20 lg:pb-24">
+      <div className={INNER_CARDS}>
+        <div
+          className="relative overflow-hidden rounded-[24px] flex flex-col lg:flex-row"
+          style={{ background: "linear-gradient(90deg, rgba(126,34,206,0.13) 0%, rgba(126,34,206,0.05) 55%, rgba(126,34,206,0) 100%)" }}
+        >
+          {/* left: demo photo + transparent white meta bar at its bottom */}
+          <div className="relative lg:w-[46%] min-h-[280px] lg:min-h-0">
+            <img
+              src={imgDemo}
+              alt="Demó egy laptop körül"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-6 bg-white/70 backdrop-blur-sm px-6 py-3">
+              {[
+                { icon: Clock, label: "30-60 perc" },
+                { icon: Crosshair, label: "Google Meet" },
+                { icon: Tag, label: "Ingyenes" },
+              ].map(({ icon: Icon, label }) => (
+                <span
+                  key={label}
+                  className={`${FONT_MAIN} inline-flex items-center gap-1.5 text-xs`}
+                  style={{ color: C.ink }}
+                >
+                  <Icon className="w-4 h-4" strokeWidth={1.5} />
+                  {label}
+                </span>
+              ))}
             </div>
           </div>
 
-          {/* Card 2 */}
-          <div
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#581C87" }}
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#FEF08A] group-hover:scale-110 transition-transform duration-300">
-              <Mail className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                Email Marketing
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                AI kampánygenerálás, vizuális szerkesztés, azonnali vagy időzített küldés, A/B tesztelés és valós idejű statisztikák.
-              </p>
-            </div>
+          {/* right: eyebrow, title, description, CTA */}
+          <div className="flex-1 flex flex-col items-start justify-center gap-6 px-8 py-10 lg:px-14 lg:py-16">
+            <SectionEyebrow color={C.main}>Demo</SectionEyebrow>
+            <h2
+              className={`${FONT_MAIN} font-medium text-4xl lg:text-[36px] leading-tight tracking-tight`}
+              style={{ color: C.ink }}
+            >
+              Ne csak elképzeld.
+              <br />
+              Nézd meg <span style={{ color: C.main }}>élőben.</span>
+            </h2>
+            <p className={`${FONT_MAIN} font-light text-base leading-relaxed`} style={{ color: C.ink }}>
+              Minden vállalkozás más. Mondd el, nálad milyen helyzetek okoznak problémát, és
+              megmutatjuk, hogyan segítene az eaisyBoost a te folyamataidban – demóban, a saját
+              példáddal.
+            </p>
+            <button
+              onClick={openDemoModal}
+              className={`${FONT_MAIN} mt-2 inline-flex items-center justify-center px-8 h-[46px] rounded-full font-medium text-sm tracking-wider text-white transition-opacity hover:opacity-90`}
+              style={{ backgroundColor: C.main }}
+            >
+              Időpontot foglalok
+            </button>
           </div>
-
-          {/* Card 3 */}
-          <div
-            className="rounded-[24px] p-8 flex flex-col items-center text-center gap-6 shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300 group cursor-pointer"
-            style={{ backgroundColor: "#3B0764" }}
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 text-[#FEF08A] group-hover:scale-110 transition-transform duration-300">
-              <Fingerprint className="w-5 h-5" strokeWidth={1.5} />
-            </div>
-            <div className="flex flex-col gap-3">
-              <h3 className="font-['Inter',sans-serif] font-bold text-lg text-white leading-tight">
-                Márka-audit és Brand DNA
-              </h3>
-              <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-white/80">
-                A weboldal elemzéséből létrejövő márkaprofil segít abban, hogy a generált szövegek és vizuálok ne csak szépek, hanem felismerhetően márkaazonosak legyenek.
-              </p>
-            </div>
-          </div>
-
         </div>
-
       </div>
     </section>
   );
@@ -514,295 +600,280 @@ function SolutionSection() {
 
 function FeaturesSection() {
   const N = FEATURES.length;
-  // Cards rendered 3x so the row loops seamlessly (6, 5... appear left of 1)
-  const LOOP = [...FEATURES, ...FEATURES, ...FEATURES];
-  const [pos, setPos] = useState(N);
-  const [instant, setInstant] = useState(false);
-  const [paused, setPaused] = useState(false);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const dragStartX = useRef<number | null>(null);
-  const swiped = useRef(false);
-  const [metrics, setMetrics] = useState({ step: 0, card: 0, view: 0 });
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const drag = useRef({ active: false, startX: 0, scrollLeft: 0, lastX: 0, lastT: 0, v: 0, raf: 0 });
+  const [toastVisible, setToastVisible] = useState(false);
 
-  const active = ((pos % N) + N) % N;
-
-  // Measure card width + gap + viewport width so the active card centers precisely
+  // swipe hint toast: show once when the section scrolls into view
   useEffect(() => {
-    const measure = () => {
-      const track = trackRef.current;
-      if (!track || track.children.length < 2) return;
-      const first = track.children[0] as HTMLElement;
-      const second = track.children[1] as HTMLElement;
-      setMetrics({
-        step: second.offsetLeft - first.offsetLeft,
-        card: first.offsetWidth,
-        view: track.parentElement?.offsetWidth ?? window.innerWidth,
-      });
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setToastVisible(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
-  // Autoplay - pauses on hover / gesture
+  // auto-dismiss the toast after a few seconds
   useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => setPos((p) => p + 1), 5000);
-    return () => clearInterval(id);
-  }, [paused]);
+    if (!toastVisible) return;
+    const t = setTimeout(() => setToastVisible(false), 4500);
+    return () => clearTimeout(t);
+  }, [toastVisible]);
 
-  const go = (dir: number) => setPos((p) => p + dir);
-
-  // Jump to feature i using the copy nearest to the current position
-  const goTo = (i: number) => setPos((p) => Math.round((p - i) / N) * N + i);
-
-  // After animating into an outer copy, snap back to the middle copy invisibly
-  const handleTransitionEnd = (e: TransitionEvent) => {
-    if (e.target !== trackRef.current || e.propertyName !== "transform") return;
-    if (pos < N || pos >= 2 * N) {
-      setInstant(true);
-      setPos(N + active);
-    }
-  };
-
-  // Re-enable the transition right after the invisible snap
+  // chevron paging state
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(true);
+  function updateArrows() {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanLeft(el.scrollLeft > 4);
+    setCanRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
+  }
   useEffect(() => {
-    if (!instant) return;
-    const id = requestAnimationFrame(() => requestAnimationFrame(() => setInstant(false)));
-    return () => cancelAnimationFrame(id);
-  }, [instant]);
-
-  // Gesture swipe (touch / pen / mouse) - horizontal; vertical scroll stays free
-  const onPointerDown = (e: PointerEvent) => {
-    dragStartX.current = e.clientX;
-    swiped.current = false;
-    setPaused(true);
-  };
-  const endDrag = (x: number | null) => {
-    if (dragStartX.current == null) return;
-    if (x != null) {
-      const dx = x - dragStartX.current;
-      if (Math.abs(dx) > 24) {
-        swiped.current = true;
-        // longer swipes skip multiple cards — no big mandatory flick needed
-        const steps = Math.max(1, Math.round(Math.abs(dx) / (metrics.step || 240)));
-        go(dx < 0 ? steps : -steps);
-      }
+    updateArrows();
+  }, []);
+  function page(dir: 1 | -1) {
+    const el = scrollRef.current;
+    if (!el) return;
+    stopMomentum();
+    // loop: past the end -> back to the start; before the start -> to the end
+    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+    const atStart = el.scrollLeft <= 4;
+    if (dir === 1 && atEnd) {
+      el.scrollTo({ left: 0 });
+      return;
     }
-    dragStartX.current = null;
-    setPaused(false);
-  };
+    if (dir === -1 && atStart) {
+      el.scrollTo({ left: el.scrollWidth });
+      return;
+    }
+    el.scrollBy({ left: dir * el.clientWidth });
+  }
+
+  // mouse drag-to-scroll with pointer capture + momentum glide (touch uses native scrolling)
+  const DRAG_RATIO = 1.4;
+  function stopMomentum() {
+    cancelAnimationFrame(drag.current.raf);
+  }
+  function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    if (e.pointerType !== "mouse" || !scrollRef.current) return;
+    stopMomentum();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    drag.current.active = true;
+    drag.current.startX = e.clientX;
+    drag.current.scrollLeft = scrollRef.current.scrollLeft;
+    drag.current.lastX = e.clientX;
+    drag.current.lastT = performance.now();
+    drag.current.v = 0;
+  }
+  function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
+    if (!drag.current.active || !scrollRef.current) return;
+    scrollRef.current.scrollLeft =
+      drag.current.scrollLeft - (e.clientX - drag.current.startX) * DRAG_RATIO;
+    const now = performance.now();
+    const dt = now - drag.current.lastT;
+    if (dt > 0) {
+      const inst = ((e.clientX - drag.current.lastX) / dt) * 16;
+      drag.current.v = drag.current.v * 0.6 + inst * 0.4;
+      drag.current.lastX = e.clientX;
+      drag.current.lastT = now;
+    }
+  }
+  function endDrag() {
+    if (!drag.current.active) return;
+    drag.current.active = false;
+    const el = scrollRef.current;
+    let v = -drag.current.v * DRAG_RATIO;
+    if (!el || Math.abs(v) < 0.5) return;
+    const step = () => {
+      el.scrollLeft += v;
+      v *= 0.93;
+      if (Math.abs(v) >= 0.5) drag.current.raf = requestAnimationFrame(step);
+    };
+    drag.current.raf = requestAnimationFrame(step);
+  }
 
   return (
-    <section
-      id="funkciok"
-      className="w-full py-20 lg:py-24 overflow-hidden relative"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      {/* Background photo + dark purple overlay */}
-      <img
-        src={imgFeaturesBg}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
+    <section id="funkciok" ref={sectionRef} className="relative w-full overflow-hidden bg-white py-16 lg:py-20">
+      <style>{`
+        @keyframes feat-slide-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes swipe-hint-wiggle { 0%, 100% { transform: translateX(-7px); } 50% { transform: translateX(7px); } }
+        @media (prefers-reduced-motion: reduce) { .swipe-hint-anim { animation: none !important; } }
+      `}</style>
+
+      {/* faint purple halo on the right side */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(160deg, rgba(59,7,100,0.94) 0%, rgba(88,28,135,0.88) 55%, rgba(126,34,206,0.90) 135%)" }}
+        className="absolute left-[84%] top-[32%] w-[560px] h-[560px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(126,34,206,0.10), transparent 70%)" }}
       />
 
-      <div className="relative z-10">
-      {/* Header */}
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col items-start gap-5 mb-12">
-        <div className="inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={eyebrowDark}>
-          Egy platform. Teljes marketingfolyamat.
-        </div>
-        <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-white tracking-tight leading-tight max-w-[720px]">
-          Funkciók az ötlettől a publikálásig
-        </h2>
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Funkciók - Teljes áttekintés"
+          eyebrowColor={C.main}
+          title={
+            <>
+              Következetes jelenlét, kevesebb munkával, a márkád hangján.{" "}
+              <span style={{ color: C.main }}>Minden csatornán.</span>
+            </>
+          }
+          subtitle="Minden, ami a közösségi média jelenléteidet gördülékennyé teszi: az ötlettől a posztok elkészítésén és időzítésén át a kimenő kampányokig."
+          titleClass="text-4xl lg:text-[40px]"
+        />
       </div>
 
-      {/* Spotlight carousel: active card centered, neighbours dimmed and peeking */}
-      <div
-        className="relative"
-        style={{
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 7%, black 93%, transparent)",
-          maskImage: "linear-gradient(to right, transparent, black 7%, black 93%, transparent)",
-          touchAction: "pan-y",
-        }}
-        onPointerDown={onPointerDown}
-        onPointerUp={(e) => endDrag(e.clientX)}
-        onPointerCancel={() => endDrag(null)}
-        onPointerLeave={() => endDrag(null)}
-      >
+      {/* horizontally scrollable card carousel */}
+      <div className={`relative ${INNER_CARDS} mt-12 lg:mt-16`}>
         <div
-          ref={trackRef}
-          onTransitionEnd={handleTransitionEnd}
-          className={`flex gap-3 w-max py-6 ${instant ? "" : "transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"}`}
-          style={{ transform: `translateX(${metrics.view / 2 - (pos * metrics.step + metrics.card / 2)}px)` }}
+          ref={scrollRef}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerLeave={endDrag}
+          onScroll={() => { setToastVisible(false); updateArrows(); }}
+          className={`flex gap-5 lg:gap-6 overflow-x-auto snap-x snap-proximity pb-2 select-none cursor-grab active:cursor-grabbing [&::-webkit-scrollbar]:hidden ${
+            N < 4 ? "lg:justify-center" : ""
+          }`}
+          style={{ scrollbarWidth: "none", animation: "feat-slide-right 0.45s cubic-bezier(0.22,1,0.36,1) both" }}
         >
-          {LOOP.map((f, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => {
-                if (swiped.current) {
-                  swiped.current = false;
-                  return;
-                }
-                goTo(f.num - 1);
-              }}
-              aria-current={idx === pos}
-              className={`w-[250px] sm:w-[280px] lg:w-[320px] aspect-[4/5] shrink-0 text-left rounded-3xl bg-white p-5 lg:p-6 flex flex-col gap-5 border-[3px] transition-all duration-500 ${
-                idx === pos
-                  ? "opacity-100 scale-105 shadow-2xl relative z-10 border-[#FACC15]"
-                  : "opacity-40 scale-95 shadow-md hover:opacity-70 cursor-pointer relative z-0 border-transparent"
-              }`}
+          {FEATURES.map(({ icon: Icon, title, desc }) => (
+            <div
+              key={title}
+              className="snap-start shrink-0 grow-0 basis-[85%] sm:basis-[calc(50%_-_12px)] lg:basis-[calc((100%_-_72px)/_4)] lg:min-h-[501px] relative overflow-hidden bg-white rounded-[20px] shadow-sm hover:shadow-md transition-shadow duration-300 p-8 lg:p-10 flex flex-col items-center text-center gap-6"
+              style={{ border: "1px solid rgba(126,34,206,0.4)" }}
             >
-              <span
-                className="font-['Inter',sans-serif] font-extrabold text-6xl leading-none select-none"
-                style={{ color: "rgba(126,34,206,0.30)" }}
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center shrink-0"
+                style={{ backgroundColor: "#FEF08A" }}
               >
-                {f.num}
-              </span>
-              <p className="font-['Inter',sans-serif] font-bold text-base lg:text-lg leading-snug text-black">
-                {f.title}
+                <Icon className="w-6 h-6" strokeWidth={1.5} style={{ color: C.dark }} />
+              </div>
+              <h3 className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                {title}
+              </h3>
+              <p className={`${FONT_MAIN} font-light text-[13px] leading-[1.7]`} style={{ color: C.ink }}>
+                {desc}
               </p>
-              <p className="font-['Inter',sans-serif] font-normal text-xs lg:text-sm leading-relaxed" style={{ color: C.bodyText }}>
-                {f.desc}
-              </p>
-            </button>
+            </div>
           ))}
         </div>
-      </div>
 
-      {/* Numbered navigation 1-6 (hidden on mobile — swipe gestures take over) */}
-      <div className="mt-8 px-6 hidden sm:block">
-        <div className="flex flex-wrap justify-center gap-2.5 max-w-[520px] mx-auto">
-          {FEATURES.map((f, i) => (
-            <button
-              key={f.num}
-              type="button"
-              onClick={() => goTo(i)}
-              aria-label={`Funkció ${f.num}: ${f.title}`}
-              className={`w-9 h-9 lg:w-10 lg:h-10 rounded-full font-['Inter',sans-serif] text-sm transition-all duration-300 ${
-                i === active ? "font-semibold scale-125 mx-3" : "text-white/80 font-light ring-1 ring-white/40 hover:bg-white/25"
-              }`}
-              style={
-                i === active
-                  ? { backgroundColor: C.yellow, color: C.dark }
-                  : { backgroundColor: "rgba(255,255,255,0.15)" }
-              }
-            >
-              {f.num}
-            </button>
-          ))}
+        {/* chevron paging */}
+        <div className="mt-10 hidden lg:flex items-center justify-center gap-4">
+          <button
+            onClick={() => page(-1)}
+            aria-label="Előző funkciók"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#7E22CE]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(126,34,206,0.5)" }}
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
+          <button
+            onClick={() => page(1)}
+            aria-label="Következő funkciók"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#7E22CE]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(126,34,206,0.5)" }}
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
         </div>
-      </div>
+
+        {/* swipe hint toast — appears once, auto-dismisses */}
+        <div
+          aria-hidden
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none transition-all duration-500 ${
+            toastVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
+          }`}
+        >
+          <div className="w-16 h-16 rounded-full bg-white border border-black/5 shadow-[0_12px_32px_rgba(0,0,0,0.18)] flex items-center justify-center">
+            <div className="swipe-hint-anim" style={{ animation: "swipe-hint-wiggle 1.6s ease-in-out infinite" }}>
+              <MoveHorizontal className="w-7 h-7" strokeWidth={2} style={{ color: C.main }} />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
 function BenefitsSection() {
-  // equalize card heights across all columns: min-height = tallest card
-  useEffect(() => {
-    function adjustHeights() {
-      const cards = document.querySelectorAll(".benefit-card-item");
-      if (cards.length === 0) return;
-
-      // Reset heights first to measure natural height
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = "0px";
-      });
-
-      let maxHeight = 0;
-      cards.forEach((c) => {
-        const h = c.clientHeight;
-        if (h > maxHeight) maxHeight = h;
-      });
-
-      cards.forEach((c) => {
-        (c as HTMLElement).style.minHeight = `${maxHeight}px`;
-      });
-    }
-
-    // Run on mount with a minor timeout to ensure content has rendered, and on resize
-    const timer = setTimeout(adjustHeights, 100);
-    window.addEventListener("resize", adjustHeights);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener("resize", adjustHeights);
-    };
-  }, []);
+  const [active, setActive] = useState(0);
+  const role = BENEFIT_ROLES[active];
 
   return (
     <section
       id="elonyok"
-      className="w-full py-20 lg:py-24"
-      style={{ background: "linear-gradient(180deg, #ffffff 0%, rgba(250,245,255,0.7) 100%)" }}
+      className="relative w-full overflow-hidden bg-white py-16 lg:py-20"
     >
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-12">
-
-        {/* header — same language as the rest of the page */}
-        <div className="flex flex-col items-start gap-5">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={eyebrowLight}>
-            Előnyök
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-black tracking-tight leading-tight">
-            Amit a csapatod azonnal érez
+      <style>{`@keyframes benefits-fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+      <div className={`relative ${INNER_CARDS} flex flex-col lg:flex-row gap-12 lg:gap-16`}>
+        {/* left: eyebrow, title, paragraph */}
+        <div className="flex flex-col justify-center gap-6 lg:w-[40%]">
+          <SectionEyebrow color={C.main}>Előnyök</SectionEyebrow>
+          <h2
+            className={`${FONT_MAIN} font-medium text-4xl lg:text-[40px] leading-tight tracking-tight`}
+            style={{ color: C.ink }}
+          >
+            Amiért az egész csapat
+            <br className="hidden lg:block" />
+            <span style={{ color: C.main }}> szeretni</span> fogja
           </h2>
-          <p className="font-['Inter',sans-serif] font-normal text-base text-black/55 leading-relaxed max-w-[620px]">
-            Ugyanaz a platform — más előny minden szerepkörben. Nézd meg, mit ad az eaisyBoost a marketingvezetőnek, a tartalomkészítőnek és a cégvezetőnek.
+          <p className={`${FONT_MAIN} font-light text-lg leading-relaxed`} style={{ color: C.ink }}>
+            Ugyanaz a platform - más előny minden szerepkörben. Nézd meg, mit ad az eaisyBoost a
+            marketingvezetőnek, a tartalomkészítőnek és a cégvezetőnek.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-          {AUDIENCE_BENEFITS.map((col) => {
-            const RoleIcon = col.icon;
-            return (
-              <div key={col.role} className="flex flex-col gap-4 group">
-
-                {/* role header — purple gradient card, like the Megoldás section */}
-                <div
-                  className="rounded-2xl p-6 flex items-center gap-4 shadow-sm group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300"
-                  style={{ background: col.gradient }}
+        {/* right: small role chips top-right + numbered points */}
+        <div className="flex-1 flex flex-col gap-10 lg:gap-12">
+          <div className="flex flex-wrap items-center justify-start gap-2">
+            {BENEFIT_ROLES.map((r, i) => {
+              const isActive = i === active;
+              return (
+                <button
+                  key={r.id}
+                  onClick={() => setActive(i)}
+                  onMouseEnter={() => setActive(i)}
+                  className={`${FONT_MAIN} inline-flex items-center justify-center px-5 h-10 rounded-full font-medium text-sm transition-all duration-300 cursor-pointer ${
+                    isActive ? "" : "text-[#264350] hover:opacity-60"
+                  }`}
+                  style={isActive ? { border: `1px solid ${r.numColor}`, color: r.numColor } : undefined}
                 >
-                  <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-[#FEF08A]">
-                    <RoleIcon className="w-5 h-5" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex flex-col uppercase">
-                    <span className="font-['Inter',sans-serif] font-normal text-[11px] tracking-widest text-white/60">
-                      {col.eyebrow}
-                    </span>
-                    <span className="font-['Inter',sans-serif] font-extrabold text-xl tracking-wide text-white leading-tight">
-                      {col.role}
-                    </span>
-                    <span className="font-['Inter',sans-serif] font-normal text-[11px] tracking-widest text-white/60">
-                      {col.sub}
-                    </span>
-                  </div>
-                </div>
+                  {r.label}
+                </button>
+              );
+            })}
+          </div>
 
-                {/* benefit cards — white, interactive, page-consistent */}
-                {col.items.map((item) => (
-                  <div
-                    key={item.title}
-                    className="benefit-card-item flex-1 bg-white rounded-2xl p-6 flex flex-col gap-3 border border-[#E9D5FF] shadow-[0_1px_4px_rgba(0,0,0,0.06)] hover:border-[#FACC15] hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-default"
-                  >
-                    <h3 className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-black/55">
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
+          <div key={role.id} className="flex flex-col gap-9 lg:gap-10 min-h-[338px]" style={{ animation: "benefits-fade-in 0.4s ease both" }}>
+            {role.benefits.map(({ title, desc }, i) => (
+              <div key={title} className="flex items-start gap-5">
+                <span
+                  className={`${FONT_MAIN} font-medium text-4xl lg:text-5xl leading-none shrink-0`}
+                  style={{ color: role.numColor }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex flex-col gap-1.5 pt-1">
+                  <h3 className={`${FONT_MAIN} font-semibold text-base`} style={{ color: C.ink }}>
+                    {title}
+                  </h3>
+                  <p className={`${FONT_MAIN} font-light text-xs leading-relaxed`} style={{ color: C.bodyText }}>
+                    {desc}
+                  </p>
+                </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -810,42 +881,176 @@ function BenefitsSection() {
 }
 
 function WhoForSection() {
-  return (
-    <section id="kinek-valo" className="w-full py-20 lg:py-24" style={{ backgroundColor: "#F3F3F4" }}>
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col gap-12">
+  const N = WHO_FOR.length;
+  const PER_VIEW = 3;
+  const [first, setFirst] = useState(0);
+  const [dir, setDir] = useState<1 | -1>(1);
+  const maxFirst = N - PER_VIEW;
+  function go(delta: 1 | -1) {
+    setDir(delta);
+    const positions = maxFirst + 1;
+    setFirst((v) => (v + delta + positions) % positions);
+  }
 
-        {/* header — eyebrow pill + headline */}
-        <div className="flex flex-col items-start gap-5">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={eyebrowLight}>
-            Kinek való az <span className="normal-case">eaisyBoost</span>?
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-black tracking-tight leading-tight max-w-[720px]">
-            Ahol a marketingnek működnie kell — nagy csapat nélkül is
-          </h2>
+  function WhoCard({ item, index }: { item: (typeof WHO_FOR)[number]; index: number }) {
+    return (
+      <div
+        className="group relative flex-1 rounded-[24px] px-8 py-10 flex flex-col items-center text-center gap-5 bg-white overflow-hidden border transition-all duration-500 hover:shadow-xl"
+        style={{ borderColor: "rgba(126,34,206,0.3)" }}
+      >
+        {/* dark layer fades in on hover */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+          style={{ background: "#7E22CE" }}
+        />
+        <span className="relative w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-colors duration-500 bg-[#C9A6EA] group-hover:bg-[#2E0850]">
+          <span className={`${FONT_MAIN} font-semibold text-base text-white`}>{index}</span>
+        </span>
+        <h3
+          className={`${FONT_MAIN} relative font-semibold text-xl leading-snug text-[#264350] group-hover:text-white transition-colors duration-500`}
+        >
+          {item.title}
+        </h3>
+        <p
+          className={`${FONT_MAIN} relative font-light text-sm leading-relaxed transition-colors duration-500 text-[#264350]/80 group-hover:text-white/85`}
+        >
+          {item.desc}
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <section id="kinek-valo" className="relative w-full bg-white py-16 lg:py-20 overflow-hidden">
+      <style>{`
+        @keyframes who-slide-right { from { opacity: 0; transform: translateX(56px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes who-slide-left { from { opacity: 0; transform: translateX(-56px); } to { opacity: 1; transform: translateX(0); } }
+      `}</style>
+      {/* faint accent halo on the right side */}
+      <div
+        className="absolute left-[84%] top-[35%] w-[560px] h-[560px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2"
+        style={{ background: "radial-gradient(circle, rgba(126,34,206,0.10), transparent 70%)" }}
+      />
+
+      <div className={`relative ${INNER_CARDS} flex flex-col`}>
+        <SectionHeader
+          eyebrow="Kinek való?"
+          eyebrowColor={C.main}
+          title="Kik számára jelent megoldást az eaisyBoost?"
+          subtitle="Ahol a marketingnek működnie kell — nagy csapat nélkül is"
+          titleClass="text-4xl lg:text-[40px]"
+        />
+
+        {/* desktop: 3-card carousel, hover-highlighted cards */}
+        <div
+          key={first}
+          className="mt-12 lg:mt-16 hidden lg:flex items-stretch gap-6"
+          style={{ animation: `${dir === 1 ? "who-slide-right" : "who-slide-left"} 0.45s cubic-bezier(0.22,1,0.36,1) both` }}
+        >
+          {WHO_FOR.slice(first, first + PER_VIEW).map((item, i) => (
+            <WhoCard key={item.title} item={item} index={first + i + 1} />
+          ))}
         </div>
 
-        {/* 5 interactive cards — 3 + centered 2 on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 items-stretch">
-          {WHO_FOR.map((w, i) => {
-            const Icon = w.icon;
+        {/* mobile: stacked list (light cards) */}
+        <div className="mt-12 flex flex-col gap-5 lg:hidden">
+          {WHO_FOR.map((item, i) => (
+            <WhoCard key={item.title} item={item} index={i + 1} />
+          ))}
+        </div>
+
+        {/* chevron paging */}
+        <div className="mt-10 hidden lg:flex items-center justify-center gap-4">
+          <button
+            onClick={() => go(-1)}
+            aria-label="Előző helyzetek"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#7E22CE]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(126,34,206,0.5)" }}
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
+          <button
+            onClick={() => go(1)}
+            aria-label="Következő helyzetek"
+            className="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:bg-[#7E22CE]/10 disabled:opacity-30 disabled:pointer-events-none"
+            style={{ border: "1px solid rgba(126,34,206,0.5)" }}
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.75} style={{ color: C.main }} />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FaqSection() {
+  // accordion — only one question open at a time; opening another auto-closes the previous
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <section id="gyik" className="relative w-full bg-white py-16 lg:py-20 overflow-hidden">
+      {/* faint purple halo behind the left text */}
+      <div
+        className="absolute left-[12%] top-[10%] w-[520px] h-[520px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(126,34,206,0.10), transparent 70%)" }}
+      />
+
+      <div className={`relative ${INNER_CARDS} flex flex-col lg:flex-row gap-12 lg:gap-16`}>
+        {/* left: eyebrow, title, subtitle */}
+        <div className="flex flex-col gap-6 lg:w-[38%]">
+          <SectionEyebrow color={C.main}>GYIK</SectionEyebrow>
+          <h2
+            className={`${FONT_MAIN} font-medium text-4xl lg:text-[40px] leading-tight tracking-tight`}
+            style={{ color: C.ink }}
+          >
+            Kérdések, amiket fel
+            <br className="hidden lg:block" />
+            szoktak <span style={{ color: C.main }}>tenni</span>
+          </h2>
+          <p className={`${FONT_MAIN} font-light text-lg leading-relaxed`} style={{ color: C.ink }}>
+            Válaszok a leggyakrabban felmerülő kérdésekre — a sablonoktól és a publikálástól a
+            kampányokig és az árazásig.
+          </p>
+        </div>
+
+        {/* right: single-column accordion */}
+        <div className="flex-1 flex flex-col">
+          {FAQS.map((f, i) => {
+            const open = openIndex === i;
             return (
-              <div
-                key={w.title}
-                className={`lg:col-span-2 ${i === 3 ? "lg:col-start-2" : ""} bg-white rounded-2xl p-6 flex flex-col gap-5 border border-black/5 shadow-sm hover:-translate-y-1 hover:shadow-md hover:border-[#D8B4FE] transition-all duration-300 group cursor-pointer h-full`}
-              >
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300"
-                  style={{ backgroundColor: C.dark }}
+              <div key={f.q} className="border-b border-black/10">
+                <button
+                  onClick={() => setOpenIndex(open ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 py-6 text-left group"
                 >
-                  <Icon className="w-5 h-5" strokeWidth={1.5} style={{ color: C.yellow }} />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">
-                    {w.title}
-                  </h3>
-                  <p className="font-['Inter',sans-serif] font-normal text-sm leading-relaxed text-black/55">
-                    {w.desc}
-                  </p>
+                  <span className={`${FONT_MAIN} font-medium text-lg leading-snug`} style={{ color: C.ink }}>
+                    {f.q}
+                  </span>
+                  <span
+                    className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+                    style={
+                      open
+                        ? { border: `1px solid ${C.main}`, color: C.main }
+                        : { border: "1px solid rgba(0,0,0,0.25)", color: "rgba(0,0,0,0.45)" }
+                    }
+                  >
+                    {open ? (
+                      <Minus className="w-4 h-4" strokeWidth={2} />
+                    ) : (
+                      <Plus className="w-4 h-4" strokeWidth={2} />
+                    )}
+                  </span>
+                </button>
+                {/* smooth height animation via grid-rows */}
+                <div
+                  className="grid transition-all duration-300 ease-in-out"
+                  style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
+                >
+                  <div className="overflow-hidden">
+                    <p className={`${FONT_MAIN} pb-6 font-light text-sm leading-relaxed`} style={{ color: C.bodyText }}>
+                      {f.a}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
@@ -856,117 +1061,83 @@ function WhoForSection() {
   );
 }
 
-function FaqItem({ q, a, open, onToggle }: { q: string; a: string; open: boolean; onToggle: () => void }) {
-  return (
-    <div
-      className="bg-white rounded-2xl px-6 py-5 cursor-pointer border border-black/5 shadow-[0_1px_4px_rgba(0,0,0,0.05)] hover:border-[#D8B4FE] transition-all duration-300"
-      onClick={onToggle}
-    >
-      <div className="flex items-center justify-between gap-4">
-        <p className="font-['Inter',sans-serif] font-semibold text-lg text-black tracking-tight leading-tight">{q}</p>
-        <div
-          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0"
-          style={{ backgroundColor: C.lightBg }}
-        >
-          <ChevronDown
-            className="w-4 h-4 transition-transform"
-            style={{ color: C.main, transform: open ? "rotate(180deg)" : "none" }}
-          />
-        </div>
-      </div>
-      {open && (
-        <p className="font-['Inter',sans-serif] font-normal text-sm pt-3 leading-relaxed" style={{ color: C.bodyText }}>
-          {a}
-        </p>
-      )}
-    </div>
-  );
-}
-
-function FaqSection() {
-  // accordion — only one question open at a time
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  return (
-    <section id="gyik" className="w-full bg-white py-20 lg:py-24">
-      <div className="w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0">
-        {/* light purple rounded rectangle backdrop */}
-        <div
-          className="rounded-[32px] px-6 py-10 lg:px-12 lg:py-14 flex flex-col gap-10"
-          style={{ backgroundColor: "rgba(250,245,255,0.8)" }}
-        >
-          <div className="flex flex-col gap-5">
-            <div className="inline-block self-start rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={eyebrowLight}>
-              GYIK
-            </div>
-            <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-black tracking-tight leading-tight">
-              Kérdések, amiket fel szoktak tenni
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-            {FAQS.map((f, i) => (
-              <FaqItem key={f.q} q={f.q} a={f.a} open={openIndex === i} onToggle={() => setOpenIndex(openIndex === i ? null : i)} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+// closing dark purple band with demo offer — continues into the footer
+const BOOST_DEMO_STEPS = [
+  "Bemutatjuk, hogyan készít az eaisyBoost márkaazonos posztokat és tartalomnaptárat",
+  "Megmutatjuk a Quick Post funkciót és a jóváhagyási folyamatot",
+  "Átnézzük az e-mail kampányok tervezését, küldését és mérését",
+  "Felteheted a kérdéseidet",
+  "Megbeszéljük a bevezetés menetét és a személyre szabott árazást",
+];
 
 function CtaSection() {
   return (
-    <section id="demo" className="w-full py-28 lg:py-36 relative overflow-hidden">
-      {/* Background photo + dark purple overlay — same as the Funkciók section */}
-      <img
-        src={imgFeaturesBg}
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(160deg, rgba(59,7,100,0.94) 0%, rgba(88,28,135,0.88) 55%, rgba(126,34,206,0.90) 135%)" }}
-      />
-
-      <div className="relative z-10 w-full max-w-[1376px] mx-auto px-6 lg:px-10 2xl:px-0 flex flex-col lg:flex-row gap-12 items-start">
-        <div className="flex-1 flex flex-col gap-6">
-          <div className="inline-block self-start rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase font-['Inter',sans-serif]" style={eyebrowDark}>
-            Következő lépés
-          </div>
-          <h2 className="font-['Inter',sans-serif] font-bold text-3xl lg:text-4xl text-white tracking-tight leading-tight">
-            Nézd meg működés közben!
-          </h2>
-          <p className="font-['Inter',sans-serif] font-normal text-base leading-relaxed text-white/65 max-w-md">
-            Kérj demót, és megmutatjuk, hogyan segít az eaisyBoost gyorsabban elkészíteni, egységesen kezelni és egyszerűbben publikálni az e-mailes és social tartalmaidat — egyetlen, AI-támogatott platformon.
-          </p>
-          <button
-            onClick={openDemoModal}
-            className="self-start px-8 py-3.5 rounded-full font-['Inter',sans-serif] font-extrabold text-sm tracking-widest hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: C.yellow, color: C.dark }}
-          >
-            KÉRJ DEMÓT
-          </button>
-          <p className="font-['Inter',sans-serif] font-medium text-xs" style={{ color: C.yellowLight }}>
-            eaisyBoost — AI-támogatott marketingplatform, amely összefogja<br />
-            a tartalomkészítést, a kampányokat és a márkád következetes megjelenését.
-          </p>
-        </div>
-
-        <div className="flex-1 flex flex-col gap-5">
-          <p className="font-['Inter',sans-serif] font-bold text-2xl text-white">
-            Kinek érdemes demót kérnie?
-          </p>
-          <div className="flex flex-col gap-2">
-            {WHO_SHOULD.map((w) => (
-              <div
-                key={w}
-                className="inline-flex items-center px-4 py-2 rounded-full w-fit"
-                style={{ border: `1.5px solid ${C.yellow}` }}
+    <section id="demo" className="w-full pt-16 lg:pt-20 pb-16 lg:pb-20" style={{ backgroundColor: C.dark }}>
+      <div className={INNER_CARDS}>
+        <div
+          className="relative overflow-hidden rounded-[28px] px-8 py-12 lg:px-16 lg:py-14"
+          style={{ border: "1px solid rgba(216,180,254,0.35)" }}
+        >
+          <div className="relative flex flex-col lg:flex-row gap-12 lg:gap-16">
+            {/* left: demo offer */}
+            <div className="flex flex-col items-start gap-6 lg:w-[55%]">
+              <SectionEyebrow color={C.accent}>Következő lépés</SectionEyebrow>
+              <h2
+                className={`${FONT_MAIN} font-medium text-4xl lg:text-[44px] leading-[1.15] tracking-tight`}
+                style={{ color: C.accent }}
               >
-                <span className="font-['Inter',sans-serif] font-medium text-sm" style={{ color: C.yellowLight }}>{w}</span>
+                Nézd meg működés közben!
+              </h2>
+              <p className={`${FONT_MAIN} font-light text-base leading-relaxed text-white/80`}>
+                Kérj demót, és megmutatjuk, hogyan segít az eaisyBoost gyorsabban elkészíteni,
+                egységesen kezelni és egyszerűbben publikálni az e-mailes és social tartalmaidat —
+                egyetlen, AI-támogatott platformon.
+              </p>
+              <p className={`${FONT_MAIN} font-medium text-sm text-white/90 mt-2`}>
+                Mi történik a demó során?
+              </p>
+              <ul className="flex flex-col gap-2.5">
+                {BOOST_DEMO_STEPS.map((step) => (
+                  <li key={step} className="flex items-start gap-3">
+                    <span className="w-[5px] h-[5px] rounded-full mt-[7px] shrink-0" style={{ backgroundColor: C.accent }} />
+                    <span className={`${FONT_MAIN} font-light text-sm leading-relaxed text-white/75`}>
+                      {step}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className={`${FONT_MAIN} font-medium text-sm leading-relaxed text-white mt-2`}>
+                eaisyBoost — AI-támogatott marketingplatform, amely összefogja a tartalomkészítést, a
+                kampányokat és a márkád következetes megjelenését.
+              </p>
+            </div>
+
+            {/* right: who should check it out + CTA */}
+            <div className="flex flex-col items-start gap-7 lg:flex-1 lg:pt-14">
+              <h3 className={`${FONT_MAIN} font-medium text-2xl lg:text-[28px] leading-snug text-white`}>
+                Kinek érdemes
+                <br />
+                megnéznie?
+              </h3>
+              <div className="flex flex-col items-start gap-3">
+                {WHO_SHOULD.map((reason) => (
+                  <span
+                    key={reason}
+                    className={`${FONT_MAIN} inline-flex items-center px-5 py-2.5 rounded-full font-light text-[13px] text-white/90`}
+                    style={{ border: "1px solid rgba(216,180,254,0.45)" }}
+                  >
+                    {reason}
+                  </span>
+                ))}
               </div>
-            ))}
+              <button
+                onClick={openDemoModal}
+                className={`${FONT_MAIN} mt-2 inline-flex items-center justify-center px-9 h-[54px] rounded-full font-medium text-sm tracking-wider transition-opacity hover:opacity-90`}
+                style={{ backgroundColor: C.yellow, color: C.dark }}
+              >
+                KÉRJ DEMOT
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1034,6 +1205,7 @@ export default function EaisyBoost() {
       <Hero />
       <ProblemsSection />
       <SolutionSection />
+      <DemoCtaStrip />
       <FeaturesSection />
       <BenefitsSection />
       <WhoForSection />
