@@ -13,6 +13,7 @@
     { "source": "/eaisy-bill/adatkezelesi-tajekoztato", "destination": "/adatkezelesi-tajekoztato", "permanent": false }
   ],
   "rewrites": [
+    { "source": "/tudasbazis/:path*", "destination": "/index.html" },
     { "source": "/((?!api/|assets/|kb/|favicon|og-image|apple-touch-icon|robots.txt|sitemap.xml|eaisy-bill|eaisy-desk|eaisy-boost|eaisy-books|privacy|eaisydesk|aszf|adatkezelesi-tajekoztato).*)", "destination": "/index.html" }
   ],
   "headers": [

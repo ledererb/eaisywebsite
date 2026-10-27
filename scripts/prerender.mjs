@@ -34,7 +34,39 @@ async function launchBrowser() {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(__dirname, "../dist");
 
-const ROUTES = ["/", "/eaisy-bill", "/aszf", "/adatkezelesi-tajekoztato", "/eaisy-desk", "/eaisy-boost", "/eaisy-books", "/tudasbazis", "/tudasbazis/eaisy-desk", "/tudasbazis/eaisy-bill", "/tudasbazis/eaisy-books", "/tudasbazis/eaisy-boost", "/privacy", "/eaisydesk/privacy"];
+const ROUTES = [
+  "/",
+  "/eaisy-bill",
+  "/aszf",
+  "/adatkezelesi-tajekoztato",
+  "/eaisy-desk",
+  "/eaisy-boost",
+  "/eaisy-books",
+  "/tudasbazis",
+  "/tudasbazis/eaisy-desk",
+  "/tudasbazis/eaisy-desk/bejelentkezes-navigacio-jogosultsagok",
+  "/tudasbazis/eaisy-desk/munkatarsi-dashboard-napi-teendok",
+  "/tudasbazis/eaisy-desk/vezetoi-analitika-es-riportok",
+  "/tudasbazis/eaisy-desk/interakcios-naplo-es-ai-piszkozatok",
+  "/tudasbazis/eaisy-desk/ugyfelek-360-profil-es-duplikaciok",
+  "/tudasbazis/eaisy-desk/erdeklodokezeles-kanban-folyamat",
+  "/tudasbazis/eaisy-desk/naptar-es-idopontfoglalasok",
+  "/tudasbazis/eaisy-desk/kimeno-kampanyok-es-ai-szovegvarazslo",
+  "/tudasbazis/eaisy-desk/automatikus-ertesitesek-idopont-emailek",
+  "/tudasbazis/eaisy-desk/ai-tudastar-ceg-es-szolgaltatasinformaciok",
+  "/tudasbazis/eaisy-desk/ugykezelesi-es-foglalasi-szabalyok",
+  "/tudasbazis/eaisy-desk/rendszerbeallitasok-csapat-biztonsag-telefonia",
+  "/tudasbazis/eaisy-bill",
+  "/tudasbazis/eaisy-bill/szamlakiallitas-dijbekero-es-nav-szinkron",
+  "/tudasbazis/eaisy-bill/ismetlodo-szamlazas-es-fizetesi-emlekeztetok",
+  "/tudasbazis/eaisy-books",
+  "/tudasbazis/eaisy-books/bejovo-szamlak-ai-ocr-es-koltsegkategorizalas",
+  "/tudasbazis/eaisy-books/cash-flow-es-afa-elorejelzes",
+  "/tudasbazis/eaisy-boost",
+  "/tudasbazis/eaisy-boost/ai-tartalomnaptar-es-hirdetesoptimalizalas",
+  "/privacy",
+  "/eaisydesk/privacy",
+];
 
 const MIME = {
   ".html": "text/html; charset=utf-8",
