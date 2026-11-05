@@ -14,7 +14,7 @@
   ],
   "rewrites": [
     { "source": "/tudasbazis/:path*", "destination": "/index.html" },
-    { "source": "/((?!api/|assets/|kb/|favicon|og-image|apple-touch-icon|robots.txt|sitemap.xml|eaisy-bill|eaisy-desk|eaisy-boost|eaisy-books|eaisy-docs|privacy|eaisydesk|aszf|adatkezelesi-tajekoztato).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|assets/|kb/|favicon|og-image|apple-touch-icon|robots.txt|sitemap.xml|eaisy-bill|eaisy-desk|eaisy-boost|eaisy-books|eaisy-docs|eaisy-hr|privacy|eaisydesk|aszf|adatkezelesi-tajekoztato).*)", "destination": "/index.html" }
   ],
   "headers": [
     {

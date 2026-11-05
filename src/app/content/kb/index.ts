@@ -1,6 +1,7 @@
 import type { ProductKnowledgeBase, KbArticle } from "./types";
 import { eaisyDeskKb } from "./eaisy-desk";
 import { eaisyDocsKb } from "./eaisy-docs";
+import { eaisyHrKb } from "./eaisy-hr";
 
 export const eaisyBillKb: ProductKnowledgeBase = {
   slug: "eaisy-bill",
@@ -352,6 +353,7 @@ export const eaisyBoostKb: ProductKnowledgeBase = {
 export const KNOWLEDGE_BASES: ProductKnowledgeBase[] = [
   eaisyDeskKb,
   eaisyDocsKb,
+  eaisyHrKb,
   eaisyBillKb,
   eaisyBooksKb,
   eaisyBoostKb,

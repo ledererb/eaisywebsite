@@ -33,6 +33,7 @@ const products = [
   { name: "eaisyBooks", path: "/eaisy-books", color: "#085D6F", icon: BookOpen, desc: "AI platform könyvelőirodáknak" },
   { name: "eaisyDesk", path: "/eaisy-desk", color: "#186d98", icon: Headphones, desc: "Omnichannel AI ügyfélkommunikáció" },
   { name: "eaisyDocs", path: "/eaisy-docs", color: "#232D7B", icon: FolderOpen, desc: "AI-támogatott iratkezelés és iktatás" },
+  { name: "eaisyHR", path: "/eaisy-hr", color: "#1E7871", icon: Briefcase, desc: "AI-támogatott HR-menedzsment és munkaügy" },
   { name: "eaisyBoost", path: "/eaisy-boost", color: "#701ab7", icon: Megaphone, desc: "Social media és hirdetéskezelés AI-val" },
 ];
 
@@ -47,7 +48,7 @@ const DEMO_PRODUCT_META: Record<string, { icon: typeof FileText; color: string; 
   eaisyBooks: { icon: BookOpen, color: "#085D6F", desc: "AI platform könyvelőirodáknak" },
   eaisyDocs: { icon: FolderOpen, color: "#150f87", desc: "Automatikus iktatás és dokumentumkezelés" },
   eaisyCRM: { icon: Users, color: "#b70071", desc: "Ügyfél- és értékesítéskezelés egy helyen" },
-  eaisyHR: { icon: Briefcase, color: "#c74c71", desc: "AI-támogatott HR-adminisztráció" },
+  eaisyHR: { icon: Briefcase, color: "#1E7871", desc: "AI-támogatott HR-menedzsment és munkaügy" },
 };
 
 function ContactModal({ onClose }: { onClose: () => void }) {
@@ -293,6 +294,13 @@ const PRODUCT_NAV_ITEMS: Record<string, { label: string; href: string }[]> = {
     { label: "Előnyök", href: "#elonyok" },
     { label: "GYIK", href: "#gyik" },
   ],
+  "/eaisy-hr": [
+    { label: "A probléma", href: "#problemak" },
+    { label: "A megoldás", href: "#megoldas" },
+    { label: "Funkciók", href: "#funkciok" },
+    { label: "Előnyök", href: "#elonyok" },
+    { label: "GYIK", href: "#gyik" },
+  ],
 };
 
 const UMBRELLA_NAV_ITEMS = [
@@ -337,6 +345,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
   const isBoostPage = location.pathname === "/eaisy-boost";
   const isBooksPage = location.pathname === "/eaisy-books";
   const isDocsPage = location.pathname === "/eaisy-docs";
+  const isHrPage = location.pathname === "/eaisy-hr";
   // per-product selection color for nav pills (umbrella stays cyan)
   const navAccent = isBoostPage
     ? "#FACC15"
@@ -348,7 +357,9 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
           ? "#EA8767"
           : isDocsPage
             ? "#4353B5"
-            : "#1CEEE0";
+            : isHrPage
+              ? "#4FA9A2"
+              : "#1CEEE0";
   const accentHover = "hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black";
 
   const navLinkCls = (href: string) =>
@@ -360,7 +371,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
   const homeIconCls = isBoostPage
     ? "border-black/25 text-black/45 hover:bg-[#FACC15] hover:text-[#3B0764] hover:border-[#3B0764]"
     : `${
-        isBooksPage ? "hover:bg-[#E58F0E]" : isDeskPage ? "hover:bg-[#C43284]" : isDocsPage ? "hover:bg-[#232D7B]" : "hover:bg-[#EA8767]"
+        isBooksPage ? "hover:bg-[#E58F0E]" : isDeskPage ? "hover:bg-[#C43284]" : isDocsPage ? "hover:bg-[#232D7B]" : isHrPage ? "hover:bg-[#1E7871]" : "hover:bg-[#EA8767]"
       } border-black/25 text-black/45 hover:text-white hover:border-white`;
 
   useEffect(() => {
@@ -607,6 +618,7 @@ const FOOTER_PRODUCTS = [
   { name: "eaisyBooks", desc: "Könyvelés", path: "/eaisy-books" },
   { name: "eaisyDesk", desc: "Ügyfélkommunikáció", path: "/eaisy-desk" },
   { name: "eaisyDocs", desc: "Dokumentumkezelés és iktatás", path: "/eaisy-docs" },
+  { name: "eaisyHR", desc: "HR-menedzsment és munkaügy", path: "/eaisy-hr" },
   { name: "eaisyBoost", desc: "Közösségi média kezelés", path: "/eaisy-boost" },
 ];
 
@@ -645,6 +657,12 @@ const DOCS_FOOTER_DOCS = [
   { label: "eaisyDocs Tudásbázis", path: "/tudasbazis/eaisy-docs" },
   { label: "eaisyDocs ÁSZF", path: ASZF_PATH },
   { label: "eaisyDocs Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
+];
+
+const HR_FOOTER_DOCS = [
+  { label: "eaisyHR Tudásbázis", path: "/tudasbazis/eaisy-hr" },
+  { label: "eaisyHR ÁSZF", path: ASZF_PATH },
+  { label: "eaisyHR Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
 ];
 
 const HOME_FOOTER_DOCS = [
@@ -768,6 +786,7 @@ const PRODUCT_FOOTERS: Record<string, { bg: string; accent?: string; id?: string
   "/eaisy-books": { bg: "#0F2931", docs: BOOKS_FOOTER_DOCS },
   "/eaisy-desk": { bg: "#102330", docs: DESK_FOOTER_DOCS },
   "/eaisy-docs": { bg: "#0C1033", accent: "#7DD3FC", docs: DOCS_FOOTER_DOCS },
+  "/eaisy-hr": { bg: "#092C2A", accent: "#98DBD5", docs: HR_FOOTER_DOCS },
   "/eaisy-boost": { bg: "#3B0764", accent: "#D8B4FE", docs: BOOST_FOOTER_DOCS },
   "/": { bg: "#10333A", accent: "#22C5C8", id: "kapcsolat", docs: HOME_FOOTER_DOCS },
 };

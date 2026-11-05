@@ -492,7 +492,7 @@ export function KnowledgeBaseProduct() {
                     )}
                     {activeArticle.roles.includes("member") && (
                       <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11.5px] font-semibold text-emerald-700">
-                        <Users className="w-3 h-3" /> Munkatárs (Recepciós)
+                        <Users className="w-3 h-3" /> {product.slug === "eaisy-desk" ? "Munkatárs (Recepciós)" : "Munkatárs"}
                       </span>
                     )}
                     <span className="inline-flex items-center gap-1 text-[12px] text-gray-400 ml-auto">
@@ -525,7 +525,7 @@ export function KnowledgeBaseProduct() {
                   </div>
 
                   {/* Quick Jump Table of Contents */}
-                  {activeArticle.sections.length > 1 && (
+                  {(activeArticle.sections?.length ?? 0) > 1 && (
                     <div className="mt-6 pt-5 border-t border-gray-100">
                       <div className="text-[11px] font-bold uppercase tracking-[0.08em] text-gray-400 mb-2.5">
                         Tartalomjegyzék ebben a fejezetben
@@ -636,7 +636,7 @@ export function KnowledgeBaseProduct() {
                   )}
 
                 {/* Detailed Sections */}
-                {activeArticle.sections.map((section) => (
+                {(activeArticle.sections ?? []).map((section) => (
                   <section
                     key={section.id}
                     id={section.id}
