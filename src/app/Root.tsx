@@ -32,6 +32,7 @@ const products = [
   { name: "eaisyBill", path: "/eaisy-bill", color: "#05512a", icon: FileText, desc: "AI-támogatott pénzügyi és kontrolling platform" },
   { name: "eaisyBooks", path: "/eaisy-books", color: "#085D6F", icon: BookOpen, desc: "AI platform könyvelőirodáknak" },
   { name: "eaisyDesk", path: "/eaisy-desk", color: "#186d98", icon: Headphones, desc: "Omnichannel AI ügyfélkommunikáció" },
+  { name: "eaisyDocs", path: "/eaisy-docs", color: "#232D7B", icon: FolderOpen, desc: "AI-támogatott iratkezelés és iktatás" },
   { name: "eaisyBoost", path: "/eaisy-boost", color: "#701ab7", icon: Megaphone, desc: "Social media és hirdetéskezelés AI-val" },
 ];
 
@@ -285,6 +286,13 @@ const PRODUCT_NAV_ITEMS: Record<string, { label: string; href: string }[]> = {
     { label: "Előnyök", href: "#elonyok" },
     { label: "GYIK", href: "#gyik" },
   ],
+  "/eaisy-docs": [
+    { label: "A probléma", href: "#problemak" },
+    { label: "A megoldás", href: "#megoldas" },
+    { label: "Funkciók", href: "#funkciok" },
+    { label: "Előnyök", href: "#elonyok" },
+    { label: "GYIK", href: "#gyik" },
+  ],
 };
 
 const UMBRELLA_NAV_ITEMS = [
@@ -328,6 +336,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
   const isDeskPage = location.pathname === "/eaisy-desk";
   const isBoostPage = location.pathname === "/eaisy-boost";
   const isBooksPage = location.pathname === "/eaisy-books";
+  const isDocsPage = location.pathname === "/eaisy-docs";
   // per-product selection color for nav pills (umbrella stays cyan)
   const navAccent = isBoostPage
     ? "#FACC15"
@@ -337,7 +346,9 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
         ? "#3F97AA"
         : isBillPage
           ? "#EA8767"
-          : "#1CEEE0";
+          : isDocsPage
+            ? "#4353B5"
+            : "#1CEEE0";
   const accentHover = "hover:bg-[#1CEEE0]/20 hover:border-[#1CEEE0] hover:text-black";
 
   const navLinkCls = (href: string) =>
@@ -349,7 +360,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
   const homeIconCls = isBoostPage
     ? "border-black/25 text-black/45 hover:bg-[#FACC15] hover:text-[#3B0764] hover:border-[#3B0764]"
     : `${
-        isBooksPage ? "hover:bg-[#E58F0E]" : isDeskPage ? "hover:bg-[#C43284]" : "hover:bg-[#EA8767]"
+        isBooksPage ? "hover:bg-[#E58F0E]" : isDeskPage ? "hover:bg-[#C43284]" : isDocsPage ? "hover:bg-[#232D7B]" : "hover:bg-[#EA8767]"
       } border-black/25 text-black/45 hover:text-white hover:border-white`;
 
   useEffect(() => {
@@ -595,6 +606,7 @@ const FOOTER_PRODUCTS = [
   { name: "eaisyBill", desc: "Pénzügy és kontrolling", path: "/eaisy-bill" },
   { name: "eaisyBooks", desc: "Könyvelés", path: "/eaisy-books" },
   { name: "eaisyDesk", desc: "Ügyfélkommunikáció", path: "/eaisy-desk" },
+  { name: "eaisyDocs", desc: "Dokumentumkezelés és iktatás", path: "/eaisy-docs" },
   { name: "eaisyBoost", desc: "Közösségi média kezelés", path: "/eaisy-boost" },
 ];
 
@@ -629,6 +641,12 @@ const BOOST_FOOTER_DOCS = [
 ];
 
 // home (umbrella) documentation
+const DOCS_FOOTER_DOCS = [
+  { label: "eaisyDocs Tudásbázis", path: "/tudasbazis/eaisy-docs" },
+  { label: "eaisyDocs ÁSZF", path: ASZF_PATH },
+  { label: "eaisyDocs Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
+];
+
 const HOME_FOOTER_DOCS = [
   { label: "eaisy Tudásbázis", path: "/tudasbazis" },
   { label: "eaisy ÁSZF", path: ASZF_PATH },
@@ -749,6 +767,7 @@ const PRODUCT_FOOTERS: Record<string, { bg: string; accent?: string; id?: string
   "/eaisy-bill": { bg: "#102C31", docs: BILL_FOOTER_DOCS },
   "/eaisy-books": { bg: "#0F2931", docs: BOOKS_FOOTER_DOCS },
   "/eaisy-desk": { bg: "#102330", docs: DESK_FOOTER_DOCS },
+  "/eaisy-docs": { bg: "#0C1033", accent: "#7DD3FC", docs: DOCS_FOOTER_DOCS },
   "/eaisy-boost": { bg: "#3B0764", accent: "#D8B4FE", docs: BOOST_FOOTER_DOCS },
   "/": { bg: "#10333A", accent: "#22C5C8", id: "kapcsolat", docs: HOME_FOOTER_DOCS },
 };

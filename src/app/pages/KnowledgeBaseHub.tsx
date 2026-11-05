@@ -17,7 +17,7 @@ import { KNOWLEDGE_BASES, searchAllKnowledgeBases } from "../content/kb";
 
 const UPCOMING_PRODUCTS = [
   { name: "eaisyCRM", desc: "Értékesítési csővezeték és ügyfélkapcsolat-kezelés", accent: "#FFB224" },
-  { name: "eaisyDocs", desc: "AI-alapú szerződés- és dokumentumkezelés", accent: "#623CEA" },
+
   { name: "eaisyHR", desc: "Szabadságolás, jelenléti ív és csapatmenedzsment", accent: "#FF5C5C" },
   { name: "eaisyWork", desc: "Projekt-, feladat- és munkaidő-nyilvántartás", accent: "#00C4B4" },
 ];
@@ -51,7 +51,7 @@ export function KnowledgeBaseHub() {
     <div className="min-h-screen bg-[#F9FAFB] font-['Inter',sans-serif] text-[#111827]">
       <Seo
         title="Tudásbázis & Dokumentáció — eaisy Szoftvercsalád"
-        description="Részletes, képernyőképekkel illusztrált magyar nyelvű útmutatók az eaisyDesk, eaisyBill, eaisyBooks és eaisyBoost szoftverek minden funkciójához."
+        description="Részletes, képernyőképekkel illusztrált magyar nyelvű útmutatók az eaisyDesk, eaisyDocs, eaisyBill, eaisyBooks és eaisyBoost szoftverek minden funkciójához."
         path="/tudasbazis"
       />
 
