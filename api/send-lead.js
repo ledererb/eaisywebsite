@@ -1,9 +1,17 @@
 /**
  * POST /api/send-lead
  * Body: { nev: string, telefon?: string, email?: string, products: string[] }
- * Sends the demo-request form data to hello@thinkai.hu via Brevo transactional email.
- * Requires the BREVO_API_KEY environment variable (set in Vercel project settings).
+ * Közvetlen JSON beküldés az eaisyCRM felhős Supabase adatbázisába
+ * (public.submit_eaisy_demo_request RPC vagy opcionális EAISY_CRM_API_URL),
+ * ahol automatikusan létrejön az Érdeklődő, az Ügylet (a Cikktörzs szoftverekkel összepárosítva)
+ * és a szabad rablású visszahívási feladat.
  */
+
+const DEFAULT_SUPABASE_URL = "https://xrzolwuwzuadgzwofoza.supabase.co";
+const DEFAULT_SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhyem9sd3V3enVhZGd6d29mb3phIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3NzE2OTksImV4cCI6MjEwMzM0NzY5OX0.WyM-64lfKICgOLMvl5yVKC5TgLDvS39utOEUk-kHvGs";
+const DEFAULT_ORG_ID = "00000000-0000-0000-0000-000000000001";
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -15,48 +23,120 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "A név megadása kötelező." });
   }
   if (!telefon && !email) {
-    return res.status(400).json({ error: "Adj meg legalább egy elérhetőséget (telefon vagy e-mail)." });
+    return res
+      .status(400)
+      .json({ error: "Adj meg legalább egy elérhetőséget (telefon vagy e-mail)." });
   }
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim())) {
     return res.status(400).json({ error: "Érvénytelen e-mail cím." });
   }
 
-  const esc = (s) =>
-    String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const cleanName = nev.trim();
+  const cleanPhone = telefon ? String(telefon).trim() : "";
+  const cleanEmail = email ? String(email).trim() : "";
+  const cleanProducts = Array.isArray(products)
+    ? products.map((p) => String(p ?? "").trim()).filter(Boolean)
+    : [];
 
-  const productList = Array.isArray(products) && products.length > 0 ? products.join(", ") : "—";
+  const organizationId = (process.env.EAISY_CRM_ORG_ID || DEFAULT_ORG_ID).trim();
+  const customCrmApiUrl = (process.env.EAISY_CRM_API_URL || "").trim().replace(/\/+$/, "");
 
-  const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
-    method: "POST",
-    headers: {
-      "api-key": process.env.BREVO_API_KEY ?? "",
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      sender: { name: "eaisy.hu – Űrlap", email: "lead@thinkai.hu" },
-      to: [{ email: "hello@thinkai.hu", name: "eaisy" }],
-      replyTo: email ? { email: esc(email), name: esc(nev) } : undefined,
-      subject: `Új demókérés – ${nev.trim()}`,
-      htmlContent: `
-        <div style="font-family: Arial, sans-serif; max-width: 560px;">
-          <h2 style="margin: 0 0 16px;">Új demókérés érkezett az eaisy.hu oldalról</h2>
-          <table style="border-collapse: collapse; width: 100%;">
-            <tr><td style="padding: 8px 12px; background: #f5f5f5; font-weight: bold; width: 140px;">Név</td><td style="padding: 8px 12px;">${esc(nev)}</td></tr>
-            <tr><td style="padding: 8px 12px; background: #f5f5f5; font-weight: bold;">Telefon</td><td style="padding: 8px 12px;">${esc(telefon) || "—"}</td></tr>
-            <tr><td style="padding: 8px 12px; background: #f5f5f5; font-weight: bold;">E-mail</td><td style="padding: 8px 12px;">${esc(email) || "—"}</td></tr>
-            <tr><td style="padding: 8px 12px; background: #f5f5f5; font-weight: bold;">Érdeklődés</td><td style="padding: 8px 12px;">${esc(productList)}</td></tr>
-          </table>
-          <p style="color: #888; font-size: 12px; margin-top: 16px;">Küldve az eaisy.hu demókérő űrlapról.</p>
-        </div>`,
-    }),
-  });
+  // 1. Ha kifejezetten meg van adva egy egyedi EAISY_CRM_API_URL, először azon próbálkozunk
+  if (customCrmApiUrl) {
+    try {
+      const headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      };
+      const webhookSecret = (process.env.EAISY_CRM_WEBHOOK_SECRET || "").trim();
+      if (webhookSecret) {
+        headers["x-webhook-secret"] = webhookSecret;
+      }
 
-  if (!brevoRes.ok) {
-    const detail = await brevoRes.text();
-    console.error("Brevo error:", brevoRes.status, detail);
-    return res.status(502).json({ error: "Az e-mail küldése nem sikerült. Próbáld újra később." });
+      const crmRes = await fetch(`${customCrmApiUrl}/api/public/leads`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          organization_id: organizationId,
+          nev: cleanName,
+          telefon: cleanPhone,
+          email: cleanEmail,
+          products: cleanProducts,
+        }),
+      });
+
+      const data = await crmRes.json().catch(() => ({}));
+      if (crmRes.ok) {
+        return res.status(200).json({
+          ok: true,
+          flow_id: data.flow_id,
+          client_id: data.client_id,
+          matched_products: data.matched_products,
+        });
+      }
+      console.warn("[send-lead] Custom CRM API returned non-OK, falling back to Supabase RPC:", crmRes.status);
+    } catch (err) {
+      console.warn("[send-lead] Custom CRM API unreachable, falling back to Supabase RPC:", err?.message);
+    }
   }
 
-  return res.status(200).json({ ok: true });
+  // 2. Közvetlen írás a felhős Supabase adatbázisba (public.submit_eaisy_demo_request RPC)
+  // Így akkor is azonnal megjelenik a lokálisan futtatott eaisyCRM-ben, ha az eaisyCRM nincs Vercelre pusholva.
+  const supabaseUrl = (
+    process.env.EAISY_SUPABASE_URL ||
+    process.env.VITE_SUPABASE_URL ||
+    DEFAULT_SUPABASE_URL
+  )
+    .trim()
+    .replace(/\/+$/, "");
+
+  const supabaseKey = (
+    process.env.EAISY_SUPABASE_ANON_KEY ||
+    process.env.VITE_SUPABASE_ANON_KEY ||
+    DEFAULT_SUPABASE_ANON_KEY
+  ).trim();
+
+  try {
+    const rpcRes = await fetch(`${supabaseUrl}/rest/v1/rpc/submit_eaisy_demo_request`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+      },
+      body: JSON.stringify({
+        p_org_id: organizationId,
+        p_name: cleanName,
+        p_phone: cleanPhone || null,
+        p_email: cleanEmail || null,
+        p_products: cleanProducts,
+      }),
+    });
+
+    const rpcData = await rpcRes.json().catch(() => ({}));
+
+    if (!rpcRes.ok) {
+      console.error("[send-lead] Supabase RPC error:", rpcRes.status, rpcData);
+      const errMsg =
+        rpcData?.message ||
+        rpcData?.error ||
+        "A demókérés beküldése nem sikerült. Próbáld újra később.";
+      return res.status(rpcRes.status >= 400 && rpcRes.status < 500 ? 400 : 502).json({
+        error: errMsg,
+      });
+    }
+
+    return res.status(200).json({
+      ok: true,
+      flow_id: rpcData?.flow_id,
+      client_id: rpcData?.client_id,
+      matched_products: rpcData?.matched_products,
+    });
+  } catch (err) {
+    console.error("[send-lead] Supabase RPC network error:", err);
+    return res.status(502).json({
+      error: "A kapcsolatfelvétel az eaisyCRM adatbázissal nem sikerült. Próbáld újra később.",
+    });
+  }
 }
