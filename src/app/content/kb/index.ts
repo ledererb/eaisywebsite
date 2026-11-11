@@ -2,6 +2,9 @@ import type { ProductKnowledgeBase, KbArticle } from "./types";
 import { eaisyDeskKb } from "./eaisy-desk";
 import { eaisyDocsKb } from "./eaisy-docs";
 import { eaisyHrKb } from "./eaisy-hr";
+import { eaisyBooksKb } from "./eaisy-books";
+
+export { eaisyBooksKb };
 
 export const eaisyBillKb: ProductKnowledgeBase = {
   slug: "eaisy-bill",
@@ -147,125 +150,6 @@ export const eaisyBillKb: ProductKnowledgeBase = {
         },
       ],
       relatedSlugs: ["szamlakiallitas-dijbekero-es-nav-szinkron"],
-    },
-  ],
-};
-
-export const eaisyBooksKb: ProductKnowledgeBase = {
-  slug: "eaisy-books",
-  name: "eaisyBooks",
-  tagline: "AI-alapú könyvelés-előkészítés, OCR bizonylatfelismerés és valós idejű pénzügyi áttekintés.",
-  description:
-    "Az eaisyBooks automatikusan összegyűjti és OCR mesterséges intelligenciával feldolgozza a bejövő számlákat, nyugtákat és bankkivonatokat, költséghelyekre sorolja a kiadásokat, előre jelzi az ÁFA-fizetési kötelezettséget, és egyetlen kattintással könyvelő-kész csomagot állít elő.",
-  productRoute: "/eaisy-books",
-  appUrl: "https://books.eaisy.hu",
-  status: "live",
-  version: "1.5",
-  updatedAt: "2026. október",
-  theme: {
-    accent: "#1BB3F5",
-    secondary: "#137EA8",
-    dark: "#082936",
-    softBg: "#EFFBFF",
-  },
-  roles: [
-    {
-      role: "admin",
-      label: "Cégvezető / Könyvelő",
-      summary: "Teljes hozzáférés a cash-flow és ÁFA előrejelzésekhez, banki szinkronhoz, jóváhagyási szabályokhoz és könyvelői exporthoz.",
-    },
-    {
-      role: "member",
-      label: "Adminisztrátor / Feltöltő",
-      summary: "Bejövő számlák és nyugták feltöltése, költségkategóriák és projektek hozzárendelése.",
-    },
-  ],
-  categories: [
-    {
-      id: "bizonylat-ocr",
-      title: "Bejövő számlák & AI OCR",
-      description: "Számlák és nyugták automatikus adatfelismerése, e-mailes beküldés és költségkategorizálás.",
-      icon: "ScanLine",
-    },
-    {
-      id: "cashflow-konyveles",
-      title: "Cash-flow, ÁFA & Könyvelői központ",
-      description: "Valós idejű eredménykimutatás, várható ÁFA-egyenleg és könyvelői export.",
-      icon: "BarChart3",
-    },
-  ],
-  articles: [
-    {
-      slug: "bejovo-szamlak-ai-ocr-es-koltsegkategorizalas",
-      title: "Bejövő számlák automatikus AI OCR feldolgozása és kategorizálása",
-      subtitle: "Hogyan olvassa ki az AI a PDF és fotózott számlák adatait, és hogyan tanulja meg a cég egyedi költséghelyeit.",
-      categoryId: "bizonylat-ocr",
-      readingTimeMinutes: 5,
-      roles: ["admin", "member"],
-      accessSummary: "Bejövő bizonylatok modul.",
-      summary:
-        "Az eaisyBooks megszünteti a kézi adatrögzítést: a NAV Online Számla rendszerből automatikusan lehúzza a belföldi költségszámlákat, a külföldi (pl. Google, Meta, AWS, Adobe) PDF-számlákat és a fotózott blokkokat pedig AI OCR motorral dolgozza fel.",
-      sections: [
-        {
-          id: "szamlak-bekuldese-es-ocr",
-          title: "Háromféle automatikus bizonylat-beérkeztetés",
-          description:
-            "A bejövő bizonylatok egyetlen központi postafiókba érkeznek, ahol az AI azonnal kiolvassa a kibocsátót, az adószámot, a tételeket, az ÁFA-kulcsokat és a fizetési határidőt.",
-          steps: [
-            {
-              title: "1. Automatikus NAV bejövő számla szinkron",
-              description:
-                "Minden belföldi szállító által a céged adószámára kiállított számla másodperceken belül automatikusan megjelenik a **Bejövő számlák** listában.",
-            },
-            {
-              title: "2. Dedikált beküldő e-mail cím és Drag-and-Drop feltöltés",
-              description:
-                "A külföldi szoftver- és szolgáltatói számlákat továbbítsd a céged egyedi `@be.eaisybooks.hu` címére, vagy húzd be őket csoportosan a **Bizonylat feltöltése** zónába.",
-            },
-            {
-              title: "3. Költséghely és projekt hozzárendelés",
-              description:
-                "Az AI a korábbi döntéseid alapján automatikusan felkínálja a **Költségkategória** (pl. *Marketing*, *Szoftver*, *Bérleti díj*, *Alapanyag*) és a **Projekt / Telephely** címkét, amelyet 1 kattintással jóváhagyhatsz.",
-            },
-          ],
-        },
-      ],
-      faqs: [
-        {
-          question: "Hogyan jutnak el az ellenőrzött bizonylatok a könyvelőmhöz?",
-          answer:
-            "A könyvelőd saját meghívott hozzáféréssel közvetlenül beléphet az eaisyBooks Könyvelői központba, vagy a „Könyvelői export” gombbal egyetlen ZIP/XML/CSV csomagban letöltheti az adott hónap összes bizonylatát és kontírozási előkészítését.",
-        },
-      ],
-      relatedSlugs: ["cash-flow-es-afa-elorejelzes"],
-    },
-    {
-      slug: "cash-flow-es-afa-elorejelzes",
-      title: "Valós idejű Cash-flow és ÁFA-előrejelzés",
-      subtitle: "Lásd előre a hónap végi ÁFA-egyenleget és a várható pénzáramlást még a bevallási határidő előtt.",
-      categoryId: "cashflow-konyveles",
-      readingTimeMinutes: 4,
-      roles: ["admin"],
-      accessSummary: "Pénzügyi áttekintés modul (Admin).",
-      summary:
-        "Az eaisyBooks az eaisyBill kimenő számláit és a beérkezett költségszámlákat összevetve naprakész képet ad a fizetendő/visszaigényelhető ÁFA egyenlegről és a következő 30–90 napos likviditásról.",
-      sections: [
-        {
-          id: "afa-kalkulator-es-likviditas",
-          title: "ÁFA-egyenleg és kintlévőség-monitor",
-          description:
-            "A vezetői műszerfalon bármelyik pillanatban ellenőrizheted az időszaki eredményt.",
-          steps: [
-            {
-              title: "Időszaki ÁFA-mérleg megtekintése",
-              description:
-                "Az **ÁFA összesítő** kártya valós időben mutatja a fizetendő (kimenő) és a levonható (bejövő) ÁFA különbözetét a választott havi vagy negyedéves bevallási ciklusra.",
-            },
-          ],
-        },
-      ],
-      faqs: [],
-      relatedSlugs: ["bejovo-szamlak-ai-ocr-es-koltsegkategorizalas"],
     },
   ],
 };
