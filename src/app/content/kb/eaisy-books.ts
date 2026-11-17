@@ -2,7 +2,7 @@ import type { ProductKnowledgeBase } from "./types";
 
 export const eaisyBooksKb: ProductKnowledgeBase = {
   slug: "eaisy-books",
-  name: "eaisyBooks",
+  name: "eaisyBill/eaisyBooks",
   tagline:
     "AI-támogatott könyvelőirodai portfólió, kettős könyvvitel, NAV Online Számla & eÁFA, bérszámfejtés és OBR éves beszámoló platform",
   description:

@@ -238,12 +238,12 @@ export const KNOWLEDGE_BASES: ProductKnowledgeBase[] = [
   eaisyDeskKb,
   eaisyDocsKb,
   eaisyHrKb,
-  eaisyBillKb,
   eaisyBooksKb,
   eaisyBoostKb,
 ];
 
 export function getKnowledgeBaseBySlug(slug: string): ProductKnowledgeBase | undefined {
+  if (slug === "eaisy-bill") return eaisyBooksKb;
   return KNOWLEDGE_BASES.find((kb) => kb.slug === slug);
 }
 

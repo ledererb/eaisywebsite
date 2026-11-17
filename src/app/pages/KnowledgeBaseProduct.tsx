@@ -71,6 +71,10 @@ export function KnowledgeBaseProduct() {
   const [lightboxImage, setLightboxImage] = useState<KbScreenshot | null>(null);
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
 
+  if (productSlug === "eaisy-bill") {
+    return <Navigate to="/tudasbazis/eaisy-books" replace />;
+  }
+
   if (!product) {
     return <Navigate to="/tudasbazis" replace />;
   }

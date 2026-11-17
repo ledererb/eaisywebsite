@@ -421,7 +421,7 @@ function SiteHeader({ onDemoOpen }: { onDemoOpen: () => void }) {
                 </a>
               ))}
               <Link
-                to={`/tudasbazis${location.pathname}`}
+                to={location.pathname === "/eaisy-bill" ? "/tudasbazis/eaisy-books" : `/tudasbazis${location.pathname}`}
                 className={navLinkCls("/tudasbazis")}
               >
                 Tudásbázis
@@ -627,13 +627,13 @@ const ASZF_PATH = "/aszf";
 const ADATKEZELES_PATH = "/adatkezelesi-tajekoztato";
 
 const BILL_FOOTER_DOCS = [
-  { label: "eaisyBill Tudásbázis", path: "/tudasbazis/eaisy-bill" },
+  { label: "eaisyBill/eaisyBooks Tudásbázis", path: "/tudasbazis/eaisy-books" },
   { label: "eaisyBill ÁSZF", path: ASZF_PATH },
   { label: "eaisyBill Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
 ];
 
 const BOOKS_FOOTER_DOCS = [
-  { label: "eaisyBooks Tudásbázis", path: "/tudasbazis/eaisy-books" },
+  { label: "eaisyBill/eaisyBooks Tudásbázis", path: "/tudasbazis/eaisy-books" },
   { label: "eaisyBooks ÁSZF", path: ASZF_PATH },
   { label: "eaisyBooks Adatkezelési tájékoztató", path: ADATKEZELES_PATH },
 ];
